@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-<footer class="page-footer font-small bg-white mt-5">
+<footer class="page-footer font-small bg-white ">
 
   <div style="background-color: #2196F3;">
     <div class="container">
