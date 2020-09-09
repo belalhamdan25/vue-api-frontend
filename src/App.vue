@@ -5,22 +5,30 @@
       <router-link to="/about">About</router-link>
     </div> -->
     <div id="nav">
-      <navbar></navbar>
+      <Navbar></Navbar>
     </div>
     <router-view />
+    <div id="foot">
+      <Footer></Footer>
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 export default {
-  components:{
-    'navbar' :Navbar
-    }
+  components: {
+    Navbar: Navbar,
+    Footer: Footer,
+  },
 };
 </script>
 
 <style>
+#app {
+  background-color: #f6f6f6;
+}
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
