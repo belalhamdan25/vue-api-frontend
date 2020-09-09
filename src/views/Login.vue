@@ -7,7 +7,6 @@
         </h2>
         <h6>Kindly fill in your login details to proceed</h6>
       </div>
-
       <loginForm></loginForm>
     </div>
   </div>

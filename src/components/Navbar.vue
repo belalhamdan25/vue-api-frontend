@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-white mb-5">
-  <a class="navbar-brand" href="#">Worker.com</a>
+  <router-link class="navbar-brand" to="/">Worker.com</router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,17 +9,17 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Work Samples</a>
+        <router-link class="nav-link" to="#">Work Samples</router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Browse Jobs</a>
+        <router-link class="nav-link" to="#">Browse Jobs</router-link>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <router-link class="nav-link" to="/login">Login</router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/register">Sign Up</a>
+        <router-link class="nav-link" to="/register">Sign Up</router-link>
       </li>
 
     </ul>
