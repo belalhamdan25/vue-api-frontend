@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
           <div class="center">
-        <div class="col-12">
+        <div class="col-12 ">
           <h1 class="text-white  ">
             Hire the best freelancers for any job, online.
           </h1>
@@ -24,7 +24,7 @@
 <style scoped>
 .slide-back-image {
   background-image: url("#");
-  height: 50vh; /* You must set a specified height */
+  height: 70vh; /* You must set a specified height */
     /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
