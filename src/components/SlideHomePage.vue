@@ -1,7 +1,8 @@
 <template>
-  <div class="slide-back-image">
+<div class="slide-back-image">
+  <div class="overlay-effect"></div>
     <div class="container">
-      <div class="row d-flex justify-content-center">
+      <div class="row">
           <div class="center">
         <div class="col-12">
           <h1 class="text-white  ">
@@ -23,11 +24,14 @@
 <style scoped>
 .slide-back-image {
   background-image: url("../assets/images/homepage-slide.jpg");
-  height: 80vh; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  height: 90vh; /* You must set a specified height */
+    /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
     position: relative;
+  
 
 }
 .center {
@@ -37,5 +41,15 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.overlay-effect{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  background-color: #0000002f;
+  overflow:hidden;
 }
 </style>

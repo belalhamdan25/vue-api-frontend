@@ -15,6 +15,13 @@
         <router-link class="nav-link" to="#">Browse Jobs</router-link>
       </li>
 
+    </ul>
+   
+  </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <router-link class="nav-link" to="/login">Login</router-link>
       </li>
