@@ -23,8 +23,8 @@
 
 <style scoped>
 .slide-back-image {
-  background-image: url("../assets/images/homepage-slide.jpg");
-  height: 90vh; /* You must set a specified height */
+  background-image: url("#");
+  height: 50vh; /* You must set a specified height */
     /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
