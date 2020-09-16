@@ -1,21 +1,21 @@
 <template>
   <form action="#">
     <div class="form-group">
-      <label for="Fname">First Name</label>
-      <input type="text" class="form-control" id="Fname" name="Fname" v-model="Fname" />
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name" name="first_name" v-model="first_name" />
     </div>
     <div class="form-group">
-      <label for="Lname">Last Name</label>
-      <input type="text" class="form-control" id="Lname" name="Lname" v-model="Lname"/>
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name" name="last_name" v-model="last_name"/>
     </div>
     <div class="form-group">
-      <label for="phoneNumber">Phone Number</label>
+      <label for="phone_number">Phone Number</label>
       <input
         type="tel"
         class="form-control"
-        id="phoneNumber"
-        name="phoneNumber"
-        v-model="phoneNumber"
+        id="phone_number"
+        name="phone_number"
+        v-model="phone_number"
       />
     </div>
     <div class="form-group">
@@ -35,20 +35,10 @@
         v-model="password"
       />
     </div>
-    <div class="form-group">
-      <label for="password">Confirm Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="confirmPassword"
-        name="confirmPassword"
-        v-model="confirmPassword"
-      />
-    </div>
 
     <div class="form-group">
-      <label for="sel1">User Type</label>
-      <select class="form-control" name="userType" id="userType" v-model="userType">
+      <label for="user_type">User Type</label>
+      <select class="form-control" name="user_type" id="user_type" v-model="user_type">
         <option value="FreeLancer">FreeLancer</option>
         <option value="Client">Client</option>
       </select>
@@ -59,23 +49,42 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "register",
      data() {
     return {
-      Fname:"",
-      Lname:"",
-      phoneNumber:"",
+      first_name:"",
+      last_name:"",
+      phone_number:"",
       email: "",
       password: "",
-      confirmPassword: "",
-      userType: ""
+      user_type: ""
     };
   },
   methods: {
     performRegister() {
-      console.log("success perform register");
-      // this.$router.push("/dashboard");
+            axios
+        .post("http://localhost/vue-api-backend/public/api/auth/register", {
+          first_name:this.first_name,
+          last_name:this.last_name,
+          phone_number:this.phone_number,
+          email: this.email,
+          password: this.password,
+          user_type:this.user_type
+        })
+        .then(res => {
+          console.log(res.data);
+          //store the token and user in local storage
+          localStorage.setItem("token" , res.data.access_token);
+          localStorage.setItem("user" , res.data.user);
+          this.$router.push("/dashboard");
+        })
+        .catch(err => {
+          console.log(err.message);
+          this.error = err.message;
+        });
     }
   }
 

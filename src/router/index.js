@@ -16,17 +16,22 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
+    meta: { guest: true }
+
   },
   {
     path: "/register",
     name: "Register",
-    component: Register
+    component: Register,
+    meta: { guest: true }
+
   },
   {
     path: "/dashboard",
     name: "Dashboard",
-    component: Dashboard
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   // {
   //   path: "/about",
@@ -44,5 +49,41 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (localStorage.getItem('token') == null) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+
+  if (to.matched.some(record => record.meta.guest)) {
+    
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (localStorage.getItem('token')) {
+      next({
+        path: '/dashboard',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+
+
+})
 
 export default router;
