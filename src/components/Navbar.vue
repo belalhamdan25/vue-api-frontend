@@ -15,41 +15,41 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" v-if="!token">
+        <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="#">Work Samples</router-link>
         </li>
-        <li class="nav-item" v-if="!token">
+        <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="#">Browse Jobs</router-link>
         </li>
 
-        <li class="nav-item" v-if="!token">
+        <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="/login">Login</router-link>
         </li>
-        <li class="nav-item" v-if="!token">
+        <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="/register">Sign Up</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <router-link class="nav-link" to="#">My Work Sample</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <router-link class="nav-link" to="#">Browse Jobs</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <router-link class="nav-link" to="#">My Offers</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <router-link class="nav-link" to="#">Notification</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <router-link class="nav-link" to="#">Messages</router-link>
         </li>
 
-        <li class="nav-item" v-if="token">
+        <li class="nav-item" v-if="loggedIn">
           <button class="nav-link" @click.prevent="performLogout">Log Out</button>
         </li>
       </ul>
@@ -66,6 +66,11 @@ export default {
   },
   mounted() {
     this.checkUserStatus();
+  },
+  computed:{
+    loggedIn(){
+      return this.$store.getters.get_loggedIn
+    }
   },
   methods: {
     checkUserStatus() {

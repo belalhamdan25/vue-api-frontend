@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 
+import store from "../store/index"
 Vue.use(VueRouter);
 
 const routes = [
@@ -56,7 +57,7 @@ router.beforeEach((to, from, next) => {
     
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (localStorage.getItem('token') == null) {
+    if (!store.state.loggedIn) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }
@@ -72,7 +73,7 @@ router.beforeEach((to, from, next) => {
     
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (localStorage.getItem('token')) {
+    if (store.state.loggedIn) {
       next({
         path: '/dashboard',
         query: { redirect: to.fullPath }

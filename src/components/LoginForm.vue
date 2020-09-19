@@ -1,4 +1,5 @@
 <template>
+<div>
   <form action="#">
     <div class="form-group">
       <label for="email">Email address</label>
@@ -38,10 +39,11 @@
       Login
     </button>
   </form>
+        <circle-spin v-show="isLoading">  </circle-spin>
+</div>
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "login",
   data() {
@@ -49,26 +51,27 @@ export default {
       email: "",
       password: "",
       remeberMe: "",
-      error: ""
+      error: "",
+      isLoading: false
     };
   },
   methods: {
     performLogin() {
-      axios
-        .post("http://localhost/vue-api-backend/public/api/auth/login", {
+      this.isLoading = true;
+      this.$store
+        .dispatch("performLoginAction", {
           email: this.email,
           password: this.password
         })
         .then(res => {
-          console.log(res.data);
-          //store the token and user in local storage
-          localStorage.setItem("token" , res.data.access_token);
-          localStorage.setItem("user" , res.data.user);
+          this.isLoading = false;
           this.$router.push("/dashboard");
+          console.log(res.data);
         })
         .catch(err => {
+          this.isLoading = false;
+          this.error = " There was error during login process";
           console.log(err.message);
-          this.error = err.message;
         });
     }
   }
