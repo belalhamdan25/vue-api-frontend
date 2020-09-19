@@ -40,6 +40,28 @@ export default new Vuex.Store({
           });
       });
     },
+    performRegisterAction({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post("http://localhost/vue-api-backend/public/api/auth/register", {
+            first_name:payload.first_name,
+            last_name:payload.last_name,
+            phone_number:payload.phone_number,
+            email: payload.email,
+            password: payload.password,
+            user_type:payload.user_type
+          })
+          .then((res) => {
+            commit("SET_token", res.data.access_token);
+            commit("SET_user", res.data.user);
+            commit("SET_loggedIn", true);
+            resolve(res);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    },
   },
   modules: {},
   getters: {
