@@ -50,7 +50,9 @@
         </li>
 
         <li class="nav-item" v-if="loggedIn">
-          <button class="nav-link" @click.prevent="performLogout">Log Out</button>
+          <button class="nav-link" @click.prevent="performLogout">
+            Log Out
+          </button>
         </li>
       </ul>
     </div>
@@ -67,10 +69,10 @@ export default {
   mounted() {
     this.checkUserStatus();
   },
-  computed:{
-    loggedIn(){
-      return this.$store.getters.get_loggedIn
-    }
+  computed: {
+    loggedIn() {
+      return this.$store.getters.get_loggedIn;
+    },
   },
   methods: {
     checkUserStatus() {
@@ -78,12 +80,17 @@ export default {
         this.token = localStorage.getItem("token");
       }
     },
-    performLogout(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-        this.token=null
-        this.$router.push("/login");
-    }
-  }
+    performLogout() {
+      this.$store
+        .dispatch("performLogoutAction")
+        .then((res) => {
+          this.$router.push("/");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
