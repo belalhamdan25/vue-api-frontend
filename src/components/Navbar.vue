@@ -15,20 +15,70 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item" v-if="!token">
           <router-link class="nav-link" to="#">Work Samples</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!token">
           <router-link class="nav-link" to="#">Browse Jobs</router-link>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" v-if="!token">
           <router-link class="nav-link" to="/login">Login</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!token">
           <router-link class="nav-link" to="/register">Sign Up</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <router-link class="nav-link" to="#">My Work Sample</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <router-link class="nav-link" to="#">Browse Jobs</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <router-link class="nav-link" to="#">My Offers</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <router-link class="nav-link" to="#">Notification</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <router-link class="nav-link" to="#">Messages</router-link>
+        </li>
+
+        <li class="nav-item" v-if="token">
+          <button class="nav-link" @click.prevent="performLogout">Log Out</button>
         </li>
       </ul>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      token: null,
+    };
+  },
+  mounted() {
+    this.checkUserStatus();
+  },
+  methods: {
+    checkUserStatus() {
+      if (localStorage.getItem("token") != null) {
+        this.token = localStorage.getItem("token");
+      }
+    },
+    performLogout(){
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        this.token=null
+        this.$router.push("/login");
+    }
+  }
+};
+</script>
