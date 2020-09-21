@@ -52,7 +52,7 @@
         Update
       </button>
     </form>
-    <circle-spin v-show="isLoading"> </circle-spin>
+    <!-- <circle-spin v-show="isLoading"> </circle-spin> -->
   </div>
 </template>
 
@@ -60,7 +60,7 @@
 export default {
   data() {
     return {
-      isLoading: false,
+      // isLoading: false,
       error:""
     }
   },
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     updateUserInfo() {
-      this.isLoading = true;
+      this.$Progress.start();
       this.$store
         .dispatch("updateUserInfoAction", {
           first_name: this.user.first_name,
@@ -80,12 +80,13 @@ export default {
           email: this.user.email,
         })
         .then(res => {
-          this.isLoading = false;
+      this.$Progress.finish();
           // console.log("user updated");
           console.log(res);
         })
         .catch(err => {
-          this.isLoading = false;
+          // this.isLoading = false;
+          this.$Progress.fail();
           this.error = " There was error during update process";
           // this.error = err.message;
           console.log(err.message);

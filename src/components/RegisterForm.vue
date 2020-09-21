@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <form action="#">
       <div class="form-group">
         <label for="first_name">First Name</label>
@@ -69,8 +68,7 @@
         </select>
       </div>
 
-            <div style="color:red" v-if="error">{{ error }}</div>
-
+      <div style="color:red" v-if="error">{{ error }}</div>
 
       <button
         type="submit"
@@ -80,12 +78,11 @@
         Register
       </button>
     </form>
-    <circle-spin v-show="isLoading"> </circle-spin>
+    <!-- <circle-spin v-show="isLoading"> </circle-spin> -->
   </div>
 </template>
 
 <script>
-
 export default {
   name: "register",
   data() {
@@ -97,12 +94,13 @@ export default {
       password: "",
       user_type: "",
       error: "",
-      isLoading: false,
+      // isLoading: false,
     };
   },
   methods: {
     performRegister() {
-      this.isLoading = true;
+      // this.isLoading = true;
+      this.$Progress.start();
       this.$store
         .dispatch("performRegisterAction", {
           first_name: this.first_name,
@@ -113,12 +111,14 @@ export default {
           user_type: this.user_type,
         })
         .then((res) => {
-          this.isLoading = false;
+          // this.isLoading = false;
+          this.$Progress.finish();
           this.$router.push("/dashboard");
           console.log(res.data);
         })
         .catch((err) => {
-          this.isLoading = false;
+          // this.isLoading = false;
+          this.$Progress.fail();
           this.error = " There was error during register process";
           console.log(err.message);
         });

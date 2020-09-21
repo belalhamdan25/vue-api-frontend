@@ -13,6 +13,7 @@
         <small id="emailHelp" class="form-text text-muted"
           >We'll never share your email with anyone else.</small
         >
+         <div style="color:red" v-if="error">{{ error }}</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -34,7 +35,6 @@
         />
         <label class="form-check-label" for="remeberMe">Remeber me</label>
       </div>
-            <div style="color:red" v-if="error">{{ error }}</div>
 
       <button
         type="submit"
@@ -44,7 +44,7 @@
         Login
       </button>
     </form>
-    <circle-spin v-show="isLoading"> </circle-spin>
+    <!-- <circle-spin v-show="isLoading"> </circle-spin> -->
   </div>
 </template>
 
@@ -57,24 +57,24 @@ export default {
       password: "",
       remeberMe: "",
       error: "",
-      isLoading: false,
+      // isLoading: false,
     };
   },
   methods: {
     performLogin() {
-      this.isLoading = true;
+        this.$Progress.start()
       this.$store
         .dispatch("performLoginAction", {
           email: this.email,
           password: this.password,
         })
         .then((res) => {
-          this.isLoading = false;
+        this.$Progress.finish()
           this.$router.push("/dashboard");
           console.log(res.data);
         })
         .catch((err) => {
-          this.isLoading = false;
+        this.$Progress.fail()
           this.error = " There was error during login process";
           console.log(err.message);
         });

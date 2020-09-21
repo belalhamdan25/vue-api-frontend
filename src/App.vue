@@ -6,7 +6,9 @@
     </div> -->
     <div id="nav">
       <Navbar></Navbar>
+      <vue-progress-bar></vue-progress-bar>
     </div>
+    
     <router-view />
     <div id="foot">
       <Footer></Footer>
