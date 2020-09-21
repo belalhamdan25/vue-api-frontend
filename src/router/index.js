@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Settings from "../views/Settings.vue";
+import ErrorPage from "../views/ErrorPage.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -40,9 +41,13 @@ const routes = [
     path: "/settings",
     name: "Settings",
     component: Settings,
-    meta: { requiresAuth: true }
-    // meta: { guest: true }
+    meta: { requiresAuth: true}
 
+  },
+  {
+    path: "/error-page",
+    name: "ErrorPage",
+    component: ErrorPage,
   },
   // {
   //   path: "/about",
@@ -78,6 +83,8 @@ router.beforeEach((to, from, next) => {
     next() // make sure to always call next()!
   }
 
+  ///////////////////////
+
   if (to.matched.some(record => record.meta.guest)) {
     
     // this route requires auth, check if logged in
@@ -85,6 +92,38 @@ router.beforeEach((to, from, next) => {
     if (store.state.loggedIn) {
       next({
         path: '/dashboard',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+
+  if (to.matched.some(record => record.meta.requiresFreelancer)) {
+    
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (store.state.user.user_type=="Client") {
+      next({
+        path: '/error-page',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+
+  if (to.matched.some(record => record.meta.requiresClient)) {
+    
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (store.state.user.user_type=="Freelancer") {
+      next({
+        path: '/error-page',
         query: { redirect: to.fullPath }
       })
     } else {
