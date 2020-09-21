@@ -49,6 +49,10 @@
           <router-link class="nav-link" to="#">Messages</router-link>
         </li>
 
+         <li class="nav-item" v-if="loggedIn">
+          <router-link class="nav-link" to="/settings">User Settings</router-link>
+        </li>
+
         <li class="nav-item" v-if="loggedIn">
           <button class="nav-link" @click.prevent="performLogout">
             Log Out

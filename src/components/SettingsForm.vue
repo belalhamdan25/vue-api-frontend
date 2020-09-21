@@ -1,0 +1,95 @@
+<template>
+  <div>
+    <form action="#">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first_name"
+          name="first_name"
+          v-model="user.first_name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="last_name"
+          name="last_name"
+          v-model="user.last_name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone_number">Phone Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone_number"
+          name="phone_number"
+          v-model="user.phone_number"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          v-model="user.email"
+        />
+      </div>
+
+      <div style="color:red" v-if="error">{{ error }}</div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        @click.prevent="updateUserInfo"
+      >
+        Update
+      </button>
+    </form>
+    <circle-spin v-show="isLoading"> </circle-spin>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isLoading: false,
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.getters.get_user;
+    }
+  },
+  methods: {
+    updateUserInfo() {
+      this.isLoading = true;
+      this.$store
+        .dispatch("updateUserInfoAction", {
+          first_name: this.user.first_name,
+          last_name: this.user.last_name,
+          phone_number: this.user.phone_number,
+          email: this.user.email,
+        })
+        .then((res) => {
+          this.isLoading = false;
+          console.log("user updated");
+          console.log(res);
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          this.error = " There was error during update process";
+          // this.error = err.message;
+          console.log(err.message);
+        });
+    }
+  }
+};
+</script>

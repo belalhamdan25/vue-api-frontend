@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Settings from "../views/Settings.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -34,6 +35,14 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
     meta: { requiresAuth: true }
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
+    meta: { requiresAuth: true }
+    // meta: { guest: true }
+
   },
   // {
   //   path: "/about",
