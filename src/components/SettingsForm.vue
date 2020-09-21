@@ -78,12 +78,12 @@ export default {
           phone_number: this.user.phone_number,
           email: this.user.email,
         })
-        .then((res) => {
+        .then(res => {
           this.isLoading = false;
-          console.log("user updated");
+          // console.log("user updated");
           console.log(res);
         })
-        .catch((err) => {
+        .catch(err => {
           this.isLoading = false;
           this.error = " There was error during update process";
           // this.error = err.message;
