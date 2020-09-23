@@ -6,9 +6,11 @@ import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Settings from "../views/Settings.vue";
 import ErrorPage from "../views/ErrorPage.vue";
+import Portfolio from "../views/Portfolio.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
+
 
 const routes = [
   {
@@ -21,8 +23,7 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    meta: { guest: true }
-
+    meta: { guest: true },
   },
   {
     path: "/register",
@@ -49,6 +50,14 @@ const routes = [
     name: "ErrorPage",
     component: ErrorPage,
   },
+  {
+    path: "/portfolio",
+    name: "Portfolio",
+    component: Portfolio,
+    meta: { guest: true }
+
+  },
+  
   // {
   //   path: "/about",
   //   name: "About",
@@ -67,8 +76,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (!store.state.loggedIn) {
@@ -86,7 +95,6 @@ router.beforeEach((to, from, next) => {
   ///////////////////////
 
   if (to.matched.some(record => record.meta.guest)) {
-    
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (store.state.loggedIn) {
@@ -102,7 +110,6 @@ router.beforeEach((to, from, next) => {
   }
 
   if (to.matched.some(record => record.meta.requiresFreelancer)) {
-    
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (store.state.user.user_type=="Client") {
@@ -118,7 +125,6 @@ router.beforeEach((to, from, next) => {
   }
 
   if (to.matched.some(record => record.meta.requiresClient)) {
-    
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (store.state.user.user_type=="Freelancer") {
@@ -135,5 +141,9 @@ router.beforeEach((to, from, next) => {
 
 
 })
+
+
+
+
 
 export default router;

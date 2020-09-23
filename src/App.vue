@@ -24,6 +24,12 @@ export default {
     Navbar: Navbar,
     Footer: Footer,
   },
+  mounted(){
+      this.$Progress.start()
+       window.addEventListener('load', () => {
+        this.$Progress.finish()
+    })
+  }
 };
 </script>
 

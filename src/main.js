@@ -13,7 +13,7 @@ Vue.use(VueSpinners);
 Vue.use(VueProgressBar, {
   color: 'blue',
   failedColor: 'red',
-  height: '2px'
+  height: '4px'
 })
 
 new Vue({
