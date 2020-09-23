@@ -6,14 +6,16 @@ import store from "./store";
 Vue.config.productionTip = false;
 
 import VueSpinners from "vue-spinners";
-import VueProgressBar from 'vue-progressbar'
-
 Vue.use(VueSpinners);
 
+import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
-  color: 'blue',
+  color: '#00B3EC',
   failedColor: 'red',
-  height: '4px'
+  thickness: '3px',
+  location: 'top',
+  autoRevert: true,
+  inverse: false,
 })
 
 new Vue({
