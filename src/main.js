@@ -10,13 +10,14 @@ Vue.use(VueSpinners);
 
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
-  color: '#00B3EC',
+  color: 'blue',
   failedColor: 'red',
   thickness: '3px',
   location: 'top',
   autoRevert: true,
   inverse: false,
 })
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 new Vue({
   router,

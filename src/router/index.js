@@ -6,7 +6,7 @@ import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Settings from "../views/Settings.vue";
 import ErrorPage from "../views/ErrorPage.vue";
-import Portfolio from "../views/Portfolio.vue";
+import Portfolios from "../views/Portfolios.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -51,9 +51,9 @@ const routes = [
     component: ErrorPage,
   },
   {
-    path: "/portfolio",
-    name: "Portfolio",
-    component: Portfolio,
+    path: "/portfolios",
+    name: "Portfolios",
+    component: Portfolios,
     meta: { guest: true }
 
   },

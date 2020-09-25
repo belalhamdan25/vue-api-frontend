@@ -9,6 +9,7 @@
     </div>
     
     <router-view />
+    
     <vue-progress-bar></vue-progress-bar>
 
     <div id="foot">
@@ -20,6 +21,7 @@
 <script>
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
 export default {
   components: {
     Navbar: Navbar,
