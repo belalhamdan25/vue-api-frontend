@@ -305,13 +305,13 @@ export default {
   methods: {
     loadPortfolios() {
       axios
-        .get("http://localhost/vue-api-backend/public/api/portfolio/portfolios")
+        .get("http://vue-api-backend.herokuapp.com/api/portfolio/portfolios")
         .then(({ data }) => (this.Portfolios = data));
     },
     getResults(page = 1) {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios?page=" +
+          "http://vue-api-backend.herokuapp.com/api/portfolio/portfolios?page=" +
             page
         )
         .then((response) => {
@@ -333,10 +333,10 @@ export default {
       //Show Loader
       this.loading = false;
 
-      //Waste 5 seconds
+      //Waste 0.5 seconds
       setTimeout(() => {
         this.loading = true;
-      }, 1000);
+      }, 500);
     },
     search: function() {
       if(this.query == ""){
@@ -354,7 +354,7 @@ export default {
         // Making a get request to our API and passing the query to it.
         axios
           .get(
-            "http://localhost/vue-api-backend/public/api/portfolio/portfolios/search?q=" +
+            "http://vue-api-backend.herokuapp.com/api/portfolio/portfolios/search?q=" +
               this.query
           )
           .then((response) => {
