@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-center">
-          <button type="button" class="btn btn-primary mb-4 form-control">
-            Primary
+          <button type="button" class="btn btn-primary mb-4 form-control" @click="gotToSignup()">
+            Create Your Portfolio
           </button>
           <!-- <div class="active-cyan-4 mb-4">
             <input
@@ -69,7 +69,7 @@
                   value="translation"
                   v-model="cquery"
                   id="translation"
-                    @change="categories()"
+                  @change="categories()"
                 />translation
               </label>
             </div>
@@ -81,7 +81,7 @@
                   value="programming"
                   v-model="cquery"
                   id="programming"
-                   @change="categories()"
+                  @change="categories()"
                 />programming
               </label>
             </div>
@@ -117,19 +117,17 @@
                   value="consulting"
                   v-model="cquery"
                   id="consulting"
-                   @change="categories()"
+                  @change="categories()"
                 />consulting
               </label>
             </div>
           </div>
 
           <select class="form-control">
-          <option>Skills</option>
-        </select>
-
+            <option>Skills</option>
+          </select>
         </div>
         <div class="col-md-9  col-sm-12">
-
           <div v-if="searchPortfolios.length">
             <div class="row">
               <div
@@ -315,21 +313,20 @@ export default {
       query: "",
       searchLoading: false,
       searchPortfolios: [],
-      categoriesFilter:[],
+      categoriesFilter: [],
       cquery: [],
-
     };
   },
   methods: {
     loadPortfolios() {
       axios
-        .get("http://vue-api-backend.herokuapp.com/api/portfolio/portfolios")
+        .get("http://localhost/vue-api-backend/public/api/portfolio/portfolios")
         .then(({ data }) => (this.Portfolios = data));
     },
     getResults(page = 1) {
       axios
         .get(
-          "http://vue-api-backend.herokuapp.com/api/portfolio/portfolios?page=" +
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios?page=" +
             page
         )
         .then((response) => {
@@ -350,29 +347,33 @@ export default {
     doStuff: function() {
       //Show Loader
       this.loading = false;
+                this.$Progress.start()
 
       //Waste 0.5 seconds
       setTimeout(() => {
         this.loading = true;
+        this.$Progress.finish()
       }, 500);
     },
     search: function() {
-      if(this.query == ""){
-       this.searchPortfolios = [];
-            this.doStuff();
+      if (this.query == "") {
+        this.searchPortfolios = [];
+        this.doStuff();
 
-      }else{
-                // Clear the error message.
+      } else {
+        // Clear the error message.
         this.error = "";
         // Empty the products array so we can fill it with the new products.
         this.searchPortfolios = [];
         // Set the loading property to true, this will display the "Searching..." button.
         this.searchLoading = true;
         this.loading = false;
+                        this.$Progress.start()
+
         // Making a get request to our API and passing the query to it.
         axios
           .get(
-            "http://vue-api-backend.herokuapp.com/api/portfolio/portfolios/search?q=" +
+            "http://localhost/vue-api-backend/public/api/portfolio/portfolios/search?q=" +
               this.query
           )
           .then((response) => {
@@ -385,35 +386,29 @@ export default {
             this.searchLoading = false;
             // Clear the query.
             this.query = "";
-            
+                            this.$Progress.finish()
 
           });
       }
     },
-      categories() {
-        let payload = {
-          // cq: ['design','translation']
-          cq:this.cquery
-        };
-          // this.categoriesFilter=[];
-          //   var payload = {
-          //   cq: [
-          //               //   // cq: ['design','translation']
-
-          //     ]
-          // };            
-            this.doStuff();
-
-          axios({
-          url: 'http://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter',
-          method: 'post',
-          data: payload
-        })
-          .then((response) => {
-            // console.log(response.data.data);
-            this.searchPortfolios = response.data.data
-            console.log(this.searchPortfolios);
-          });
+    categories() {
+      this.doStuff();
+      let payload = {
+        cq: this.cquery,
+      };
+      axios({
+        url:
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/categories-filter",
+        method: "post",
+        data: payload,
+      }).then((response) => {
+        // console.log(response.data.data);
+        this.searchPortfolios = response.data.data;
+        // console.log(this.searchPortfolios);
+      });
+    },
+      gotToSignup: function() {
+       this.$router.push("/register");
     },
   },
   mounted() {
@@ -423,4 +418,3 @@ export default {
   },
 };
 </script>
-
