@@ -6,14 +6,14 @@
           <button type="button" class="btn btn-primary mb-4 form-control">
             Primary
           </button>
-          <div class="active-cyan-4 mb-4">
+          <!-- <div class="active-cyan-4 mb-4">
             <input
               class="form-control"
               type="text"
               placeholder="Filter"
               aria-label="Filter"
             />
-          </div>
+          </div> -->
           <div class="active-cyan-4 mb-4">
             <input
               class="form-control"
@@ -54,8 +54,11 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 1
+                  value="design"
+                  v-model="cquery"
+                  id="design"
+                  @change="categories()"
+                />design
               </label>
             </div>
             <div class="form-check">
@@ -63,8 +66,11 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 2
+                  value="translation"
+                  v-model="cquery"
+                  id="translation"
+                    @change="categories()"
+                />translation
               </label>
             </div>
             <div class="form-check">
@@ -72,8 +78,11 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 3
+                  value="programming"
+                  v-model="cquery"
+                  id="programming"
+                   @change="categories()"
+                />programming
               </label>
             </div>
             <div class="form-check">
@@ -81,8 +90,11 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 1
+                  value="writing"
+                  v-model="cquery"
+                  id="writing"
+                  @change="categories()"
+                />writing
               </label>
             </div>
             <div class="form-check">
@@ -90,8 +102,11 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 2
+                  value="marketing"
+                  v-model="cquery"
+                  id="marketing"
+                  @change="categories()"
+                />marketing
               </label>
             </div>
             <div class="form-check">
@@ -99,22 +114,22 @@
                 <input
                   type="checkbox"
                   class="form-check-input"
-                  value=""
-                />Option 3
+                  value="consulting"
+                  v-model="cquery"
+                  id="consulting"
+                   @change="categories()"
+                />consulting
               </label>
             </div>
           </div>
 
-          <div class="active-cyan-4 mb-4">
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Skills"
-              aria-label="Skills"
-            />
-          </div>
+          <select class="form-control">
+          <option>Skills</option>
+        </select>
+
         </div>
         <div class="col-md-9  col-sm-12">
+
           <div v-if="searchPortfolios.length">
             <div class="row">
               <div
@@ -300,6 +315,9 @@ export default {
       query: "",
       searchLoading: false,
       searchPortfolios: [],
+      categoriesFilter:[],
+      cquery: [],
+
     };
   },
   methods: {
@@ -367,8 +385,35 @@ export default {
             this.searchLoading = false;
             // Clear the query.
             this.query = "";
+            
+
           });
       }
+    },
+      categories() {
+        let payload = {
+          // cq: ['design','translation']
+          cq:this.cquery
+        };
+          // this.categoriesFilter=[];
+          //   var payload = {
+          //   cq: [
+          //               //   // cq: ['design','translation']
+
+          //     ]
+          // };            
+            this.doStuff();
+
+          axios({
+          url: 'http://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter',
+          method: 'post',
+          data: payload
+        })
+          .then((response) => {
+            // console.log(response.data.data);
+            this.searchPortfolios = response.data.data
+            console.log(this.searchPortfolios);
+          });
     },
   },
   mounted() {
@@ -378,4 +423,4 @@ export default {
   },
 };
 </script>
-portfolio
+
