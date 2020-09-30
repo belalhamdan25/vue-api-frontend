@@ -58,7 +58,7 @@
                   v-model="cquery"
                   id="design"
                   @change="categories()"
-                />design
+                />Design and works
               </label>
             </div>
             <div class="form-check">
@@ -70,7 +70,7 @@
                   v-model="cquery"
                   id="translation"
                   @change="categories()"
-                />translation
+                />Translation and languages
               </label>
             </div>
             <div class="form-check">
@@ -82,7 +82,7 @@
                   v-model="cquery"
                   id="programming"
                   @change="categories()"
-                />programming
+                />Programming and development
               </label>
             </div>
             <div class="form-check">
@@ -94,7 +94,7 @@
                   v-model="cquery"
                   id="writing"
                   @change="categories()"
-                />writing
+                />Writing and editing
               </label>
             </div>
             <div class="form-check">
@@ -106,7 +106,7 @@
                   v-model="cquery"
                   id="marketing"
                   @change="categories()"
-                />marketing
+                />Sales and marketing
               </label>
             </div>
             <div class="form-check">
@@ -118,7 +118,7 @@
                   v-model="cquery"
                   id="consulting"
                   @change="categories()"
-                />consulting
+                />Consulting and training
               </label>
             </div>
           </div>
@@ -386,13 +386,14 @@ export default {
             this.searchLoading = false;
             // Clear the query.
             this.query = "";
-                            this.$Progress.finish()
+            this.$Progress.finish()
 
           });
       }
     },
     categories() {
       this.doStuff();
+      this.searchPortfolios = [];
       let payload = {
         cq: this.cquery,
       };
@@ -408,7 +409,7 @@ export default {
       });
     },
       gotToSignup: function() {
-       this.$router.push("/register");
+       this.$router.push("/login");
     },
   },
   mounted() {

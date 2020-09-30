@@ -85,7 +85,7 @@ export default new Vuex.Store({
     updateUserInfoAction({commit,state},payload){
       return new Promise((resolve, reject) => {
         axios
-          .patch("hhttp://localhost/vue-api-backend/public/api/auth/update", {
+          .patch("http://localhost/vue-api-backend/public/api/auth/update", {
             first_name: payload.first_name,
             last_name: payload.last_name,
             phone_number: payload.phone_number,
