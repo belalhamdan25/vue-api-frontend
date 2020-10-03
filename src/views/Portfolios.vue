@@ -3,7 +3,11 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-center">
-          <button type="button" class="btn btn-primary mb-4 form-control" @click="gotToSignup()">
+          <button
+            type="button"
+            class="btn btn-primary mb-4 form-control"
+            @click="gotToSignup()"
+          >
             Create Your Portfolio
           </button>
           <!-- <div class="active-cyan-4 mb-4">
@@ -123,9 +127,27 @@
             </div>
           </div>
 
-          <select class="form-control">
-            <option>Skills</option>
-          </select>
+          <div class="text-left mb-4">
+            <!-- <label class="typo__label">Skills</label> -->
+            <h5>Skills</h5>
+
+            <multiselect
+              v-model="value"
+              open-direction="bottom"
+              tag-placeholder="Skills"
+              :hide-selected="false"
+              placeholder="Choose Skills"
+              label="name"
+              track-by="name"
+              :close-on-select="false"
+              :options="options"
+              :multiple="true"
+              :taggable="true"
+              :show-no-results="true"
+              @input="dispatchAction()"
+            ></multiselect>
+            <!-- <multiselect v-model="value" :options="options" placeholder="Select one" label="name" track-by="name" @input="dispatchAction()" ></multiselect> -->
+          </div>
         </div>
         <div class="col-md-9  col-sm-12">
           <div v-if="searchPortfolios.length">
@@ -262,6 +284,7 @@
               <div class="col-12 pl-3">
                 <pagination
                   :data="Portfolios"
+                  :limit="1"
                   @pagination-change-page="getResults"
                   class="margin-b-0 border-0"
                 >
@@ -301,20 +324,85 @@
 } */
 </style>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <script>
 import axios from "axios";
+import Multiselect from "vue-multiselect";
 
 export default {
+  components: { Multiselect },
   data() {
     return {
       Portfolios: {},
       loading: false,
       error: false,
+      errorS: "",
       query: "",
       searchLoading: false,
       searchPortfolios: [],
-      categoriesFilter: [],
       cquery: [],
+      value: [],
+      options: [
+        { name: "Photoshop" },
+        { name: "Illustrator" },
+        { name: "Graphic design" },
+        { name: "Logo design" },
+        { name: "Microsoft word" },
+        { name: "Microsoft excel" },
+        { name: "Translation" },
+        { name: "HTML 5" },
+        { name: "CSS 3" },
+        { name: "PHP" },
+        { name: "Online marketing" },
+        { name: "Web development" },
+        { name: "Android" },
+        { name: "After effect" },
+        { name: "Javascript" },
+        { name: "Bootstrap" },
+        { name: "Vuejs" },
+        { name: "Reactjs" },
+        { name: "Jquery" },
+        { name: "Data Analysis" },
+        { name: "Website Design" },
+        { name: "Mobile App Development" },
+        { name: "Writing" },
+        { name: "Editing" },
+        { name: "Video Editing" },
+        { name: "Search Engine Optimization" },
+        { name: "Social Media Marketing" },
+        { name: "MYSQL" },
+        { name: "3D Design" },
+        { name: "Laravel" },
+        { name: "ASP" },
+        { name: "Microsoft .NET" },
+        { name: "Node js" },
+        { name: "Git" },
+        { name: "Swift" },
+        { name: "Wordpress" },
+        { name: "UX design" },
+        { name: "UI design" },
+        { name: "Responsive design" },
+        { name: "User modeling" },
+        { name: "Independent Sales" },
+        { name: "Training" },
+        { name: "Consulting" },
+        { name: "Voice-Over Acting" },
+        { name: "Career Coaching" },
+        { name: "Research" },
+        { name: "TypeScript" },
+        { name: "Technical recruiter" },
+        { name: "Education" },
+        { name: "Advertising" },
+        { name: "Electronic design" },
+        { name: "E-books" },
+        { name: "Landing pages" },
+        { name: "Sketch" },
+        { name: "Microsoft office" },
+        { name: "Adobe" },
+        { name: "Interior design" },
+        { name: "Ruby on rails" },
+      ],
     };
   },
   methods: {
@@ -347,19 +435,18 @@ export default {
     doStuff: function() {
       //Show Loader
       this.loading = false;
-                this.$Progress.start()
+      this.$Progress.start();
 
       //Waste 0.5 seconds
       setTimeout(() => {
         this.loading = true;
-        this.$Progress.finish()
+        this.$Progress.finish();
       }, 500);
     },
     search: function() {
       if (this.query == "") {
         this.searchPortfolios = [];
         this.doStuff();
-
       } else {
         // Clear the error message.
         this.error = "";
@@ -368,7 +455,7 @@ export default {
         // Set the loading property to true, this will display the "Searching..." button.
         this.searchLoading = true;
         this.loading = false;
-                        this.$Progress.start()
+        this.$Progress.start();
 
         // Making a get request to our API and passing the query to it.
         axios
@@ -386,8 +473,7 @@ export default {
             this.searchLoading = false;
             // Clear the query.
             this.query = "";
-            this.$Progress.finish()
-
+            this.$Progress.finish();
           });
       }
     },
@@ -405,11 +491,35 @@ export default {
       }).then((response) => {
         // console.log(response.data.data);
         this.searchPortfolios = response.data.data;
-        // console.log(this.searchPortfolios);
+        // console.log(this.cquery);
       });
     },
-      gotToSignup: function() {
-       this.$router.push("/login");
+    gotToSignup: function() {
+      this.$router.push("/login");
+    },
+
+    dispatchAction() {
+      if (this.value == null) {
+        this.errorSkills = "";
+        this.searchPortfolios = [];
+        this.doStuff();
+      } else {
+        this.loading = false;
+        this.$Progress.start();
+        let payload = {
+          sq: this.value,
+        };
+        axios({
+          url:
+            "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skills-filter",
+          method: "post",
+          data: payload,
+        }).then((response) => {
+          this.searchPortfolios = response.data;
+          this.loading = true;
+          this.$Progress.finish();
+        });
+      }
     },
   },
   mounted() {

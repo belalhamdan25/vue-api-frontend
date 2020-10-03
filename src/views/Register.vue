@@ -72,7 +72,7 @@
           id="user_type"
           v-model="user_type"
         >
-          <option value="FreeLancer">FreeLancer</option>
+          <option value="Freelancer">Freelancer</option>
           <option value="Client">Client</option>
         </select>
       </div>
