@@ -125,14 +125,34 @@ export default {
           // this.isLoading = false;
           this.$Progress.finish();
           this.$router.push("/dashboard");
+          this.sucessMessageOpen();
           console.log(res.data);
         })
         .catch((err) => {
           // this.isLoading = false;
           this.$Progress.fail();
-          this.error = " There was error during register process";
+          // this.error = " There was error during register process";
+          this.errorMessageOpen();
           console.log(err.message);
         });
+    },
+      errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during register process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
+    },
+      sucessMessageOpen() {
+      this.$toast.open({
+        message: "Thank you .. ",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
     },
   },
 };

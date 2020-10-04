@@ -89,11 +89,31 @@ export default {
         .dispatch("performLogoutAction")
         .then((res) => {
           this.$router.push("/");
+          this.sucessMessageOpen();
           console.log(res);
         })
         .catch((err) => {
+          this.errorMessageOpen();
           console.log(err);
         });
+    },
+        errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during logout process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
+    },
+      sucessMessageOpen() {
+      this.$toast.open({
+        message: "Done ..",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
     },
   },
 };

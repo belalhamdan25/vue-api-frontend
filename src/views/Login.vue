@@ -82,13 +82,33 @@ export default {
         .then((res) => {
           this.$Progress.finish();
           this.$router.push("/dashboard");
+          this.sucessMessageOpen();
           console.log(res.data);
         })
         .catch((err) => {
           this.$Progress.fail();
-          this.error = " There was error during login process";
+          // this.error = " There was error during login process";
+          this.errorMessageOpen();
           console.log(err.message);
         });
+    },
+      errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during login process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
+    },
+      sucessMessageOpen() {
+      this.$toast.open({
+        message: "Welcome ..",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
     },
   },
 };

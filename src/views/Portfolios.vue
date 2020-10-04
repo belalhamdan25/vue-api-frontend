@@ -10,46 +10,43 @@
           >
             Create Your Portfolio
           </button>
-          <!-- <div class="active-cyan-4 mb-4">
+
+          <div class="input-group mb-3">
             <input
-              class="form-control"
               type="text"
-              placeholder="Filter"
-              aria-label="Filter"
-            />
-          </div> -->
-          <div class="active-cyan-4 mb-4">
-            <input
               class="form-control"
-              type="text"
-              placeholder="Search"
               v-model="query"
+              placeholder="Search"
               aria-label="Search"
+              aria-describedby="Search"
             />
-            <button
-              class="btn btn-default"
-              type="button"
-              @click="search()"
-              v-if="!searchLoading"
-            >
-              Search!
-            </button>
-            <button
-              class="btn btn-default"
-              type="button"
-              disabled="disabled"
-              v-if="searchLoading"
-            >
-              Searching...
-            </button>
-            <div class="alert alert-danger" role="alert" v-if="error">
-              <span
-                class="glyphicon glyphicon-exclamation-sign"
-                aria-hidden="true"
-              ></span>
-              {{ error }}
+            <div class="input-group-append">
+              <button 
+                class="btn btn-outline-secondary"
+                v-if="!searchLoading"
+                @click="search()"
+                type="button"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+              <button
+                class="btn btn-outline-secondary"
+                v-if="searchLoading"
+                disabled="disabled"
+                type="button"
+              >
+                <i class="fas fa-spinner"></i>
+              </button>
             </div>
           </div>
+
+          <!-- <div class="alert alert-danger" role="alert" v-if="error">
+            <span
+              class="glyphicon glyphicon-exclamation-sign"
+              aria-hidden="true"
+            ></span>
+            {{ error }}
+          </div> -->
 
           <div class="text-left mb-4">
             <h5>Categories</h5>
@@ -447,6 +444,7 @@ export default {
       if (this.query == "") {
         this.searchPortfolios = [];
         this.doStuff();
+        this.errorSearchMessageOpen()
       } else {
         // Clear the error message.
         this.error = "";
@@ -466,7 +464,7 @@ export default {
           .then((response) => {
             // If there was an error set the error message, if not fill the products array.
             response.data.error
-              ? (this.error = response.data.error)
+              ?    (this.errorSearchMessageOpen())
               : (this.searchPortfolios = response.data);
             // The request is finished, change the loading to false again.
             this.loading = true;
@@ -476,6 +474,15 @@ export default {
             this.$Progress.finish();
           });
       }
+    },
+     errorSearchMessageOpen() {
+      this.$toast.open({
+        message: "No results found, please try with different keywords",
+        type: "info",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
     },
     categories() {
       this.doStuff();

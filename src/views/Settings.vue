@@ -86,18 +86,38 @@ export default {
           email: this.user.email,
         })
         .then(res => {
-      this.$Progress.finish();
+          this.$Progress.finish();
           // console.log("user updated");
           console.log(res);
+          this.sucessMessageOpen();
         })
         .catch(err => {
           // this.isLoading = false;
           this.$Progress.fail();
-          this.error = " There was error during update process";
+          // this.error = " There was error during update process";
           // this.error = err.message;
+          this.errorMessageOpen();
           console.log(err.message);
         });
-    }
+    },
+      errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during update process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
+    },
+      sucessMessageOpen() {
+      this.$toast.open({
+        message: "Updated",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position:'top-right'
+      })
+    },
   }
 };
 </script>
