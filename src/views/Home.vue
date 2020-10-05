@@ -292,7 +292,7 @@ according to your budget
   font-size: 50px;
 }
 .background-startsec {
-  background-color: #00b3ec;
+  background-color: #41B883;
 }
 </style>
 

@@ -5,7 +5,7 @@
         <div class="col-8">
           <div class="heading mb-5">
             <h2>
-              Sign up
+             Register
             </h2>
             <h6>Kindly fill your details to proceed</h6>
           </div>

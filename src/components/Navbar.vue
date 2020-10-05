@@ -22,11 +22,15 @@
           <router-link class="nav-link" to="#">Browse Jobs</router-link>
         </li>
 
+         <li class="nav-item" v-if="!loggedIn">
+          <router-link class="nav-link" to="#">Freelancers</router-link>
+        </li>
+
         <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="/login">Login</router-link>
         </li>
         <li class="nav-item" v-if="!loggedIn">
-          <router-link class="nav-link" to="/register">Sign Up</router-link>
+          <router-link class="nav-link" to="/register">Register</router-link>
         </li>
 
         <li class="nav-item" v-if="loggedIn">

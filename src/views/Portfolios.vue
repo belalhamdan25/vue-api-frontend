@@ -5,7 +5,7 @@
         <div class="col-md-3 col-sm-12 w-100 text-center">
           <button
             type="button"
-            class="btn btn-primary mb-4 form-control"
+            class="btn btn-primary mb-4 form-control backButton"
             @click="gotToSignup()"
           >
             Create Your Portfolio
@@ -21,8 +21,9 @@
               aria-describedby="Search"
             />
             <div class="input-group-append">
+
               <button 
-                class="btn btn-outline-secondary"
+                class="btn btn-primary backButton"
                 v-if="!searchLoading"
                 @click="search()"
                 type="button"
@@ -30,7 +31,7 @@
                 <i class="fas fa-search"></i>
               </button>
               <button
-                class="btn btn-outline-secondary"
+                class="btn btn-primary backButton"
                 v-if="searchLoading"
                 disabled="disabled"
                 type="button"
@@ -40,18 +41,11 @@
             </div>
           </div>
 
-          <!-- <div class="alert alert-danger" role="alert" v-if="error">
-            <span
-              class="glyphicon glyphicon-exclamation-sign"
-              aria-hidden="true"
-            ></span>
-            {{ error }}
-          </div> -->
 
           <div class="text-left mb-4">
-            <h5>Categories</h5>
-            <div class="form-check">
-              <label class="form-check-label">
+            <h6 class="iconC2">Categories</h6>
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -60,10 +54,19 @@
                   id="design"
                   @change="categories()"
                 />Design and works
-              </label>
+              </label> -->
+
+
+          <label class="con iconC2">
+            <input type="checkbox"  value="design" v-model="cquery"  id="design" @change="categories()">
+            <span class="checkmark"></span>
+            <i class="fas fa-paint-brush iconC"></i>
+            Design & works
+          </label>
+
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -72,10 +75,16 @@
                   id="translation"
                   @change="categories()"
                 />Translation and languages
-              </label>
+              </label> -->
+                        <label class="con iconC2">
+            <input type="checkbox"  value="translation" v-model="cquery"  id="translation" @change="categories()">
+            <span class="checkmark"></span>
+            <i class="fas fa-language iconC"></i>
+            Translation & languages
+          </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -84,10 +93,16 @@
                   id="programming"
                   @change="categories()"
                 />Programming and development
-              </label>
+              </label> -->
+             <label class="con iconC2">
+            <input type="checkbox"  value="programming" v-model="cquery"  id="programming" @change="categories()">
+            <span class="checkmark"></span>
+            <i class="fas fa-code iconC"></i>
+            Programming & development
+          </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -96,10 +111,16 @@
                   id="writing"
                   @change="categories()"
                 />Writing and editing
-              </label>
+              </label> -->
+                           <label class="con iconC2">
+            <input type="checkbox"  value="writing" v-model="cquery"  id="writing" @change="categories()">
+            <span class="checkmark"></span>
+            <i class="fas fa-pencil-alt iconC"></i>
+            Writing & editing
+          </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -108,10 +129,16 @@
                   id="marketing"
                   @change="categories()"
                 />Sales and marketing
-              </label>
+              </label> -->
+            <label class="con iconC2">
+            <input type="checkbox"  value="marketing" v-model="cquery"  id="marketing" @change="categories()">
+            <span class="checkmark"></span>
+             <i class="fas fa-lightbulb iconC"></i>
+            Sales & marketing
+          </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
+            <div class="">
+              <!-- <label class="form-check-label">
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -120,13 +147,20 @@
                   id="consulting"
                   @change="categories()"
                 />Consulting and training
-              </label>
+              </label> -->
+                          <label class="con iconC2">
+            <input type="checkbox"  value="consulting" v-model="cquery"  id="consulting" @change="categories()">
+            <span class="checkmark"></span>
+           <i class="fas fa-comments iconC"></i>
+            Consulting & training
+          </label>
             </div>
           </div>
+          
 
           <div class="text-left mb-4">
             <!-- <label class="typo__label">Skills</label> -->
-            <h5>Skills</h5>
+            <h6 class="iconC2">Skills</h6>
 
             <multiselect
               v-model="value"
@@ -297,7 +331,82 @@
   </section>
 </template>
 
-<style scoped>
+
+
+<style scoped >
+.iconC{
+  color: rgb(170, 170, 170);
+}
+.iconC2{
+  color: rgb(87, 87, 87)
+}
+/* The container */
+.con {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.con input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: rgb(230, 230, 230);
+}
+
+/* On mouse-over, add a grey background color */
+.con:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.con input:checked ~ .checkmark {
+  background-color: #41B883;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.con input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.con .checkmark:after {
+  left: 7px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 .portfolio-card {
   background-color: white;
   /* border-radius: 10px; */
@@ -315,13 +424,22 @@
 .margin-b-0 {
   margin-bottom: 0 !important ;
 }
-
+.backButton{
+  background-color: #41B883;
+  border: 0;
+}
+.backButton:hover{
+    background-color: #369A6E;
+  
+}
 /* .img-raduis-bottom{
       border-radius: 0px 0px 10px 10px;
 } */
+
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 
 <script>
 import axios from "axios";
@@ -478,7 +596,7 @@ export default {
      errorSearchMessageOpen() {
       this.$toast.open({
         message: "No results found, please try with different keywords",
-        type: "info",
+        type: "error",
         duration: 5000,
         dismissible: true,
         position:'top-right'
@@ -502,7 +620,7 @@ export default {
       });
     },
     gotToSignup: function() {
-      this.$router.push("/login");
+      this.$router.push("/register");
     },
 
     dispatchAction() {
