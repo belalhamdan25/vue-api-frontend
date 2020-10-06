@@ -21,8 +21,7 @@
               aria-describedby="Search"
             />
             <div class="input-group-append">
-
-              <button 
+              <button
                 class="btn btn-primary backButton"
                 v-if="!searchLoading"
                 @click="search()"
@@ -41,125 +40,28 @@
             </div>
           </div>
 
-
           <div class="text-left mb-4">
             <h6 class="iconC2">Categories</h6>
-            <div class="">
-              <!-- <label class="form-check-label">
+            <div
+              class=""
+              v-for="categoriesValue in categoriesValues"
+              :key="categoriesValue.name"
+            >
+              <label class="con iconC2">
                 <input
                   type="checkbox"
-                  class="form-check-input"
-                  value="design"
+                  :value="categoriesValue.name"
                   v-model="cquery"
-                  id="design"
+                  :id="categoriesValue.name"
                   @change="categories()"
-                />Design and works
-              </label> -->
-
-
-          <label class="con iconC2">
-            <input type="checkbox"  value="design" v-model="cquery"  id="design" @change="categories()">
-            <span class="checkmark"></span>
-            <i class="fas fa-paint-brush iconC"></i>
-            Design & works
-          </label>
-
-            </div>
-            <div class="">
-              <!-- <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  value="translation"
-                  v-model="cquery"
-                  id="translation"
-                  @change="categories()"
-                />Translation and languages
-              </label> -->
-                        <label class="con iconC2">
-            <input type="checkbox"  value="translation" v-model="cquery"  id="translation" @change="categories()">
-            <span class="checkmark"></span>
-            <i class="fas fa-language iconC"></i>
-            Translation & languages
-          </label>
-            </div>
-            <div class="">
-              <!-- <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  value="programming"
-                  v-model="cquery"
-                  id="programming"
-                  @change="categories()"
-                />Programming and development
-              </label> -->
-             <label class="con iconC2">
-            <input type="checkbox"  value="programming" v-model="cquery"  id="programming" @change="categories()">
-            <span class="checkmark"></span>
-            <i class="fas fa-code iconC"></i>
-            Programming & development
-          </label>
-            </div>
-            <div class="">
-              <!-- <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  value="writing"
-                  v-model="cquery"
-                  id="writing"
-                  @change="categories()"
-                />Writing and editing
-              </label> -->
-                           <label class="con iconC2">
-            <input type="checkbox"  value="writing" v-model="cquery"  id="writing" @change="categories()">
-            <span class="checkmark"></span>
-            <i class="fas fa-pencil-alt iconC"></i>
-            Writing & editing
-          </label>
-            </div>
-            <div class="">
-              <!-- <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  value="marketing"
-                  v-model="cquery"
-                  id="marketing"
-                  @change="categories()"
-                />Sales and marketing
-              </label> -->
-            <label class="con iconC2">
-            <input type="checkbox"  value="marketing" v-model="cquery"  id="marketing" @change="categories()">
-            <span class="checkmark"></span>
-             <i class="fas fa-lightbulb iconC"></i>
-            Sales & marketing
-          </label>
-            </div>
-            <div class="">
-              <!-- <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  value="consulting"
-                  v-model="cquery"
-                  id="consulting"
-                  @change="categories()"
-                />Consulting and training
-              </label> -->
-                          <label class="con iconC2">
-            <input type="checkbox"  value="consulting" v-model="cquery"  id="consulting" @change="categories()">
-            <span class="checkmark"></span>
-           <i class="fas fa-comments iconC"></i>
-            Consulting & training
-          </label>
+                />
+                <span class="checkmark"></span>
+                {{ categoriesValue.desc }}
+              </label>
             </div>
           </div>
-          
 
           <div class="text-left mb-4">
-            <!-- <label class="typo__label">Skills</label> -->
             <h6 class="iconC2">Skills</h6>
 
             <multiselect
@@ -177,7 +79,6 @@
               :show-no-results="true"
               @input="dispatchAction()"
             ></multiselect>
-            <!-- <multiselect v-model="value" :options="options" placeholder="Select one" label="name" track-by="name" @input="dispatchAction()" ></multiselect> -->
           </div>
         </div>
         <div class="col-md-9  col-sm-12">
@@ -239,9 +140,6 @@
                     src="https://e.top4top.io/p_17305yynx1.png"
                     class="card-img-top img-raduis-bottom"
                   />
-                  <!-- <div class="card-body text-center">
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -305,9 +203,6 @@
                     src="https://e.top4top.io/p_17305yynx1.png"
                     class="card-img-top img-raduis-bottom"
                   />
-                  <!-- <div class="card-body text-center">
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -331,14 +226,12 @@
   </section>
 </template>
 
-
-
-<style scoped >
-.iconC{
+<style scoped>
+.iconC {
   color: rgb(170, 170, 170);
 }
-.iconC2{
-  color: rgb(87, 87, 87)
+.iconC2 {
+  color: rgb(87, 87, 87);
 }
 /* The container */
 .con {
@@ -380,7 +273,7 @@
 
 /* When the checkbox is checked, add a blue background */
 .con input:checked ~ .checkmark {
-  background-color: #41B883;
+  background-color: #41b883;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -409,6 +302,18 @@
 }
 .portfolio-card {
   background-color: white;
+  transition: 0.3s;
+  /* box-shadow: 0 4px 8px 0 rgba(230, 230, 230, 0.2), 0 6px 20px 0 rgba(219, 219, 219, 0.19); */
+  color: #41b883;
+
+  /* border-radius: 10px; */
+}
+.portfolio-card:hover {
+  color: #369a6e;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.548);
+
   /* border-radius: 10px; */
 }
 .h-fit {
@@ -424,22 +329,16 @@
 .margin-b-0 {
   margin-bottom: 0 !important ;
 }
-.backButton{
-  background-color: #41B883;
+.backButton {
+  background-color: #41b883;
   border: 0;
 }
-.backButton:hover{
-    background-color: #369A6E;
-  
+.backButton:hover {
+  background-color: #369a6e;
 }
-/* .img-raduis-bottom{
-      border-radius: 0px 0px 10px 10px;
-} */
-
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-
 
 <script>
 import axios from "axios";
@@ -458,66 +357,8 @@ export default {
       searchPortfolios: [],
       cquery: [],
       value: [],
-      options: [
-        { name: "Photoshop" },
-        { name: "Illustrator" },
-        { name: "Graphic design" },
-        { name: "Logo design" },
-        { name: "Microsoft word" },
-        { name: "Microsoft excel" },
-        { name: "Translation" },
-        { name: "HTML 5" },
-        { name: "CSS 3" },
-        { name: "PHP" },
-        { name: "Online marketing" },
-        { name: "Web development" },
-        { name: "Android" },
-        { name: "After effect" },
-        { name: "Javascript" },
-        { name: "Bootstrap" },
-        { name: "Vuejs" },
-        { name: "Reactjs" },
-        { name: "Jquery" },
-        { name: "Data Analysis" },
-        { name: "Website Design" },
-        { name: "Mobile App Development" },
-        { name: "Writing" },
-        { name: "Editing" },
-        { name: "Video Editing" },
-        { name: "Search Engine Optimization" },
-        { name: "Social Media Marketing" },
-        { name: "MYSQL" },
-        { name: "3D Design" },
-        { name: "Laravel" },
-        { name: "ASP" },
-        { name: "Microsoft .NET" },
-        { name: "Node js" },
-        { name: "Git" },
-        { name: "Swift" },
-        { name: "Wordpress" },
-        { name: "UX design" },
-        { name: "UI design" },
-        { name: "Responsive design" },
-        { name: "User modeling" },
-        { name: "Independent Sales" },
-        { name: "Training" },
-        { name: "Consulting" },
-        { name: "Voice-Over Acting" },
-        { name: "Career Coaching" },
-        { name: "Research" },
-        { name: "TypeScript" },
-        { name: "Technical recruiter" },
-        { name: "Education" },
-        { name: "Advertising" },
-        { name: "Electronic design" },
-        { name: "E-books" },
-        { name: "Landing pages" },
-        { name: "Sketch" },
-        { name: "Microsoft office" },
-        { name: "Adobe" },
-        { name: "Interior design" },
-        { name: "Ruby on rails" },
-      ],
+      options: [],
+      categoriesValues: [],
     };
   },
   methods: {
@@ -562,7 +403,7 @@ export default {
       if (this.query == "") {
         this.searchPortfolios = [];
         this.doStuff();
-        this.errorSearchMessageOpen()
+        this.errorSearchMessageOpen();
       } else {
         // Clear the error message.
         this.error = "";
@@ -582,7 +423,7 @@ export default {
           .then((response) => {
             // If there was an error set the error message, if not fill the products array.
             response.data.error
-              ?    (this.errorSearchMessageOpen())
+              ? this.errorSearchMessageOpen()
               : (this.searchPortfolios = response.data);
             // The request is finished, change the loading to false again.
             this.loading = true;
@@ -593,14 +434,14 @@ export default {
           });
       }
     },
-     errorSearchMessageOpen() {
+    errorSearchMessageOpen() {
       this.$toast.open({
         message: "No results found, please try with different keywords",
         type: "error",
         duration: 5000,
         dismissible: true,
-        position:'top-right'
-      })
+        position: "top-right",
+      });
     },
     categories() {
       this.doStuff();
@@ -615,7 +456,7 @@ export default {
         data: payload,
       }).then((response) => {
         // console.log(response.data.data);
-        this.searchPortfolios = response.data.data;
+        this.searchPortfolios = response.data;
         // console.log(this.cquery);
       });
     },
@@ -646,11 +487,31 @@ export default {
         });
       }
     },
+    loadTagsNames() {
+      axios
+        .get(
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skills-filter-names"
+        )
+        .then((response) => {
+          this.options = response.data;
+        });
+    },
+    loadcategoriesValues() {
+      axios
+        .get(
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/categories-filter-values"
+        )
+        .then((response) => {
+          this.categoriesValues = response.data;
+        });
+    },
   },
   mounted() {
     this.loadPortfolios();
     this.getResults();
     this.doStuff();
+    this.loadTagsNames();
+    this.loadcategoriesValues();
   },
 };
 </script>
