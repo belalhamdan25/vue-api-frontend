@@ -1,10 +1,10 @@
 <template>
   <div class="dashboard">
-    <div v-if="userType == 'Freelancer'" class="col-12 text-center">
+    <div v-if="userType == 'freelancer'" class="col-12 text-center">
       <h2>Dashboard Page For Freelancer</h2>
     </div>
 
-    <div v-if="userType == 'Client'" class="col-12 text-center">
+    <div v-if="userType == 'client'" class="col-12 text-center">
       <h2>Dashboard Page For Client</h2>
     </div>
   </div>
@@ -23,13 +23,7 @@ export default {
     },
   },
   mounted() {
-    if (this.user.user_type == "Freelancer") {
-      this.userType = "Freelancer";
-    } else if (this.user.user_type == "Client") {
-      this.userType = "Client";
-    } else {
-      this.userType = "error detect user type";
-    }
+    this.userType=this.user.role_name;
   },
 };
 </script>

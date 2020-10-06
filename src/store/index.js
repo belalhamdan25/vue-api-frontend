@@ -51,7 +51,7 @@ export default new Vuex.Store({
             phone_number: payload.phone_number,
             email: payload.email,
             password: payload.password,
-            user_type: payload.user_type,
+            role_name: payload.role_name,
           })
           .then((res) => {
             commit("SET_token", res.data.access_token);

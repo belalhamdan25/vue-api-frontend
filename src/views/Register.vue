@@ -65,15 +65,16 @@
       </div>
 
       <div class="form-group">
-        <label for="user_type">User Type</label>
+        <label for="role_name">User Type</label>
         <select
           class="form-control"
-          name="user_type"
-          id="user_type"
-          v-model="user_type"
+          name="role_name"
+          id="role_name"
+          v-model="role_name"
         >
-          <option value="Freelancer">Freelancer</option>
-          <option value="Client">Client</option>
+          <option  v-for="role in roles"
+              :key="role" :id="role" :value="role">{{role}}</option>
+
         </select>
       </div>
 
@@ -94,6 +95,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "register",
   data() {
@@ -103,8 +106,9 @@ export default {
       phone_number: "",
       email: "",
       password: "",
-      user_type: "",
+      role_name: "",
       error: "",
+      roles:[]
       // isLoading: false,
     };
   },
@@ -119,7 +123,7 @@ export default {
           phone_number: this.phone_number,
           email: this.email,
           password: this.password,
-          user_type: this.user_type,
+          role_name: this.role_name,
         })
         .then((res) => {
           // this.isLoading = false;
@@ -154,7 +158,19 @@ export default {
         position:'top-right'
       })
     },
+      loadRoles() {
+     axios
+        .get(
+          "http://localhost/vue-api-backend/public/api/auth/roles"
+        )
+        .then((response) => {
+          this.roles = response.data;
+        });
+    },
   },
+  mounted(){
+    this.loadRoles();
+  }
 };
 </script>
 

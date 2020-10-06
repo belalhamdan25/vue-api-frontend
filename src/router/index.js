@@ -114,7 +114,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresFreelancer)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (store.state.user.user_type=="Client") {
+    if (store.state.user.role_name=="client") {
       next({
         path: '/error-page',
         query: { redirect: to.fullPath }
@@ -131,7 +131,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresClient)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (store.state.user.user_type=="Freelancer") {
+    if (store.state.user.role_name=="freelancer") {
       next({
         path: '/error-page',
         query: { redirect: to.fullPath }
@@ -142,6 +142,26 @@ router.beforeEach((to, from, next) => {
   } else {
     next() // make sure to always call next()!
   }
+
+    ///////////////////////
+
+    if (to.matched.some(record => record.meta.requiresFreelancerOrClient)) {
+      // this route requires auth, check if logged in
+      // if not, redirect to login page.
+      if (store.state.user.role_name!="client" || store.state.user.role_name!="freelancer") {
+        next({
+          path: '/error-page',
+          query: { redirect: to.fullPath }
+        })
+      } else {
+        next()
+      }
+    } else {
+      next() // make sure to always call next()!
+    }
+  
+    ///////////////////////
+  
 
 
 })
