@@ -95,7 +95,7 @@
                       <img
                         v-if="loading"
                         class=" hw-50 rounded-circle"
-                        :src="searchPortfolio.user_img"
+                        :src="searchPortfolio.user.user_img"
                         alt="user image"
                       />
                       <div
@@ -109,7 +109,7 @@
                         class=" justify-content-center pr-1 align-content-end"
                       >
                         <h6 v-if="loading" class="card-name m-0 h-fit">
-                          {{ searchPortfolio.user_name }}
+                          {{ searchPortfolio.user.first_name }} {{ searchPortfolio.user.last_name }}
                         </h6>
                         <div
                           class="card-name mb-2 h-fit"
@@ -158,7 +158,7 @@
                       <img
                         v-if="loading"
                         class=" hw-50 rounded-circle"
-                        :src="Portfolio.user_img"
+                        :src="Portfolio.user.user_img"
                         alt="user image"
                       />
                       <div
@@ -172,7 +172,7 @@
                         class=" justify-content-center pr-1 align-content-end"
                       >
                         <h6 v-if="loading" class="card-name m-0 h-fit">
-                          {{ Portfolio.user_name }}
+                          {{ Portfolio.user.first_name }} {{ Portfolio.user.last_name }}
                         </h6>
                         <div
                           class="card-name mb-2 h-fit"
