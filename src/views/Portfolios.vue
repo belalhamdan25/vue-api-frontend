@@ -92,14 +92,24 @@
                 <div class="card portfolio-card border-0  p-2">
                   <div class=" d-flex justify-content-start align-items-center">
                     <div class="d-flex align-items-center px-1 w-img-100">
-                      <img
-                        v-if="loading"
-                        class=" hw-50 rounded-circle"
+                      <div  v-if="loading">
+                        <img
+                        v-if="searchPortfolio.user.user_img == !null"
+                        class=" hw-35-c rounded-circle"
                         :src="searchPortfolio.user.user_img"
                         alt="user image"
                       />
-                      <div
-                        class="hw-50 rounded-circle"
+                        <div
+                        class="hw-35-c letter-profile-img rounded-circle"
+                        v-else
+                      >
+                      <span style="color:white">{{ searchPortfolio.user.first_name.charAt(0).toUpperCase() }}</span>
+                      
+                      </div>
+                      </div>
+
+                        <div
+                        class="hw-35-c rounded-circle"
                         style="background-color:#E6E6E6"
                         v-else
                       ></div>
@@ -108,7 +118,7 @@
                       <div
                         class=" justify-content-center pr-1 align-content-end"
                       >
-                        <h6 v-if="loading" class="card-name m-0 h-fit">
+                        <h6 v-if="loading" class="card-name m-0 h-fit f-15">
                           {{ searchPortfolio.user.first_name }} {{ searchPortfolio.user.last_name }}
                         </h6>
                         <div
@@ -137,7 +147,7 @@
 
                   <img
                     v-else
-                    src="https://e.top4top.io/p_17305yynx1.png"
+                    src="https://i.top4top.io/p_1741tnt5p1.jpeg"
                     class="card-img-top img-raduis-bottom"
                   />
                 </div>
@@ -155,23 +165,37 @@
                 <div class="card portfolio-card border-0  p-2">
                   <div class=" d-flex justify-content-start align-items-center">
                     <div class="d-flex align-items-center px-1 w-img-100">
-                      <img
-                        v-if="loading"
-                        class=" hw-50 rounded-circle"
+
+                      <div  v-if="loading">
+                                              <img
+                        v-if="Portfolio.user.user_img == !null"
+                        class=" hw-35-c rounded-circle"
                         :src="Portfolio.user.user_img"
                         alt="user image"
                       />
-                      <div
-                        class="hw-50 rounded-circle"
+                        <div
+                        class="hw-35-c letter-profile-img rounded-circle"
+                        v-else
+                      >
+                      <span style="color:white">{{ Portfolio.user.first_name.charAt(0).toUpperCase() }}</span>
+                      
+                      </div>
+                      </div>
+
+                        <div
+                        class="hw-35-c rounded-circle"
                         style="background-color:#E6E6E6"
                         v-else
                       ></div>
+
+
+
                     </div>
                     <div class="pl-2">
                       <div
                         class=" justify-content-center pr-1 align-content-end"
                       >
-                        <h6 v-if="loading" class="card-name m-0 h-fit">
+                        <h6 v-if="loading" class="card-name m-0 h-fit f-15">
                           {{ Portfolio.user.first_name }} {{ Portfolio.user.last_name }}
                         </h6>
                         <div
@@ -192,7 +216,7 @@
                     </div>
                   </div>
                   <img
-                    class="card-img-top img-raduis-bottom"
+                    class="card-img-top img-raduis-bottom "
                     :src="Portfolio.img"
                     :alt="Portfolio.desc"
                     v-if="loading"
@@ -200,7 +224,7 @@
 
                   <img
                     v-else
-                    src="https://e.top4top.io/p_17305yynx1.png"
+                    src="https://i.top4top.io/p_1741tnt5p1.jpeg" 
                     class="card-img-top img-raduis-bottom"
                   />
                 </div>
@@ -227,6 +251,20 @@
 </template>
 
 <style scoped>
+.img-w-a{
+  width:640px !important;
+  height: 480px !important;
+}
+.hw-35-c{
+  height: 35px !important;
+  width: 35px !important;
+}
+.letter-profile-img{
+    display: flex; /* or inline-flex */
+  align-items: center; 
+  justify-content: center;
+  background-color:#41b883;
+}
 .iconC {
   color: rgb(170, 170, 170);
 }
@@ -319,12 +357,11 @@
 .h-fit {
   height: fit-content;
 }
-.hw-50 {
-  height: 50px !important;
-  width: 50px !important;
+.f-15 {
+  font-size: 16px;
 }
 .w-img-100 {
-  height: 80px;
+  height:60px;
 }
 .margin-b-0 {
   margin-bottom: 0 !important ;
