@@ -82,6 +82,12 @@
           </div>
         </div>
         <div class="col-md-9  col-sm-12">
+          <!-- <div v-show="value2" class="row">
+            <div class="col-12">
+            <h6 ><b>Results</b> {{value2}} Skill :</h6>
+            </div>
+          </div> -->
+
           <div v-if="searchPortfolios.length">
             <div class="row">
               <div
@@ -89,68 +95,76 @@
                 v-for="searchPortfolio in searchPortfolios"
                 :key="searchPortfolio.id"
               >
-                <div class="card portfolio-card border-0  p-2">
-                  <div class=" d-flex justify-content-start align-items-center">
-                    <div class="d-flex align-items-center px-1 w-img-100">
-                      <div  v-if="loading">
-                        <img
-                        v-if="searchPortfolio.user.user_img == !null"
-                        class=" hw-35-c rounded-circle"
-                        :src="searchPortfolio.user.user_img"
-                        alt="user image"
-                      />
-                        <div
-                        class="hw-35-c letter-profile-img rounded-circle"
-                        v-else
-                      >
-                      <span style="color:white">{{ searchPortfolio.user.first_name.charAt(0).toUpperCase() }}</span>
-                      
-                      </div>
-                      </div>
+                <a class="card-link" :href="'portfolio/' + searchPortfolio.id">
+                  <div class="card portfolio-card border-0  p-2">
+                    <div
+                      class=" d-flex justify-content-start align-items-center"
+                    >
+                      <div class="d-flex align-items-center px-1 w-img-100">
+                        <div v-if="loading">
+                          <img
+                            v-if="searchPortfolio.user.user_img == !null"
+                            class=" hw-35-c rounded-circle"
+                            :src="searchPortfolio.user.user_img"
+                            alt="user image"
+                          />
+                          <div
+                            class="hw-35-c letter-profile-img rounded-circle"
+                            v-else
+                          >
+                            <span style="color:white">{{
+                              searchPortfolio.user.first_name
+                                .charAt(0)
+                                .toUpperCase()
+                            }}</span>
+                          </div>
+                        </div>
 
                         <div
-                        class="hw-35-c rounded-circle"
-                        style="background-color:#E6E6E6"
-                        v-else
-                      ></div>
-                    </div>
-                    <div class="pl-2">
-                      <div
-                        class=" justify-content-center pr-1 align-content-end"
-                      >
-                        <h6 v-if="loading" class="card-name m-0 h-fit f-15">
-                          {{ searchPortfolio.user.first_name }} {{ searchPortfolio.user.last_name }}
-                        </h6>
-                        <div
-                          class="card-name mb-2 h-fit"
+                          class="hw-35-c rounded-circle"
+                          style="background-color:#E6E6E6"
                           v-else
-                          style="width:50px;height:5px;background-color:#E6E6E6"
-                        ></div>
-
-                        <small v-if="loading" class="text-muted">{{
-                          searchPortfolio.title.substring(0, 20) + ".."
-                        }}</small>
-                        <div
-                          class="text-muted"
-                          v-else
-                          style="width:100px;height:5px;background-color:#E6E6E6"
                         ></div>
                       </div>
+                      <div class="pl-2">
+                        <div
+                          class=" justify-content-center pr-1 align-content-end"
+                        >
+                          <h6 v-if="loading" class="card-name m-0 h-fit f-15">
+                            {{ searchPortfolio.user.first_name }}
+                            {{ searchPortfolio.user.last_name }}
+                          </h6>
+                          <div
+                            class="card-name mb-2 h-fit"
+                            v-else
+                            style="width:50px;height:5px;background-color:#E6E6E6"
+                          ></div>
+
+                          <small v-if="loading" class="text-muted">{{
+                            searchPortfolio.title.substring(0, 20) + ".."
+                          }}</small>
+                          <div
+                            class="text-muted"
+                            v-else
+                            style="width:100px;height:5px;background-color:#E6E6E6"
+                          ></div>
+                        </div>
+                      </div>
                     </div>
+                    <img
+                      class="card-img-top img-raduis-bottom "
+                      v-if="loading"
+                      :src="searchPortfolio.portfolio_images[0].name"
+                      :alt="searchPortfolio.desc"
+                    />
+
+                    <img
+                      v-else
+                      src="https://i.top4top.io/p_1741tnt5p1.jpeg"
+                      class="card-img-top img-raduis-bottom"
+                    />
                   </div>
-                  <img
-                    class="card-img-top img-raduis-bottom"
-                    :src="searchPortfolio.img"
-                    :alt="searchPortfolio.desc"
-                    v-if="loading"
-                  />
-
-                  <img
-                    v-else
-                    src="https://i.top4top.io/p_1741tnt5p1.jpeg"
-                    class="card-img-top img-raduis-bottom"
-                  />
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -162,72 +176,74 @@
                 v-for="Portfolio in Portfolios.data"
                 :key="Portfolio.id"
               >
-                <div class="card portfolio-card border-0  p-2">
-                  <div class=" d-flex justify-content-start align-items-center">
-                    <div class="d-flex align-items-center px-1 w-img-100">
+                <a class="card-link" :href="'portfolio/' + Portfolio.id">
+                  <div class="card portfolio-card border-0  p-2">
+                    <div
+                      class=" d-flex justify-content-start align-items-center"
+                    >
+                      <div class="d-flex align-items-center px-1 w-img-100">
+                        <div v-if="loading">
+                          <img
+                            v-if="Portfolio.user.user_img == !null"
+                            class=" hw-35-c rounded-circle"
+                            :src="Portfolio.user.user_img"
+                            alt="user image"
+                          />
+                          <div
+                            class="hw-35-c letter-profile-img rounded-circle"
+                            v-else
+                          >
+                            <span style="color:white">{{
+                              Portfolio.user.first_name.charAt(0).toUpperCase()
+                            }}</span>
+                          </div>
+                        </div>
 
-                      <div  v-if="loading">
-                                              <img
-                        v-if="Portfolio.user.user_img == !null"
-                        class=" hw-35-c rounded-circle"
-                        :src="Portfolio.user.user_img"
-                        alt="user image"
-                      />
                         <div
-                        class="hw-35-c letter-profile-img rounded-circle"
-                        v-else
-                      >
-                      <span style="color:white">{{ Portfolio.user.first_name.charAt(0).toUpperCase() }}</span>
-                      
-                      </div>
-                      </div>
-
-                        <div
-                        class="hw-35-c rounded-circle"
-                        style="background-color:#E6E6E6"
-                        v-else
-                      ></div>
-
-
-
-                    </div>
-                    <div class="pl-2">
-                      <div
-                        class=" justify-content-center pr-1 align-content-end"
-                      >
-                        <h6 v-if="loading" class="card-name m-0 h-fit f-15">
-                          {{ Portfolio.user.first_name }} {{ Portfolio.user.last_name }}
-                        </h6>
-                        <div
-                          class="card-name mb-2 h-fit"
+                          class="hw-35-c rounded-circle"
+                          style="background-color:#E6E6E6"
                           v-else
-                          style="width:50px;height:5px;background-color:#E6E6E6"
-                        ></div>
-
-                        <small v-if="loading" class="text-muted">{{
-                          Portfolio.title.substring(0, 20) + ".."
-                        }}</small>
-                        <div
-                          class="text-muted"
-                          v-else
-                          style="width:100px;height:5px;background-color:#E6E6E6"
                         ></div>
                       </div>
+                      <div class="pl-2">
+                        <div
+                          class=" justify-content-center pr-1 align-content-end"
+                        >
+                          <h6 v-if="loading" class="card-name m-0 h-fit f-15">
+                            {{ Portfolio.user.first_name }}
+                            {{ Portfolio.user.last_name }}
+                          </h6>
+                          <div
+                            class="card-name mb-2 h-fit"
+                            v-else
+                            style="width:50px;height:5px;background-color:#E6E6E6"
+                          ></div>
+
+                          <small v-if="loading" class="text-muted">{{
+                            Portfolio.title.substring(0, 20) + ".."
+                          }}</small>
+                          <div
+                            class="text-muted"
+                            v-else
+                            style="width:100px;height:5px;background-color:#E6E6E6"
+                          ></div>
+                        </div>
+                      </div>
                     </div>
+                    <img
+                      class="card-img-top img-raduis-bottom "
+                      v-if="loading"
+                      :src="Portfolio.portfolio_images[0].name"
+                      :alt="Portfolio.desc"
+                    />
+
+                    <img
+                      v-else
+                      src="https://i.top4top.io/p_1741tnt5p1.jpeg"
+                      class="card-img-top img-raduis-bottom"
+                    />
                   </div>
-                  <img
-                    class="card-img-top img-raduis-bottom "
-                    :src="Portfolio.img"
-                    :alt="Portfolio.desc"
-                    v-if="loading"
-                  />
-
-                  <img
-                    v-else
-                    src="https://i.top4top.io/p_1741tnt5p1.jpeg" 
-                    class="card-img-top img-raduis-bottom"
-                  />
-                </div>
+                </a>
               </div>
             </div>
             <div class="row">
@@ -250,20 +266,20 @@
   </section>
 </template>
 
-<style scoped>
-.img-w-a{
-  width:640px !important;
+<style lang="scss" scoped>
+.img-w-a {
+  width: 640px !important;
   height: 480px !important;
 }
-.hw-35-c{
+.hw-35-c {
   height: 35px !important;
   width: 35px !important;
 }
-.letter-profile-img{
-    display: flex; /* or inline-flex */
-  align-items: center; 
+.letter-profile-img {
+  display: flex; /* or inline-flex */
+  align-items: center;
   justify-content: center;
-  background-color:#41b883;
+  background-color: #41b883;
 }
 .iconC {
   color: rgb(170, 170, 170);
@@ -348,7 +364,7 @@
 }
 .portfolio-card:hover {
   color: #369a6e;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: 0.3s;
   background-color: rgba(255, 255, 255, 0.548);
 
@@ -361,7 +377,7 @@
   font-size: 16px;
 }
 .w-img-100 {
-  height:60px;
+  height: 60px;
 }
 .margin-b-0 {
   margin-bottom: 0 !important ;
@@ -372,6 +388,15 @@
 }
 .backButton:hover {
   background-color: #369a6e;
+}
+.card-link {
+  text-decoration: none;
+}
+.page-item.active .page-link {
+  z-index: 1 !important;
+  color: #fff !important;
+  background-color: green !important; //your color
+  border-color: green !important; //your color
 }
 </style>
 
@@ -394,9 +419,16 @@ export default {
       searchPortfolios: [],
       cquery: [],
       value: [],
+      value2: "",
       options: [],
       categoriesValues: [],
+      portfolioImages: [],
     };
+  },
+  computed: {
+    skillPressed() {
+      return this.$store.getters.get_skillPressed;
+    },
   },
   methods: {
     loadPortfolios() {
@@ -441,6 +473,7 @@ export default {
         this.searchPortfolios = [];
         this.doStuff();
         this.errorSearchMessageOpen();
+        this.value2 = "";
       } else {
         // Clear the error message.
         this.error = "";
@@ -450,6 +483,7 @@ export default {
         this.searchLoading = true;
         this.loading = false;
         this.$Progress.start();
+        this.value2 = "";
 
         // Making a get request to our API and passing the query to it.
         axios
@@ -482,6 +516,8 @@ export default {
     },
     categories() {
       this.doStuff();
+      this.value2 = "";
+
       this.searchPortfolios = [];
       let payload = {
         cq: this.cquery,
@@ -505,8 +541,12 @@ export default {
       if (this.value == null) {
         this.errorSkills = "";
         this.searchPortfolios = [];
+        this.value2 = "";
+
         this.doStuff();
       } else {
+        this.value2 = "";
+
         this.loading = false;
         this.$Progress.start();
         let payload = {
@@ -542,6 +582,46 @@ export default {
           this.categoriesValues = response.data;
         });
     },
+    loadPortfolioImagesData() {
+      axios
+        .get(
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/portfolios-show-images?pm=" +
+            this.portfolioId
+        )
+        .then((response) => {
+          this.portfolioImages = response.data;
+          // console.log(response.data);
+        });
+    },
+    checkSkillPressed() {
+      this.value2 = this.skillPressed;
+      if (this.value2 != null) {
+        this.loadSkillPressed();
+      } else {
+        console.log("skillpressed == null  if error");
+      }
+    },
+    loadSkillPressed() {
+      this.loading = false;
+      this.$Progress.start();
+      axios
+        .get(
+          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skill-filter?skq=" +
+            this.value2
+        )
+        .then((response) => {
+          this.searchPortfolios = response.data;
+          console.log(response.data);
+          this.$store.commit("SET_skillPressed", null);
+          this.value=[
+            {
+              name:this.value2
+            }
+            ]
+          this.loading = true;
+          this.$Progress.finish();
+        });
+    },
   },
   mounted() {
     this.loadPortfolios();
@@ -549,6 +629,7 @@ export default {
     this.doStuff();
     this.loadTagsNames();
     this.loadcategoriesValues();
+    this.checkSkillPressed();
   },
 };
 </script>

@@ -23,7 +23,10 @@ Vue.use(VueProgressBar, {
   inverse: false,
 })
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.use(require('vue-moment'));
+import VueSocialSharing from 'vue-social-sharing'
 
+Vue.use(VueSocialSharing);
 
 
 new Vue({

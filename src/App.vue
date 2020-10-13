@@ -60,14 +60,13 @@ export default {
 #app {
   background-color: #f6f6f6;
 }
-/* #app {
+ #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #707070 !important;
 }
-
+/*
 #nav {
   padding: 30px;
 }

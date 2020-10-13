@@ -10,6 +10,7 @@ export default new Vuex.Store({
     loggedIn: false,
     user: null,
     token: null,
+    skillPressed:null,
   },
   plugins: [new VuexPersistence().plugin],
   mutations: {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     SET_loggedIn(state, payload) {
       state.loggedIn = payload;
+    },
+    SET_skillPressed(state,payload) {
+      state.skillPressed =payload;
     },
   },
   actions: {
@@ -109,6 +113,9 @@ export default new Vuex.Store({
     },
     get_user(state) {
       return state.user;
+    },
+    get_skillPressed(state) {
+      return state.skillPressed;
     },
   },
 });

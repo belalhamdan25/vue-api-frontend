@@ -7,6 +7,7 @@ import Dashboard from "../views/Dashboard.vue";
 import Settings from "../views/Settings.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 import Portfolios from "../views/Portfolios.vue";
+import PortfolioShow from "../views/PortfolioShow.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -57,6 +58,13 @@ const routes = [
     meta: { guest: true }
 
   },
+  {
+    path: "/portfolio/:id",
+    name: "PortfolioShow",
+    component: PortfolioShow,
+    meta: { guest: true }
+  },
+
   
   // {
   //   path: "/about",
@@ -74,6 +82,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+
 
 router.beforeEach((to, from, next) => {
 

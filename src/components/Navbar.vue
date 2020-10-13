@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" v-if="!loggedIn">
-          <router-link class="nav-link" to="portfolios">Portfolios</router-link>
+          <router-link class="nav-link" to="/portfolios">Portfolios</router-link>
         </li>
         <li class="nav-item" v-if="!loggedIn">
           <router-link class="nav-link" to="#">Browse Jobs</router-link>
@@ -66,6 +66,17 @@
     </div>
   </nav>
 </template>
+
+
+<style scoped>
+.navbar{
+-webkit-box-shadow: 0px -4px 10px 5px rgba(184,184,184,0.3);
+-moz-box-shadow: 0px -4px 10px 5px rgba(184,184,184,0.3);
+box-shadow: 0px -4px 10px 5px rgba(184,184,184,0.3);
+    z-index:999;
+}
+
+</style>
 
 <script>
 export default {
