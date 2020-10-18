@@ -15,7 +15,7 @@
                   :src="portfolioValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
-                <div class=" rounded-circle hw-70-c letter-profile-img" v-else>
+                <div class=" rounded-circle hw-70-c letter-profile-img " v-else>
                   <span style="color:white;font-size:25px">{{
                     portfolioValue.user_first_name.charAt(0).toUpperCase()
                   }}</span>

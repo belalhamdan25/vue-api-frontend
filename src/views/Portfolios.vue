@@ -2,16 +2,16 @@
   <section class="portfolio" id="toolbar-chat" ref="toolbarChat">
     <div class="container">
       <div class="row py-4">
-        <div class="col-md-3 col-sm-12 w-100 text-center">
+        <div class="col-md-3 col-sm-12 w-100 text-left">
           <button
             type="button"
-            class="btn btn-primary mb-4 form-control backButton"
+            class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
             @click="gotToSignup()"
           >
             Create Your Portfolio
           </button>
 
-          <div class="input-group mb-3">
+          <div class="input-group mb-4">
             <input
               type="text"
               class="form-control"
@@ -252,7 +252,7 @@
                   :data="Portfolios"
                   :limit="1"
                   @pagination-change-page="getResults"
-                  class="margin-b-0 border-0"
+                  class="margin-b-0 border-0 "
                 >
                   <span slot="prev-nav">Previous</span>
                   <span slot="next-nav">Next</span>
@@ -391,12 +391,6 @@
 }
 .card-link {
   text-decoration: none;
-}
-.page-item.active .page-link {
-  z-index: 1 !important;
-  color: #fff !important;
-  background-color: green !important; //your color
-  border-color: green !important; //your color
 }
 </style>
 

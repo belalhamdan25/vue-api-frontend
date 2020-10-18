@@ -28,6 +28,10 @@ import VueSocialSharing from 'vue-social-sharing'
 
 Vue.use(VueSocialSharing);
 
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
+
+Vue.component('VueSlider', VueSlider)
 
 new Vue({
   router,

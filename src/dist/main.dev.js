@@ -18,6 +18,10 @@ var _vueProgressbar = _interopRequireDefault(require("vue-progressbar"));
 
 var _vueSocialSharing = _interopRequireDefault(require("vue-social-sharing"));
 
+var _vueSliderComponent = _interopRequireDefault(require("vue-slider-component"));
+
+require("vue-slider-component/theme/default.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueToastNotification["default"]);
@@ -40,6 +44,8 @@ _vue["default"].component('pagination', require('laravel-vue-pagination'));
 _vue["default"].use(require('vue-moment'));
 
 _vue["default"].use(_vueSocialSharing["default"]);
+
+_vue["default"].component('VueSlider', _vueSliderComponent["default"]);
 
 new _vue["default"]({
   router: _router["default"],

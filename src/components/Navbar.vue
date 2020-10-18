@@ -19,7 +19,7 @@
           <router-link class="nav-link" to="/portfolios">Portfolios</router-link>
         </li>
         <li class="nav-item" v-if="!loggedIn">
-          <router-link class="nav-link" to="#">Browse Jobs</router-link>
+          <router-link class="nav-link" to="/projects">Projects</router-link>
         </li>
 
          <li class="nav-item" v-if="!loggedIn">

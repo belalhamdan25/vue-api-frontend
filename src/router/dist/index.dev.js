@@ -25,6 +25,8 @@ var _Portfolios = _interopRequireDefault(require("../views/Portfolios.vue"));
 
 var _PortfolioShow = _interopRequireDefault(require("../views/PortfolioShow.vue"));
 
+var _Projects = _interopRequireDefault(require("../views/Projects.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -73,17 +75,18 @@ var routes = [{
 }, {
   path: "/portfolios",
   name: "Portfolios",
-  component: _Portfolios["default"],
-  meta: {
-    guest: true
-  }
+  component: _Portfolios["default"] // meta: { guest: true}
+
 }, {
   path: "/portfolio/:id",
   name: "PortfolioShow",
-  component: _PortfolioShow["default"],
-  meta: {
-    guest: true
-  }
+  component: _PortfolioShow["default"] // meta: { guest: true }
+
+}, {
+  path: "/projects",
+  name: "Projects",
+  component: _Projects["default"] // meta: { guest: true}
+
 } // {
 //   path: "/about",
 //   name: "About",

@@ -8,6 +8,7 @@ import Settings from "../views/Settings.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 import Portfolios from "../views/Portfolios.vue";
 import PortfolioShow from "../views/PortfolioShow.vue";
+import Projects from "../views/Projects.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -55,16 +56,22 @@ const routes = [
     path: "/portfolios",
     name: "Portfolios",
     component: Portfolios,
-    meta: { guest: true }
+    // meta: { guest: true}
 
   },
   {
     path: "/portfolio/:id",
     name: "PortfolioShow",
     component: PortfolioShow,
-    meta: { guest: true }
+    // meta: { guest: true }
   },
+  {
+    path: "/projects",
+    name: "Projects",
+    component: Projects,
+    // meta: { guest: true}
 
+  },
   
   // {
   //   path: "/about",
