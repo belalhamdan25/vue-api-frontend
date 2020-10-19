@@ -93,10 +93,15 @@
                 :included="true"
                 :hide-label="true"
                 :process="process"
+                :drag-on-click="true"
+                :height="'8px'"
             >
                 <template v-slot:tooltip="{ value }">
-    <div class="custom-tooltip">{{ value }}</div>
-  </template>
+                <div class="custom-tooltip">{{ value }}</div>
+              </template>
+              <template v-slot:dot="{  focus }">
+              <div :class="['custom-dot', { focus }]"></div>
+            </template>
             </vue-slider>
             </div>
         </div>
@@ -104,7 +109,7 @@
           <div class="row">
             <div class="col-12">
               <div class="p-4 bg-white border-r-5">
-                <h6><b>All Projects</b></h6>
+                <h6>All Projects</h6>
                 <hr />
 
                 <div v-if="filteredProjects.length">
@@ -136,7 +141,7 @@
                       <div
                         class="d-flex flex-column justify-content-center align-items-start"
                       >
-                        <h6 class="mb-0"><b>{{ filteredProject.title }}</b></h6>
+                        <h6 class="mb-0">{{ filteredProject.title }}</h6>
                         <div
                           class="d-flex justify-content-start align-items-center "
                         >
@@ -171,6 +176,7 @@
                     </a>
                     <hr />
                   </div>
+
                 </div>
 
                 <div v-else>
@@ -199,7 +205,7 @@
                       <div
                         class="d-flex flex-column justify-content-center align-items-start"
                       >
-                        <h6 class="mb-0"><b>{{ project.title }}</b></h6>
+                        <h6 class="mb-0">{{ project.title }}</h6>
                         <div
                           class="d-flex justify-content-start align-items-center "
                         >
@@ -257,6 +263,22 @@
 </template>
 
 <style lang="scss" scoped>
+  .custom-dot {
+    width:120%;
+    height: 120%;
+    border-radius: 100%;
+    border: 3px solid  #41b883;
+    background-color: white;
+    transition: all .3s;
+  }
+  .custom-dot:hover {
+    // transform: rotateZ(45deg);
+    cursor: pointer;
+  }
+  .custom-dot.focus {
+    border-radius: 50%;
+  }
+
 .custom-tooltip{
 font-size: 14px;
     white-space: nowrap;
@@ -436,11 +458,13 @@ export default {
       categoriesValues: [],
       cquery: [],
         Budgutvalue: [1000,10000],
+        BudgutvalueBasic: [1000,10000],
         min: 1000,
         max: 10000,
         process:dotsPos => [
           [dotsPos[0], dotsPos[1], { backgroundColor: '#41b883' }],
         ],
+
     };
   },
   methods: {
@@ -461,6 +485,7 @@ export default {
 
       this.scrollTop();
     },
+
     scrollTop: function() {
       this.intervalId = setInterval(() => {
         if (window.pageYOffset === 0) {
@@ -573,8 +598,28 @@ export default {
         });
     },
     budgetSlider(){
-      console.log("edited")
+      if(JSON.stringify(this.Budgutvalue) === JSON.stringify(this.BudgutvalueBasic)){
+      this.$Progress.start();
+      this.filteredProjects = [];
+      this.$Progress.finish();
+      }else{
+      this.$Progress.start();
+      this.filteredProjects = [];
+      let payload = {
+        bq: this.Budgutvalue,
+      };
+      axios({
+        url:
+          "http://localhost/vue-api-backend/public/api/project/budget-filter",
+        method: "post",
+        data: payload,
+      }).then((response) => {
+        this.$Progress.finish();
+        this.filteredProjects = response.data.data;
+      });
+      }
     },
+
     gotToSignup: function() {
       this.$router.push("/register");
     },
