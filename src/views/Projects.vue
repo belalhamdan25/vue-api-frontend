@@ -118,6 +118,7 @@
                     :key="filteredProject.id"
                   >
                     <a
+                      :href="'project/' + filteredProject.id"
                       class="d-flex justify-content-start align-items-center p-2 project-item"
                     >
                       <div
@@ -183,6 +184,7 @@
                   <div v-for="project in projects.data" :key="project.id">
                     <a
                       class="d-flex justify-content-start align-items-center p-2 project-item"
+                     :href="'project/' + project.id"
                     >
                       <div
                         class="d-flex flex-column justify-content-center align-items-center"

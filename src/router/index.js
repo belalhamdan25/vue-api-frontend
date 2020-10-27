@@ -9,6 +9,7 @@ import ErrorPage from "../views/ErrorPage.vue";
 import Portfolios from "../views/Portfolios.vue";
 import PortfolioShow from "../views/PortfolioShow.vue";
 import Projects from "../views/Projects.vue";
+import ProjectShow from "../views/ProjectShow.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -72,7 +73,12 @@ const routes = [
     // meta: { guest: true}
 
   },
-  
+  {
+    path: "/project/:id",
+    name: "ProjectShow",
+    component: ProjectShow,
+    // meta: { guest: true }
+  },
   // {
   //   path: "/about",
   //   name: "About",

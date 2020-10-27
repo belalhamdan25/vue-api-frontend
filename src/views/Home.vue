@@ -6,9 +6,9 @@
       <div class="row">
           <div class="center">
         <div class="col-12 ">
-          <h1 class="text-white  ">
+          <h4 class="text-white">
             Hire the best freelancers for any job, online.
-          </h1>
+          </h4>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Your Project Title" />
             <div class="input-group-append">
@@ -259,16 +259,14 @@ according to your budget
 
 <style scoped>
 .slide-back-image {
-  background-image: url("#");
-  height: 70vh; /* You must set a specified height */
+  background-image: url("./../../src/assets/images/homepage-slide-8.jpg");
+  height: 60vh; /* You must set a specified height */
     /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
     position: relative;
-  
-
 }
 .center {
   margin: 0;

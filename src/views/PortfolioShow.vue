@@ -11,7 +11,7 @@
             >
               <div class="image-user mr-4">
                 <img
-                  v-if="portfolioValue.user_img == !null"
+                  v-if="portfolioValue.user_img  != null"
                   :src="portfolioValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
@@ -131,7 +131,7 @@
                     :id="portfolioPath"
                     :aria-describedby="portfolioPath"
                     :placeholder="portfolioPath"
-                    :value="portfolioPath"
+                    :value="projectFullPath"
                     readonly
                   />
                 </div>
@@ -143,7 +143,7 @@
                 >
                   <ShareNetwork
                     network="facebook"
-                    :url="portfolioPath"
+                    :url="projectFullPath"
                     :title="portfolioValue.title"
                     :description="portfolioValue.desc"
                   >
@@ -151,7 +151,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="twitter"
-                    :url="portfolioPath"
+                    :url="projectFullPath"
                     :title="portfolioValue.title"
                     :description="portfolioValue.desc"
                   >
@@ -159,7 +159,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="whatsapp"
-                    :url="portfolioPath"
+                    :url="projectFullPath"
                     :title="portfolioValue.title"
                     :description="portfolioValue.desc"
                   >
@@ -167,7 +167,7 @@
                   </ShareNetwork>
                   <ShareNetwork
                     network="linkedin"
-                    :url="portfolioPath"
+                    :url="projectFullPath"
                     :title="portfolioValue.title"
                   >
                     <a href="#" class="fa fa-linkedin"></a>
@@ -359,6 +359,7 @@ export default {
       portfolioValues: [],
       portfolioValuesSkills: [],
       portfolioImages: [],
+      projectFullPath:""
     };
   },
   methods: {
@@ -408,12 +409,18 @@ export default {
       this.$router.push({ path: "/portfolios" });
       // this.$store.dispatch('SET_skillPressed', skillNamePressed)
     },
+      fetchFullPath(){
+      var path = this.$route.fullPath;
+      var websiteUrl="website-url";
+      this.projectFullPath = websiteUrl+path;
+    }
   },
   mounted() {
     this.fetchPortfolioId();
     this.loadPortfolioData();
     this.loadPortfolioSkillsData();
     this.loadPortfolioImagesData();
+    this.fetchFullPath();
   },
 };
 </script>

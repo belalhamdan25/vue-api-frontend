@@ -103,7 +103,7 @@
                       <div class="d-flex align-items-center px-1 w-img-100">
                         <div v-if="loading">
                           <img
-                            v-if="searchPortfolio.user.user_img == !null"
+                            v-if="searchPortfolio.user.user_img != null"
                             class=" hw-35-c rounded-circle"
                             :src="searchPortfolio.user.user_img"
                             alt="user image"
@@ -184,7 +184,7 @@
                       <div class="d-flex align-items-center px-1 w-img-100">
                         <div v-if="loading">
                           <img
-                            v-if="Portfolio.user.user_img == !null"
+                            v-if="Portfolio.user.user_img != null"
                             class=" hw-35-c rounded-circle"
                             :src="Portfolio.user.user_img"
                             alt="user image"
