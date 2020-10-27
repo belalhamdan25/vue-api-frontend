@@ -571,7 +571,7 @@ export default {
     loadProjectData() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/project/project-show/" +
+          "https://vue-api-backend.herokuapp.com/api/project/project-show/" +
             this.projectId
         )
         .then(response => {
@@ -586,7 +586,7 @@ export default {
       };
       axios({
         url:
-          "http://localhost/vue-api-backend/public/api/project/project-show-offers",
+          "https://vue-api-backend.herokuapp.com/api/project/project-show-offers",
         method: "post",
         data: payload
       }).then(response => {

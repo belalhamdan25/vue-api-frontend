@@ -373,7 +373,7 @@ export default {
     loadPortfolioData() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/portfolios-show/" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/portfolios-show/" +
             this.portfolioId
         )
         .then((response) => {
@@ -384,7 +384,7 @@ export default {
     loadPortfolioSkillsData() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/portfolios-show-skills/" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/portfolios-show-skills/" +
             this.portfolioId
         )
         .then((response) => {
@@ -394,7 +394,7 @@ export default {
     loadPortfolioImagesData() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/portfolios-show-images?pm=" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/portfolios-show-images?pm=" +
             this.portfolioId
         )
         .then((response) => {

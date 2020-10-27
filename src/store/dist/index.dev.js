@@ -43,7 +43,7 @@ var _default = new _vuex["default"].Store({
     performLoginAction: function performLoginAction(_ref, payload) {
       var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
-        _axios["default"].post("http://localhost/vue-api-backend/public/api/auth/login", {
+        _axios["default"].post("https://vue-api-backend.herokuapp.com/api/auth/login", {
           email: payload.email,
           password: payload.password
         }).then(function (res) {
@@ -59,7 +59,7 @@ var _default = new _vuex["default"].Store({
     performRegisterAction: function performRegisterAction(_ref2, payload) {
       var commit = _ref2.commit;
       return new Promise(function (resolve, reject) {
-        _axios["default"].post("http://localhost/vue-api-backend/public/api/auth/register", {
+        _axios["default"].post("https://vue-api-backend.herokuapp.com/api/auth/register", {
           first_name: payload.first_name,
           last_name: payload.last_name,
           phone_number: payload.phone_number,
@@ -80,7 +80,7 @@ var _default = new _vuex["default"].Store({
       var commit = _ref3.commit,
           state = _ref3.state;
       return new Promise(function (resolve, reject) {
-        _axios["default"].post("http://localhost/vue-api-backend/public/api/auth/logout", {
+        _axios["default"].post("https://vue-api-backend.herokuapp.com/api/auth/logout", {
           token: state.token
         }).then(function (res) {
           commit("SET_token", null);
@@ -96,7 +96,7 @@ var _default = new _vuex["default"].Store({
       var commit = _ref4.commit,
           state = _ref4.state;
       return new Promise(function (resolve, reject) {
-        _axios["default"].patch("http://localhost/vue-api-backend/public/api/auth/update", {
+        _axios["default"].patch("https://vue-api-backend.herokuapp.com/api/auth/update", {
           first_name: payload.first_name,
           last_name: payload.last_name,
           phone_number: payload.phone_number,

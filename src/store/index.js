@@ -31,7 +31,7 @@ export default new Vuex.Store({
     performLoginAction({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .post("http://localhost/vue-api-backend/public/api/auth/login", {
+          .post("https://vue-api-backend.herokuapp.com/api/auth/login", {
             email: payload.email,
             password: payload.password,
           })
@@ -49,7 +49,7 @@ export default new Vuex.Store({
     performRegisterAction({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .post("http://localhost/vue-api-backend/public/api/auth/register", {
+          .post("https://vue-api-backend.herokuapp.com/api/auth/register", {
             first_name: payload.first_name,
             last_name: payload.last_name,
             phone_number: payload.phone_number,
@@ -71,7 +71,7 @@ export default new Vuex.Store({
     performLogoutAction({ commit,state }) {
       return new Promise((resolve, reject) => {
         axios
-          .post("http://localhost/vue-api-backend/public/api/auth/logout",{
+          .post("https://vue-api-backend.herokuapp.com/api/auth/logout",{
             token:state.token
           })
 
@@ -89,7 +89,7 @@ export default new Vuex.Store({
     updateUserInfoAction({commit,state},payload){
       return new Promise((resolve, reject) => {
         axios
-          .patch("http://localhost/vue-api-backend/public/api/auth/update", {
+          .patch("https://vue-api-backend.herokuapp.com/api/auth/update", {
             first_name: payload.first_name,
             last_name: payload.last_name,
             phone_number: payload.phone_number,

@@ -427,13 +427,13 @@ export default {
   methods: {
     loadPortfolios() {
       axios
-        .get("http://localhost/vue-api-backend/public/api/portfolio/portfolios")
+        .get("https://vue-api-backend.herokuapp.com/api/portfolio/portfolios")
         .then(({ data }) => (this.Portfolios = data));
     },
     getResults(page = 1) {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios?page=" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios?page=" +
             page
         )
         .then((response) => {
@@ -482,7 +482,7 @@ export default {
         // Making a get request to our API and passing the query to it.
         axios
           .get(
-            "http://localhost/vue-api-backend/public/api/portfolio/portfolios/search?q=" +
+            "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/search?q=" +
               this.query
           )
           .then((response) => {
@@ -518,7 +518,7 @@ export default {
       };
       axios({
         url:
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/categories-filter",
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter",
         method: "post",
         data: payload,
       }).then((response) => {
@@ -548,7 +548,7 @@ export default {
         };
         axios({
           url:
-            "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skills-filter",
+            "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skills-filter",
           method: "post",
           data: payload,
         }).then((response) => {
@@ -561,7 +561,7 @@ export default {
     loadTagsNames() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skills-filter-names"
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skills-filter-names"
         )
         .then((response) => {
           this.options = response.data;
@@ -570,7 +570,7 @@ export default {
     loadcategoriesValues() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/categories-filter-values"
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter-values"
         )
         .then((response) => {
           this.categoriesValues = response.data;
@@ -579,7 +579,7 @@ export default {
     loadPortfolioImagesData() {
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/portfolios-show-images?pm=" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/portfolios-show-images?pm=" +
             this.portfolioId
         )
         .then((response) => {
@@ -600,7 +600,7 @@ export default {
       this.$Progress.start();
       axios
         .get(
-          "http://localhost/vue-api-backend/public/api/portfolio/portfolios/skill-filter?skq=" +
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skill-filter?skq=" +
             this.value2
         )
         .then((response) => {

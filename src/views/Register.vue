@@ -161,7 +161,7 @@ export default {
       loadRoles() {
      axios
         .get(
-          "http://localhost/vue-api-backend/public/api/auth/roles"
+          "https://vue-api-backend.herokuapp.com/api/auth/roles"
         )
         .then((response) => {
           this.roles = response.data;
