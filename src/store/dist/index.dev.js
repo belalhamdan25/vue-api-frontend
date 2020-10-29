@@ -67,7 +67,8 @@ var _default = new _vuex["default"].Store({
           password: payload.password,
           role_name: payload.role_name,
           category_id: payload.category_id,
-          location: payload.location
+          location: payload.location,
+          rate: payload.rate
         }).then(function (res) {
           commit("SET_token", res.data.access_token);
           commit("SET_user", res.data.user);

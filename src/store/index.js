@@ -58,6 +58,7 @@ export default new Vuex.Store({
             role_name: payload.role_name,
             category_id: payload.category_id,
             location: payload.location,
+            rate: payload.rate,
           })
           .then((res) => {
             commit("SET_token", res.data.access_token);

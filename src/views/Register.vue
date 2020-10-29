@@ -134,7 +134,8 @@ export default {
       roles:[],
       categoriesValues:[],
       category_id:null,
-      location:""
+      location:"",
+      rate:0
       // isLoading: false,
     };
   },
@@ -152,6 +153,7 @@ export default {
           role_name: this.role_name,
           category_id: this.category_id,
           location: this.location,
+          rate: this.rate,
         })
         .then((res) => {
           // this.isLoading = false;
