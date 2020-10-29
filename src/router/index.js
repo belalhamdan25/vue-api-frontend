@@ -10,6 +10,7 @@ import Portfolios from "../views/Portfolios.vue";
 import PortfolioShow from "../views/PortfolioShow.vue";
 import Projects from "../views/Projects.vue";
 import ProjectShow from "../views/ProjectShow.vue";
+import Freelancers from "../views/Freelancers.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -77,6 +78,13 @@ const routes = [
     path: "/project/:id",
     name: "ProjectShow",
     component: ProjectShow,
+    // meta: { guest: true }
+  },
+
+  {
+    path: "/freelancers",
+    name: "Freelancers",
+    component: Freelancers,
     // meta: { guest: true }
   },
   // {

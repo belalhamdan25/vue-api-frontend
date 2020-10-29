@@ -29,6 +29,8 @@ var _Projects = _interopRequireDefault(require("../views/Projects.vue"));
 
 var _ProjectShow = _interopRequireDefault(require("../views/ProjectShow.vue"));
 
+var _Freelancers = _interopRequireDefault(require("../views/Freelancers.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -93,6 +95,11 @@ var routes = [{
   path: "/project/:id",
   name: "ProjectShow",
   component: _ProjectShow["default"] // meta: { guest: true }
+
+}, {
+  path: "/freelancers",
+  name: "Freelancers",
+  component: _Freelancers["default"] // meta: { guest: true }
 
 } // {
 //   path: "/about",

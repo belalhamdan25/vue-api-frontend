@@ -64,6 +64,29 @@
         />
       </div>
 
+            <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          name="location"
+          v-model="location"
+        />
+      </div>
+
+        <div class="form-group">
+        <label for="role_name">Category</label>
+        <select
+          class="form-control"
+          v-model="category_id"
+        >
+          <option           v-for="categoriesValue in categoriesValues"
+              :key="categoriesValue.name" :value="categoriesValue.id">{{categoriesValue.desc}}</option>
+
+        </select>
+      </div>
+
       <div class="form-group">
         <label for="role_name">User Type</label>
         <select
@@ -108,7 +131,10 @@ export default {
       password: "",
       role_name: "",
       error: "",
-      roles:[]
+      roles:[],
+      categoriesValues:[],
+      category_id:null,
+      location:""
       // isLoading: false,
     };
   },
@@ -124,6 +150,8 @@ export default {
           email: this.email,
           password: this.password,
           role_name: this.role_name,
+          category_id: this.category_id,
+          location: this.location,
         })
         .then((res) => {
           // this.isLoading = false;
@@ -167,9 +195,19 @@ export default {
           this.roles = response.data;
         });
     },
+        loadcategoriesValues() {
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter-values"
+        )
+        .then((response) => {
+          this.categoriesValues = response.data;
+        });
+    },
   },
   mounted(){
     this.loadRoles();
+    this.loadcategoriesValues();
   }
 };
 </script>
