@@ -76,22 +76,76 @@
           <div class="text-left mb-4">
             <h6 class="iconC2">Rate</h6>
 
-            <star-rating 
-            v-model="rating"
-            :show-rating="false"
-            :star-size="30"
-            @rating-selected="setRating"
+            <star-rating
+              v-model="rating"
+              :show-rating="false"
+              :star-size="30"
+              @rating-selected="setRating"
             >
             </star-rating>
 
-            <a @click="rating = 0;">Reset Rating</a>
-
+            <a @click="rating = 0">Reset Rating</a>
           </div>
-
-
         </div>
         <div class="col-md-9  col-sm-12">
-          freelancers
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+            >
+              <div
+                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+              >
+                <span>User Name</span>
+
+                <div class=" d-flex justify-content-center align-items-center">
+                  <span>categories</span>
+                  <span>location</span>
+                </div>
+
+                <span>Rate</span>
+
+                <button>Profile Here</button>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+            >
+              <div
+                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+              >
+                <span>User Name</span>
+
+                <div class=" d-flex justify-content-center align-items-center">
+                  <span>categories</span>
+                  <span>location</span>
+                </div>
+
+                <span>Rate</span>
+
+                <button>Profile Here</button>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+            >
+              <div
+                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+              >
+                <span>User Name</span>
+
+                <div class=" d-flex justify-content-center align-items-center">
+                  <span>categories</span>
+                  <span>location</span>
+                </div>
+
+                <span>Rate</span>
+
+                <button>Profile Here</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -224,7 +278,6 @@
 .card-link {
   text-decoration: none;
 }
-
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -232,26 +285,35 @@
 <script>
 import axios from "axios";
 import Multiselect from "vue-multiselect";
-import StarRating from 'vue-star-rating';
+import StarRating from "vue-star-rating";
 
 export default {
-  components: { 
+  components: {
     Multiselect,
-    StarRating
-  
+    StarRating,
   },
   data() {
     return {
+      freelancers: {},
       query: "",
       searchLoading: false,
       categoriesValues: [],
       cquery: [],
       options: [],
       value: [],
-      rating:0
+      rating: 0,
     };
   },
   methods: {
+    loadFreelancers() {
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/freelancer/freelancers"
+        )
+        .then(({ data }) => {
+          this.freelancers = data;
+        });
+    },
     search: function() {
       console.log("search pressed");
     },
@@ -280,11 +342,11 @@ export default {
       console.log("tag pressed");
     },
     setRating: function(rating) {
-      this.rating =rating;
+      this.rating = rating;
     },
-
   },
   mounted() {
+    this.loadFreelancers();
     this.loadcategoriesValues();
     this.loadTagsNames();
   },
