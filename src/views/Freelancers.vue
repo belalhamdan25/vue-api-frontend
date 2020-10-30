@@ -76,25 +76,19 @@
           <div class="text-left mb-4">
             <h6 class="iconC2">Rate</h6>
 
-            stars
+            <star-rating 
+            v-model="rating"
+            :show-rating="false"
+            :star-size="30"
+            @rating-selected="setRating"
+            >
+            </star-rating>
+
+            <a @click="rating = 0;">Reset Rating</a>
+
           </div>
 
-          <div class="text-left mb-4">
-            <h6 class="iconC2">Online</h6>
 
-            <label class="con iconC2">
-              <input
-                type="checkbox"
-                :value="active"
-                v-model="active"
-                :id="active"
-                @change="online()"
-              />
-              <span class="checkmark"></span>
-              <!-- <span class="online-circle"></span> -->
-              Active Now
-            </label>
-          </div>
         </div>
         <div class="col-md-9  col-sm-12">
           freelancers
@@ -230,14 +224,7 @@
 .card-link {
   text-decoration: none;
 }
-.online-circle {
-  background: green;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
 
-  display: inline-block;
-}
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -245,9 +232,14 @@
 <script>
 import axios from "axios";
 import Multiselect from "vue-multiselect";
+import StarRating from 'vue-star-rating';
 
 export default {
-  components: { Multiselect },
+  components: { 
+    Multiselect,
+    StarRating
+  
+  },
   data() {
     return {
       query: "",
@@ -256,6 +248,7 @@ export default {
       cquery: [],
       options: [],
       value: [],
+      rating:0
     };
   },
   methods: {
@@ -286,9 +279,10 @@ export default {
     tags() {
       console.log("tag pressed");
     },
-    online() {
-      console.log("online pressed");
+    setRating: function(rating) {
+      this.rating =rating;
     },
+
   },
   mounted() {
     this.loadcategoriesValues();
