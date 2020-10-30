@@ -88,20 +88,27 @@
             </div>
           </div> -->
 
-          <div v-if="searchPortfolios.length">
-            <div class="row">
-              <div
-                class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
-                v-for="searchPortfolio in searchPortfolios"
-                :key="searchPortfolio.id"
-              >
-                <a class="card-link" :href="'portfolio/' + searchPortfolio.id">
-                  <div class="card portfolio-card border-0  p-2">
-                    <div
-                      class=" d-flex justify-content-start align-items-center"
-                    >
-                      <div class="d-flex align-items-center px-1 w-img-100">
-                        <div v-if="loading">
+          <div v-if="portfoliosLoading">
+            <span>Loading >>>></span>
+          </div>
+
+          <div v-else>
+            <div v-if="searchPortfolios.length">
+              <div class="row">
+                <div
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+                  v-for="searchPortfolio in searchPortfolios"
+                  :key="searchPortfolio.id"
+                >
+                  <a
+                    class="card-link"
+                    :href="'portfolio/' + searchPortfolio.id"
+                  >
+                    <div class="card portfolio-card border-0  p-2">
+                      <div
+                        class=" d-flex justify-content-start align-items-center"
+                      >
+                        <div class="d-flex align-items-center px-1 w-img-100">
                           <img
                             v-if="searchPortfolio.user.user_img != null"
                             class=" hw-35-c rounded-circle"
@@ -119,70 +126,45 @@
                             }}</span>
                           </div>
                         </div>
-
-                        <div
-                          class="hw-35-c rounded-circle"
-                          style="background-color:#E6E6E6"
-                          v-else
-                        ></div>
-                      </div>
-                      <div class="pl-2">
-                        <div
-                          class=" justify-content-center pr-1 align-content-end"
-                        >
-                          <h6 v-if="loading" class="card-name m-0 h-fit f-15">
-                            {{ searchPortfolio.user.first_name }}
-                            {{ searchPortfolio.user.last_name }}
-                          </h6>
+                        <div class="pl-2">
                           <div
-                            class="card-name mb-2 h-fit"
-                            v-else
-                            style="width:50px;height:5px;background-color:#E6E6E6"
-                          ></div>
+                            class=" justify-content-center pr-1 align-content-end"
+                          >
+                            <h6 class="card-name m-0 h-fit f-15">
+                              {{ searchPortfolio.user.first_name }}
+                              {{ searchPortfolio.user.last_name }}
+                            </h6>
 
-                          <small v-if="loading" class="text-muted">{{
-                            searchPortfolio.title.substring(0, 20) + ".."
-                          }}</small>
-                          <div
-                            class="text-muted"
-                            v-else
-                            style="width:100px;height:5px;background-color:#E6E6E6"
-                          ></div>
+                            <small class="text-muted">{{
+                              searchPortfolio.title.substring(0, 20) + ".."
+                            }}</small>
+                          </div>
                         </div>
                       </div>
+                      <img
+                        class="card-img-top img-raduis-bottom "
+                        :src="searchPortfolio.portfolio_images[0].name"
+                        :alt="searchPortfolio.desc"
+                      />
                     </div>
-                    <img
-                      class="card-img-top img-raduis-bottom "
-                      v-if="loading"
-                      :src="searchPortfolio.portfolio_images[0].name"
-                      :alt="searchPortfolio.desc"
-                    />
-
-                    <img
-                      v-else
-                      src="https://i.top4top.io/p_1741tnt5p1.jpeg"
-                      class="card-img-top img-raduis-bottom"
-                    />
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div v-else>
-            <div class="row">
-              <div
-                class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
-                v-for="Portfolio in Portfolios.data"
-                :key="Portfolio.id"
-              >
-                <a class="card-link" :href="'portfolio/' + Portfolio.id">
-                  <div class="card portfolio-card border-0  p-2">
-                    <div
-                      class=" d-flex justify-content-start align-items-center"
-                    >
-                      <div class="d-flex align-items-center px-1 w-img-100">
-                        <div v-if="loading">
+            <div v-else>
+              <div class="row">
+                <div
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+                  v-for="Portfolio in Portfolios.data"
+                  :key="Portfolio.id"
+                >
+                  <a class="card-link" :href="'portfolio/' + Portfolio.id">
+                    <div class="card portfolio-card border-0  p-2">
+                      <div
+                        class=" d-flex justify-content-start align-items-center"
+                      >
+                        <div class="d-flex align-items-center px-1 w-img-100">
                           <img
                             v-if="Portfolio.user.user_img != null"
                             class=" hw-35-c rounded-circle"
@@ -198,65 +180,42 @@
                             }}</span>
                           </div>
                         </div>
-
-                        <div
-                          class="hw-35-c rounded-circle"
-                          style="background-color:#E6E6E6"
-                          v-else
-                        ></div>
-                      </div>
-                      <div class="pl-2">
-                        <div
-                          class=" justify-content-center pr-1 align-content-end"
-                        >
-                          <h6 v-if="loading" class="card-name m-0 h-fit f-15">
-                            {{ Portfolio.user.first_name }}
-                            {{ Portfolio.user.last_name }}
-                          </h6>
+                        <div class="pl-2">
                           <div
-                            class="card-name mb-2 h-fit"
-                            v-else
-                            style="width:50px;height:5px;background-color:#E6E6E6"
-                          ></div>
+                            class=" justify-content-center pr-1 align-content-end"
+                          >
+                            <h6 class="card-name m-0 h-fit f-15">
+                              {{ Portfolio.user.first_name }}
+                              {{ Portfolio.user.last_name }}
+                            </h6>
 
-                          <small v-if="loading" class="text-muted">{{
-                            Portfolio.title.substring(0, 20) + ".."
-                          }}</small>
-                          <div
-                            class="text-muted"
-                            v-else
-                            style="width:100px;height:5px;background-color:#E6E6E6"
-                          ></div>
+                            <small class="text-muted">{{
+                              Portfolio.title.substring(0, 20) + ".."
+                            }}</small>
+                          </div>
                         </div>
                       </div>
+                      <img
+                        class="card-img-top img-raduis-bottom "
+                        :src="Portfolio.portfolio_images[0].name"
+                        :alt="Portfolio.desc"
+                      />
                     </div>
-                    <img
-                      class="card-img-top img-raduis-bottom "
-                      v-if="loading"
-                      :src="Portfolio.portfolio_images[0].name"
-                      :alt="Portfolio.desc"
-                    />
-
-                    <img
-                      v-else
-                      src="https://i.top4top.io/p_1741tnt5p1.jpeg"
-                      class="card-img-top img-raduis-bottom"
-                    />
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12 pl-3">
-                <pagination
-                  :data="Portfolios"
-                  :limit="1"
-                  @pagination-change-page="getResults"
-                  class="margin-b-0 border-0 "
-                >
-                  <span slot="prev-nav">Previous</span>
-                  <span slot="next-nav">Next</span>
-                </pagination>
+              <div class="row">
+                <div class="col-12 pl-3">
+                  <pagination
+                    :data="Portfolios"
+                    :limit="1"
+                    @pagination-change-page="getResults"
+                    class="margin-b-0 border-0 "
+                  >
+                    <span slot="prev-nav">Previous</span>
+                    <span slot="next-nav">Next</span>
+                  </pagination>
+                </div>
               </div>
             </div>
           </div>
@@ -405,7 +364,7 @@ export default {
   data() {
     return {
       Portfolios: {},
-      loading: false,
+      portfoliosLoading: false,
       error: false,
       errorS: "",
       query: "",
@@ -426,11 +385,17 @@ export default {
   },
   methods: {
     loadPortfolios() {
+      this.portfoliosLoading = true;
       axios
         .get("https://vue-api-backend.herokuapp.com/api/portfolio/portfolios")
-        .then(({ data }) => (this.Portfolios = data));
+        .then(({ data }) => {
+          this.Portfolios = data;
+          this.portfoliosLoading = false;
+        });
     },
     getResults(page = 1) {
+      this.$Progress.start();
+      this.portfoliosLoading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios?page=" +
@@ -438,10 +403,11 @@ export default {
         )
         .then((response) => {
           this.Portfolios = response.data;
+          this.portfoliosLoading = false;
+          this.$Progress.finish();
         });
 
       this.scrollTop();
-      this.doStuff();
     },
     scrollTop: function() {
       this.intervalId = setInterval(() => {
@@ -451,21 +417,10 @@ export default {
         window.scroll(0, window.pageYOffset - 100);
       }, 20);
     },
-    doStuff: function() {
-      //Show Loader
-      this.loading = false;
-      this.$Progress.start();
 
-      //Waste 0.5 seconds
-      setTimeout(() => {
-        this.loading = true;
-        this.$Progress.finish();
-      }, 500);
-    },
     search: function() {
       if (this.query == "") {
         this.searchPortfolios = [];
-        this.doStuff();
         this.errorSearchMessageOpen();
         this.value2 = "";
       } else {
@@ -474,9 +429,10 @@ export default {
         // Empty the products array so we can fill it with the new products.
         this.searchPortfolios = [];
         // Set the loading property to true, this will display the "Searching..." button.
-        this.searchLoading = true;
-        this.loading = false;
+
         this.$Progress.start();
+        this.searchLoading = true;
+        this.portfoliosLoading = true;
         this.value2 = "";
 
         // Making a get request to our API and passing the query to it.
@@ -491,8 +447,9 @@ export default {
               ? this.errorSearchMessageOpen()
               : (this.searchPortfolios = response.data);
             // The request is finished, change the loading to false again.
-            this.loading = true;
             this.searchLoading = false;
+            this.portfoliosLoading = false;
+
             // Clear the query.
             this.query = "";
             this.$Progress.finish();
@@ -509,7 +466,10 @@ export default {
       });
     },
     categories() {
-      this.doStuff();
+      this.$Progress.start();
+
+      this.portfoliosLoading = true;
+
       this.value2 = "";
 
       this.searchPortfolios = [];
@@ -524,6 +484,9 @@ export default {
       }).then((response) => {
         // console.log(response.data.data);
         this.searchPortfolios = response.data;
+        this.portfoliosLoading = false;
+        this.$Progress.finish();
+
         // console.log(this.cquery);
       });
     },
@@ -536,13 +499,10 @@ export default {
         this.errorSkills = "";
         this.searchPortfolios = [];
         this.value2 = "";
-
-        this.doStuff();
       } else {
         this.value2 = "";
-
-        this.loading = false;
         this.$Progress.start();
+        this.portfoliosLoading = true;
         let payload = {
           sq: this.value,
         };
@@ -553,7 +513,7 @@ export default {
           data: payload,
         }).then((response) => {
           this.searchPortfolios = response.data;
-          this.loading = true;
+          this.portfoliosLoading = false;
           this.$Progress.finish();
         });
       }
@@ -576,28 +536,18 @@ export default {
           this.categoriesValues = response.data;
         });
     },
-    loadPortfolioImagesData() {
-      axios
-        .get(
-          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/portfolios-show-images?pm=" +
-            this.portfolioId
-        )
-        .then((response) => {
-          this.portfolioImages = response.data;
-          // console.log(response.data);
-        });
-    },
     checkSkillPressed() {
       this.value2 = this.skillPressed;
       if (this.value2 != null) {
         this.loadSkillPressed();
-      } else {
-        console.log("skillpressed == null  if error");
       }
+      // else {
+      //   console.log("skillpressed == null  if error");
+      // }
     },
     loadSkillPressed() {
-      this.loading = false;
       this.$Progress.start();
+      this.portfoliosLoading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skill-filter?skq=" +
@@ -607,12 +557,12 @@ export default {
           this.searchPortfolios = response.data;
           console.log(response.data);
           this.$store.commit("SET_skillPressed", null);
-          this.value=[
+          this.value = [
             {
-              name:this.value2
-            }
-            ]
-          this.loading = true;
+              name: this.value2,
+            },
+          ];
+          this.portfoliosLoading = false;
           this.$Progress.finish();
         });
     },
@@ -620,7 +570,6 @@ export default {
   mounted() {
     this.loadPortfolios();
     this.getResults();
-    this.doStuff();
     this.loadTagsNames();
     this.loadcategoriesValues();
     this.checkSkillPressed();

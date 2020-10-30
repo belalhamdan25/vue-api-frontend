@@ -80,30 +80,30 @@
             ></multiselect>
           </div>
 
-            <div class="mb-4">
-              <span class="">Budgut</span>
-              <vue-slider
-                v-model="Budgutvalue"
-                :min="min"
-                :max="max"
-                :tooltip-placement="['bottom', 'bottom']"
-                :tooltip="'always'"
-                :marks="[1000,2000,4000,6000,8000,10000]"
-                @drag-end="budgetSlider()"
-                :included="true"
-                :hide-label="true"
-                :process="process"
-                :drag-on-click="true"
-                :height="'8px'"
+          <div class="mb-4">
+            <span class="">Budgut</span>
+            <vue-slider
+              v-model="Budgutvalue"
+              :min="min"
+              :max="max"
+              :tooltip-placement="['bottom', 'bottom']"
+              :tooltip="'always'"
+              :marks="[1000, 2000, 4000, 6000, 8000, 10000]"
+              @drag-end="budgetSlider()"
+              :included="true"
+              :hide-label="true"
+              :process="process"
+              :drag-on-click="true"
+              :height="'8px'"
             >
-                <template v-slot:tooltip="{ value }">
+              <template v-slot:tooltip="{ value }">
                 <div class="custom-tooltip">{{ value }}</div>
               </template>
-              <template v-slot:dot="{  focus }">
-              <div :class="['custom-dot', { focus }]"></div>
-            </template>
+              <template v-slot:dot="{ focus }">
+                <div :class="['custom-dot', { focus }]"></div>
+              </template>
             </vue-slider>
-            </div>
+          </div>
         </div>
         <div class="col-md-9  col-sm-12">
           <div class="row">
@@ -112,148 +112,176 @@
                 <h6>All Projects</h6>
                 <hr />
 
-                <div v-if="filteredProjects.length">
-                  <div
-                    v-for="filteredProject in filteredProjects"
-                    :key="filteredProject.id"
-                  >
-                    <a
-                      :href="'project/' + filteredProject.id"
-                      class="d-flex justify-content-start align-items-center p-2 project-item"
-                    >
-                      <div
-                        class="d-flex flex-column justify-content-center align-items-center"
-                      >
-                        <img
-                          v-if="filteredProject.user_img != null"
-                          class=" hw-60-c  mr-4 rounded-circle"
-                          :src="filteredProject.user_img"
-                          alt="user image"
-                        />
-                        <div
-                          class="hw-60-c letter-profile-img rounded-circle mr-4"
-                          v-else
-                        >
-                          <span style="color:white;font-size:20px">{{
-                            filteredProject.user_name.charAt(0).toUpperCase()
-                          }}</span>
-                        </div>
-                      </div>
-                      <div
-                        class="d-flex flex-column justify-content-center align-items-start"
-                      >
-                        <h6 class="mb-0">{{ filteredProject.title }}</h6>
-                        <div
-                          class="d-flex justify-content-start align-items-center "
-                        >
-                        <div class="auth mr-2 text-muted">
-                          <i class="fas fa-user" style="font-size:10px"></i>
-                          <small> {{ filteredProject.user_name }}</small>
-                        </div>
-                        <div class="time mr-2 text-muted">
-                        <i class="fas fa-clock"  style="font-size:10px"></i>
-                          <small>
-                             {{ filteredProject.created_at | moment("from", "now") }}
-                          </small>
-                        </div>
-                          <div class="offers mr-2 text-muted">
-                          <i class="fas fa-user-tie"  style="font-size:10px"></i>
-                          <small> {{ filteredProject.offers_count }} offers</small>
-                          </div>
-                          
-                        </div>
-                         <p class="text-muted" style="font-size:14px">{{ filteredProject.desc.substring(0, 150) + ".." }}</p>
-
-                          <div class="d-flex justify-content-start align-items-center ">
-                          <a
-                          href="#"
-                          @click="pushSkill(projectS.name)"
-                          class="label-tag"
-                          v-for="projectS in filteredProject.skills" :key="projectS.id"
-                          ><i class="fas fa-tag"></i> {{ projectS.name }}
-                          </a>
-                        </div>
-                      </div>
-                    </a>
-                    <hr />
-                  </div>
-
+                <div v-if="projectsLoading">
+                  <span>Loadin >>>> </span>
                 </div>
 
                 <div v-else>
-                  <div v-for="project in projects.data" :key="project.id">
-                    <a
-                      class="d-flex justify-content-start align-items-center p-2 project-item"
-                     :href="'project/' + project.id"
+                  <div v-if="filteredProjects.length">
+                    <div
+                      v-for="filteredProject in filteredProjects"
+                      :key="filteredProject.id"
                     >
-                      <div
-                        class="d-flex flex-column justify-content-center align-items-center"
+                      <a
+                        :href="'project/' + filteredProject.id"
+                        class="d-flex justify-content-start align-items-center p-2 project-item"
                       >
-                        <img
-                          v-if="project.user_img != null"
-                          class=" hw-60-c mr-4 rounded-circle"
-                          :src="project.user_img"
-                          alt="user image"
-                        />
                         <div
-                          class="hw-60-c letter-profile-img rounded-circle mr-4"
-                          v-else
+                          class="d-flex flex-column justify-content-center align-items-center"
                         >
-                          <span style="color:white;font-size:20px">{{
-                            project.user_name.charAt(0).toUpperCase()
-                          }}</span>
-                        </div>
-                      </div>
-                      <div
-                        class="d-flex flex-column justify-content-center align-items-start"
-                      >
-                        <h6 class="mb-0">{{ project.title }}</h6>
-                        <div
-                          class="d-flex justify-content-start align-items-center "
-                        >
-                        <div class="auth mr-2 text-muted">
-                          <i class="fas fa-user" style="font-size:10px"></i>
-                          <small> {{ project.user_name }}</small>
-                        </div>
-                        <div class="time mr-2 text-muted">
-                        <i class="fas fa-clock"  style="font-size:10px"></i>
-                          <small>
-                             {{ project.created_at | moment("from", "now") }}
-                          </small>
-                        </div>
-                          <div class="offers mr-2 text-muted">
-                          <i class="fas fa-user-tie"  style="font-size:10px"></i>
-                          <small> {{ project.offers_count }} offers</small>
+                          <img
+                            v-if="filteredProject.user_img != null"
+                            class=" hw-60-c  mr-4 rounded-circle"
+                            :src="filteredProject.user_img"
+                            alt="user image"
+                          />
+                          <div
+                            class="hw-60-c letter-profile-img rounded-circle mr-4"
+                            v-else
+                          >
+                            <span style="color:white;font-size:20px">{{
+                              filteredProject.user_name.charAt(0).toUpperCase()
+                            }}</span>
                           </div>
                         </div>
-                         <p class="text-muted" style="font-size:14px">{{ project.desc.substring(0, 150) + ".." }}</p>
-                          
-                          
-                         <div class="d-flex justify-content-start align-items-center ">
-                          <a
-                          href="#"
-                          @click="pushSkill(projectS.name)"
-                          class="label-tag"
-                          v-for="projectS in project.skills" :key="projectS.id"
-                          ><i class="fas fa-tag"></i> {{ projectS.name }}
-                          </a>
+                        <div
+                          class="d-flex flex-column justify-content-center align-items-start"
+                        >
+                          <h6 class="mb-0">{{ filteredProject.title }}</h6>
+                          <div
+                            class="d-flex justify-content-start align-items-center "
+                          >
+                            <div class="auth mr-2 text-muted">
+                              <i class="fas fa-user" style="font-size:10px"></i>
+                              <small> {{ filteredProject.user_name }}</small>
+                            </div>
+                            <div class="time mr-2 text-muted">
+                              <i
+                                class="fas fa-clock"
+                                style="font-size:10px"
+                              ></i>
+                              <small>
+                                {{
+                                  filteredProject.created_at
+                                    | moment("from", "now")
+                                }}
+                              </small>
+                            </div>
+                            <div class="offers mr-2 text-muted">
+                              <i
+                                class="fas fa-user-tie"
+                                style="font-size:10px"
+                              ></i>
+                              <small>
+                                {{ filteredProject.offers_count }} offers</small
+                              >
+                            </div>
+                          </div>
+                          <p class="text-muted" style="font-size:14px">
+                            {{ filteredProject.desc.substring(0, 150) + ".." }}
+                          </p>
+
+                          <div
+                            class="d-flex justify-content-start align-items-center "
+                          >
+                            <a
+                              href="#"
+                              @click="pushSkill(projectS.name)"
+                              class="label-tag"
+                              v-for="projectS in filteredProject.skills"
+                              :key="projectS.id"
+                              ><i class="fas fa-tag"></i> {{ projectS.name }}
+                            </a>
+                          </div>
                         </div>
-
-
-                      </div>
-                    </a>
-                    <hr />
+                      </a>
+                      <hr />
+                    </div>
                   </div>
 
-                  <pagination
-                    :data="projects"
-                    :limit="1"
-                    @pagination-change-page="getResults"
-                    class="margin-b-0 border-0 "
-                  >
-                    <span slot="prev-nav">Previous</span>
-                    <span slot="next-nav">Next</span>
-                  </pagination>
+                  <div v-else>
+                    <div v-for="project in projects.data" :key="project.id">
+                      <a
+                        class="d-flex justify-content-start align-items-center p-2 project-item"
+                        :href="'project/' + project.id"
+                      >
+                        <div
+                          class="d-flex flex-column justify-content-center align-items-center"
+                        >
+                          <img
+                            v-if="project.user_img != null"
+                            class=" hw-60-c mr-4 rounded-circle"
+                            :src="project.user_img"
+                            alt="user image"
+                          />
+                          <div
+                            class="hw-60-c letter-profile-img rounded-circle mr-4"
+                            v-else
+                          >
+                            <span style="color:white;font-size:20px">{{
+                              project.user_name.charAt(0).toUpperCase()
+                            }}</span>
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex flex-column justify-content-center align-items-start"
+                        >
+                          <h6 class="mb-0">{{ project.title }}</h6>
+                          <div
+                            class="d-flex justify-content-start align-items-center "
+                          >
+                            <div class="auth mr-2 text-muted">
+                              <i class="fas fa-user" style="font-size:10px"></i>
+                              <small> {{ project.user_name }}</small>
+                            </div>
+                            <div class="time mr-2 text-muted">
+                              <i
+                                class="fas fa-clock"
+                                style="font-size:10px"
+                              ></i>
+                              <small>
+                                {{ project.created_at | moment("from", "now") }}
+                              </small>
+                            </div>
+                            <div class="offers mr-2 text-muted">
+                              <i
+                                class="fas fa-user-tie"
+                                style="font-size:10px"
+                              ></i>
+                              <small> {{ project.offers_count }} offers</small>
+                            </div>
+                          </div>
+                          <p class="text-muted" style="font-size:14px">
+                            {{ project.desc.substring(0, 150) + ".." }}
+                          </p>
+
+                          <div
+                            class="d-flex justify-content-start align-items-center "
+                          >
+                            <a
+                              href="#"
+                              @click="pushSkill(projectS.name)"
+                              class="label-tag"
+                              v-for="projectS in project.skills"
+                              :key="projectS.id"
+                              ><i class="fas fa-tag"></i> {{ projectS.name }}
+                            </a>
+                          </div>
+                        </div>
+                      </a>
+                      <hr />
+                    </div>
+
+                    <pagination
+                      :data="projects"
+                      :limit="1"
+                      @pagination-change-page="getResults"
+                      class="margin-b-0 border-0 "
+                    >
+                      <span slot="prev-nav">Previous</span>
+                      <span slot="next-nav">Next</span>
+                    </pagination>
+                  </div>
                 </div>
               </div>
             </div>
@@ -265,47 +293,45 @@
 </template>
 
 <style lang="scss" scoped>
-  .custom-dot {
-    width:120%;
-    height: 120%;
-    border-radius: 100%;
-    border: 3px solid  #41b883;
-    background-color: white;
-    transition: all .3s;
-  }
-  .custom-dot:hover {
-    // transform: rotateZ(45deg);
-    cursor: pointer;
-  }
-  .custom-dot.focus {
-    border-radius: 50%;
-  }
-
-.custom-tooltip{
-font-size: 14px;
-    white-space: nowrap;
-    padding: 2px 5px;
-    min-width: 20px;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
-    border-color: #41b883;
-    background-color: #41b883;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
+.custom-dot {
+  width: 120%;
+  height: 120%;
+  border-radius: 100%;
+  border: 3px solid #41b883;
+  background-color: white;
+  transition: all 0.3s;
 }
-
-
-.project-item{
+.custom-dot:hover {
+  // transform: rotateZ(45deg);
   cursor: pointer;
-    text-decoration: none;
-    color:#41b883;
-      transition: 0.3s;
-
 }
-.project-item:hover{
-  color:#369a6e;
-    transition: 0.3s;
+.custom-dot.focus {
+  border-radius: 50%;
+}
+
+.custom-tooltip {
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 2px 5px;
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  border-color: #41b883;
+  background-color: #41b883;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.project-item {
+  cursor: pointer;
+  text-decoration: none;
+  color: #41b883;
+  transition: 0.3s;
+}
+.project-item:hover {
+  color: #369a6e;
+  transition: 0.3s;
   background: #f8f8f8;
 }
 .backButton {
@@ -444,7 +470,6 @@ hr {
 import axios from "axios";
 import Multiselect from "vue-multiselect";
 
-
 export default {
   components: { Multiselect },
 
@@ -452,6 +477,7 @@ export default {
     return {
       projects: {},
       filteredProjects: [],
+      projectsLoading: false,
       searchLoading: false,
       query: "",
       value: [],
@@ -459,23 +485,28 @@ export default {
       options: [],
       categoriesValues: [],
       cquery: [],
-        Budgutvalue: [1000,10000],
-        BudgutvalueBasic: [1000,10000],
-        min: 1000,
-        max: 10000,
-        process:dotsPos => [
-          [dotsPos[0], dotsPos[1], { backgroundColor: '#41b883' }],
-        ],
-
+      Budgutvalue: [1000, 10000],
+      BudgutvalueBasic: [1000, 10000],
+      min: 1000,
+      max: 10000,
+      process: (dotsPos) => [
+        [dotsPos[0], dotsPos[1], { backgroundColor: "#41b883" }],
+      ],
     };
   },
   methods: {
     loadProjects() {
+      this.projectsLoading = true;
       axios
         .get("https://vue-api-backend.herokuapp.com/api/project/projects")
-        .then(({ data }) => (this.projects = data));
+        .then(({ data }) => {
+          this.projects = data;
+          this.projectsLoading = false;
+        });
     },
     getResults(page = 1) {
+      this.$Progress.start();
+      this.projectsLoading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/project/projects?page=" +
@@ -483,8 +514,9 @@ export default {
         )
         .then((response) => {
           this.projects = response.data;
+          this.projectsLoading = false;
+          this.$Progress.finish();
         });
-
       this.scrollTop();
     },
 
@@ -528,9 +560,10 @@ export default {
         this.filteredProjects = [];
         this.errorSearchMessageOpen();
       } else {
+        this.$Progress.start();
         this.filteredProjects = [];
         this.searchLoading = true;
-        this.$Progress.start();
+        this.projectsLoading = true;
         axios
           .get(
             "https://vue-api-backend.herokuapp.com/api/project/search?q=" +
@@ -541,6 +574,7 @@ export default {
               ? this.errorSearchMessageOpen()
               : (this.filteredProjects = response.data);
             this.searchLoading = false;
+            this.projectsLoading = false;
             this.query = "";
             this.$Progress.finish();
           });
@@ -549,16 +583,19 @@ export default {
     categoriesFiltter() {
       this.$Progress.start();
       this.filteredProjects = [];
+      this.projectsLoading = true;
+
       let payload = {
         cq: this.cquery,
       };
-      axios({  
+      axios({
         url:
           "https://vue-api-backend.herokuapp.com/api/project/categories-filter",
         method: "post",
         data: payload,
       }).then((response) => {
         this.filteredProjects = response.data;
+        this.projectsLoading = false;
         this.$Progress.finish();
       });
     },
@@ -567,6 +604,8 @@ export default {
         this.filteredProjects = [];
       } else {
         this.$Progress.start();
+        this.projectsLoading = true;
+
         let payload = {
           sq: this.value,
         };
@@ -577,13 +616,15 @@ export default {
           data: payload,
         }).then((response) => {
           this.filteredProjects = response.data;
+          this.projectsLoading = false;
           this.$Progress.finish();
         });
       }
     },
-    pushSkill(skillNamePressed){
+    pushSkill(skillNamePressed) {
       this.$Progress.start();
-      this.value2=skillNamePressed;
+      this.projectsLoading = true;
+      this.value2 = skillNamePressed;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/project/skill-filter?skq=" +
@@ -591,34 +632,40 @@ export default {
         )
         .then((response) => {
           this.filteredProjects = response.data;
-          this.value=[
+          this.value = [
             {
-              name:this.value2
-            }
-            ]
+              name: this.value2,
+            },
+          ];
+          this.projectsLoading = false;
           this.$Progress.finish();
         });
     },
-    budgetSlider(){
-      if(JSON.stringify(this.Budgutvalue) === JSON.stringify(this.BudgutvalueBasic)){
-      this.$Progress.start();
-      this.filteredProjects = [];
-      this.$Progress.finish();
-      }else{
-      this.$Progress.start();
-      this.filteredProjects = [];
-      let payload = {
-        bq: this.Budgutvalue,
-      };
-      axios({
-        url:
-          "https://vue-api-backend.herokuapp.com/api/project/budget-filter",
-        method: "post",
-        data: payload,
-      }).then((response) => {
+    budgetSlider() {
+      if (
+        JSON.stringify(this.Budgutvalue) ===
+        JSON.stringify(this.BudgutvalueBasic)
+      ) {
+        this.$Progress.start();
+        this.filteredProjects = [];
         this.$Progress.finish();
-        this.filteredProjects = response.data.data;
-      });
+      } else {
+        this.$Progress.start();
+        this.filteredProjects = [];
+        this.projectsLoading = true;
+        let payload = {
+          bq: this.Budgutvalue,
+        };
+        axios({
+          url:
+            "https://vue-api-backend.herokuapp.com/api/project/budget-filter",
+          method: "post",
+          data: payload,
+        }).then((response) => {
+          this.filteredProjects = response.data.data;
+          this.projectsLoading = false;
+          this.$Progress.finish();
+        });
       }
     },
 
