@@ -96,7 +96,7 @@
             <div v-if="searchPortfolios.length">
               <div class="row">
                 <div
-                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-0"
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-2 pl-2"
                   v-for="searchPortfolio in searchPortfolios"
                   :key="searchPortfolio.id"
                 >
@@ -155,7 +155,7 @@
             <div v-else>
               <div class="row">
                 <div
-                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-0"
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-2 pl-2"
                   v-for="Portfolio in Portfolios.data"
                   :key="Portfolio.id"
                 >

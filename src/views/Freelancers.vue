@@ -117,7 +117,7 @@
               <div
                 v-for="freelancer in freelancers.data"
                 :key="freelancer.id"
-                class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-0"
+                class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
               >
                 <div
                   class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
