@@ -81,6 +81,28 @@
               :show-rating="false"
               :star-size="30"
               @rating-selected="setRating"
+              :star-points="[
+                23,
+                2,
+                14,
+                17,
+                0,
+                19,
+                10,
+                34,
+                7,
+                50,
+                23,
+                43,
+                38,
+                50,
+                36,
+                34,
+                46,
+                19,
+                31,
+                17,
+              ]"
             >
             </star-rating>
 
@@ -90,59 +112,70 @@
         <div class="col-md-9  col-sm-12">
           <div class="row">
             <div
-              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
+              class="col-12 d-flex justify-content-start align-content-center flex-wrap mt-41"
             >
               <div
-                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+                v-for="freelancer in freelancers.data"
+                :key="freelancer.id"
+                class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5"
               >
-                <span>User Name</span>
+                <div
+                  class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+                >
 
-                <div class=" d-flex justify-content-center align-items-center">
-                  <span>categories</span>
-                  <span>location</span>
+                <img v-if="freelancer.user_img != null" class="circle2" :src="freelancer.user_img">
+
+                  <div v-else class="circle">
+                     <span style="color:white;font-size:25px">{{
+                    freelancer.name.charAt(0).toUpperCase()
+                  }}</span>
+                  </div>
+
+                  <h6 class="text-dark">{{freelancer.name}}</h6>
+
+                  <small
+                    class=" d-flex justify-content-center align-items-center text-secondary mb-2"
+                  >
+                    <span class="mr-1"><i class="fas fa-user-tag"></i> {{freelancer.category.charAt(0).toUpperCase() + freelancer.category.slice(1)}}</span>
+                    <span><i class="fas fa-map-marker-alt"></i> {{freelancer.location}}</span>
+                  </small>
+
+                  <star-rating
+                    class="mb-2"
+                    :rating="freelancer.rate"
+                    :border-width="2"
+                    :read-only="true"
+                    inactive-color="#fff"
+                    border-color="#ffd055"
+                    :star-size="13"
+                    :show-rating="false"
+                    :star-points="[
+                      23,
+                      2,
+                      14,
+                      17,
+                      0,
+                      19,
+                      10,
+                      34,
+                      7,
+                      50,
+                      23,
+                      43,
+                      38,
+                      50,
+                      36,
+                      34,
+                      46,
+                      19,
+                      31,
+                      17,
+                    ]"
+                  ></star-rating>
+
+                  <button class="buton-p btn btn-hire">Profile</button>
+
                 </div>
-
-                <span>Rate</span>
-
-                <button>Profile Here</button>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
-            >
-              <div
-                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
-              >
-                <span>User Name</span>
-
-                <div class=" d-flex justify-content-center align-items-center">
-                  <span>categories</span>
-                  <span>location</span>
-                </div>
-
-                <span>Rate</span>
-
-                <button>Profile Here</button>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center"
-            >
-              <div
-                class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
-              >
-                <span>User Name</span>
-
-                <div class=" d-flex justify-content-center align-items-center">
-                  <span>categories</span>
-                  <span>location</span>
-                </div>
-
-                <span>Rate</span>
-
-                <button>Profile Here</button>
               </div>
             </div>
           </div>
@@ -153,6 +186,51 @@
 </template>
 
 <style scoped>
+.btn-hire {
+  background: #41b883;
+  color: white;
+  /* font-size: 12px; */
+}
+.btn-hire:hover {
+  background: #369a6e;
+}
+.buton-p {
+  padding: 3px 60px;
+}
+.card-continer {
+  border-radius: 0.25rem;
+}
+.mt-41 {
+  margin-top: 41px;
+}
+.circle {
+  height: 90px;
+  width: 90px;
+  background: #41b883;
+  border-radius: 50%;
+  margin-top: -50px;
+  margin-bottom: 15px;
+    display: flex; /* or inline-flex */
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+border: 3px solid #e0e0e0;
+
+}
+.circle2 {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  margin-top: -50px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+box-shadow: 0px 13px 53px -30px rgba(0,0,0,0.45);
+border: 3px solid #e0e0e0;
+
+}
 .img-w-a {
   width: 640px !important;
   height: 480px !important;
@@ -307,9 +385,7 @@ export default {
   methods: {
     loadFreelancers() {
       axios
-        .get(
-          "https://vue-api-backend.herokuapp.com/api/freelancer/freelancers"
-        )
+        .get("https://vue-api-backend.herokuapp.com/api/freelancer/freelancers")
         .then(({ data }) => {
           this.freelancers = data;
         });
