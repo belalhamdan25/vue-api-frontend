@@ -106,7 +106,7 @@
             >
             </star-rating>
 
-            <a @click="rating = 0">Reset Rating</a>
+            <a @click="RestRating()">Reset Rating</a>
           </div>
         </div>
         <div class="col-md-9  col-sm-12">
@@ -114,179 +114,185 @@
             <div
               class="col-12 d-flex justify-content-start align-content-center flex-wrap mt-41"
             >
-              <div v-if="filteredFreelancers.length">
-                <div class="row">
-                  <div
-                    v-for="filteredFreelancer in filteredFreelancers"
-                    :key="filteredFreelancer.id"
-                    class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
-                  >
-                    <div
-                      class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
-                    >
-                      <img
-                        v-if="filteredFreelancer.user_img != null"
-                        class="circle2"
-                        :src="filteredFreelancer.user_img"
-                      />
-
-                      <div v-else class="circle">
-                        <span style="color:white;font-size:25px">{{
-                          filteredFreelancer.name.charAt(0).toUpperCase()
-                        }}</span>
-                      </div>
-
-                      <h6 class="text-dark">{{ filteredFreelancer.name }}</h6>
-
-                      <small
-                        class=" d-flex justify-content-center align-items-center text-secondary mb-2"
-                      >
-                        <span class="mr-1"
-                          ><i class="fas fa-user-tag"></i>
-                          {{
-                            filteredFreelancer.category.charAt(0).toUpperCase() +
-                              filteredFreelancer.category.slice(1)
-                          }}</span
-                        >
-                        <span
-                          ><i class="fas fa-map-marker-alt"></i>
-                          {{ filteredFreelancer.location }}</span
-                        >
-                      </small>
-
-                      <star-rating
-                        class="mb-2"
-                        :rating="filteredFreelancer.rate"
-                        :border-width="2"
-                        :read-only="true"
-                        inactive-color="#fff"
-                        border-color="#ffd055"
-                        :star-size="13"
-                        :show-rating="false"
-                        :star-points="[
-                          23,
-                          2,
-                          14,
-                          17,
-                          0,
-                          19,
-                          10,
-                          34,
-                          7,
-                          50,
-                          23,
-                          43,
-                          38,
-                          50,
-                          36,
-                          34,
-                          46,
-                          19,
-                          31,
-                          17,
-                        ]"
-                      ></star-rating>
-
-                      <button class="buton-p btn btn-hire">Profile</button>
-                    </div>
-                  </div>
-                </div>
-
+              <div v-if="freelancersLoading">
+                <span>Loadin >>>> </span>
               </div>
 
               <div v-else>
-                <div class="row">
-                  <div
-                    v-for="freelancer in freelancers.data"
-                    :key="freelancer.id"
-                    class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
-                  >
+                <div v-if="filteredFreelancers.length">
+                  <div class="row">
                     <div
-                      class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+                      v-for="filteredFreelancer in filteredFreelancers"
+                      :key="filteredFreelancer.id"
+                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
                     >
-                      <img
-                        v-if="freelancer.user_img != null"
-                        class="circle2"
-                        :src="freelancer.user_img"
-                      />
-
-                      <div v-else class="circle">
-                        <span style="color:white;font-size:25px">{{
-                          freelancer.name.charAt(0).toUpperCase()
-                        }}</span>
-                      </div>
-
-                      <h6 class="text-dark">{{ freelancer.name }}</h6>
-
-                      <small
-                        class=" d-flex justify-content-center align-items-center text-secondary mb-2"
+                      <div
+                        class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
                       >
-                        <span class="mr-1"
-                          ><i class="fas fa-user-tag"></i>
-                          {{
-                            freelancer.category.charAt(0).toUpperCase() +
-                              freelancer.category.slice(1)
-                          }}</span
-                        >
-                        <span
-                          ><i class="fas fa-map-marker-alt"></i>
-                          {{ freelancer.location }}</span
-                        >
-                      </small>
+                        <img
+                          v-if="filteredFreelancer.user_img != null"
+                          class="circle2"
+                          :src="filteredFreelancer.user_img"
+                        />
 
-                      <star-rating
-                        class="mb-2"
-                        :rating="freelancer.rate"
-                        :border-width="2"
-                        :read-only="true"
-                        inactive-color="#fff"
-                        border-color="#ffd055"
-                        :star-size="13"
-                        :show-rating="false"
-                        :star-points="[
-                          23,
-                          2,
-                          14,
-                          17,
-                          0,
-                          19,
-                          10,
-                          34,
-                          7,
-                          50,
-                          23,
-                          43,
-                          38,
-                          50,
-                          36,
-                          34,
-                          46,
-                          19,
-                          31,
-                          17,
-                        ]"
-                      ></star-rating>
+                        <div v-else class="circle">
+                          <span style="color:white;font-size:25px">{{
+                            filteredFreelancer.name.charAt(0).toUpperCase()
+                          }}</span>
+                        </div>
 
-                      <button class="buton-p btn btn-hire">Profile</button>
+                        <h6 class="text-dark">{{ filteredFreelancer.name }}</h6>
+
+                        <small
+                          class=" d-flex justify-content-center align-items-center text-secondary mb-2"
+                        >
+                          <span class="mr-1"
+                            ><i class="fas fa-user-tag"></i>
+                            {{
+                              filteredFreelancer.category
+                                .charAt(0)
+                                .toUpperCase() +
+                                filteredFreelancer.category.slice(1)
+                            }}</span
+                          >
+                          <span
+                            ><i class="fas fa-map-marker-alt"></i>
+                            {{ filteredFreelancer.location }}</span
+                          >
+                        </small>
+
+                        <star-rating
+                          class="mb-2"
+                          :rating="filteredFreelancer.rate"
+                          :border-width="2"
+                          :read-only="true"
+                          inactive-color="#fff"
+                          border-color="#ffd055"
+                          :star-size="13"
+                          :show-rating="false"
+                          :star-points="[
+                            23,
+                            2,
+                            14,
+                            17,
+                            0,
+                            19,
+                            10,
+                            34,
+                            7,
+                            50,
+                            23,
+                            43,
+                            38,
+                            50,
+                            36,
+                            34,
+                            46,
+                            19,
+                            31,
+                            17,
+                          ]"
+                        ></star-rating>
+
+                        <button class="buton-p btn btn-hire">Profile</button>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-12 ">
-                    <pagination
-                      :data="freelancers"
-                      :limit="1"
-                      @pagination-change-page="getResults"
-                      class="margin-b-0 border-0 margin-mines "
+                <div v-else>
+                  <div class="row">
+                    <div
+                      v-for="freelancer in freelancers.data"
+                      :key="freelancer.id"
+                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
                     >
-                      <span slot="prev-nav">Previous</span>
-                      <span slot="next-nav">Next</span>
-                    </pagination>
+                      <div
+                        class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
+                      >
+                        <img
+                          v-if="freelancer.user_img != null"
+                          class="circle2"
+                          :src="freelancer.user_img"
+                        />
+
+                        <div v-else class="circle">
+                          <span style="color:white;font-size:25px">{{
+                            freelancer.name.charAt(0).toUpperCase()
+                          }}</span>
+                        </div>
+
+                        <h6 class="text-dark">{{ freelancer.name }}</h6>
+
+                        <small
+                          class=" d-flex justify-content-center align-items-center text-secondary mb-2"
+                        >
+                          <span class="mr-1"
+                            ><i class="fas fa-user-tag"></i>
+                            {{
+                              freelancer.category.charAt(0).toUpperCase() +
+                                freelancer.category.slice(1)
+                            }}</span
+                          >
+                          <span
+                            ><i class="fas fa-map-marker-alt"></i>
+                            {{ freelancer.location }}</span
+                          >
+                        </small>
+
+                        <star-rating
+                          class="mb-2"
+                          :rating="freelancer.rate"
+                          :border-width="2"
+                          :read-only="true"
+                          inactive-color="#fff"
+                          border-color="#ffd055"
+                          :star-size="13"
+                          :show-rating="false"
+                          :star-points="[
+                            23,
+                            2,
+                            14,
+                            17,
+                            0,
+                            19,
+                            10,
+                            34,
+                            7,
+                            50,
+                            23,
+                            43,
+                            38,
+                            50,
+                            36,
+                            34,
+                            46,
+                            19,
+                            31,
+                            17,
+                          ]"
+                        ></star-rating>
+
+                        <button class="buton-p btn btn-hire">Profile</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12 ">
+                      <pagination
+                        :data="freelancers"
+                        :limit="1"
+                        @pagination-change-page="getResults"
+                        class="margin-b-0 border-0 margin-mines "
+                      >
+                        <span slot="prev-nav">Previous</span>
+                        <span slot="next-nav">Next</span>
+                      </pagination>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -486,6 +492,7 @@ export default {
     return {
       freelancers: {},
       filteredFreelancers: [],
+      freelancersLoading: false,
       query: "",
       error: false,
       searchLoading: false,
@@ -498,14 +505,17 @@ export default {
   },
   methods: {
     loadFreelancers() {
+      this.freelancersLoading = true;
       axios
         .get("https://vue-api-backend.herokuapp.com/api/freelancer/freelancers")
         .then(({ data }) => {
           this.freelancers = data;
+          this.freelancersLoading = false;
         });
     },
     getResults(page = 1) {
       this.$Progress.start();
+      this.freelancersLoading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/freelancer/freelancers?page=" +
@@ -513,6 +523,7 @@ export default {
         )
         .then((response) => {
           this.freelancers = response.data;
+          this.freelancersLoading = false;
           this.$Progress.finish();
         });
 
@@ -543,6 +554,7 @@ export default {
         this.$Progress.start();
         this.filteredFreelancers = [];
         this.searchLoading = true;
+        this.freelancersLoading = true;
         axios
           .get(
             "https://vue-api-backend.herokuapp.com/api/freelancer/search?q=" +
@@ -554,6 +566,7 @@ export default {
               : (this.filteredFreelancers = response.data);
             this.searchLoading = false;
             this.query = "";
+            this.freelancersLoading = false;
             this.$Progress.finish();
           });
       }
@@ -568,7 +581,8 @@ export default {
         });
     },
     categories() {
-        this.$Progress.start();
+      this.$Progress.start();
+      this.freelancersLoading = true;
       this.filteredFreelancers = [];
       let payload = {
         cq: this.cquery,
@@ -580,6 +594,7 @@ export default {
         data: payload,
       }).then((response) => {
         this.filteredFreelancers = response.data;
+        this.freelancersLoading = false;
         this.$Progress.finish();
       });
     },
@@ -593,10 +608,11 @@ export default {
         });
     },
     tags() {
-        if (this.value == null) {
+      if (this.value == null) {
         this.filteredFreelancers = [];
       } else {
         this.$Progress.start();
+        this.freelancersLoading = true;
 
         let payload = {
           sq: this.value,
@@ -608,12 +624,36 @@ export default {
           data: payload,
         }).then((response) => {
           this.filteredFreelancers = response.data;
+          this.freelancersLoading = false;
           this.$Progress.finish();
         });
       }
     },
     setRating: function(rating) {
       this.rating = rating;
+      this.filteredFreelancers = [];
+
+      this.$Progress.start();
+      this.freelancersLoading = true;
+
+      let payload = {
+        rq: this.rating,
+      };
+      axios({
+        url: "https://vue-api-backend.herokuapp.com/api/freelancer/rate-filter",
+        method: "post",
+        data: payload,
+      }).then((response) => {
+        this.filteredFreelancers = response.data;
+        this.freelancersLoading = false;
+        this.$Progress.finish();
+      });
+    },
+    RestRating() {
+      this.freelancersLoading = true;
+      this.rating = null;
+      this.filteredFreelancers = [];
+      this.freelancersLoading = false;
     },
   },
   mounted() {
