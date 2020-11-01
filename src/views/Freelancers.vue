@@ -593,7 +593,24 @@ export default {
         });
     },
     tags() {
-      console.log("tag pressed");
+        if (this.value == null) {
+        this.filteredFreelancers = [];
+      } else {
+        this.$Progress.start();
+
+        let payload = {
+          sq: this.value,
+        };
+        axios({
+          url:
+            "https://vue-api-backend.herokuapp.com/api/freelancer/skills-filter",
+          method: "post",
+          data: payload,
+        }).then((response) => {
+          this.filteredFreelancers = response.data;
+          this.$Progress.finish();
+        });
+      }
     },
     setRating: function(rating) {
       this.rating = rating;
