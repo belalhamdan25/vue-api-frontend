@@ -110,21 +110,18 @@
           </div>
         </div>
         <div class="col-md-9  col-sm-12">
-          <div class="row">
-            <div
-              class="col-12 d-flex justify-content-start align-content-center flex-wrap mt-41"
-            >
+
               <div v-if="freelancersLoading">
                 <span>Loadin >>>> </span>
               </div>
 
               <div v-else>
                 <div v-if="filteredFreelancers.length">
-                  <div class="row">
+                  <div class="row mt-41">
                     <div
                       v-for="filteredFreelancer in filteredFreelancers"
                       :key="filteredFreelancer.id"
-                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
+                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 d-flex justify-content-center align-content-center pr-2 pl-2"
                     >
                       <div
                         class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
@@ -201,11 +198,11 @@
                 </div>
 
                 <div v-else>
-                  <div class="row">
+                  <div class="row mt-41">
                     <div
                       v-for="freelancer in freelancers.data"
                       :key="freelancer.id"
-                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 pr-2 pl-2"
+                      class="col-lg-4 col-md-6 col-sm-6 pb-4 mb-5 d-flex justify-content-center align-content-center pr-2 pl-2"
                     >
                       <div
                         class="card-continer d-flex flex-column justify-content-center align-items-center bg-white p-2"
@@ -230,7 +227,9 @@
                           <span class="mr-1"
                             ><i class="fas fa-user-tag"></i>
                             {{
-                              freelancer.category.charAt(0).toUpperCase() +
+                              freelancer.category
+                                .charAt(0)
+                                .toUpperCase() +
                                 freelancer.category.slice(1)
                             }}</span
                           >
@@ -292,9 +291,10 @@
                     </div>
                   </div>
                 </div>
+
+
               </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -319,6 +319,8 @@
 }
 .card-continer {
   border-radius: 0.25rem;
+  width: 285px;
+  height: 189px;
 }
 .mt-41 {
   margin-top: 41px;
