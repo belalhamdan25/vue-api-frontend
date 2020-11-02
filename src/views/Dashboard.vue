@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
 
-        <div class="col-12 text-center">
+     <div class="col-12 text-center">
       <h2>Dashboard Page</h2>
     </div>
 

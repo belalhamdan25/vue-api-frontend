@@ -6,9 +6,9 @@
       <div class="row">
           <div class="center">
         <div class="col-12 ">
-          <h4 class="text-white">
+          <h2 class="text-white font-weight-bold">
             Hire the best freelancers for any job, online.
-          </h4>
+          </h2>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Your Project Title" />
             <div class="input-group-append">

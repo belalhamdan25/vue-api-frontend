@@ -60,12 +60,12 @@ export default {
 #app {
   background-color: #f6f6f6;
 }
- #app {
+ /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #707070 !important;
-}
+  color: #65676b !important;
+} */
 /*
 #nav {
   padding: 30px;
