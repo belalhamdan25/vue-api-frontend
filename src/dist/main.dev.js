@@ -22,6 +22,10 @@ var _vueSliderComponent = _interopRequireDefault(require("vue-slider-component")
 
 require("vue-slider-component/theme/default.css");
 
+var _vuesax = _interopRequireDefault(require("vuesax"));
+
+require("vuesax/dist/vuesax.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueToastNotification["default"]);
@@ -46,6 +50,10 @@ _vue["default"].use(require('vue-moment'));
 _vue["default"].use(_vueSocialSharing["default"]);
 
 _vue["default"].component('VueSlider', _vueSliderComponent["default"]);
+
+//Vuesax styles
+_vue["default"].use(_vuesax["default"], {// options here
+});
 
 new _vue["default"]({
   router: _router["default"],

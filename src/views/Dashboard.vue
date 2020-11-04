@@ -1,21 +1,59 @@
 <template>
   <div class="dashboard">
+    <div class="container">
+      <div class="row">
+          <div class="col-12">
+          <h2>Dashboard Page</h2>
+           <p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+</p>
 
-     <div class="col-12 text-center">
-      <h2>Dashboard Page</h2>
+<p>
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+</p> 
+ <p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+</p>
+
+<p>
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+</p> 
+ <p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+</p>
+
+<p>
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+</p> 
+
+        </div>
+      </div>
     </div>
 
-
-        <!-- <div v-if="userType == 'freelancer'" class="col-12 text-center">
-      <h2>Dashboard Page For Freelancer</h2>
-    </div>
-    <div v-if="userType == 'freelancer'" class="col-12 text-center">
-      <h2>Dashboard Page For Freelancer</h2>
-    </div> -->
-
-    <!-- <div v-if="userType == 'client'" class="col-12 text-center">
-      <h2>Dashboard Page For Client</h2>
-    </div> -->
   </div>
 </template>
 
@@ -23,18 +61,11 @@
 export default {
   data() {
     return {
-      // userType: null,
     };
   },
-  computed: {
-    // user() {
-    //   return this.$store.getters.get_user;
-    // },
-  },
-  mounted() {
-    // this.userType=this.user.role_name;
-  },
+
 };
 </script>
 
-<style></style>
+<style>
+</style>
