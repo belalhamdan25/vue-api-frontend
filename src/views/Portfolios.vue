@@ -215,6 +215,8 @@
                     <span slot="prev-nav">Previous</span>
                     <span slot="next-nav">Next</span>
                   </pagination>
+
+
                 </div>
               </div>
             </div>

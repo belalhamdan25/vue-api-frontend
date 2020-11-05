@@ -134,12 +134,6 @@
             </div>
           </div>
 
-          <li class="nav-item center-nav  	d-none d-lg-block d-xl-block " v-if="loggedIn">
-            <router-link class="nav-link " to="#">
-              <i class='bx bx-bar-chart bx-rotate-270' ></i>
-              </router-link
-            >
-          </li>
 
           
         </ul>
@@ -170,8 +164,9 @@
   box-shadow: 0px 13px 17px -5px rgba(0,0,0,0.2);
   padding: 12px 0;
   z-index: 1;
-      left: 50%;
-    transform: translate(-50%, 0);
+      /* left: 50%;
+    transform: translate(-50%, 0); */
+    right:25%;
     
 }
 

@@ -32,6 +32,15 @@ import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 
 Vue.component('VueSlider', VueSlider)
+import Vuesax from 'vuesax'
+
+import 'vuesax/dist/vuesax.css' //Vuesax styles
+Vue.use(Vuesax, {
+  // options here
+})
+
+
+
 
 new Vue({
   router,
