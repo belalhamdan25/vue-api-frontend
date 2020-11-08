@@ -9,13 +9,13 @@
               <div
                 class="d-flex  justify-content-center flex-column align-items-center"
               >
-                <h1 class="text-white text-center font-weight-bold">
+                <h1 class="text-white text-center font-weight-bold animate__animated animate__fadeInDown">
                   Hire the best freelancers <br />
                   for any job, online.
                 </h1>
 
 
-                  <div class="input-group search-input mt-3">
+                  <div class="input-group search-input mt-5 animate__animated animate__fadeInUp">
                 <input type="text" class="form-control p-4" placeholder="Hire Freelancer" />
                 <div class="input-group-append">
                   <!-- <button class="btn btn-success" type="submit">Go</button> -->
@@ -41,12 +41,12 @@
       </div>
     </div>
     <section class="how-works bg-white text-center py-5">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <header class="section-header mb-5">
           <h3>How Worker Works</h3>
         </header>
         <div class="row row-eq-height justify-content-center">
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100" >
             <div class="">
               <i class="fas fa-file-invoice font-9 "></i>
               <div class="card-body">
@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
               <i class="fas fa-hand-holding-usd font-9"></i>
               <div class="card-body">
@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
               <i class="fas fa-user-tie font-9"></i>
               <div class="card-body">
@@ -82,12 +82,12 @@
       </div>
     </section>
     <section class="why-us py-5  text-center">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <header class="section-header mb-5">
           <h3>Why Worker ?</h3>
         </header>
         <div class="row row-eq-height justify-content-center">
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
             <div class="">
               <i class="fas fa-briefcase font-9 "></i>
               <div class="card-body ">
@@ -100,7 +100,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
               <i class="fas fa-paper-plane font-9"></i>
               <div class="card-body">
@@ -112,7 +112,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
               <i class="fas fa-credit-card font-9"></i>
               <div class="card-body">
@@ -125,7 +125,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
               <i class="fas fa-users font-9"></i>
               <div class="card-body">
@@ -138,7 +138,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
               <i class="fas fa-user-tie font-9"></i>
               <div class="card-body">
@@ -151,7 +151,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
             <div class="">
               <i class="fas fa-dollar-sign font-9"></i>
               <div class="card-body">
@@ -166,12 +166,12 @@
       </div>
     </section>
     <div class="categories bg-white text-center py-5">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <header class="section-header mb-5">
           <h3>Categories</h3>
         </header>
         <div class="row row-eq-height justify-content-center">
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
             <div class="card p-4">
               <i class="fas fa-paint-brush font-9 "></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -184,7 +184,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" card p-4">
               <i class="fas fa-language font-9"></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -197,7 +197,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card p-4 ">
               <i class="fas fa-code font-9"></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -210,7 +210,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class="card p-4">
               <i class="fas fa-pencil-alt font-9"></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -222,7 +222,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card p-4">
               <i class="fas fa-lightbulb font-9"></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -234,7 +234,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 mb-4">
+          <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
             <div class="card p-4">
               <i class="fas fa-comments font-9"></i>
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
@@ -249,7 +249,7 @@
       </div>
     </div>
     <div class="background-startsec ">
-      <div class="container ">
+      <div class="container" data-aos="zoom-in">
         <div class="row ">
           <div class="col-12 text-center">
             <div class="p-5">
@@ -268,7 +268,7 @@
 <style scoped>
 .slide-back-image {
   background-image: url("./../../src/assets/images/homepage-slide-8.jpg");
-  height: 60vh; /* You must set a specified height */
+  height: 90vh; /* You must set a specified height */
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -304,7 +304,11 @@
 .search-input{
   width: 50%;
 }
-
+@media only screen and (max-width: 700px) {
+.search-input{
+  width: 100%;
+}
+}
 .background-startsec1 {
   background-color: #41b883;
 }
@@ -318,5 +322,10 @@
 </style>
 
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init({
+  once: true
+});
 export default {};
 </script>
