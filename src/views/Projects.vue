@@ -278,8 +278,7 @@
                       @pagination-change-page="getResults"
                       class="margin-b-0 border-0 "
                     >
-                      <span slot="prev-nav">Previous</span>
-                      <span slot="next-nav">Next</span>
+
                     </pagination>
                   </div>
                 </div>

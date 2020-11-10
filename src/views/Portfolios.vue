@@ -205,15 +205,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-12 pl-3">
+                <div class="col-12 pl-2">
                   <pagination
                     :data="Portfolios"
                     :limit="1"
                     @pagination-change-page="getResults"
                     class="margin-b-0 border-0 "
                   >
-                    <span slot="prev-nav">Previous</span>
-                    <span slot="next-nav">Next</span>
+
                   </pagination>
 
 
@@ -353,6 +352,39 @@
 .card-link {
   text-decoration: none;
 }
+</style>
+
+<style>
+.pagination > li > a
+{
+    background-color: white;
+    color: #41b883;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #41b883;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #41b883 !Important;
+    border: solid 1px #41b883 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #41b883 !Important;
+    border: solid 1px #41b883;
+}
+
+
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
