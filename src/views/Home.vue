@@ -48,10 +48,11 @@
         <div class="row row-eq-height justify-content-center">
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100" >
             <div class="">
-              <i class="fas fa-file-invoice font-9 "></i>
+              <!-- <i class="fas fa-file-invoice font-9 "></i> -->
+              <img src="./../../src/assets/icons/file-invoice-solid updated.svg" style="width:37.5px;height:50px;" class="img-fluid">  
               <div class="card-body">
                 <h5 class="card-title">Add Project</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Add project for free and be ready to choose the best deal
                 </p>
               </div>
@@ -59,10 +60,12 @@
           </div>
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
-              <i class="fas fa-hand-holding-usd font-9"></i>
+              <!-- <i class="fas fa-hand-holding-usd font-9"></i> -->
+            <img src="./../../src/assets/icons/hand-holding-usd-solid updated.svg" style="width:56.25px;height:50px;" class="img-fluid">  
+
               <div class="card-body">
                 <h5 class="card-title">Choose Deal</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Choose the best deal and start the project proccess
                 </p>
               </div>
@@ -71,10 +74,11 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
-              <i class="fas fa-user-tie font-9"></i>
+              <!-- <i class="fas fa-user-tie font-9"></i> -->
+              <img src="./../../src/assets/icons/user-tie-solid updated.svg" style="width:43.75px;height:50px;" class="img-fluid">  
               <div class="card-body">
                 <h5 class="card-title">Hire The Best</h5>
-                <p class="card-text">Choose the best worker and hire him</p>
+                <p class="card-text" style="color:#666">Choose the best worker and hire him</p>
               </div>
             </div>
           </div>
@@ -89,10 +93,12 @@
         <div class="row row-eq-height justify-content-center">
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
             <div class="">
-              <i class="fas fa-briefcase font-9 "></i>
+              <!-- <i class="fas fa-briefcase font-9 "></i> -->
+                            <img src="./../../src/assets/icons/briefcase-solid updated.svg" style="width:50px;height:50px;" class="img-fluid">  
+
               <div class="card-body ">
                 <h5 class="card-title">Compleate Project easily</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Add your project and leave the task of implementing it to the
                   best experts in the world
                 </p>
@@ -102,10 +108,12 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
-              <i class="fas fa-paper-plane font-9"></i>
+              <!-- <i class="fas fa-paper-plane font-9"></i> -->
+              
+               <img src="./../../src/assets/icons/paper-plane-solid updated.svg" style="width:50px;height:50px;" class="img-fluid">  
               <div class="card-body">
                 <h5 class="card-title">Hire The Best Freelancer</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Choose the freelancers you see and hire them directly
                 </p>
               </div>
@@ -114,10 +122,12 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
-              <i class="fas fa-credit-card font-9"></i>
+              <!-- <i class="fas fa-credit-card font-9"></i> -->
+          <img src="./../../src/assets/icons/credit-card-solid updated.svg" style="width:56.25px;height:50px;" class="img-fluid">  
+
               <div class="card-body">
                 <h5 class="card-title">Pay with your rights guaranteed</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   pay for the work that is done and the balance remains in your
                   account until the project complete
                 </p>
@@ -127,10 +137,12 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class=" ">
-              <i class="fas fa-users font-9"></i>
+              <!-- <i class="fas fa-users font-9"></i> -->
+                        <img src="./../../src/assets/icons/users-solid updated.svg" style="width:62.5px;height:50px;" class="img-fluid">  
+
               <div class="card-body">
                 <h5 class="card-title">Biuld Amizang teams</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Experts in various fields and from different countries are
                   ready to serve you
                 </p>
@@ -140,10 +152,13 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class=" ">
-              <i class="fas fa-user-tie font-9"></i>
+              <!-- <i class="fas fa-user-tie font-9"></i>  -->
+
+              <img src="./../../src/assets/icons/user-tie-solid updated 2.svg" style="width:43.75px;height:50px;" class="img-fluid">  
+
               <div class="card-body">
                 <h5 class="card-title">Get your business done quickly</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Browse the freelancers , see their work spamples, and skills
                   and hire the best
                 </p>
@@ -153,10 +168,14 @@
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
             <div class="">
-              <i class="fas fa-dollar-sign font-9"></i>
+              <!-- <i class="fas fa-dollar-sign font-9"></i> -->
+
+              <img src="./../../src/assets/icons/dollar-sign-solid updated.svg" style="width:28.13px;height:50px;" class="img-fluid">  
+
+
               <div class="card-body">
                 <h5 class="card-title">your projects at the lowest cost</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Hire the best expertise according to your budget
                 </p>
               </div>
@@ -172,11 +191,13 @@
         </header>
         <div class="row row-eq-height justify-content-center">
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="card p-4">
-              <i class="fas fa-paint-brush font-9 "></i>
+            <div class="card p-4 animate-up text-center  d-flex  justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-paint-brush font-9 "></i> -->
+               <img src="./../../src/assets/icons/paint-brush-solid updated.svg" style="width:50px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Design and works</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Graphic design interior engineering and planning Motion
                   graphic design
                 </p>
@@ -185,11 +206,13 @@
           </div>
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-            <div class=" card p-4">
-              <i class="fas fa-language font-9"></i>
+            <div class=" card p-4 animate-up d-flex  justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-language font-9"></i> -->
+                                           <img src="./../../src/assets/icons/language-solid updated.svg" style="width:62.5px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Translation and languages</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Legal translation, general translation, and technical
                   translation
                 </p>
@@ -198,11 +221,13 @@
           </div>
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card p-4 ">
-              <i class="fas fa-code font-9"></i>
+            <div class="card p-4 animate-up d-flex  justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-code font-9"></i> -->
+          <img src="./../../src/assets/icons/code-solid updated.svg" style="width:62.5px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Programming and development</h5>
-                <p class="card-text">
+                <p class="card-text"  style="color:#666">
                   Software development, programming, support and application
                   development
                 </p>
@@ -211,11 +236,13 @@
           </div>
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="card p-4">
-              <i class="fas fa-pencil-alt font-9"></i>
+            <div class="card p-4 animate-up justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-pencil-alt font-9"></i> -->
+                        <img src="./../../src/assets/icons/pen-alt-solid updated.svg" style="width:50px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Writing and editing</h5>
-                <p class="card-text">
+                <p class="card-text"  style="color:#666">
                   Content writing, research and reports, editing and auditing
                 </p>
               </div>
@@ -223,11 +250,13 @@
           </div>
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card p-4">
-              <i class="fas fa-lightbulb font-9"></i>
+            <div class="card p-4 animate-up justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-lightbulb font-9"></i> -->
+                                      <img src="./../../src/assets/icons/lightbulb-solid updated.svg" style="width:62.5px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Sales and marketing</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   E-marketing, social media campaigns, and pricing strategies
                 </p>
               </div>
@@ -235,11 +264,13 @@
           </div>
 
           <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="card p-4">
-              <i class="fas fa-comments font-9"></i>
+            <div class="card p-4 animate-up justify-content-center flex-column align-items-center">
+              <!-- <i class="fas fa-comments font-9"></i> -->
+                 <img src="./../../src/assets/icons/comments-solid updated.svg" style="width:65.25px;height:50px;" class="img-fluid">  
+
               <div class="card-body d-flex  justify-content-center flex-column align-items-center">
                 <h5 class="card-title">Consulting and training</h5>
-                <p class="card-text">
+                <p class="card-text" style="color:#666">
                   Provide advice, experiences and reviews and share experiences
                 </p>
               </div>
@@ -251,12 +282,17 @@
     <div class="background-startsec ">
       <div class="container" data-aos="zoom-in">
         <div class="row ">
-          <div class="col-12 text-center">
-            <div class="p-5">
-              <h1 class="text-white ">
+          <div class="col-12 text-center ">
+            <div class="p-5 d-flex  justify-content-center flex-column align-items-center">
+              <h3 class="text-white ">
                 Are You Ready To Start Your Project?
-              </h1>
-              <button>Start Now</button>
+              </h3>
+      <vs-button
+        color="#fff"
+        border
+      >
+        Get Started
+      </vs-button>
             </div>
           </div>
         </div>
@@ -318,7 +354,19 @@
 .card{
   min-height: 280px;
 }
+.animate-up{
+  -webkit-transition: top ease 0.5s;
+  -moz-transition: top ease 0.5s;
+  -o-transition: top ease 0.5s;
 
+    transition: top ease 0.5s;
+     position: relative;
+  top: 0;
+}
+.animate-up:hover {
+  top: -10px;
+  cursor: pointer;
+}
 </style>
 
 <script>
