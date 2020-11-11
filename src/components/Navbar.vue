@@ -20,8 +20,12 @@
               </li>
 
               <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
-                                <router-link @click="openDrawer()" class="nav-link" to="#"
-                  ><i class='bx bx-user-circle'></i></router-link>
+                                <router-link  class="nav-link" to="#"
+                  >
+                  
+                  <i class='bx bx-user-circle'></i>
+                  
+                  </router-link>
               
               <div class="dropdown-content">
                 <router-link class="dropdown-item" to="/settings">
@@ -117,8 +121,13 @@
               </li>
 
               <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
-                                <router-link @click="openDrawer()" class="nav-link" to="#"
-                  ><i class='bx bx-user-circle'></i></router-link>
+                                <router-link  class="nav-link" to="#"
+                  >
+                  
+                  <i class='bx bx-user-circle'></i>
+                  
+                  
+                  </router-link>
               
               <div class="dropdown-content">
                 <router-link class="dropdown-item" to="/settings">

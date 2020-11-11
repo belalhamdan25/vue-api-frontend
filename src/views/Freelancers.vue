@@ -191,7 +191,7 @@
                           ]"
                         ></star-rating>
 
-                        <button class="buton-p btn btn-hire">Profile</button>
+                        <a :href="'u/' + filteredFreelancer.id" class="buton-p btn btn-hire">Profile</a>
                       </div>
                     </div>
                   </div>
@@ -272,7 +272,7 @@
                           ]"
                         ></star-rating>
 
-                        <button class="buton-p btn btn-hire">Profile</button>
+                        <router-link :to="'u/' + freelancer.id" class="buton-p btn btn-hire">Profile</router-link>
                       </div>
                     </div>
                   </div>

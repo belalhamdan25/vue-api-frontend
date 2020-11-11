@@ -103,13 +103,13 @@
               <div class="skills ">
                 <h6>Skills</h6>
                 <hr />
-                <a
-                  href=""
+                <span
+                  
                   @click="pushskill(portfolioValuesSkill.name)"
                   class="label-tag "
                   v-for="portfolioValuesSkill in portfolioValuesSkills"
                   :key="portfolioValuesSkill.id"
-                  ><i class="fas fa-tag"></i> {{ portfolioValuesSkill.name }}</a
+                  ><i class="fas fa-tag"></i> {{ portfolioValuesSkill.name }}</span
                 >
               </div>
             </div>
@@ -258,6 +258,7 @@ small {
   text-decoration: none;
   /* text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .label-tag:hover {

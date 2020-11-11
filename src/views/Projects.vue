@@ -122,8 +122,8 @@
                       v-for="filteredProject in filteredProjects"
                       :key="filteredProject.id"
                     >
-                      <a
-                        :href="'project/' + filteredProject.id"
+                      <router-link
+                        :to="'project/' + filteredProject.id"
                         class="d-flex justify-content-start align-items-center p-2 project-item"
                       >
                         <div
@@ -181,29 +181,29 @@
                             {{ filteredProject.desc.substring(0, 150) + ".." }}
                           </p>
 
-                          <div
+
+                        </div>
+                      </router-link>
+                                                <div
                             class="d-flex justify-content-start align-items-center "
                           >
-                            <a
-                              href="#"
+                            <span
                               @click="pushSkill(projectS.name)"
                               class="label-tag"
                               v-for="projectS in filteredProject.skills"
                               :key="projectS.id"
                               ><i class="fas fa-tag"></i> {{ projectS.name }}
-                            </a>
+                            </span>
                           </div>
-                        </div>
-                      </a>
                       <hr />
                     </div>
                   </div>
 
                   <div v-else>
                     <div v-for="project in projects.data" :key="project.id">
-                      <a
+                      <router-link
                         class="d-flex justify-content-start align-items-center p-2 project-item"
-                        :href="'project/' + project.id"
+                        :to="'project/' + project.id"
                       >
                         <div
                           class="d-flex flex-column justify-content-center align-items-center"
@@ -255,20 +255,20 @@
                             {{ project.desc.substring(0, 150) + ".." }}
                           </p>
 
-                          <div
+
+                        </div>
+                      </router-link>
+                                                <div
                             class="d-flex justify-content-start align-items-center "
                           >
-                            <a
-                              href="#"
+                            <span
                               @click="pushSkill(projectS.name)"
                               class="label-tag"
                               v-for="projectS in project.skills"
                               :key="projectS.id"
                               ><i class="fas fa-tag"></i> {{ projectS.name }}
-                            </a>
+                            </span>
                           </div>
-                        </div>
-                      </a>
                       <hr />
                     </div>
 
@@ -456,6 +456,7 @@ hr {
   text-decoration: none;
   /* text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .label-tag:hover {

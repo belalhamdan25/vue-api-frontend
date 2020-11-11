@@ -100,9 +100,9 @@
                   v-for="searchPortfolio in searchPortfolios"
                   :key="searchPortfolio.id"
                 >
-                  <a
+                  <router-link
                     class="card-link"
-                    :href="'portfolio/' + searchPortfolio.id"
+                    :to="'portfolio/' + searchPortfolio.id"
                   >
                     <div class="card portfolio-card border-0  p-2">
                       <div
@@ -147,7 +147,7 @@
                         :alt="searchPortfolio.desc"
                       />
                     </div>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@
                   v-for="Portfolio in Portfolios.data"
                   :key="Portfolio.id"
                 >
-                  <a class="card-link" :href="'portfolio/' + Portfolio.id">
+                  <router-link class="card-link" :to="'portfolio/' + Portfolio.id">
                     <div class="card portfolio-card border-0  p-2">
                       <div
                         class=" d-flex justify-content-start align-items-center"
@@ -201,7 +201,7 @@
                         :alt="Portfolio.desc"
                       />
                     </div>
-                  </a>
+                  </router-link>
                 </div>
               </div>
               <div class="row">
