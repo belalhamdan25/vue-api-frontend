@@ -219,11 +219,11 @@ export default {
           var RateRate = this.userValues.data.rate;
 
           this.arrayuserData = [
-            ProjectsRate,
-            PortfolioRate,
-            ProfileRate,
-            OffersRate,
             RateRate,
+            ProfileRate,
+            PortfolioRate,
+            OffersRate,
+            ProjectsRate,
             SkillsRate,
           ];
         });

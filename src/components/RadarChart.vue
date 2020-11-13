@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       datacollection: {
-      labels: ["Projects", "Portfolio", "Profile", "Offers", "Rate", "Skills"],
+      labels: ["Rate", "Profile", "Portfolio", "Offers", "Projects", "Skills"],
             datasets: [
                 {
                   label: "User Data",
