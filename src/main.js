@@ -41,7 +41,6 @@ Vue.use(Vuesax, {
 
 
 
-
 new Vue({
   router,
   store,

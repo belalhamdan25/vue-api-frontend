@@ -240,7 +240,6 @@ export default {
   data() {
     return {
       token: null,
-      active: "guide",
     };
   },
   mounted() {
