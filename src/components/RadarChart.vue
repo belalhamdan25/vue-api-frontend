@@ -55,7 +55,6 @@ export default {
         maintainAspectRatio: true,
         tooltips: {enabled: false}
       },
-      initialDataProp:null
     };
   },
   mounted() {

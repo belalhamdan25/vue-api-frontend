@@ -72,9 +72,9 @@
               <div
                 class="port-view d-flex flex-column justify-content-center align-items-center "
               >
-                <h6>
+                <p>
                   {{ projectValue.desc }}
-                </h6>
+                </p>
               </div>
             </div>
             <div class="col-12 mb-2 radios-5  p-4 bg-white ">
@@ -196,7 +196,7 @@
                 <h6>Add Offer</h6>
                 <hr />
                 <div class="add-offer-false text-center">
-                <h6>login first if you want to add deals</h6>
+                <p>login first if you want to add deals</p>
                     <button class="btn btn-hire mr-2" type="button" @click="gotToSignup()">
                       Register
                     </button>
@@ -250,7 +250,7 @@
                       </small>
                     </div>
                   </div>
-                  <h6 class="px-2">{{ projectOffer.desc }}</h6>
+                  <p class="px-2">{{ projectOffer.desc }}</p>
 
                   <div class="hr-offers mt-4 mb-4"></div>
                 </div>
@@ -273,26 +273,26 @@
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <div>Time Line</div>
-                    <div>{{ projectValue.time_line }} Days</div>
+                    <p>Time Line</p>
+                    <p>{{ projectValue.time_line }} Days</p>
                   </div>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <div>Budget</div>
-                    <div>$ {{ projectValue.budget }}</div>
+                    <p>Budget</p>
+                    <p>$ {{ projectValue.budget }}</p>
                   </div>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <div>Offers</div>
-                    <div>{{ projectValue.offers_count }}</div>
+                    <p>Offers</p>
+                    <p>{{ projectValue.offers_count }}</p>
                   </div>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <div>Avg</div>
-                    <div>$ {{ projectOffersAvg }}</div>
+                    <p>Avg</p>
+                    <p>$ {{ projectOffersAvg }}</p>
                   </div>
                 </div>
               </div>
