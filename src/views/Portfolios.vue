@@ -81,22 +81,25 @@
             ></multiselect>
           </div>
         </div>
-        <div class="col-md-9  col-sm-12">
+        <div class="col-md-9 col-sm-12">
           <!-- <div v-show="value2" class="row">
             <div class="col-12">
             <h6 ><b>Results</b> {{value2}} Skill :</h6>
             </div>
           </div> -->
+                <!-- <vcl-instagram primary="#dfdfdf"></vcl-instagram> -->
 
-          <div v-if="portfoliosLoading">
-            <span>Loading >>>></span>
-          </div>
+                    <div v-if="portfoliosLoading">
+                      <div class="row">
+                          <skelton-card v-for="index in 18" :key="index"></skelton-card>
+                      </div>
+                  </div>
 
           <div v-else>
             <div v-if="searchPortfolios.length">
               <div class="row">
                 <div
-                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-2 pl-2"
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex justify-content-center align-content-center pr-2 pl-2"
                   v-for="searchPortfolio in searchPortfolios"
                   :key="searchPortfolio.id"
                 >
@@ -104,14 +107,14 @@
                     class="card-link"
                     :to="'portfolio/' + searchPortfolio.id"
                   >
-                    <div class="card portfolio-card border-0  p-2">
+                    <div class="card portfolio-card border-0 p-2">
                       <div
-                        class=" d-flex justify-content-start align-items-center"
+                        class="d-flex justify-content-start align-items-center"
                       >
                         <div class="d-flex align-items-center px-1 w-img-100">
                           <img
                             v-if="searchPortfolio.user.user_img != null"
-                            class=" hw-35-c rounded-circle"
+                            class="hw-35-c rounded-circle"
                             :src="searchPortfolio.user.user_img"
                             alt="user image"
                           />
@@ -119,7 +122,7 @@
                             class="hw-35-c letter-profile-img rounded-circle"
                             v-else
                           >
-                            <span style="color:white">{{
+                            <span style="color: white">{{
                               searchPortfolio.user.first_name
                                 .charAt(0)
                                 .toUpperCase()
@@ -128,7 +131,7 @@
                         </div>
                         <div class="pl-2">
                           <div
-                            class=" justify-content-center pr-1 align-content-end"
+                            class="justify-content-center pr-1 align-content-end"
                           >
                             <h6 class="card-name m-0 h-fit f-15">
                               {{ searchPortfolio.user.first_name }}
@@ -142,7 +145,7 @@
                         </div>
                       </div>
                       <img
-                        class="card-img-top img-raduis-bottom "
+                        class="card-img-top img-raduis-bottom"
                         :src="searchPortfolio.portfolio_images[0].name"
                         :alt="searchPortfolio.desc"
                       />
@@ -155,19 +158,22 @@
             <div v-else>
               <div class="row">
                 <div
-                  class="col-lg-4 col-md-6 col-sm-6 pb-4  d-flex justify-content-center align-content-center pr-2 pl-2"
+                  class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex justify-content-center align-content-center pr-2 pl-2"
                   v-for="Portfolio in Portfolios.data"
                   :key="Portfolio.id"
                 >
-                  <router-link class="card-link" :to="'portfolio/' + Portfolio.id">
-                    <div class="card portfolio-card border-0  p-2">
+                  <router-link
+                    class="card-link"
+                    :to="'portfolio/' + Portfolio.id"
+                  >
+                    <div class="card portfolio-card border-0 p-2">
                       <div
-                        class=" d-flex justify-content-start align-items-center"
+                        class="d-flex justify-content-start align-items-center"
                       >
                         <div class="d-flex align-items-center px-1 w-img-100">
                           <img
                             v-if="Portfolio.user.user_img != null"
-                            class=" hw-35-c rounded-circle"
+                            class="hw-35-c rounded-circle"
                             :src="Portfolio.user.user_img"
                             alt="user image"
                           />
@@ -175,14 +181,14 @@
                             class="hw-35-c letter-profile-img rounded-circle"
                             v-else
                           >
-                            <span style="color:white">{{
+                            <span style="color: white">{{
                               Portfolio.user.first_name.charAt(0).toUpperCase()
                             }}</span>
                           </div>
                         </div>
                         <div class="pl-2">
                           <div
-                            class=" justify-content-center pr-1 align-content-end"
+                            class="justify-content-center pr-1 align-content-end"
                           >
                             <h6 class="card-name m-0 h-fit f-15">
                               {{ Portfolio.user.first_name }}
@@ -196,7 +202,7 @@
                         </div>
                       </div>
                       <img
-                        class="card-img-top img-raduis-bottom "
+                        class="card-img-top img-raduis-bottom"
                         :src="Portfolio.portfolio_images[0].name"
                         :alt="Portfolio.desc"
                       />
@@ -210,12 +216,9 @@
                     :data="Portfolios"
                     :limit="1"
                     @pagination-change-page="getResults"
-                    class="margin-b-0 border-0 "
+                    class="margin-b-0 border-0"
                   >
-
                   </pagination>
-
-
                 </div>
               </div>
             </div>
@@ -355,36 +358,30 @@
 </style>
 
 <style>
-.pagination > li > a
-{
-    background-color: white;
-    color: #41b883;
+.pagination > li > a {
+  background-color: white;
+  color: #41b883;
 }
 
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
-.pagination > li > span:hover
-{
-    color: #41b883;
-    background-color: #eee;
-    border-color: #ddd;
+.pagination > li > span:hover {
+  color: #41b883;
+  background-color: #eee;
+  border-color: #ddd;
 }
 
-.pagination > .active > a
-{
-    color: white;
-    background-color: #41b883 !Important;
-    border: solid 1px #41b883 !Important;
+.pagination > .active > a {
+  color: white;
+  background-color: #41b883 !important;
+  border: solid 1px #41b883 !important;
 }
 
-.pagination > .active > a:hover
-{
-    background-color: #41b883 !Important;
-    border: solid 1px #41b883;
+.pagination > .active > a:hover {
+  background-color: #41b883 !important;
+  border: solid 1px #41b883;
 }
-
-
 </style>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -392,9 +389,10 @@
 <script>
 import axios from "axios";
 import Multiselect from "vue-multiselect";
+import SkeltonCard from "@/components/SkeltonCard";
 
 export default {
-  components: { Multiselect },
+  components: { Multiselect,SkeltonCard},
   data() {
     return {
       Portfolios: {},
@@ -443,7 +441,7 @@ export default {
 
       this.scrollTop();
     },
-    scrollTop: function() {
+    scrollTop: function () {
       this.intervalId = setInterval(() => {
         if (window.pageYOffset === 0) {
           clearInterval(this.intervalId);
@@ -452,7 +450,7 @@ export default {
       }, 20);
     },
 
-    search: function() {
+    search: function () {
       if (this.query == "") {
         this.searchPortfolios = [];
         this.errorSearchMessageOpen();
@@ -524,7 +522,7 @@ export default {
         // console.log(this.cquery);
       });
     },
-    gotToSignup: function() {
+    gotToSignup: function () {
       this.$router.push("/register");
     },
 

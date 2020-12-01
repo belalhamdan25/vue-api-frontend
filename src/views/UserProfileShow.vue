@@ -5,46 +5,48 @@
         <div class="col-12">
           <div class="row">
             <div class="col-12 radios-5 bg-white pt-4 pr-4 pl-4">
-              <div class="d-none d-md-block">
-                <div
-                  class="profile-header d-flex justify-content-between align-items-center mx-4"
-                >
+              <div class="">
+                <div class="d-none d-md-block">
                   <div
-                    class="d-flex flex-column justify-content-center align-items-center"
+                    class="profile-header d-flex justify-content-between align-items-center mx-4"
                   >
-                    <img
-                      v-if="userValue.user_img != null"
-                      class="circle2"
-                      :src="userValue.user_img"
-                    />
+                    <div
+                      class="d-flex flex-column justify-content-center align-items-center"
+                    >
+                      <img
+                        v-if="userValue.user_img != null"
+                        class="circle2"
+                        :src="userValue.user_img"
+                      />
 
-                    <div v-else class="circle">
-                      <span style="color: white; font-size: 25px">{{
-                        userValue.user_name.charAt(0).toUpperCase()
-                      }}</span>
+                      <div v-else class="circle">
+                        <span style="color: white; font-size: 25px">{{
+                          userValue.user_name.charAt(0).toUpperCase()
+                        }}</span>
+                      </div>
+
+                      <h6 class="mt-4">{{ userValue.user_name }}</h6>
                     </div>
 
-                    <h6 class="mt-4">{{ userValue.user_name }}</h6>
-                  </div>
+                    <div
+                      class="d-flex flex-column justify-content-center align-items-start"
+                      style="color: #666"
+                    >
+                      <p>
+                        <i class="fas fa-user-tag"></i> {{ userValue.category }}
+                      </p>
+                      <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ userValue.location }}
+                      </p>
+                    </div>
 
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-start"
-                    style="color: #666"
-                  >
-                    <p>
-                      <i class="fas fa-user-tag"></i> {{ userValue.category }}
-                    </p>
-                    <p>
-                      <i class="fas fa-map-marker-alt"></i>
-                      {{ userValue.location }}
-                    </p>
-                  </div>
-
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <div style="position: relative; width: 225px">
-                      <radar-chart :user-data="arrayuserData"></radar-chart>
+                    <div
+                      class="d-flex flex-column justify-content-center align-items-center"
+                    >
+                      <div style="position: relative; width: 225px">
+                        <radar-chart :user-data="arrayuserData"></radar-chart>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -61,68 +63,6 @@
               </div>
             </nav> -->
 
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      id="pills-about-tab"
-                      data-toggle="pill"
-                      href="#pills-about"
-                      role="tab"
-                      aria-controls="pills-about"
-                      aria-selected="true"
-                      ><i class='bx bx-user'></i> About me</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-portfolio-tab"
-                      data-toggle="pill"
-                      href="#pills-portfolio"
-                      role="tab"
-                      aria-controls="pills-portfolio"
-                      aria-selected="false"
-                      ><i  class='bx bx-photo-album'></i> Portfolio</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-offers-tab"
-                      data-toggle="pill"
-                      href="#pills-offers"
-                      role="tab"
-                      aria-controls="pills-offers"
-                      aria-selected="false"
-                      ><i class='bx bx-spreadsheet'></i> Offers</a
-                    >
-                  </li>
-                    <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-projects-tab"
-                      data-toggle="pill"
-                      href="#pills-projects"
-                      role="tab"
-                      aria-controls="pills-projects"
-                      aria-selected="false"
-                      ><i class='bx bx-briefcase-alt'></i> Projects</a
-                    >
-                  </li>
-                   <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-rates-tab"
-                      data-toggle="pill"
-                      href="#pills-rates"
-                      role="tab"
-                      aria-controls="pills-rates"
-                      aria-selected="false"
-                      ><i class='bx bx-star' ></i> Rates</a
-                    >
-                  </li>
-                </ul>
               </div>
 
               <div class="d-block d-sm-block d-md-none">
@@ -161,6 +101,71 @@
                   </div>
                 </div>
               </div>
+
+
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="pills-about-tab"
+                      data-toggle="pill"
+                      href="#pills-about"
+                      role="tab"
+                      aria-controls="pills-about"
+                      aria-selected="true"
+                      ><i class="bx bx-user"></i> About me</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="pills-portfolio-tab"
+                      data-toggle="pill"
+                      href="#pills-portfolio"
+                      role="tab"
+                      aria-controls="pills-portfolio"
+                      aria-selected="false"
+                      ><i class="bx bx-photo-album"></i> Portfolio</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="pills-offers-tab"
+                      data-toggle="pill"
+                      href="#pills-offers"
+                      role="tab"
+                      aria-controls="pills-offers"
+                      aria-selected="false"
+                      ><i class="bx bx-spreadsheet"></i> Offers</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="pills-projects-tab"
+                      data-toggle="pill"
+                      href="#pills-projects"
+                      role="tab"
+                      aria-controls="pills-projects"
+                      aria-selected="false"
+                      ><i class="bx bx-briefcase-alt"></i> Projects</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="pills-rates-tab"
+                      data-toggle="pill"
+                      href="#pills-rates"
+                      role="tab"
+                      aria-controls="pills-rates"
+                      aria-selected="false"
+                      ><i class="bx bx-star"></i> Rates</a
+                    >
+                  </li>
+                </ul>
+                
             </div>
           </div>
         </div>
@@ -193,9 +198,62 @@
                     <h6>Portfolio</h6>
                     <hr />
 
+                    <div class="row">
+                      <div
+                        class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex justify-content-center align-content-center pr-2 pl-2"
+                        v-for="userPort in userValue.portfolios"
+                        :key="userPort.id"
+                      >
+                        <router-link
+                          class="card-link"
+                          :to="'/portfolio/' + userPort.id"
+                        >
+                          <div class="card portfolio-card border-0 p-2">
+                            <div
+                              class="d-flex justify-content-start align-items-center"
+                            >
+                              <div
+                                class="d-flex align-items-center px-1 w-img-100"
+                              >
+                                <img
+                                  v-if="userValue.user_img != null"
+                                  class="hw-35-c rounded-circle"
+                                  :src="userValue.user_img"
+                                  alt="user image"
+                                />
+                                <div
+                                  class="hw-35-c letter-profile-img rounded-circle"
+                                  v-else
+                                >
+                                  <span style="color: white">{{
+                                    userValue.user_name.charAt(0).toUpperCase()
+                                  }}</span>
+                                </div>
+                              </div>
+                              <div class="pl-2">
+                                <div
+                                  class="justify-content-center pr-1 align-content-end"
+                                >
+                                  <h6 class="card-name m-0 h-fit f-15">
+                                    {{ userValue.user_name }}
+                                  </h6>
 
+                                  <small class="text-muted">{{
+                                    userPort.title.substring(0, 20) + ".."
+                                  }}</small>
+                                </div>
+                              </div>
+                            </div>
 
-
+                            <img
+                              class="card-img-top img-raduis-bottom mt-2"
+                              :src="userPort.portfolio_images[0].name"
+                              :alt="userPort.desc"
+                            />
+                          </div>
+                        </router-link>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -204,35 +262,182 @@
                   role="tabpanel"
                   aria-labelledby="pills-offers-tab"
                 >
-                   <div class="offers">
+                  <div class="offers">
                     <h6>Offers</h6>
                     <hr />
 
+                    <div class="row">
+                      <div class="col-12">
+                        <router-link
+                          v-for="userOffers in userValue.user_offers"
+                          :key="userOffers.id"
+                          :to="'/project/' + userOffers.project.id"
+                          class="d-flex justify-content-start align-items-center p-2 project-item"
+                        >
+                          <!-- <div
+                            class="d-flex flex-column justify-content-center align-items-center"
+                          >
+                            <img
+                              v-if="userValue.user_img != null"
+                              class="hw-35-c mr-4 rounded-circle"
+                              :src="userValue.user_img"
+                              alt="user image"
+                            />
+                            <div
+                              class="hw-35-c letter-profile-img rounded-circle mr-4"
+                              v-else
+                            >
+                              <span style="color: white; font-size: 20px">{{
+                                userValue.user_name
+                                  .charAt(0)
+                                  .toUpperCase()
+                              }}</span>
+                            </div>
+                          </div> -->
+                          <div
+                            class="d-flex flex-column justify-content-center align-items-start"
+                          >
+                            <h6 class="mb-0">{{ userOffers.project.title }}</h6>
+                            <div
+                              class="d-flex justify-content-start align-items-center"
+                            >
+                              <!-- <div class="auth mr-2 text-muted">
+                                <i
+                                  class="fas fa-user"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small> {{ filteredProject.user_name }}</small>
+                              </div> -->
+                              <div class="time mr-2 text-muted">
+                                <i
+                                  class="fas fa-clock"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small>
+                                  {{
+                                    userOffers.project.created_at
+                                      | moment("from", "now")
+                                  }}
+                                </small>
+                              </div>
+                              <!-- <div class="offers mr-2 text-muted">
+                                <i
+                                  class="fas fa-user-tie"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small>
+                                  {{
+                                    filteredProject.offers_count
+                                  }}
+                                  offers</small
+                                >
+                              </div> -->
+                            </div>
+                            <p class="text-muted" style="font-size: 14px">
+                              {{
+                                userOffers.project.desc.substring(0, 150) + ".."
+                              }}
+                            </p>
+                          </div>
+                        </router-link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                      <div
+                <div
                   class="tab-pane fade"
                   id="pills-projects"
                   role="tabpanel"
                   aria-labelledby="pills-projects-tab"
                 >
-                   <div class="projects">
+                  <div class="projects">
                     <h6>Projects</h6>
                     <hr />
 
+                    <div class="row">
+                      <div class="col-12">
+                        <router-link
+                          :to="'/project/' + userProject.id"
+                          class="d-flex justify-content-start align-items-center p-2 project-item"
+                          v-for="userProject in userValue.projects"
+                          :key="userProject.id"
+                        >
+                          <div
+                            class="d-flex flex-column justify-content-center align-items-center"
+                          >
+                            <img
+                              v-if="userValue.user_img != null"
+                              class="hw-35-c mr-4 rounded-circle"
+                              :src="userValue.user_img"
+                              alt="user image"
+                            />
+                            <div
+                              class="hw-35-c letter-profile-img rounded-circle mr-4"
+                              v-else
+                            >
+                              <span style="color: white; font-size: 20px">{{
+                                userValue.user_name.charAt(0).toUpperCase()
+                              }}</span>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column justify-content-center align-items-start"
+                          >
+                            <h6 class="mb-0">{{ userProject.title }}</h6>
+                            <div
+                              class="d-flex justify-content-start align-items-center"
+                            >
+                              <div class="auth mr-2 text-muted">
+                                <i
+                                  class="fas fa-user"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small> {{ userValue.user_name }}</small>
+                              </div>
+                              <div class="time mr-2 text-muted">
+                                <i
+                                  class="fas fa-clock"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small>
+                                  {{
+                                    userProject.created_at
+                                      | moment("from", "now")
+                                  }}
+                                </small>
+                              </div>
+                              <!-- <div class="offers mr-2 text-muted">
+                                <i
+                                  class="fas fa-user-tie"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small>
+                                  {{
+                                    filteredProject.offers_count
+                                  }}
+                                  offers</small
+                                >
+                              </div> -->
+                            </div>
+                            <p class="text-muted" style="font-size: 14px">
+                              {{ userProject.desc.substring(0, 150) + ".." }}
+                            </p>
+                          </div>
+                        </router-link>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                                      <div
+                <div
                   class="tab-pane fade"
                   id="pills-rates"
                   role="tabpanel"
                   aria-labelledby="pills-rates-tab"
                 >
-                   <div class="rates">
+                  <div class="rates">
                     <h6>Rates</h6>
                     <hr />
-
                   </div>
                 </div>
               </div>
@@ -329,7 +534,16 @@ hr {
   box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
   border: 3px solid #e0e0e0;
 }
-
+.hw-35-c {
+  height: 35px !important;
+  width: 35px !important;
+}
+.letter-profile-img {
+  display: flex; /* or inline-flex */
+  align-items: center;
+  justify-content: center;
+  background-color: #41b883;
+}
 .circle2 {
   height: 120px;
   width: 120px;
@@ -391,23 +605,31 @@ a {
 .nav-link {
   padding: 12px;
   color: #666;
-
 }
 .nav-link:hover {
   background: #f5f4f9;
   color: #666;
   border-radius: 0;
   border-bottom: 3px solid #f5f4f9;
-
-
 }
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #666;
-    background-color: #f5f4f9;
-    border-radius: 0;
-border-bottom: 3px solid #41b883;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #666;
+  background-color: #f5f4f9;
+  border-radius: 0;
+  border-bottom: 3px solid #41b883;
 }
-
+.project-item {
+  cursor: pointer;
+  text-decoration: none;
+  color: #41b883;
+  transition: 0.3s;
+}
+.project-item:hover {
+  color: #369a6e;
+  transition: 0.3s;
+  background: #f8f8f8;
+}
 </style>
 
 <script>

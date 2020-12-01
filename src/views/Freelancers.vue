@@ -112,7 +112,10 @@
         <div class="col-md-9  col-sm-12">
 
               <div v-if="freelancersLoading">
-                <span>Loadin >>>> </span>
+                <div class="row">
+                          <skelton-card v-for="index in 18" :key="index"></skelton-card>
+
+                </div>
               </div>
 
               <div v-else>
@@ -483,11 +486,13 @@
 import axios from "axios";
 import Multiselect from "vue-multiselect";
 import StarRating from "vue-star-rating";
+import SkeltonCard from "@/components/SkeltonCard";
 
 export default {
   components: {
     Multiselect,
     StarRating,
+    SkeltonCard
   },
   data() {
     return {

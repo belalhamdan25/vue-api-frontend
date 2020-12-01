@@ -113,7 +113,10 @@
                 <hr />
 
                 <div v-if="projectsLoading">
-                  <span>Loadin >>>> </span>
+                  <!-- <span>Loadin >>>> </span> -->
+                      <!-- <vcl-facebook></vcl-facebook> -->
+    <!-- <vcl-instagram></vcl-instagram> -->
+                <vcl-bullet-list :rows='17'></vcl-bullet-list>
                 </div>
 
                 <div v-else>
@@ -469,9 +472,16 @@ hr {
 <script>
 import axios from "axios";
 import Multiselect from "vue-multiselect";
+import { VclFacebook, VclInstagram,VclBulletList } from 'vue-content-loading';
 
 export default {
-  components: { Multiselect },
+  components: { 
+    Multiselect,
+    /* eslint-disable vue/no-unused-components */
+        VclFacebook,
+        VclInstagram,
+        VclBulletList
+   },
 
   data() {
     return {
