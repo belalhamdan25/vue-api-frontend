@@ -466,6 +466,12 @@ hr {
   background: #369a6e;
   transition: 0.3s;
 }
+.iconC {
+  color: rgb(170, 170, 170);
+}
+.iconC2 {
+  color: rgb(87, 87, 87);
+}
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 

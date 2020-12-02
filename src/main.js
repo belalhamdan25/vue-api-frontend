@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
 Vue.use(VueToast);
@@ -33,6 +32,8 @@ import 'vue-slider-component/theme/default.css'
 
 Vue.component('VueSlider', VueSlider)
 import Vuesax from 'vuesax'
+
+
 
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 Vue.use(Vuesax, {
