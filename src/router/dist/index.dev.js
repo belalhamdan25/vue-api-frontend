@@ -17,8 +17,6 @@ var _Register = _interopRequireDefault(require("../views/Register.vue"));
 
 var _Dashboard = _interopRequireDefault(require("../views/Dashboard.vue"));
 
-var _Settings = _interopRequireDefault(require("../views/Settings.vue"));
-
 var _ErrorPage = _interopRequireDefault(require("../views/ErrorPage.vue"));
 
 var _Portfolios = _interopRequireDefault(require("../views/Portfolios.vue"));
@@ -33,6 +31,8 @@ var _Freelancers = _interopRequireDefault(require("../views/Freelancers.vue"));
 
 var _UserProfileShow = _interopRequireDefault(require("../views/UserProfileShow.vue"));
 
+var _AccountProfile = _interopRequireDefault(require("../views/AccountProfile.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -44,54 +44,65 @@ var routes = [{
   name: "Home",
   component: _Home["default"],
   meta: {
-    guest: true
+    guest: true,
+    title: 'Worker | Hire the best freelancers for any job'
   }
 }, {
   path: "/login",
   name: "Login",
   component: _Login["default"],
   meta: {
-    guest: true
+    guest: true,
+    title: 'Worker | Login'
   }
 }, {
   path: "/register",
   name: "Register",
   component: _Register["default"],
   meta: {
-    guest: true
+    guest: true,
+    title: 'Worker | Register'
   }
 }, {
   path: "/dashboard",
   name: "Dashboard",
   component: _Dashboard["default"],
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    title: 'Worker | Dashboard'
   }
 }, {
-  path: "/settings",
-  name: "Settings",
-  component: _Settings["default"],
+  path: "/account-profile",
+  name: "AccountProfile",
+  component: _AccountProfile["default"],
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    title: 'Worker | Edit Account Profile'
   }
 }, {
-  path: "/error-page",
+  path: "*",
   name: "ErrorPage",
   component: _ErrorPage["default"]
 }, {
   path: "/portfolios",
   name: "Portfolios",
-  component: _Portfolios["default"] // meta: { guest: true}
+  component: _Portfolios["default"],
+  meta: {
+    title: 'Worker | Portfolios'
+  } // meta: { guest: true}
 
 }, {
   path: "/portfolio/:id",
   name: "PortfolioShow",
-  component: _PortfolioShow["default"] // meta: { guest: true }
+  component: _PortfolioShow["default"] // meta: {  title:'Worker | :title' }
 
 }, {
   path: "/projects",
   name: "Projects",
-  component: _Projects["default"] // meta: { guest: true}
+  component: _Projects["default"],
+  meta: {
+    title: 'Worker | Projects'
+  } // meta: { guest: true}
 
 }, {
   path: "/project/:id",
@@ -101,7 +112,10 @@ var routes = [{
 }, {
   path: "/freelancers",
   name: "Freelancers",
-  component: _Freelancers["default"] // meta: { guest: true }
+  component: _Freelancers["default"],
+  meta: {
+    title: 'Worker | Freelancers'
+  } // meta: { guest: true }
 
 }, {
   path: "/u/:id",
@@ -124,6 +138,9 @@ var router = new _vueRouter["default"]({
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
+  document.title = to.meta.title;
+  next();
+
   if (to.matched.some(function (record) {
     return record.meta.requiresAuth;
   })) {

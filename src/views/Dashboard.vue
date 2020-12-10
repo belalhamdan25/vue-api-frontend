@@ -28,7 +28,7 @@
             <router-link class="p-2 side-item active-side-nav" to="#"
               ><i class="bx bx-home"></i> Dashboard</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/account-profile"
               ><i class="bx bx-user"></i> My Account</router-link
             >
             <router-link class="p-2 side-item" to="#"

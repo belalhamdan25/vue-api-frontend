@@ -4,7 +4,6 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
-import Settings from "../views/Settings.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 import Portfolios from "../views/Portfolios.vue";
 import PortfolioShow from "../views/PortfolioShow.vue";
@@ -12,6 +11,7 @@ import Projects from "../views/Projects.vue";
 import ProjectShow from "../views/ProjectShow.vue";
 import Freelancers from "../views/Freelancers.vue";
 import UserProfileShow from "../views/UserProfileShow.vue";
+import AccountProfile from "../views/AccountProfile.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -22,36 +22,36 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    meta: { guest: true }
+    meta: { guest: true  , title:'Worker | Hire the best freelancers for any job'} 
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
-    meta: { guest: true },
+    meta: { guest: true , title:'Worker | Login' },
   },
   {
     path: "/register",
     name: "Register",
     component: Register,
-    meta: { guest: true }
+    meta: { guest: true , title:'Worker | Register' }
 
   },
   {
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true , title:'Worker | Dashboard' }
   },
   {
-    path: "/settings",
-    name: "Settings",
-    component: Settings,
-    meta: { requiresAuth: true}
+    path: "/account-profile",
+    name: "AccountProfile",
+    component: AccountProfile,
+    meta: { requiresAuth: true , title:'Worker | Edit Account Profile'}
 
   },
   {
-    path: "/error-page",
+    path: "*",
     name: "ErrorPage",
     component: ErrorPage,
   },
@@ -59,6 +59,8 @@ const routes = [
     path: "/portfolios",
     name: "Portfolios",
     component: Portfolios,
+    meta: {  title:'Worker | Portfolios' }
+
     // meta: { guest: true}
 
   },
@@ -66,12 +68,14 @@ const routes = [
     path: "/portfolio/:id",
     name: "PortfolioShow",
     component: PortfolioShow,
-    // meta: { guest: true }
+    // meta: {  title:'Worker | :title' }
   },
   {
     path: "/projects",
     name: "Projects",
     component: Projects,
+    meta: {  title:'Worker | Projects' }
+
     // meta: { guest: true}
 
   },
@@ -86,6 +90,8 @@ const routes = [
     path: "/freelancers",
     name: "Freelancers",
     component: Freelancers,
+    meta: {  title:'Worker | Freelancers' }
+
     // meta: { guest: true }
   },
 
@@ -115,6 +121,9 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
+
+  document.title=to.meta.title
+  next() 
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in

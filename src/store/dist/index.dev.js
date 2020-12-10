@@ -104,6 +104,8 @@ var _default = new _vuex["default"].Store({
           last_name: payload.last_name,
           phone_number: payload.phone_number,
           email: payload.email,
+          location: payload.location,
+          gender: payload.gender,
           token: state.token
         }).then(function (res) {
           commit("SET_user", res.data.user);
