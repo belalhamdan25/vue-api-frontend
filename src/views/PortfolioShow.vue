@@ -12,7 +12,7 @@
               <div class="image-user mr-4">
                 <img
                   v-if="portfolioValue.user_img  != null"
-                  :src="portfolioValue.user_img"
+                  :src="'https://vue-api-backend.herokuapp.com/users_images/'+portfolioValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
                 <div class=" rounded-circle hw-70-c letter-profile-img " v-else>

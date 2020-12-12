@@ -132,7 +132,7 @@
                         <img
                           v-if="filteredFreelancer.user_img != null"
                           class="circle2"
-                          :src="filteredFreelancer.user_img"
+                          :src="'https://vue-api-backend.herokuapp.com/users_images/'+filteredFreelancer.user_img"
                         />
 
                         <div v-else class="circle">
@@ -213,7 +213,7 @@
                         <img
                           v-if="freelancer.user_img != null"
                           class="circle2"
-                          :src="freelancer.user_img"
+                          :src="'https://vue-api-backend.herokuapp.com/users_images/' +freelancer.user_img"
                         />
 
                         <div v-else class="circle">

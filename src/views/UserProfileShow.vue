@@ -16,7 +16,7 @@
                       <img
                         v-if="userValue.user_img != null"
                         class="circle2"
-                        :src="userValue.user_img"
+                        :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
                       />
 
                       <div v-else class="circle">
@@ -75,7 +75,7 @@
                     <img
                       v-if="userValue.user_img != null"
                       class="circle2"
-                      :src="userValue.user_img"
+                      :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
                     />
 
                     <div v-else class="circle">
@@ -218,7 +218,7 @@
                                 <img
                                   v-if="userValue.user_img != null"
                                   class="hw-35-c rounded-circle"
-                                  :src="userValue.user_img"
+                                  :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
                                   alt="user image"
                                 />
                                 <div
@@ -368,7 +368,7 @@
                             <img
                               v-if="userValue.user_img != null"
                               class="hw-35-c mr-4 rounded-circle"
-                              :src="userValue.user_img"
+                              :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
                               alt="user image"
                             />
                             <div

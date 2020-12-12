@@ -12,7 +12,7 @@
               <div class="image-user mr-4">
                 <img
                   v-if="projectValue.user_img != null"
-                  :src="projectValue.user_img"
+                  :src="'https://vue-api-backend.herokuapp.com/users_images/'+projectValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
                 <div class=" rounded-circle hw-70-c letter-profile-img " v-else>
@@ -225,7 +225,7 @@
                     <div class="image-user mr-2">
                       <img
                         v-if="projectOffer.user.user_img != null"
-                        :src="projectOffer.user.user_img"
+                        :src="'https://vue-api-backend.herokuapp.com/users_images/'+projectOffer.user.user_img"
                         class="rounded-circle hw-45-c"
                       />
                       <div

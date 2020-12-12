@@ -6,11 +6,14 @@
           <div
             class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
           >
-            <img
-              v-if="user.user_img != null"
-              class="circle2"
-              :src="user.user_img"
-            />
+                        <img
+                          v-if="user.user_img != null"
+                          class="circle2"
+                          :src="
+                            'https://vue-api-backend.herokuapp.com/users_images/' +
+                            user.user_img
+                          "
+                        />
 
             <div v-else class="circle">
               <span style="color: white; font-size: 25px">{{
@@ -156,8 +159,11 @@
                           <img
                             v-if="filteredProject.user_img != null"
                             class=" hw-60-c  mr-4 rounded-circle"
-                            :src="filteredProject.user_img"
                             alt="user image"
+                            :src="
+                            'https://vue-api-backend.herokuapp.com/users_images/' +
+                            filteredProject.user_img
+                          "
                           />
                           <div
                             class="hw-60-c letter-profile-img rounded-circle mr-4"

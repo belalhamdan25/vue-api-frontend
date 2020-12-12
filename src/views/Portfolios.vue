@@ -115,7 +115,7 @@
                           <img
                             v-if="searchPortfolio.user.user_img != null"
                             class="hw-35-c rounded-circle"
-                            :src="searchPortfolio.user.user_img"
+                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+searchPortfolio.user.user_img"
                             alt="user image"
                           />
                           <div
@@ -174,7 +174,7 @@
                           <img
                             v-if="Portfolio.user.user_img != null"
                             class="hw-35-c rounded-circle"
-                            :src="Portfolio.user.user_img"
+                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+Portfolio.user.user_img"
                             alt="user image"
                           />
                           <div

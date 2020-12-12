@@ -135,7 +135,7 @@
                           <img
                             v-if="filteredProject.user_img != null"
                             class=" hw-60-c  mr-4 rounded-circle"
-                            :src="filteredProject.user_img"
+                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+filteredProject.user_img"
                             alt="user image"
                           />
                           <div
@@ -214,7 +214,7 @@
                           <img
                             v-if="project.user_img != null"
                             class=" hw-60-c mr-4 rounded-circle"
-                            :src="project.user_img"
+                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+project.user_img"
                             alt="user image"
                           />
                           <div
