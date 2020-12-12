@@ -92,14 +92,16 @@ export default new Vuex.Store({
     updateUserInfoAction({commit,state},payload){
       return new Promise((resolve, reject) => {
         axios
-          .patch("https://vue-api-backend.herokuapp.com/api/auth/update", {
+          .post("https://vue-api-backend.herokuapp.com/api/auth/update", {
             first_name: payload.first_name,
             last_name: payload.last_name,
             phone_number: payload.phone_number,
             email: payload.email,
             location: payload.location,
             gender: payload.gender,
+            user_img: payload.user_img,
             token:state.token
+            
           })
           .then((res) => {
             commit("SET_user", res.data.user);
@@ -118,6 +120,9 @@ export default new Vuex.Store({
     },
     get_user(state) {
       return state.user;
+    },
+    get_token(state) {
+      return state.token;
     },
     get_skillPressed(state) {
       return state.skillPressed;

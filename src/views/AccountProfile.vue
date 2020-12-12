@@ -9,9 +9,11 @@
             <img
               v-if="user.user_img != null"
               class="circle2"
-              :src="user.user_img"
+              :src="
+                'https://vue-api-backend.herokuapp.com/users_images/' +
+                user.user_img
+              "
             />
-
             <div v-else class="circle">
               <span style="color: white; font-size: 25px">{{
                 user.first_name.charAt(0).toUpperCase()
@@ -74,7 +76,10 @@
                         <img
                           v-if="user.user_img != null"
                           class="circle2"
-                          :src="user.user_img"
+                          :src="
+                            'https://vue-api-backend.herokuapp.com/users_images/' +
+                            user.user_img
+                          "
                         />
 
                         <div v-else class="circle">
@@ -84,10 +89,23 @@
                         </div>
                       </div>
 
-                      <div class="upload-btn-wrapper ml-4">
-                        <button class="btn">Upload photo</button>
-                        <input type="file" name="myfile" />
-                      </div>
+                      <form @submit="submitForm" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper ml-4">
+                          <button class="btn">Upload photo</button>
+                          <input
+                            @change="onFileChange"
+                            type="file"
+                            accept="image/*"
+                            id="image"
+                            name="image"
+                          />
+                        </div>
+                        <input
+                          type="submit"
+                          class="btn btn-primary"
+                          value="Save"
+                        />
+                      </form>
                     </div>
 
                     <div
@@ -149,7 +167,9 @@
                               class="form-control"
                               v-model="user.location"
                             >
-                            <option disabled selected>{{user.location}}</option>
+                              <option disabled selected>
+                                {{ user.location }}
+                              </option>
                               <option value="Afghanistan">Afghanistan</option>
                               <option value="Åland Islands">
                                 Åland Islands
@@ -528,7 +548,7 @@
                               <option value="Zimbabwe">Zimbabwe</option>
                             </select>
                           </div>
-                            <div class="form-group col-md-6">
+                          <div class="form-group col-md-6">
                             <label for="location">Gender</label>
                             <select
                               id="location"
@@ -536,7 +556,7 @@
                               class="form-control"
                               v-model="user.gender"
                             >
-                            <option disabled selected>choose</option>
+                              <option disabled selected>choose</option>
                               <option value="Male">Male</option>
                               <option value="Female">Female</option>
                             </select>
@@ -636,19 +656,55 @@
 </style>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      name: "",
+      image: "",
+      success: "",
+      img_name:""
+    };
   },
   computed: {
     user() {
       return this.$store.getters.get_user;
     },
+      retriveToken() {
+      return this.$store.getters.get_token;
+    },
   },
   methods: {
+    onFileChange(e) {
+      console.log(e.target.files[0]);
+      this.image = e.target.files[0];
+    },
+    submitForm(e) {
+      e.preventDefault();
+      let currentObj = this;
+      const config = {
+        headers: { "content-type": "multipart/form-data","Authorization": "Bearer" + ' ' + this.retriveToken }
+      };
+      let formData = new FormData();
+      formData.append("image", this.image);
+      axios
+        .post(
+          "https://vue-api-backend.herokuapp.com/api/auth/store_user-image",
+          formData,
+          config
+        )
+        .then(function (response) {
+          currentObj.success = response.data.success;
+          console.log(response.data.img_name);
+          this.img_name=response.data.img_name;
+        })
+        .catch(function (error) {
+          currentObj.output = error;
+        });
+    },
+
     updateUserInfo() {
       this.$Progress.start();
       this.$store
@@ -659,22 +715,21 @@ export default {
           email: this.user.email,
           location: this.user.location,
           gender: this.user.gender,
+          user_img: this.img_name,
         })
         .then((res) => {
           this.$Progress.finish();
-          // console.log("user updated");
-          console.log(res);
+          console.log(res.data);
+          console.log(this.user.user_img);
           this.sucessMessageOpen();
         })
         .catch((err) => {
-          // this.isLoading = false;
           this.$Progress.fail();
-          // this.error = " There was error during update process";
-          // this.error = err.message;
           this.errorMessageOpen();
           console.log(err.message);
         });
     },
+
     errorMessageOpen() {
       this.$toast.open({
         message: " There was error during update process",
@@ -693,7 +748,14 @@ export default {
         position: "top-right",
       });
     },
+    token(){
+     console.log(this.retriveToken);
+     console.log(this.user.user_img);
+     
+    }
   },
-  mounted() {},
+  mounted() {
+    this.token();
+  },
 };
 </script>

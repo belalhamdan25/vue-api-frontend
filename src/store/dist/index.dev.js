@@ -99,13 +99,14 @@ var _default = new _vuex["default"].Store({
       var commit = _ref4.commit,
           state = _ref4.state;
       return new Promise(function (resolve, reject) {
-        _axios["default"].patch("https://vue-api-backend.herokuapp.com/api/auth/update", {
+        _axios["default"].post("https://vue-api-backend.herokuapp.com/api/auth/update", {
           first_name: payload.first_name,
           last_name: payload.last_name,
           phone_number: payload.phone_number,
           email: payload.email,
           location: payload.location,
           gender: payload.gender,
+          user_img: payload.user_img,
           token: state.token
         }).then(function (res) {
           commit("SET_user", res.data.user);
@@ -123,6 +124,9 @@ var _default = new _vuex["default"].Store({
     },
     get_user: function get_user(state) {
       return state.user;
+    },
+    get_token: function get_token(state) {
+      return state.token;
     },
     get_skillPressed: function get_skillPressed(state) {
       return state.skillPressed;
