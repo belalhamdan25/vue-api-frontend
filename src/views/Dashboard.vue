@@ -3,17 +3,18 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
-          <div
+          <router-link
+          :to="'/u/'+ user.id"
             class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
           >
-                        <img
-                          v-if="user.user_img != null"
-                          class="circle2"
-                          :src="
-                            'https://vue-api-backend.herokuapp.com/users_images/' +
-                            user.user_img
-                          "
-                        />
+          <img
+            v-if="user.user_img != null"
+            class="circle2"
+            :src="
+              'https://vue-api-backend.herokuapp.com/users_images/' +
+              user.user_img
+            "
+          />
 
             <div v-else class="circle">
               <span style="color: white; font-size: 25px">{{
@@ -24,17 +25,17 @@
             <span class="mt-2 mb-2 heading-color" style="font-size: 18px"
               >{{ user.first_name }} {{ user.last_name }}</span
             >
-          </div>
+          </router-link>
           <div
             class="author-content bg-white author-content-settings d-flex flex-column p-4 mb-4 justify-content-center align-items-start radios-5"
           >
-            <router-link class="p-2 side-item active-side-nav" to="#"
+            <router-link class="p-2 side-item active-side-nav" to="/dashboard"
               ><i class="bx bx-home"></i> Dashboard</router-link
             >
             <router-link class="p-2 side-item" to="/account-profile"
               ><i class="bx bx-user"></i> My Account</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/balance"
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
@@ -44,29 +45,11 @@
             <router-link class="p-2 side-item" to="#"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
+                <button class="p-2 side-item" @click.prevent="performLogout">
+                <i class='bx bx-log-out'></i> Log out
+              </button>
           </div>
-          <!-- <div
-            class="heading-color author-content bg-white author-content-settings d-flex flex-column p-4 mb-4 justify-content-center align-items-center radios-5"
-          >
-            <span class="mb-2">New Messages</span>
-            <h6 style="font-size: 25px; color: black">10</h6>
-            <div class="hr mb-2"></div>
 
-            <div class="d-flex justify-content-center align-items-center">
-              <span class="mr-4"
-                >Inbox
-                <span style="font-size: 17px; font-weight: 500; color: black"
-                  >15</span
-                ></span
-              >
-              <span class=""
-                >Sent
-                <span style="font-size: 17px; font-weight: 500; color: black"
-                  >3</span
-                ></span
-              >
-            </div>
-          </div> -->
           <div
             class="heading-color p-4 author-content bg-white author-content-settings d-flex flex-column mb-4 justify-content-center align-items-center radios-5"
           >
@@ -124,7 +107,7 @@
 
             <div class="text-left">
             <span style="font-size:15px">Awaiting approval</span>
-              <progress-bar style="width:300px" bar-color="#41b883"   size="small" :val="60" text="60%" ></progress-bar>
+              <progress-bar style="width:300px" bar-color="#41b883"   size="small" :val="50" text="50%" ></progress-bar>
             </div>
 
                         <div class="text-left">
@@ -134,19 +117,55 @@
 
                         <div class="text-left">
                           <span style="font-size:15px">In Proccess</span>
-              <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="30" text="30%" ></progress-bar>
+              <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="10" text="30%" ></progress-bar>
             </div>
 
 
               </div>
           </div>
+
+                    <div
+            class="heading-color  d-flex bg-white justify-content-around align-items-center mb-4 radios-5 p-4"
+          >
+            <div
+              class="d-flex flex-column justify-content-center align-items-center"
+            >
+              <h5 style="font-size: 35px; font-weight: 400">{{userValuesDashboard.projects_count}}</h5>
+              <span>My Projects</span>
+            </div>
+                        <div class="hv"></div>
+
+            <div
+              class="d-flex flex-column justify-content-center align-items-center"
+            >
+
+            <div class="text-left">
+            <span style="font-size:15px">Awaiting approval</span>
+              <progress-bar style="width:300px" bar-color="#41b883"   size="small" :val="40" text="40%" ></progress-bar>
+            </div>
+
+                        <div class="text-left">
+                          <span style="font-size:15px">Completed Projects</span>
+              <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="10" text="10%" ></progress-bar>
+            </div>
+
+                        <div class="text-left">
+                          <span style="font-size:15px">In Proccess</span>
+              <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="50" text="50%" ></progress-bar>
+            </div>
+
+
+              </div>
+          </div>
+
+
           <div
             class="d-flex bg-white flex-column p-4 justify-content-center align-items-center mb-4 radios-5"
           >
                 <span class="mb-4">Lastest Projects Added</span>
                 <div class="hr mb-4"></div>
                     <div
-                      v-for="filteredProject in filteredProjects.slice(0, 5)"
+                      v-for="filteredProject in filteredProjects.slice(0, 3)"
                       :key="filteredProject.id"
                     >
                       <router-link
@@ -217,7 +236,6 @@
 
                       <hr />
                     </div>
-            
           </div>
         </div>
       </div>
@@ -274,6 +292,19 @@ export default {
       });
   
     },
+        performLogout() {
+      this.$store
+        .dispatch("performLogoutAction")
+        .then((res) => {
+          this.$router.push("/");
+          this.sucessMessageOpen();
+          console.log(res);
+        })
+        .catch((err) => {
+          this.errorMessageOpen();
+          console.log(err);
+        });
+    },
 
     },
     mounted() {
@@ -284,7 +315,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .radios-5 {
   border-radius: 5px;
 }
@@ -344,6 +375,9 @@ export default {
   width: 100%;
   font-size: 16px;
   transition: 0.3s;
+  background: none;
+  border: 0;
+  text-align: left;
 }
 .side-item:hover {
   color: #41b883;
@@ -359,6 +393,17 @@ export default {
 }
 .heading-color {
   color: #575757;
+    text-decoration: none;
+
+}
+.font-size-20{
+  font-size: 20px;
+}
+.font-size-35{
+  font-size: 35px;
+}
+.color-prime{
+color: #41b883;
 }
 .hr {
   width: 100%;

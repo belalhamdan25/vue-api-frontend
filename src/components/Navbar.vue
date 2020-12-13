@@ -19,7 +19,7 @@
                   ><i class='bx bx-bell' ></i></router-link>
               </li>
 
-              <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
+              <!-- <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
                                 <router-link  class="nav-link" to="#"
                   >
                   
@@ -35,7 +35,7 @@
                 <i class='bx bx-log-out'></i> Log out
               </button>
               </div>
-            </li>
+            </li> -->
 
 
             </div>
@@ -120,7 +120,7 @@
                   ><i class='bx bx-bell' ></i></router-link>
               </li>
 
-              <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
+              <!-- <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
                                 <router-link  class="nav-link" to="#"
                   >
                   
@@ -137,7 +137,7 @@
                 <i class='bx bx-log-out'></i> Log out
               </button>
               </div>
-            </li>
+            </li> -->
 
 
             </div>

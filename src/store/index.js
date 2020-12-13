@@ -100,6 +100,8 @@ export default new Vuex.Store({
             location: payload.location,
             gender: payload.gender,
             user_img: payload.user_img,
+            about: payload.about,
+            category_id: payload.category_id,
             token:state.token
             
           })

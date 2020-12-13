@@ -39,6 +39,10 @@
                         <i class="fas fa-map-marker-alt"></i>
                         {{ userValue.location }}
                       </p>
+                        <p>
+                        <i class='bx bxs-user' ></i>
+                        {{ userValue.role_name.charAt(0).toUpperCase() + userValue.role_name.slice(1)}}
+                      </p>
                     </div>
 
                     <div

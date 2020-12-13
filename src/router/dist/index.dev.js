@@ -33,6 +33,8 @@ var _UserProfileShow = _interopRequireDefault(require("../views/UserProfileShow.
 
 var _AccountProfile = _interopRequireDefault(require("../views/AccountProfile.vue"));
 
+var _Balance = _interopRequireDefault(require("../views/Balance.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -78,6 +80,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Edit Account Profile'
+  }
+}, {
+  path: "/balance",
+  name: "Balance",
+  component: _Balance["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Balance'
   }
 }, {
   path: "*",

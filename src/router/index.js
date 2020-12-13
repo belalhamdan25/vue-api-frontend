@@ -12,6 +12,7 @@ import ProjectShow from "../views/ProjectShow.vue";
 import Freelancers from "../views/Freelancers.vue";
 import UserProfileShow from "../views/UserProfileShow.vue";
 import AccountProfile from "../views/AccountProfile.vue";
+import Balance from "../views/Balance.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -43,12 +44,19 @@ const routes = [
     component: Dashboard,
     meta: { requiresAuth: true , title:'Worker | Dashboard' }
   },
+  
   {
     path: "/account-profile",
     name: "AccountProfile",
     component: AccountProfile,
     meta: { requiresAuth: true , title:'Worker | Edit Account Profile'}
 
+  },
+  {
+    path: "/balance",
+    name: "Balance",
+    component: Balance,
+    meta: { requiresAuth: true , title:'Worker | Balance' }
   },
   {
     path: "*",

@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
-          <div
+          <router-link  
+          :to="'/u/'+ user.id"
             class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
           >
             <img
@@ -23,36 +24,29 @@
             <span class="mt-2 mb-2 heading-color" style="font-size: 18px"
               >{{ user.first_name }} {{ user.last_name }}</span
             >
-          </div>
+          </router-link>
           <div
-            class="author-settings d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
+            class="author-content bg-white author-content-settings d-flex flex-column p-4 mb-4 justify-content-center align-items-start radios-5"
           >
-            <ul class="nav nav-pills" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  id="pills-personal-tab"
-                  data-toggle="pill"
-                  href="#pills-personal"
-                  role="tab"
-                  aria-controls="pills-personal"
-                  aria-selected="true"
-                  ><i class="bx bx-user"></i>Personal Data</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  id="pills-website-tab"
-                  data-toggle="pill"
-                  href="#pills-website"
-                  role="tab"
-                  aria-controls="pills-website"
-                  aria-selected="false"
-                  ><i class="bx bx-photo-album"></i>Website Data</a
-                >
-              </li>
-            </ul>
+            <router-link class="p-2 side-item " to="/dashboard"
+              ><i class="bx bx-home"></i> Dashboard</router-link
+            >
+            <router-link class="p-2 side-item active-side-nav" to="/account-profile"
+              ><i class="bx bx-user"></i> My Account</router-link
+            >
+            <router-link class="p-2 side-item" to="/balance"
+              ><i class="bx bx-credit-card-front"></i> Account
+              Balance</router-link
+            >
+            <router-link class="p-2 side-item" to="#"
+              ><i class="bx bx-briefcase-alt"></i> My Projects</router-link
+            >
+            <router-link class="p-2 side-item" to="#"
+              ><i class="bx bx-photo-album"></i> My portfolio</router-link
+            >
+                <button class="p-2 side-item" @click.prevent="performLogout">
+                <i class='bx bx-log-out'></i> Log out
+              </button>
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
@@ -563,6 +557,27 @@
                           </div>
                         </div>
 
+
+                                 <div class="text-left mb-4">
+                            <h6 class="">Categories</h6>
+                            <select v-model="user.category_id">
+                              <option
+                                v-for="categoriesValue in categoriesValues"
+                                :key="categoriesValue.name"
+                                :value="categoriesValue.id"
+                              >
+                                {{ categoriesValue.desc }}
+                              </option>
+                            </select>
+                          </div>
+
+
+                           <div class="text-left mb-4">
+                            <h6 class="">About</h6>
+                              <textarea v-model="user.about"></textarea>
+                          </div>
+
+
                         <button
                           type="submit"
                           class="btn btn-primary"
@@ -574,7 +589,7 @@
                     </div>
                   </div>
                 </div>
-                <div
+                <!-- <div
                   class="tab-pane fade"
                   id="pills-website"
                   role="tabpanel"
@@ -588,14 +603,16 @@
                         <div
                           class="d-flex flex-column justify-content-center align-items-center"
                         >
-                          <span>skills</span>
-                          <span>catigory</span>
-                          <span>about</span>
+
+                            data
+
+
+
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -606,29 +623,6 @@
 </template>
 
 <style scoped>
-.radios-5 {
-  border-radius: 5px;
-}
-.circle2 {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-  box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-}
-.circle {
-  height: 70px;
-  width: 70px;
-  background: #41b883;
-  border-radius: 50%;
-  display: flex; /* or inline-flex */
-  align-items: center;
-  justify-content: center;
-  -webkit-box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-  box-shadow: 0px 13px 53px -30px rgba(0, 0, 0, 0.45);
-}
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
@@ -653,26 +647,33 @@
   opacity: 0;
   cursor: pointer;
 }
+
 </style>
 
 <script>
 import axios from "axios";
+// import Multiselect from "vue-multiselect";
 
 export default {
-  components: {},
+  // components: { Multiselect },
   data() {
     return {
       name: "",
       image: "",
       success: "",
-      img_name:""
+      img_name: "",
+      value: [],
+      options: [],
+      cquery: [],
+      categoriesValues: [],
+      tagId:[]
     };
   },
   computed: {
     user() {
       return this.$store.getters.get_user;
     },
-      retriveToken() {
+    retriveToken() {
       return this.$store.getters.get_token;
     },
   },
@@ -685,20 +686,24 @@ export default {
       e.preventDefault();
       let currentObj = this;
       const config = {
-        headers: { "content-type": "multipart/form-data","Authorization": "Bearer" + ' ' + this.retriveToken }
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: "Bearer" + " " + this.retriveToken,
+        },
       };
       let formData = new FormData();
       formData.append("image", this.image);
       axios
         .post(
-          "https://vue-api-backend.herokuapp.com/api/auth/store_user-image",
+          "https://vue-api-backend.herokuapp.com/api/auth/store-user-image",
           formData,
           config
         )
         .then(function (response) {
           currentObj.success = response.data.success;
           console.log(response.data.img_name);
-          this.img_name=response.data.img_name;
+          this.img_name = response.data.img_name;
+          this.updateUserInfo();
         })
         .catch(function (error) {
           currentObj.output = error;
@@ -716,6 +721,8 @@ export default {
           location: this.user.location,
           gender: this.user.gender,
           user_img: this.img_name,
+          about: this.user.about,
+          category_id: this.user.category_id,
         })
         .then((res) => {
           this.$Progress.finish();
@@ -729,6 +736,11 @@ export default {
           console.log(err.message);
         });
     },
+    dispatchAction(){
+        this.tagId=this.value.id
+      },
+      
+   
 
     errorMessageOpen() {
       this.$toast.open({
@@ -748,14 +760,47 @@ export default {
         position: "top-right",
       });
     },
-    token(){
-     console.log(this.retriveToken);
-     console.log(this.user.user_img);
-     
+    loadTagsNames() {
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skills-filter-id-names"
+        )
+        .then((response) => {
+          this.options = response.data;
+        });
+    },
+    loadcategoriesValues() {
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/categories-filter-values"
+        )
+        .then((response) => {
+          this.categoriesValues = response.data;
+        });
+    },
+    loadUserData(){
+        axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/user/user/" +
+            this.user.id
+        )
+        .then(response => {
+          this.value=response.data.data.skills
+            // console.log(response.data.data.skills);
+        });
     }
+
+    // token(){
+    //  console.log(this.retriveToken);
+    //  console.log(this.user.user_img);
+
+    // }
   },
   mounted() {
-    this.token();
+    // this.token();
+    this.loadTagsNames();
+    this.loadcategoriesValues();
+    this.loadUserData();
   },
 };
 </script>
