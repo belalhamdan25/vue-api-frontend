@@ -76,19 +76,11 @@
               <h5 style="font-size: 35px; font-weight: 400">${{userValuesDashboard.balance_total}}</h5>
             </div>
             <div class="hv"></div>
-            <div
-              class="heading-color d-flex bg-white flex-column justify-content-center align-items-center"
-            >
-              <h5 style="font-weight: 400">Withdrawable balance</h5>
-              <h5 style="font-size: 35px; font-weight: 400">${{userValuesDashboard.withdrawable}}</h5>
-            </div>
+            
+            <button @click="goToBalancePage" >Show Balance</button>
+
                       </div>
 
-              <div class="hr mt-2"></div>
-            <div class="d-flex justify-content-around align-items-center mt-2">
-                <span class="heading-color">Outstanding blance ${{userValuesDashboard.outstanding}}</span>
-                <span class="heading-color">Under review balance ${{userValuesDashboard.under_review}}</span>
-            </div>
 
           </div>
             </div>
@@ -294,6 +286,9 @@ export default {
             this.userValuesDashboard=response.data;
           });
 
+    },
+    goToBalancePage(){
+             this.$router.push("/balance");
     },
 
         categoriesFiltter() {

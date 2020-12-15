@@ -57,7 +57,7 @@
                                 <div class="d-flex  justify-content-between align-items-center">
 
                 <h6>My Balance</h6>
-                                <button>Charge</button>
+                                <button @click="ChargeBalanceBtn">Charge</button>
 
                                 </div>
                 <hr />
@@ -68,40 +68,7 @@
                   <div
                     class="d-flex flex-column justify-content-center align-items-center"
                   >
-                    <span class="heading-color font-size-20">Under review</span>
-
-                    <span class="font-size-35 color-prime"
-                      >${{ userValuesDashboard.under_review }}</span
-                    >
-                  </div>
-                  <div class="hv"></div>
-
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <span class="heading-color font-size-20">Outstanding</span>
-
-                    <span class="font-size-35 color-prime"
-                      >${{ userValuesDashboard.outstanding }}</span
-                    >
-                  </div>
-                  <div class="hv"></div>
-
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <span class="heading-color font-size-20">Withdrawable</span>
-
-                    <span class="font-size-35 color-prime"
-                      >${{ userValuesDashboard.withdrawable }}</span
-                    >
-                  </div>
-                  <div class="hv"></div>
-
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <span class="heading-color font-size-20">Total</span>
+                    <span class="heading-color font-size-20">Total Balance</span>
 
                     <span class="font-size-35 color-prime"
                       >${{ userValuesDashboard.balance_total }}</span
@@ -159,6 +126,9 @@ export default {
           console.log(err);
         });
     },
+    ChargeBalanceBtn(){
+       this.$router.push("/charge-balance");
+    }
   },
   computed: {
     user() {

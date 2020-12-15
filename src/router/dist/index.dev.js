@@ -39,6 +39,8 @@ var _MyProjects = _interopRequireDefault(require("../views/MyProjects.vue"));
 
 var _MyPortfolios = _interopRequireDefault(require("../views/MyPortfolios.vue"));
 
+var _ChargeBalance = _interopRequireDefault(require("../views/ChargeBalance.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -92,6 +94,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Balance'
+  }
+}, {
+  path: "/charge-balance",
+  name: "ChargeBalance",
+  component: _ChargeBalance["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Charge Balance'
   }
 }, {
   path: "/my-projects",

@@ -114,7 +114,7 @@
           >
             <div class="d-flex  justify-content-center  align-items-center">
               <i class="fab fa-cc-visa mr-2" style="font-size:30px"></i>
-              <i class="fab fa-cc-paypal mr-2" style="font-size:30px"></i>
+              <!-- <i class="fab fa-cc-paypal mr-2" style="font-size:30px"></i> -->
               <i class="fab fa-cc-mastercard mr-2" style="font-size:30px"></i>
             </div>
 

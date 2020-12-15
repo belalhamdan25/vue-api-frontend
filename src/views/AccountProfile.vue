@@ -140,6 +140,7 @@
                               id="email"
                               name="email"
                               v-model="user.email"
+                              readonly
                             />
                           </div>
                           <div class="form-group col-md-6">

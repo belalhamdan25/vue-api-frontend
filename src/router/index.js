@@ -15,6 +15,7 @@ import AccountProfile from "../views/AccountProfile.vue";
 import Balance from "../views/Balance.vue";
 import MyProjects from "../views/MyProjects.vue";
 import MyPortfolios from "../views/MyPortfolios.vue";
+import ChargeBalance from "../views/ChargeBalance.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -59,6 +60,12 @@ const routes = [
     name: "Balance",
     component: Balance,
     meta: { requiresAuth: true , title:'Worker | Balance' }
+  },
+  {
+    path: "/charge-balance",
+    name: "ChargeBalance",
+    component: ChargeBalance,
+    meta: { requiresAuth: true , title:'Worker | Charge Balance' }
   },
   {
     path: "/my-projects",
