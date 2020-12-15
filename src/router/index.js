@@ -13,6 +13,8 @@ import Freelancers from "../views/Freelancers.vue";
 import UserProfileShow from "../views/UserProfileShow.vue";
 import AccountProfile from "../views/AccountProfile.vue";
 import Balance from "../views/Balance.vue";
+import MyProjects from "../views/MyProjects.vue";
+import MyPortfolios from "../views/MyPortfolios.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -58,6 +60,19 @@ const routes = [
     component: Balance,
     meta: { requiresAuth: true , title:'Worker | Balance' }
   },
+  {
+    path: "/my-projects",
+    name: "MyProjects",
+    component: MyProjects,
+    meta: { requiresAuth: true , title:'Worker | My Projects' }
+  },
+  {
+    path: "/my-portfolios",
+    name: "MyPortfolios",
+    component: MyPortfolios,
+    meta: { requiresAuth: true , title:'Worker | My Portfolios' }
+  },
+  
   {
     path: "*",
     name: "ErrorPage",

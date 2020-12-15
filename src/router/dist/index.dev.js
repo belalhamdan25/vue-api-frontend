@@ -35,6 +35,10 @@ var _AccountProfile = _interopRequireDefault(require("../views/AccountProfile.vu
 
 var _Balance = _interopRequireDefault(require("../views/Balance.vue"));
 
+var _MyProjects = _interopRequireDefault(require("../views/MyProjects.vue"));
+
+var _MyPortfolios = _interopRequireDefault(require("../views/MyPortfolios.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -88,6 +92,22 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Balance'
+  }
+}, {
+  path: "/my-projects",
+  name: "MyProjects",
+  component: _MyProjects["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | My Projects'
+  }
+}, {
+  path: "/my-portfolios",
+  name: "MyPortfolios",
+  component: _MyPortfolios["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | My Portfolios'
   }
 }, {
   path: "*",

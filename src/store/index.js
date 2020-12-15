@@ -102,8 +102,9 @@ export default new Vuex.Store({
             user_img: payload.user_img,
             about: payload.about,
             category_id: payload.category_id,
+            tags_id:payload.tags_id,
             token:state.token
-            
+
           })
           .then((res) => {
             commit("SET_user", res.data.user);

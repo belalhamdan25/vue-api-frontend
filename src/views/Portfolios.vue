@@ -229,7 +229,7 @@
   </section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .img-w-a {
   width: 640px !important;
   height: 480px !important;

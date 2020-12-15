@@ -39,10 +39,10 @@
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-projects"
               ><i class="bx bx-briefcase-alt"></i> My Projects</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
                 <button class="p-2 side-item" @click.prevent="performLogout">
@@ -62,8 +62,10 @@
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
-          <div
-            class="balance-content d-flex bg-white flex-column justify-content-center align-items-around mb-4 radios-5 p-4"
+          <div class="row">
+            <div class="col-12 radios-5 bg-white p-4 mb-4">
+                          <div
+            class="balance-content d-flex  flex-column justify-content-center align-items-around  "
           >
                       <div class="d-flex justify-content-around align-items-center">
                                     <div
@@ -89,9 +91,13 @@
             </div>
 
           </div>
+            </div>
+          </div>
 
-          <div
-            class="heading-color  d-flex bg-white justify-content-around align-items-center mb-4 radios-5 p-4"
+            <div class="row">
+              <div class="col-12 mb-4 bg-white radios-5 p-4">
+                            <div
+            class="heading-color  d-flex bg-white justify-content-around align-items-center "
           >
             <div
               class="d-flex flex-column justify-content-center align-items-center"
@@ -111,7 +117,7 @@
             </div>
 
                         <div class="text-left">
-                          <span style="font-size:15px">Completed Projects</span>
+                          <span style="font-size:15px">Completed</span>
               <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="40" text="40%" ></progress-bar>
             </div>
 
@@ -123,9 +129,14 @@
 
               </div>
           </div>
+              </div>
+            </div>
 
-                    <div
-            class="heading-color  d-flex bg-white justify-content-around align-items-center mb-4 radios-5 p-4"
+
+              <div class="row">
+                <div class="col-12 bg-white  mb-4 radios-5 p-4">
+                                        <div
+            class="heading-color  d-flex  justify-content-around align-items-center "
           >
             <div
               class="d-flex flex-column justify-content-center align-items-center"
@@ -145,7 +156,7 @@
             </div>
 
                         <div class="text-left">
-                          <span style="font-size:15px">Completed Projects</span>
+                          <span style="font-size:15px">Completed</span>
               <progress-bar style="width:300px" bar-color="#41b883"  size="small" :val="10" text="10%" ></progress-bar>
             </div>
 
@@ -157,10 +168,15 @@
 
               </div>
           </div>
+                </div>
+              </div>
 
 
-          <div
-            class="d-flex bg-white flex-column p-4 justify-content-center align-items-center mb-4 radios-5"
+
+            <div class="row">
+              <div class="col-12 bg-white p-4 mb-4 radios-5">
+                            <div
+            class="d-flex  flex-column  justify-content-center align-items-center "
           >
                 <span class="mb-4">Lastest Projects Added</span>
                 <div class="hr mb-4"></div>
@@ -237,6 +253,9 @@
                       <hr />
                     </div>
           </div>
+              </div>
+            </div>
+
         </div>
       </div>
     </div>

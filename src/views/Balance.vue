@@ -39,10 +39,10 @@
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-projects"
               ><i class="bx bx-briefcase-alt"></i> My Projects</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
             <button class="p-2 side-item" @click.prevent="performLogout">
@@ -54,7 +54,12 @@
           <div class="row mb-4">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="personal-data">
+                                <div class="d-flex  justify-content-between align-items-center">
+
                 <h6>My Balance</h6>
+                                <button>Charge</button>
+
+                                </div>
                 <hr />
 
                 <div
@@ -139,6 +144,19 @@ export default {
         )
         .then((response) => {
           this.userValuesDashboard = response.data;
+        });
+    },
+            performLogout() {
+      this.$store
+        .dispatch("performLogoutAction")
+        .then((res) => {
+          this.$router.push("/");
+          this.sucessMessageOpen();
+          console.log(res);
+        })
+        .catch((err) => {
+          this.errorMessageOpen();
+          console.log(err);
         });
     },
   },

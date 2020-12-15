@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
-          <router-link  
-          :to="'/u/'+ user.id"
+          <router-link
+            :to="'/u/' + user.id"
             class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
           >
             <img
@@ -28,25 +28,27 @@
           <div
             class="author-content bg-white author-content-settings d-flex flex-column p-4 mb-4 justify-content-center align-items-start radios-5"
           >
-            <router-link class="p-2 side-item " to="/dashboard"
+            <router-link class="p-2 side-item" to="/dashboard"
               ><i class="bx bx-home"></i> Dashboard</router-link
             >
-            <router-link class="p-2 side-item active-side-nav" to="/account-profile"
+            <router-link
+              class="p-2 side-item active-side-nav"
+              to="/account-profile"
               ><i class="bx bx-user"></i> My Account</router-link
             >
             <router-link class="p-2 side-item" to="/balance"
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-projects"
               ><i class="bx bx-briefcase-alt"></i> My Projects</router-link
             >
-            <router-link class="p-2 side-item" to="#"
+            <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
-                <button class="p-2 side-item" @click.prevent="performLogout">
-                <i class='bx bx-log-out'></i> Log out
-              </button>
+            <button class="p-2 side-item" @click.prevent="performLogout">
+              <i class="bx bx-log-out"></i> Log out
+            </button>
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
@@ -557,9 +559,9 @@
                           </div>
                         </div>
 
-
-                                 <div class="text-left mb-4">
-                            <h6 class="">Categories</h6>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label class="">Categories</label>
                             <select v-model="user.category_id">
                               <option
                                 v-for="categoriesValue in categoriesValues"
@@ -570,13 +572,31 @@
                               </option>
                             </select>
                           </div>
+                          <div class="form-group col-md-6">
+                            <label class="iconC2">Skills</label>
 
-
-                           <div class="text-left mb-4">
-                            <h6 class="">About</h6>
-                              <textarea v-model="user.about"></textarea>
+                            <multiselect
+                              v-model="value"
+                              open-direction="bottom"
+                              tag-placeholder="Skills"
+                              :hide-selected="false"
+                              placeholder="Choose Skills"
+                              label="name"
+                              track-by="name"
+                              :close-on-select="false"
+                              :options="options"
+                              :multiple="true"
+                              :taggable="true"
+                              :show-no-results="true"
+                              @input="dispatchAction()"
+                            ></multiselect>
                           </div>
+                        </div>
 
+                        <div class="text-left mb-4">
+                          <h6 class="">About</h6>
+                          <textarea v-model="user.about"></textarea>
+                        </div>
 
                         <button
                           type="submit"
@@ -589,30 +609,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div
-                  class="tab-pane fade"
-                  id="pills-website"
-                  role="tabpanel"
-                  aria-labelledby="pills-website-tab"
-                >
-                  <div class="website">
-                    <h6>Website Data</h6>
-                    <hr />
-                    <div class="row">
-                      <div class="col-12">
-                        <div
-                          class="d-flex flex-column justify-content-center align-items-center"
-                        >
-
-                            data
-
-
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </div>
           </div>
@@ -647,15 +643,14 @@
   opacity: 0;
   cursor: pointer;
 }
-
 </style>
 
 <script>
 import axios from "axios";
-// import Multiselect from "vue-multiselect";
+import Multiselect from "vue-multiselect";
 
 export default {
-  // components: { Multiselect },
+  components: { Multiselect },
   data() {
     return {
       name: "",
@@ -666,7 +661,7 @@ export default {
       options: [],
       cquery: [],
       categoriesValues: [],
-      tagId:[]
+      tagId: [],
     };
   },
   computed: {
@@ -723,6 +718,7 @@ export default {
           user_img: this.img_name,
           about: this.user.about,
           category_id: this.user.category_id,
+          tags_id: this.tagId,
         })
         .then((res) => {
           this.$Progress.finish();
@@ -736,11 +732,17 @@ export default {
           console.log(err.message);
         });
     },
-    dispatchAction(){
-        this.tagId=this.value.id
-      },
-      
-   
+    dispatchAction() {
+      this.tagId = [];
+      var i;
+      var arrayid = [];
+      for (i = 0; i < this.value.length; i++) {
+        arrayid = this.value[i];
+        // console.log(arrayid.id)
+        this.tagId.push(arrayid.id);
+      }
+      // console.log(this.tagId);
+    },
 
     errorMessageOpen() {
       this.$toast.open({
@@ -778,18 +780,29 @@ export default {
           this.categoriesValues = response.data;
         });
     },
-    loadUserData(){
-        axios
+    loadUserData() {
+      axios
         .get(
-          "https://vue-api-backend.herokuapp.com/api/user/user/" +
-            this.user.id
+          "https://vue-api-backend.herokuapp.com/api/user/user/" + this.user.id
         )
-        .then(response => {
-          this.value=response.data.data.skills
-            // console.log(response.data.data.skills);
+        .then((response) => {
+          this.value = response.data.data.skills;
+          // console.log(response.data.data.skills);
         });
-    }
-
+    },
+    performLogout() {
+      this.$store
+        .dispatch("performLogoutAction")
+        .then((res) => {
+          this.$router.push("/");
+          this.sucessMessageOpen();
+          console.log(res);
+        })
+        .catch((err) => {
+          this.errorMessageOpen();
+          console.log(err);
+        });
+    },
     // token(){
     //  console.log(this.retriveToken);
     //  console.log(this.user.user_img);
