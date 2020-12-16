@@ -233,6 +233,9 @@
                                 {{ filteredProject.offers_count }} offers</small
                               >
                             </div>
+                                                          <small class="mb-0 status-project">{{
+                                filteredProject.status
+                              }}</small>
                           </div>
                           <p class="text-muted" style="font-size:14px">
                             {{ filteredProject.desc.substring(0, 150) + ".." }}

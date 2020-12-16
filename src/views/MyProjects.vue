@@ -82,7 +82,7 @@
                             v-else
                           >
                             <span style="color:white;font-size:20px">{{
-                              user.firs_name.charAt(0).toUpperCase()
+                              user.first_name.charAt(0).toUpperCase()
                             }}</span>
                           </div>
                         </div>
@@ -116,6 +116,9 @@
                               ></i>
         
                             </div>
+                                                          <small class="mb-0 status-project">{{
+                                userValuesproject.status
+                              }}</small>
                           </div>
                           <p class="text-muted" style="font-size:14px">
                             {{ userValuesproject.desc.substring(0, 150) + ".." }}

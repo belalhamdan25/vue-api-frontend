@@ -89,9 +89,9 @@
                     <div
                       class="d-flex justify-content-around align-items-start"
                     >
-                      <small>{{ transaction.desc }} : </small>
+                      <!-- <small>{{ transaction.desc }} : </small> -->
 
-                      <h6>{{ transaction.amount }}</h6>
+                      <h6>$ {{ transaction.amount }}</h6>
                       <h6>
                         <i class="fas fa-clock" style="font-size: 10px"></i>
                         <small>

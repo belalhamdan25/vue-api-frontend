@@ -16,7 +16,10 @@
                       <img
                         v-if="userValue.user_img != null"
                         class="circle2"
-                        :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
+                        :src="
+                          'https://vue-api-backend.herokuapp.com/users_images/' +
+                          userValue.user_img
+                        "
                       />
 
                       <div v-else class="circle">
@@ -39,9 +42,12 @@
                         <i class="fas fa-map-marker-alt"></i>
                         {{ userValue.location }}
                       </p>
-                        <p>
-                        <i class='bx bxs-user' ></i>
-                        {{ userValue.role_name.charAt(0).toUpperCase() + userValue.role_name.slice(1)}}
+                      <p>
+                        <i class="bx bxs-user"></i>
+                        {{
+                          userValue.role_name.charAt(0).toUpperCase() +
+                          userValue.role_name.slice(1)
+                        }}
                       </p>
                     </div>
 
@@ -66,7 +72,6 @@
                 </div>
               </div>
             </nav> -->
-
               </div>
 
               <div class="d-block d-sm-block d-md-none">
@@ -79,7 +84,10 @@
                     <img
                       v-if="userValue.user_img != null"
                       class="circle2"
-                      :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
+                      :src="
+                        'https://vue-api-backend.herokuapp.com/users_images/' +
+                        userValue.user_img
+                      "
                     />
 
                     <div v-else class="circle">
@@ -106,70 +114,68 @@
                 </div>
               </div>
 
-
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      id="pills-about-tab"
-                      data-toggle="pill"
-                      href="#pills-about"
-                      role="tab"
-                      aria-controls="pills-about"
-                      aria-selected="true"
-                      ><i class="bx bx-user"></i> About me</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-portfolio-tab"
-                      data-toggle="pill"
-                      href="#pills-portfolio"
-                      role="tab"
-                      aria-controls="pills-portfolio"
-                      aria-selected="false"
-                      ><i class="bx bx-photo-album"></i> Portfolio</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-offers-tab"
-                      data-toggle="pill"
-                      href="#pills-offers"
-                      role="tab"
-                      aria-controls="pills-offers"
-                      aria-selected="false"
-                      ><i class="bx bx-spreadsheet"></i> Offers</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-projects-tab"
-                      data-toggle="pill"
-                      href="#pills-projects"
-                      role="tab"
-                      aria-controls="pills-projects"
-                      aria-selected="false"
-                      ><i class="bx bx-briefcase-alt"></i> Projects</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-rates-tab"
-                      data-toggle="pill"
-                      href="#pills-rates"
-                      role="tab"
-                      aria-controls="pills-rates"
-                      aria-selected="false"
-                      ><i class="bx bx-star"></i> Rates</a
-                    >
-                  </li>
-                </ul>
-                
+              <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="pills-about-tab"
+                    data-toggle="pill"
+                    href="#pills-about"
+                    role="tab"
+                    aria-controls="pills-about"
+                    aria-selected="true"
+                    ><i class="bx bx-user"></i> About me</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="pills-portfolio-tab"
+                    data-toggle="pill"
+                    href="#pills-portfolio"
+                    role="tab"
+                    aria-controls="pills-portfolio"
+                    aria-selected="false"
+                    ><i class="bx bx-photo-album"></i> Portfolio</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="pills-offers-tab"
+                    data-toggle="pill"
+                    href="#pills-offers"
+                    role="tab"
+                    aria-controls="pills-offers"
+                    aria-selected="false"
+                    ><i class="bx bx-spreadsheet"></i> Offers</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="pills-projects-tab"
+                    data-toggle="pill"
+                    href="#pills-projects"
+                    role="tab"
+                    aria-controls="pills-projects"
+                    aria-selected="false"
+                    ><i class="bx bx-briefcase-alt"></i> Projects</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="pills-rates-tab"
+                    data-toggle="pill"
+                    href="#pills-rates"
+                    role="tab"
+                    aria-controls="pills-rates"
+                    aria-selected="false"
+                    ><i class="bx bx-star"></i> Rates</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -222,7 +228,10 @@
                                 <img
                                   v-if="userValue.user_img != null"
                                   class="hw-35-c rounded-circle"
-                                  :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
+                                  :src="
+                                    'https://vue-api-backend.herokuapp.com/users_images/' +
+                                    userValue.user_img
+                                  "
                                   alt="user image"
                                 />
                                 <div
@@ -372,7 +381,10 @@
                             <img
                               v-if="userValue.user_img != null"
                               class="hw-35-c mr-4 rounded-circle"
-                              :src="'https://vue-api-backend.herokuapp.com/users_images/'+userValue.user_img"
+                              :src="
+                                'https://vue-api-backend.herokuapp.com/users_images/' +
+                                userValue.user_img
+                              "
                               alt="user image"
                             />
                             <div
@@ -410,6 +422,9 @@
                                   }}
                                 </small>
                               </div>
+                              <small class="mb-0 status-project">{{
+                                userProject.status
+                              }}</small>
                               <!-- <div class="offers mr-2 text-muted">
                                 <i
                                   class="fas fa-user-tie"

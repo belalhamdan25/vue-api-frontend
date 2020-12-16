@@ -44,6 +44,11 @@
                     {{ projectValue.created_at | moment("from", "now") }}
                   </small>
                 </div>
+                  <div class="portfolio-status mt-2">
+                  <small class="status-project text-secondary">
+                    {{ projectValue.status }}
+                  </small>
+                </div>
               </div>
             </div>
             <div

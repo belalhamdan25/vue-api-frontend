@@ -105,7 +105,7 @@
             </vue-slider>
           </div>
         </div>
-        <div class="col-md-9  col-sm-12">
+        <div class="col-md-9 col-sm-12">
           <div class="row">
             <div class="col-12">
               <div class="p-4 bg-white border-r-5">
@@ -114,9 +114,9 @@
 
                 <div v-if="projectsLoading">
                   <!-- <span>Loadin >>>> </span> -->
-                      <!-- <vcl-facebook></vcl-facebook> -->
-    <!-- <vcl-instagram></vcl-instagram> -->
-                <vcl-bullet-list :rows='17'></vcl-bullet-list>
+                  <!-- <vcl-facebook></vcl-facebook> -->
+                  <!-- <vcl-instagram></vcl-instagram> -->
+                  <vcl-bullet-list :rows="17"></vcl-bullet-list>
                 </div>
 
                 <div v-else>
@@ -134,15 +134,18 @@
                         >
                           <img
                             v-if="filteredProject.user_img != null"
-                            class=" hw-60-c  mr-4 rounded-circle"
-                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+filteredProject.user_img"
+                            class="hw-60-c mr-4 rounded-circle"
+                            :src="
+                              'https://vue-api-backend.herokuapp.com/users_images/' +
+                              filteredProject.user_img
+                            "
                             alt="user image"
                           />
                           <div
                             class="hw-60-c letter-profile-img rounded-circle mr-4"
                             v-else
                           >
-                            <span style="color:white;font-size:20px">{{
+                            <span style="color: white; font-size: 20px">{{
                               filteredProject.user_name.charAt(0).toUpperCase()
                             }}</span>
                           </div>
@@ -151,17 +154,24 @@
                           class="d-flex flex-column justify-content-center align-items-start"
                         >
                           <h6 class="mb-0">{{ filteredProject.title }}</h6>
+                          <small class="mb-0 status-project">{{
+                            filteredProject.status
+                          }}</small>
+
                           <div
-                            class="d-flex justify-content-start align-items-center "
+                            class="d-flex justify-content-start align-items-center"
                           >
                             <div class="auth mr-2 text-muted">
-                              <i class="fas fa-user" style="font-size:10px"></i>
+                              <i
+                                class="fas fa-user"
+                                style="font-size: 10px"
+                              ></i>
                               <small> {{ filteredProject.user_name }}</small>
                             </div>
                             <div class="time mr-2 text-muted">
                               <i
                                 class="fas fa-clock"
-                                style="font-size:10px"
+                                style="font-size: 10px"
                               ></i>
                               <small>
                                 {{
@@ -173,31 +183,29 @@
                             <div class="offers mr-2 text-muted">
                               <i
                                 class="fas fa-user-tie"
-                                style="font-size:10px"
+                                style="font-size: 10px"
                               ></i>
                               <small>
                                 {{ filteredProject.offers_count }} offers</small
                               >
                             </div>
                           </div>
-                          <p class="text-muted" style="font-size:14px">
+                          <p class="text-muted" style="font-size: 14px">
                             {{ filteredProject.desc.substring(0, 150) + ".." }}
                           </p>
-
-
                         </div>
                       </router-link>
-                                                <div
-                            class="d-flex justify-content-start align-items-center "
-                          >
-                            <span
-                              @click="pushSkill(projectS.name)"
-                              class="label-tag"
-                              v-for="projectS in filteredProject.skills"
-                              :key="projectS.id"
-                              ><i class="fas fa-tag"></i> {{ projectS.name }}
-                            </span>
-                          </div>
+                      <div
+                        class="d-flex justify-content-start align-items-center"
+                      >
+                        <span
+                          @click="pushSkill(projectS.name)"
+                          class="label-tag"
+                          v-for="projectS in filteredProject.skills"
+                          :key="projectS.id"
+                          ><i class="fas fa-tag"></i> {{ projectS.name }}
+                        </span>
+                      </div>
                       <hr />
                     </div>
                   </div>
@@ -213,15 +221,18 @@
                         >
                           <img
                             v-if="project.user_img != null"
-                            class=" hw-60-c mr-4 rounded-circle"
-                            :src="'https://vue-api-backend.herokuapp.com/users_images/'+project.user_img"
+                            class="hw-60-c mr-4 rounded-circle"
+                            :src="
+                              'https://vue-api-backend.herokuapp.com/users_images/' +
+                              project.user_img
+                            "
                             alt="user image"
                           />
                           <div
                             class="hw-60-c letter-profile-img rounded-circle mr-4"
                             v-else
                           >
-                            <span style="color:white;font-size:20px">{{
+                            <span style="color: white; font-size: 20px">{{
                               project.user_name.charAt(0).toUpperCase()
                             }}</span>
                           </div>
@@ -230,17 +241,21 @@
                           class="d-flex flex-column justify-content-center align-items-start"
                         >
                           <h6 class="mb-0">{{ project.title }}</h6>
+
                           <div
-                            class="d-flex justify-content-start align-items-center "
+                            class="d-flex justify-content-start align-items-center"
                           >
                             <div class="auth mr-2 text-muted">
-                              <i class="fas fa-user" style="font-size:10px"></i>
+                              <i
+                                class="fas fa-user"
+                                style="font-size: 10px"
+                              ></i>
                               <small> {{ project.user_name }}</small>
                             </div>
                             <div class="time mr-2 text-muted">
                               <i
                                 class="fas fa-clock"
-                                style="font-size:10px"
+                                style="font-size: 10px"
                               ></i>
                               <small>
                                 {{ project.created_at | moment("from", "now") }}
@@ -249,29 +264,30 @@
                             <div class="offers mr-2 text-muted">
                               <i
                                 class="fas fa-user-tie"
-                                style="font-size:10px"
+                                style="font-size: 10px"
                               ></i>
                               <small> {{ project.offers_count }} offers</small>
                             </div>
+                            <small class="mb-0 status-project">{{
+                              project.status
+                            }}</small>
                           </div>
-                          <p class="text-muted" style="font-size:14px">
+                          <p class="text-muted" style="font-size: 14px">
                             {{ project.desc.substring(0, 150) + ".." }}
                           </p>
-
-
                         </div>
                       </router-link>
-                                                <div
-                            class="d-flex justify-content-start align-items-center "
-                          >
-                            <span
-                              @click="pushSkill(projectS.name)"
-                              class="label-tag"
-                              v-for="projectS in project.skills"
-                              :key="projectS.id"
-                              ><i class="fas fa-tag"></i> {{ projectS.name }}
-                            </span>
-                          </div>
+                      <div
+                        class="d-flex justify-content-start align-items-center"
+                      >
+                        <span
+                          @click="pushSkill(projectS.name)"
+                          class="label-tag"
+                          v-for="projectS in project.skills"
+                          :key="projectS.id"
+                          ><i class="fas fa-tag"></i> {{ projectS.name }}
+                        </span>
+                      </div>
                       <hr />
                     </div>
 
@@ -279,9 +295,8 @@
                       :data="projects"
                       :limit="1"
                       @pagination-change-page="getResults"
-                      class="margin-b-0 border-0 "
+                      class="margin-b-0 border-0"
                     >
-
                     </pagination>
                   </div>
                 </div>
@@ -474,20 +489,29 @@ hr {
 }
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+.status-project {
+  padding: 5px;
+  background: #f1f1f1;
+  margin: 3px;
+  border-radius: 5px;
+  color: black;
+}
+</style>
 
 <script>
 import axios from "axios";
 import Multiselect from "vue-multiselect";
-import { VclFacebook, VclInstagram,VclBulletList } from 'vue-content-loading';
+import { VclFacebook, VclInstagram, VclBulletList } from "vue-content-loading";
 
 export default {
-  components: { 
+  components: {
     Multiselect,
     /* eslint-disable vue/no-unused-components */
-        VclFacebook,
-        VclInstagram,
-        VclBulletList
-   },
+    VclFacebook,
+    VclInstagram,
+    VclBulletList,
+  },
 
   data() {
     return {
@@ -536,7 +560,7 @@ export default {
       this.scrollTop();
     },
 
-    scrollTop: function() {
+    scrollTop: function () {
       this.intervalId = setInterval(() => {
         if (window.pageYOffset === 0) {
           clearInterval(this.intervalId);
@@ -685,7 +709,7 @@ export default {
       }
     },
 
-    gotToSignup: function() {
+    gotToSignup: function () {
       this.$router.push("/register");
     },
   },
