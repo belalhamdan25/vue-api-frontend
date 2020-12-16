@@ -41,6 +41,8 @@ var _MyPortfolios = _interopRequireDefault(require("../views/MyPortfolios.vue"))
 
 var _ChargeBalance = _interopRequireDefault(require("../views/ChargeBalance.vue"));
 
+var _ForgotPassword = _interopRequireDefault(require("../views/ForgotPassword.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -70,6 +72,14 @@ var routes = [{
   meta: {
     guest: true,
     title: 'Worker | Register'
+  }
+}, {
+  path: "/forgot-password",
+  name: "ForgotPassword",
+  component: _ForgotPassword["default"],
+  meta: {
+    guest: true,
+    title: 'Worker | Forgot Password'
   }
 }, {
   path: "/dashboard",

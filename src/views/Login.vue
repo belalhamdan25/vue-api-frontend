@@ -45,7 +45,7 @@
                   >Sign Up</router-link
                 >
               </div>
-              <router-link class="forgot" to="#">Forgot Password ?</router-link>
+              <router-link class="forgot" to="/forgot-password">Forgot Password ?</router-link>
             </div>
           </form>
         </div>

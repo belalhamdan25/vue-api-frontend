@@ -16,6 +16,7 @@ import Balance from "../views/Balance.vue";
 import MyProjects from "../views/MyProjects.vue";
 import MyPortfolios from "../views/MyPortfolios.vue";
 import ChargeBalance from "../views/ChargeBalance.vue";
+import ForgotPassword from "../views/ForgotPassword.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -42,11 +43,20 @@ const routes = [
 
   },
   {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPassword,
+    meta: { guest: true , title:'Worker | Forgot Password' }
+
+  },
+  
+  {
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
     meta: { requiresAuth: true , title:'Worker | Dashboard' }
   },
+
   
   {
     path: "/account-profile",

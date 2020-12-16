@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
-          <div class="row">
+          <div class="row mb-4">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="tab-content" id="pills-tabContent">
                 <div
@@ -594,9 +594,16 @@
                           </div>
                         </div>
 
-                        <div class="text-left mb-4">
-                          <h6 class="">About</h6>
-                          <textarea v-model="user.about"></textarea>
+                        <div class="form-group mb-4">
+                          <label for="exampleFormControlTextarea1"
+                            >Example textarea</label
+                          >
+                          <textarea
+                            v-model="user.about"
+                            class="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="3"
+                          ></textarea>
                         </div>
 
                         <button
@@ -610,6 +617,54 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 radios-5 bg-white p-4">
+              <div class="password-data">
+                <h6>Change Password</h6>
+                <hr />
+
+                <form>
+                  <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="current-password"
+                      placeholder="Current Password"
+                      v-model="Cpassword"
+                    />
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="New-Password">New Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="New-Password"
+                        placeholder="New Password"
+                        v-model="Npassword"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="Confirm-New-Password"
+                        >Confirm New Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="Confirm-New-Password"
+                        placeholder="Confirm New Password"
+                        v-model="CNpassword"
+                      />
+                    </div>
+                  </div>
+
+                  <button type="submit" @click.prevent="updatePassword" class="btn btn-primary">Save</button>
+                </form>
               </div>
             </div>
           </div>
@@ -663,6 +718,9 @@ export default {
       cquery: [],
       categoriesValues: [],
       tagId: [],
+      Cpassword: "",
+      Npassword: "",
+      CNpassword: "",
     };
   },
   computed: {
@@ -804,6 +862,25 @@ export default {
           console.log(err);
         });
     },
+    updatePassword(){
+             this.$Progress.start();
+        axios.post('https://vue-api-backend.herokuapp.com/api/auth/update-password',{
+          Cpassword:this.Cpassword,
+          Npassword:this.Npassword,
+          CNpassword:this.CNpassword,
+          token:this.retriveToken,
+        })
+        .then(res=>{
+            console.log(res);
+            this.sucessMessageOpen();
+            this.$Progress.finish();
+
+        })
+        .catch(err => {
+            console.log(err);
+            this.errorMessageOpen();
+        }) 
+    }
     // token(){
     //  console.log(this.retriveToken);
     //  console.log(this.user.user_img);

@@ -106,7 +106,20 @@
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"
                 >
-                  <div class="text-left">
+
+                    <div class="text-left" v-if="userValuesDashboard.offerStatusCount *100 == 0">
+                    <span style="font-size:15px">Awaiting approval</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      size="small"
+                      :val="userValuesDashboard.offerStatusAwaitingApprovalCount*100"
+                      :max="100"
+                    ></progress-bar>
+                    {{userValuesDashboard.offerStatusAwaitingApprovalCount}}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">Awaiting approval</span>
                     <progress-bar
                       style="width:300px"
@@ -118,7 +131,19 @@
                     {{userValuesDashboard.offerStatusAwaitingApprovalCount}}
                   </div>
 
-                  <div class="text-left">
+                      <div class="text-left" v-if="userValuesDashboard.offerStatusCount *100 == 0">
+                    <span style="font-size:15px">Finished</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      size="small"
+                      :val="userValuesDashboard.offerStatusFinishedCount*100"
+                        :max="100"
+                    ></progress-bar>
+                    {{userValuesDashboard.offerStatusFinishedCount}}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">Finished</span>
                     <progress-bar
                       style="width:300px"
@@ -130,7 +155,19 @@
                     {{userValuesDashboard.offerStatusFinishedCount}}
                   </div>
 
-                  <div class="text-left">
+                                    <div class="text-left" v-if="userValuesDashboard.offerStatusCount *100 == 0">
+                    <span style="font-size:15px">In Proccess</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      size="small"
+                      :val="userValuesDashboard.offerStatusInProccessCount*100"
+                      :max="100"
+                    ></progress-bar>
+                    {{userValuesDashboard.offerStatusInProccessCount}}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">In Proccess</span>
                     <progress-bar
                       style="width:300px"
@@ -164,7 +201,19 @@
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"
                 >
-                  <div class="text-left">
+                      <div class="text-left" v-if="userValuesDashboard.projectStatusOpenCount *100 == 0">
+                    <span style="font-size:15px">Open</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      :max="100"
+                      size="small"
+                      :val="userValuesDashboard.projectStatusOpenCount*100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectStatusOpenCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">Open</span>
                     <progress-bar
                       style="width:300px"
@@ -176,7 +225,19 @@
                     {{ userValuesDashboard.projectStatusOpenCount }}
                   </div>
 
-                  <div class="text-left">
+                                   <div class="text-left" v-if="userValuesDashboard.projectStatusOpenCount *100 == 0">
+                    <span style="font-size:15px">Closed</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      :max="100"
+                      size="small"
+                      :val="userValuesDashboard.projectStatusClosedCount*100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectStatusClosedCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">Closed</span>
                     <progress-bar
                       style="width:300px"
@@ -188,7 +249,19 @@
                     {{ userValuesDashboard.projectStatusClosedCount }}
                   </div>
 
-                  <div class="text-left">
+                                    <div class="text-left" v-if="userValuesDashboard.projectStatusOpenCount *100 == 0">
+                    <span style="font-size:15px">In Proccess</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      :max="100"
+                      size="small"
+                      :val="userValuesDashboard.projectStatusProccessCount *100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectStatusProccessCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">In Proccess</span>
                     <progress-bar
                       style="width:300px"
@@ -200,7 +273,20 @@
                     {{ userValuesDashboard.projectStatusProccessCount }}
                   </div>
 
-                  <div class="text-left">
+
+                                    <div class="text-left" v-if="userValuesDashboard.projectStatusOpenCount *100 == 0">
+                    <span style="font-size:15px">Finished</span>
+                    <progress-bar
+                      style="width:300px"
+                      bar-color="#41b883"
+                      :max="100"
+                      size="small"
+                      :val="userValuesDashboard.projectStatusFinishedCount *100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectStatusFinishedCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
                     <span style="font-size:15px">Finished</span>
                     <progress-bar
                       style="width:300px"
