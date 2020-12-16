@@ -54,12 +54,10 @@
           <div class="row mb-4">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="personal-data">
-                                <div class="d-flex  justify-content-between align-items-center">
-
-                <h6>My Balance</h6>
-                                <button @click="ChargeBalanceBtn">Charge</button>
-
-                                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6>My Balance</h6>
+                  <button @click="ChargeBalanceBtn">Charge</button>
+                </div>
                 <hr />
 
                 <div
@@ -68,7 +66,9 @@
                   <div
                     class="d-flex flex-column justify-content-center align-items-center"
                   >
-                    <span class="heading-color font-size-20">Total Balance</span>
+                    <span class="heading-color font-size-20"
+                      >Total Balance</span
+                    >
 
                     <span class="font-size-35 color-prime"
                       >${{ userValuesDashboard.balance_total }}</span
@@ -83,6 +83,24 @@
               <div class="transactions">
                 <h6>Account Transactions</h6>
                 <hr />
+
+                <div v-for="transaction in transactions" :key="transaction.id">
+                  <div class="text-left mb-4">
+                    <div
+                      class="d-flex justify-content-around align-items-start"
+                    >
+                      <small>{{ transaction.desc }} : </small>
+
+                      <h6>{{ transaction.amount }}</h6>
+                      <h6>
+                        <i class="fas fa-clock" style="font-size: 10px"></i>
+                        <small>
+                          {{ transaction.created_at | moment("from", "now") }}
+                        </small>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,6 +118,7 @@ export default {
   data() {
     return {
       userValuesDashboard: [],
+      transactions: [],
     };
   },
   methods: {
@@ -113,7 +132,7 @@ export default {
           this.userValuesDashboard = response.data;
         });
     },
-            performLogout() {
+    performLogout() {
       this.$store
         .dispatch("performLogoutAction")
         .then((res) => {
@@ -126,9 +145,19 @@ export default {
           console.log(err);
         });
     },
-    ChargeBalanceBtn(){
-       this.$router.push("/charge-balance");
-    }
+    ChargeBalanceBtn() {
+      this.$router.push("/charge-balance");
+    },
+    myTransaction() {
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/user/my-transaction/" +
+            this.user.id
+        )
+        .then((response) => {
+          this.transactions = response.data;
+        });
+    },
   },
   computed: {
     user() {
@@ -137,7 +166,7 @@ export default {
   },
   mounted() {
     this.userDataLoad();
-    this.categoriesFiltter();
+    this.myTransaction();
   },
 };
 </script>
