@@ -58,7 +58,7 @@
               {{ userValuesDashboard.portfolio_count }}
             </h6>
             <div class="hr mb-2"></div>
-            <router-link class="link-sec" to="#"
+            <router-link class="link-sec" to="/portfolio-create"
               ><i class="bx bx-plus"></i> Add New</router-link
             >
           </div>

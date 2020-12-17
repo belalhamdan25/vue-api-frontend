@@ -43,6 +43,8 @@ var _ChargeBalance = _interopRequireDefault(require("../views/ChargeBalance.vue"
 
 var _ForgotPassword = _interopRequireDefault(require("../views/ForgotPassword.vue"));
 
+var _PortfolioCreate = _interopRequireDefault(require("../views/PortfolioCreate.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -128,6 +130,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | My Portfolios'
+  }
+}, {
+  path: "/portfolio-create",
+  name: "PortfolioCreate",
+  component: _PortfolioCreate["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Create New Portfolio'
   }
 }, {
   path: "*",

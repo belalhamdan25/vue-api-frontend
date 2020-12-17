@@ -26,6 +26,9 @@ export default new Vuex.Store({
     SET_skillPressed(state,payload) {
       state.skillPressed =payload;
     },
+    SET_userSkills(state,payload) {
+      state.userSkills =payload;
+    },
   },
   actions: {
     performLoginAction({ commit }, payload) {
@@ -129,6 +132,9 @@ export default new Vuex.Store({
     },
     get_skillPressed(state) {
       return state.skillPressed;
+    },
+    get_userSkills(state) {
+      return state.userSkills;
     },
   },
 });

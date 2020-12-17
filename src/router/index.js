@@ -17,6 +17,7 @@ import MyProjects from "../views/MyProjects.vue";
 import MyPortfolios from "../views/MyPortfolios.vue";
 import ChargeBalance from "../views/ChargeBalance.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
+import PortfolioCreate from "../views/PortfolioCreate.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -88,6 +89,12 @@ const routes = [
     name: "MyPortfolios",
     component: MyPortfolios,
     meta: { requiresAuth: true , title:'Worker | My Portfolios' }
+  },
+  {
+    path: "/portfolio-create",
+    name: "PortfolioCreate",
+    component: PortfolioCreate,
+    meta: { requiresAuth: true , title:'Worker | Create New Portfolio' }
   },
   
   {

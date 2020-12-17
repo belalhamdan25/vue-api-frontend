@@ -37,6 +37,9 @@ var _default = new _vuex["default"].Store({
     },
     SET_skillPressed: function SET_skillPressed(state, payload) {
       state.skillPressed = payload;
+    },
+    SET_userSkills: function SET_userSkills(state, payload) {
+      state.userSkills = payload;
     }
   },
   actions: {
@@ -133,6 +136,9 @@ var _default = new _vuex["default"].Store({
     },
     get_skillPressed: function get_skillPressed(state) {
       return state.skillPressed;
+    },
+    get_userSkills: function get_userSkills(state) {
+      return state.userSkills;
     }
   }
 });

@@ -85,9 +85,9 @@
                         </div>
                       </div>
 
-                      <form @submit="submitForm" enctype="multipart/form-data">
+                      <form  enctype="multipart/form-data">
                         <div class="upload-btn-wrapper ml-4">
-                          <button class="btn">Upload photo</button>
+                          <!-- <button class="btn">Upload photo</button> -->
                           <input
                             @change="onFileChange"
                             type="file"
@@ -96,11 +96,11 @@
                             name="image"
                           />
                         </div>
-                        <input
+                        <!-- <input
                           type="submit"
                           class="btn btn-primary"
                           value="Save"
-                        />
+                        /> -->
                       </form>
                     </div>
 
@@ -596,7 +596,7 @@
 
                         <div class="form-group mb-4">
                           <label for="exampleFormControlTextarea1"
-                            >Example textarea</label
+                            >About</label
                           >
                           <textarea
                             v-model="user.about"
@@ -675,30 +675,7 @@
 </template>
 
 <style scoped>
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
 
-.btn {
-  border: 2px solid #41b883;
-  color: #41b883;
-  background-color: white;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.upload-btn-wrapper input[type="file"] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
-}
 </style>
 
 <script>
@@ -730,11 +707,15 @@ export default {
     retriveToken() {
       return this.$store.getters.get_token;
     },
+      userSkills() {
+      return this.$store.getters.get_userSkills;
+    },
   },
   methods: {
     onFileChange(e) {
       console.log(e.target.files[0]);
       this.image = e.target.files[0];
+      this.submitForm(e);
     },
     submitForm(e) {
       e.preventDefault();
@@ -777,7 +758,7 @@ export default {
           user_img: this.img_name,
           about: this.user.about,
           category_id: this.user.category_id,
-          tags_id: this.tagId,
+          tags_id: this.userSkills,
         })
         .then((res) => {
           this.$Progress.finish();
@@ -800,6 +781,8 @@ export default {
         // console.log(arrayid.id)
         this.tagId.push(arrayid.id);
       }
+        this.$store.commit("SET_userSkills", this.tagId);
+
       // console.log(this.tagId);
     },
 
