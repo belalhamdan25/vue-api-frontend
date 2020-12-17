@@ -44,6 +44,7 @@
                     type="file"
                     class="form-control-file"
                     id="secondery-image"
+                    multiple
                   />
                 </div>
               </div>

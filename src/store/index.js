@@ -11,6 +11,8 @@ export default new Vuex.Store({
     user: null,
     token: null,
     skillPressed:null,
+    userSkills:null,
+    userImage:null,
   },
   plugins: [new VuexPersistence().plugin],
   mutations: {
@@ -28,6 +30,9 @@ export default new Vuex.Store({
     },
     SET_userSkills(state,payload) {
       state.userSkills =payload;
+    },
+    SET_userImage(state,payload) {
+      state.userImage =payload;
     },
   },
   actions: {
@@ -135,6 +140,9 @@ export default new Vuex.Store({
     },
     get_userSkills(state) {
       return state.userSkills;
+    },
+    get_userImage(state) {
+      return state.userImage;
     },
   },
 });

@@ -10,10 +10,7 @@
             <img
               v-if="user.user_img != null"
               class="circle2"
-              :src="
-                'https://vue-api-backend.herokuapp.com/users_images/' +
-                user.user_img
-              "
+              :src="user.user_img"
             />
 
             <div v-else class="circle">

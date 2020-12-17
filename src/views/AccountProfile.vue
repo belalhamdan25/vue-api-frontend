@@ -10,10 +10,7 @@
             <img
               v-if="user.user_img != null"
               class="circle2"
-              :src="
-                'https://vue-api-backend.herokuapp.com/users_images/' +
-                user.user_img
-              "
+              :src="user.user_img"
             />
             <div v-else class="circle">
               <span style="color: white; font-size: 25px">{{
@@ -72,10 +69,7 @@
                         <img
                           v-if="user.user_img != null"
                           class="circle2"
-                          :src="
-                            'https://vue-api-backend.herokuapp.com/users_images/' +
-                            user.user_img
-                          "
+                          :src="user.user_img"
                         />
 
                         <div v-else class="circle">
@@ -710,6 +704,9 @@ export default {
       userSkills() {
       return this.$store.getters.get_userSkills;
     },
+          userImage() {
+      return this.$store.getters.get_userImage;
+    },
   },
   methods: {
     onFileChange(e) {
@@ -738,6 +735,7 @@ export default {
           currentObj.success = response.data.success;
           console.log(response.data.img_name);
           this.img_name = response.data.img_name;
+        this.$store.commit("SET_userImage", this.img_name);
           this.updateUserInfo();
         })
         .catch(function (error) {
@@ -755,7 +753,7 @@ export default {
           email: this.user.email,
           location: this.user.location,
           gender: this.user.gender,
-          user_img: this.img_name,
+          user_img: this.userImage,
           about: this.user.about,
           category_id: this.user.category_id,
           tags_id: this.userSkills,
