@@ -6,7 +6,10 @@
           <div class="create-form">
             <h6>Create New Portfolio</h6>
             <hr />
-            <form enctype="multipart/form-data">
+            <form
+              @submit.prevent="CreatePortfolio"
+              enctype="multipart/form-data"
+            >
               <div class="form-row">
                 <div class="form-group col-md-8">
                   <label for="title">Portfolio Title</label>
@@ -19,11 +22,14 @@
                   />
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="primary-image">Primary Image</label>
+                  <label for="primary-image">Images</label>
                   <input
+                    @change="onFileChange"
                     type="file"
                     class="form-control-file"
                     id="primary-image"
+                    multiple
+                    accept="image/*"
                   />
                 </div>
               </div>
@@ -37,15 +43,6 @@
                     id="description"
                     rows="5"
                   ></textarea>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="secondery-image">Secondery Images</label>
-                  <input
-                    type="file"
-                    class="form-control-file"
-                    id="secondery-image"
-                    multiple
-                  />
                 </div>
               </div>
 
@@ -94,7 +91,7 @@
                     @input="portfolioTags()"
                   ></multiselect>
                 </div>
-                                <div class="form-group col-md-4">
+                <div class="form-group col-md-4">
                   <label for="date">Portfolio date</label>
                   <input
                     type="date"
@@ -105,11 +102,7 @@
                 </div>
               </div>
 
-              <button
-              @click.prevent="CreatePortfolio"
-                type="submit"
-                class="btn btn-primary"
-              >
+              <button type="submit" class="btn btn-primary">
                 Add Portfolio
               </button>
             </form>
@@ -139,8 +132,9 @@ export default {
       Pcategory: "",
       Pskills: [],
       options: [],
-      categoriesValues: [],
+      categoriesValues: "",
       tagsId: [],
+      attachments: [],
     };
   },
   methods: {
@@ -171,13 +165,63 @@ export default {
         this.tagsId.push(arrayid.id);
       }
     },
-    CreatePortfolio() {
-      console.log("belal");
+    onFileChange(e) {
+      // ******************************************
+      let selectedFiles=e.target.files;
+      if(!selectedFiles.length){
+        return false;
+      }
+      for (let i = 0; i < selectedFiles.length; i++) {
+        this.attachments.push((selectedFiles[i]));
+      }
+      console.log(this.attachments);
+      //**************************************
+    },
+    CreatePortfolio(e) {
+      this.$Progress.start();
+      e.preventDefault();
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+      let formData = new FormData();
+      formData.append("title", this.Ptitle);
+      formData.append("desc", this.Pdesc);
+      formData.append("link", this.Plink);
+      formData.append("date", this.Pdate);
+      formData.append("category_id", this.Pcategory);
+      formData.append("tags_id[] ", this.tagsId);
+      for(let i=0;i<this.attachments.length;i++){
+      formData.append("pics[]", this.attachments[i]);
+      }
+      formData.append("token", this.retriveToken);
+      axios
+        .post(
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/create",
+          formData,
+          config
+        )
+        .then(function (response) {
+          this.$Progress.finish();
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
   mounted() {
     this.loadTagsNames();
     this.loadcategoriesValues();
+  },
+  computed: {
+    user() {
+      return this.$store.getters.get_user;
+    },
+    retriveToken() {
+      return this.$store.getters.get_token;
+    },
   },
 };
 </script>
