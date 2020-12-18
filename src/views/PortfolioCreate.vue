@@ -138,6 +138,24 @@ export default {
     };
   },
   methods: {
+           errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during create process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
+    sucessMessageOpen() {
+      this.$toast.open({
+        message: "Portfolio Created",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
     loadTagsNames() {
       axios
         .get(
@@ -201,6 +219,7 @@ export default {
         ).then((response) => {
           this.$Progress.finish();
           console.log(response.data);
+          this.sucessMessageOpen()
         });
 
     },
