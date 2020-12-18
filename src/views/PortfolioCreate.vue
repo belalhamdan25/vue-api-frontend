@@ -7,7 +7,6 @@
             <h6>Create New Portfolio</h6>
             <hr />
             <form
-              @submit.prevent="CreatePortfolio"
               enctype="multipart/form-data"
             >
               <div class="form-row">
@@ -102,7 +101,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary">
+              <button @click.prevent="CreatePortfolio"  class="btn btn-primary">
                 Add Portfolio
               </button>
             </form>
@@ -135,6 +134,7 @@ export default {
       categoriesValues: "",
       tagsId: [],
       attachments: [],
+      form:new FormData
     };
   },
   methods: {
@@ -177,38 +177,32 @@ export default {
       console.log(this.attachments);
       //**************************************
     },
-    CreatePortfolio(e) {
+    CreatePortfolio() {
       this.$Progress.start();
-      e.preventDefault();
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      };
-      let formData = new FormData();
-      formData.append("title", this.Ptitle);
-      formData.append("desc", this.Pdesc);
-      formData.append("link", this.Plink);
-      formData.append("date", this.Pdate);
-      formData.append("category_id", this.Pcategory);
-      formData.append("tags_id[] ", this.tagsId);
+
       for(let i=0;i<this.attachments.length;i++){
-      formData.append("pics[]", this.attachments[i]);
+      this.form.append("pics[]", this.attachments[i]);
       }
-      formData.append("token", this.retriveToken);
+      this.form.append("title", this.Ptitle);
+      this.form.append("desc", this.Pdesc);
+      this.form.append("link", this.Plink);
+      this.form.append("date", this.Pdate);
+      this.form.append("category_id", this.Pcategory);
+      this.form.append("tags_id[] ", this.tagsId);
+      this.form.append("token", this.retriveToken);
+
+      const config = {headers: {"Content-Type": "multipart/form-data"}};
+
       axios
         .post(
           "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/create",
-          formData,
+          this.form,
           config
-        )
-        .then(function (response) {
+        ).then((response) => {
           this.$Progress.finish();
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
+          console.log(response.data);
         });
+
     },
   },
   mounted() {
