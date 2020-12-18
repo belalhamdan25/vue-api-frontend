@@ -206,7 +206,7 @@ export default {
       this.form.append("link", this.Plink);
       this.form.append("date", this.Pdate);
       this.form.append("category_id", this.Pcategory);
-      this.form.append("tags_id[] ", this.tagsId);
+      this.form.append("pTags ", this.tagsId);
       this.form.append("token", this.retriveToken);
 
       const config = {headers: {"Content-Type": "multipart/form-data"}};
