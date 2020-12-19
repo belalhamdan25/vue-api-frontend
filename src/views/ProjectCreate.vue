@@ -36,6 +36,7 @@
                     class="form-control-file"
                     id="attachments"
                     multiple
+                    accept="image/*"
                   />
                 </div>
               </div>
