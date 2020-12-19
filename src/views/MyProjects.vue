@@ -53,7 +53,9 @@
               <div class="projects">
                 <div class="d-flex  justify-content-between align-items-center">
                 <h6>My Projects</h6>
-                <button>Add New</button>
+                                  <router-link class="" to="/project-create">
+                    Add New</router-link
+                  >
                 </div>
               <hr />
 

@@ -18,6 +18,7 @@ import MyPortfolios from "../views/MyPortfolios.vue";
 import ChargeBalance from "../views/ChargeBalance.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import PortfolioCreate from "../views/PortfolioCreate.vue";
+import ProjectCreate from "../views/ProjectCreate.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -96,7 +97,12 @@ const routes = [
     component: PortfolioCreate,
     meta: { requiresAuth: true , title:'Worker | Create New Portfolio' }
   },
-  
+  {
+    path: "/project-create",
+    name: "ProjectCreate",
+    component: ProjectCreate,
+    meta: { requiresAuth: true , title:'Worker | Create New Project' }
+  },
   {
     path: "*",
     name: "ErrorPage",

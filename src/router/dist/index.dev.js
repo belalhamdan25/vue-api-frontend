@@ -45,6 +45,8 @@ var _ForgotPassword = _interopRequireDefault(require("../views/ForgotPassword.vu
 
 var _PortfolioCreate = _interopRequireDefault(require("../views/PortfolioCreate.vue"));
 
+var _ProjectCreate = _interopRequireDefault(require("../views/ProjectCreate.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -138,6 +140,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Create New Portfolio'
+  }
+}, {
+  path: "/project-create",
+  name: "ProjectCreate",
+  component: _ProjectCreate["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Create New Project'
   }
 }, {
   path: "*",
