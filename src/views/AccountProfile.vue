@@ -43,6 +43,9 @@
             <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
+                                   <router-link class="p-2 side-item" to="/my-offers"
+              ><i class='bx bx-dollar-circle'></i> My Offers</router-link
+            >
             <button class="p-2 side-item" @click.prevent="performLogout">
               <i class="bx bx-log-out"></i> Log out
             </button>

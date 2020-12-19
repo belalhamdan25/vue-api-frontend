@@ -1,5 +1,5 @@
 <template>
-  <div class="balance">
+  <section class="my-offers">
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
@@ -32,7 +32,7 @@
             <router-link class="p-2 side-item" to="/account-profile"
               ><i class="bx bx-user"></i> My Account</router-link
             >
-            <router-link class="p-2 side-item active-side-nav" to="/balance"
+            <router-link class="p-2 side-item" to="/balance"
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
@@ -42,8 +42,8 @@
             <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
-                                   <router-link class="p-2 side-item" to="/my-offers"
-              ><i class='bx bx-dollar-circle'></i> My Offers</router-link
+            <router-link class="p-2 side-item active-side-nav" to="/my-offers"
+              ><i class="bx bx-dollar-circle"></i> My Offers</router-link
             >
             <button class="p-2 side-item" @click.prevent="performLogout">
               <i class="bx bx-log-out"></i> Log out
@@ -53,52 +53,50 @@
         <div class="col-md-9 col-sm-12">
           <div class="row mb-4">
             <div class="col-12 radios-5 bg-white p-4">
-              <div class="personal-data">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h6>My Balance</h6>
-                  <button @click="ChargeBalanceBtn">Charge</button>
-                </div>
+              <div class="offers">
+                <h6>My Offers</h6>
                 <hr />
+                <div class="row">
+                  <div class="col-12">
+                      <div v-for="userValue in userValues" :key="userValue.id">
+                          <router-link
+                          v-for="userOffers in userValue.user_offers"
+                          :key="userOffers.id"
+                          :to="'/project/' + userOffers.project.id"
+                          class="d-flex justify-content-start align-items-center p-2 project-item"
+                        >
+                          <div
+                            class="d-flex flex-column justify-content-center align-items-start"
+                          >
+                            <h6 class="mb-0">{{ userOffers.project.title }}</h6>
+                            <div
+                              class="d-flex justify-content-start align-items-center"
+                            >
 
-                <div
-                  class="d-flex mb-4 justify-content-around align-items-start"
-                >
-                  <div
-                    class="d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <span class="heading-color font-size-20"
-                      >Total Balance</span
-                    >
-
-                    <span class="font-size-35 color-prime"
-                      >${{ userValuesDashboard.balance_total }}</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 radios-5 bg-white p-4">
-              <div class="transactions">
-                <h6>Account Transactions</h6>
-                <hr />
-
-                <div v-for="transaction in transactions" :key="transaction.id">
-                  <div class="text-left mb-4">
-                    <div
-                      class="d-flex justify-content-around align-items-start"
-                    >
-                      <!-- <small>{{ transaction.desc }} : </small> -->
-
-                      <h6>$ {{ transaction.amount }}</h6>
-                      <h6>
-                        <i class="fas fa-clock" style="font-size: 10px"></i>
-                        <small>
-                          {{ transaction.created_at | moment("from", "now") }}
-                        </small>
-                      </h6>
-                    </div>
+                              <div class="time mr-2 text-muted">
+                                <i
+                                  class="fas fa-clock"
+                                  style="font-size: 10px"
+                                ></i>
+                                <small>
+                                  {{
+                                    userOffers.project.created_at
+                                      | moment("from", "now")
+                                  }}
+                                </small>
+                              </div>
+                              <small class="status-project">
+                                  {{ userOffers.status}}
+                              </small>
+                            </div>
+                            <p class="text-muted" style="font-size: 14px">
+                              {{
+                                userOffers.project.desc.substring(0, 150) + ".."
+                              }}
+                            </p>
+                          </div>
+                        </router-link>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -107,10 +105,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
+
 <style scoped>
 </style>
+
 <script>
 import axios from "axios";
 
@@ -118,21 +118,21 @@ export default {
   data() {
     return {
       userValuesDashboard: [],
-      transactions: [],
+      userValues: [],
     };
   },
   methods: {
-    userDataLoad() {
+
+    loadUserData() {
       axios
         .get(
-          "https://vue-api-backend.herokuapp.com/api/user/user-dashboard/" +
-            this.user.id
+          "https://vue-api-backend.herokuapp.com/api/user/user/" + this.user.id
         )
         .then((response) => {
-          this.userValuesDashboard = response.data;
+          this.userValues = response.data;
         });
     },
-    performLogout() {
+        performLogout() {
       this.$store
         .dispatch("performLogoutAction")
         .then((res) => {
@@ -145,19 +145,7 @@ export default {
           console.log(err);
         });
     },
-    ChargeBalanceBtn() {
-      this.$router.push("/charge-balance");
-    },
-    myTransaction() {
-      axios
-        .get(
-          "https://vue-api-backend.herokuapp.com/api/user/my-transaction/" +
-            this.user.id
-        )
-        .then((response) => {
-          this.transactions = response.data;
-        });
-    },
+
   },
   computed: {
     user() {
@@ -165,8 +153,7 @@ export default {
     },
   },
   mounted() {
-    this.userDataLoad();
-    this.myTransaction();
+      this.loadUserData();
   },
 };
 </script>

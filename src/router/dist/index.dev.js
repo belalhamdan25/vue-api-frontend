@@ -47,6 +47,8 @@ var _PortfolioCreate = _interopRequireDefault(require("../views/PortfolioCreate.
 
 var _ProjectCreate = _interopRequireDefault(require("../views/ProjectCreate.vue"));
 
+var _MyOffers = _interopRequireDefault(require("../views/MyOffers.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -132,6 +134,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | My Portfolios'
+  }
+}, {
+  path: "/my-offers",
+  name: "MyOffers",
+  component: _MyOffers["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | My Offers'
   }
 }, {
   path: "/portfolio-create",

@@ -19,6 +19,7 @@ import ChargeBalance from "../views/ChargeBalance.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import PortfolioCreate from "../views/PortfolioCreate.vue";
 import ProjectCreate from "../views/ProjectCreate.vue";
+import MyOffers from "../views/MyOffers.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -90,6 +91,12 @@ const routes = [
     name: "MyPortfolios",
     component: MyPortfolios,
     meta: { requiresAuth: true , title:'Worker | My Portfolios' }
+  },
+  {
+    path: "/my-offers",
+    name: "MyOffers",
+    component: MyOffers,
+    meta: { requiresAuth: true , title:'Worker | My Offers' }
   },
   {
     path: "/portfolio-create",

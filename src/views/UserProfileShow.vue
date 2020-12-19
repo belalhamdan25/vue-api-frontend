@@ -324,6 +324,9 @@
                                   }}
                                 </small>
                               </div>
+                                 <small class="status-project">
+                                  {{ userOffers.status}}
+                              </small>
                               <!-- <div class="offers mr-2 text-muted">
                                 <i
                                   class="fas fa-user-tie"

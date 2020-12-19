@@ -5,7 +5,7 @@
         <div class="container">
           <div class="row padding-25 bg-white">
             <div
-              class="col-lg-10 col-md-9 col-sm-12 d-flex justify-content-start align-items-center "
+              class="col-lg-10 col-md-9 col-sm-12 d-flex justify-content-start align-items-center"
               v-for="projectValue in projectValues"
               :key="projectValue.id"
             >
@@ -15,15 +15,15 @@
                   :src="projectValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
-                <div class=" rounded-circle hw-70-c letter-profile-img " v-else>
-                  <span style="color:white;font-size:25px">{{
+                <div class="rounded-circle hw-70-c letter-profile-img" v-else>
+                  <span style="color: white; font-size: 25px">{{
                     projectValue.user_name.charAt(0).toUpperCase()
                   }}</span>
                 </div>
               </div>
 
               <div
-                class="d-flex flex-column justify-content-center align-items-start "
+                class="d-flex flex-column justify-content-center align-items-start"
               >
                 <div class="portfolio-title">
                   <h5 class="heading-color">
@@ -33,7 +33,7 @@
                 <div class="portfolio-author">
                   <a href="#">
                     <small class="primary-color">
-                      <i class="fas fa-user "></i>
+                      <i class="fas fa-user"></i>
                       {{ projectValue.user_name }}
                     </small>
                   </a>
@@ -44,7 +44,7 @@
                     {{ projectValue.created_at | moment("from", "now") }}
                   </small>
                 </div>
-                  <div class="portfolio-status mt-2">
+                <div class="portfolio-status mt-2">
                   <small class="status-project text-secondary">
                     {{ projectValue.status }}
                   </small>
@@ -54,7 +54,7 @@
             <div
               class="col-lg-2 col-md-3 col-sm-12 p-4 d-flex justify-content-center align-items-center justify-content-md-end"
             >
-              <a href="#addOffers"  class="btn btn-hire">
+              <a href="#addOffers" class="btn btn-hire">
                 <i class="fas fa-briefcase"></i> Bid Now
               </a>
             </div>
@@ -71,19 +71,19 @@
       >
         <div class="col-lg-9 col-md-8 col-sm-12">
           <div class="row mr-lg-2 mr-md-2">
-            <div class="col-12  mb-2  p-4 radios-5 bg-white ">
+            <div class="col-12 mb-2 p-4 radios-5 bg-white">
               <h6>Project Details</h6>
               <hr />
               <div
-                class="port-view d-flex flex-column justify-content-center align-items-center "
+                class="port-view d-flex flex-column justify-content-center align-items-center"
               >
                 <p>
                   {{ projectValue.desc }}
                 </p>
               </div>
             </div>
-            <div class="col-12 mb-2 radios-5  p-4 bg-white ">
-              <div class="port-det ">
+            <div class="col-12 mb-2 radios-5 p-4 bg-white">
+              <div class="port-det">
                 <h6>Project Attachments</h6>
                 <hr />
 
@@ -101,8 +101,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 mb-2 radios-5  p-4 bg-white ">
-              <div class="port-det ">
+            <div class="col-12 mb-2 radios-5 p-4 bg-white">
+              <div class="port-det">
                 <h6>Skills Required</h6>
                 <hr />
 
@@ -115,8 +115,8 @@
                 </a>
               </div>
             </div>
-                        <div class="col-12 mb-2 radios-5  p-4 bg-white " id="addOffers">
-              <div v-if="LoggedInCheck" class="port-det ">
+            <div class="col-12 mb-2 radios-5 p-4 bg-white" id="addOffers">
+              <div v-if="LoggedInCheck" class="port-det">
                 <h6>Add Offer</h6>
                 <hr />
                 <div class="add-deal-form">
@@ -124,55 +124,51 @@
                     <div class="form-row">
                       <div class="col-md-4 mb-3">
                         <label for="timeLine">Time Line</label>
-                                                <div class="input-group">
-                         <div class="input-group-prepend">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
                             <span
                               class="input-group-text"
                               id="inputGroupPrepend2"
                               >Days</span
                             >
                           </div>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="timeLine"
-                          placeholder="Time Line"
-                          required
-                          min="1"
-                        />
-                      </div>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="timeLine"
+                            placeholder="Time Line"
+                            required
+                            min="1"
+                            v-model="timeline"
+                          />
+                        </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <label for="coast">Coast</label>
                         <div class="input-group">
-                         <div class="input-group-prepend">
+                          <div class="input-group-prepend">
                             <span
                               class="input-group-text"
                               id="inputGroupPrepend2"
                               >$</span
                             >
                           </div>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="coast"
-                          placeholder="Coast"
-                          required
-                          min="25"
-                         v-model="coast"
-                        />
-                      </div>
-
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="coast"
+                            placeholder="Coast"
+                            required
+                            min="25"
+                            v-model="coast"
+                          />
+                        </div>
                       </div>
                       <div class="col-md-4 mb-3">
                         <label for="profit">Your Profit</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
-                            <span
-                              class="input-group-text"
-                              id="profit"
-                              >$</span
-                            >
+                            <span class="input-group-text" id="profit">$</span>
                           </div>
                           <input
                             type="text"
@@ -184,14 +180,25 @@
                             v-model="profit"
                           />
                         </div>
-                        <a href="#"><small>After deducting the commission</small></a>
+                        <a href="#"
+                          ><small>After deducting the commission</small></a
+                        >
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea class="form-control" id="description" rows="6"></textarea>
+                      <textarea
+                        v-model="desc"
+                        class="form-control"
+                        id="description"
+                        rows="6"
+                      ></textarea>
                     </div>
-                    <button class="btn btn-hire" type="submit">
+                    <button
+                      class="btn btn-hire"
+                      @click.prevent="addOffer"
+                      type="submit"
+                    >
                       Bid
                     </button>
                   </form>
@@ -201,21 +208,27 @@
                 <h6>Add Offer</h6>
                 <hr />
                 <div class="add-offer-false text-center">
-                <p>login first if you want to add deals</p>
-                    <button class="btn btn-hire mr-2" type="button" @click="gotToSignup()">
-                      Register
-                    </button>
-                  <button class="btn btn-hire-borderd" type="button" @click="gotToLogin()">
-                      Login
-                    </button>
+                  <p>login first if you want to add deals</p>
+                  <button
+                    class="btn btn-hire mr-2"
+                    type="button"
+                    @click="gotToSignup()"
+                  >
+                    Register
+                  </button>
+                  <button
+                    class="btn btn-hire-borderd"
+                    type="button"
+                    @click="gotToLogin()"
+                  >
+                    Login
+                  </button>
                 </div>
               </div>
-
-
             </div>
 
-            <div class="col-12 mb-4  radios-5  p-4 bg-white ">
-              <div class="port-det ">
+            <div class="col-12 mb-4 radios-5 p-4 bg-white">
+              <div class="port-det">
                 <h6>Offers</h6>
                 <hr />
 
@@ -234,10 +247,10 @@
                         class="rounded-circle hw-45-c"
                       />
                       <div
-                        class=" rounded-circle hw-45-c letter-profile-img "
+                        class="rounded-circle hw-45-c letter-profile-img"
                         v-else
                       >
-                        <span style="color:white;font-size:25px">{{
+                        <span style="color: white; font-size: 25px">{{
                           projectOffer.user.first_name.charAt(0).toUpperCase()
                         }}</span>
                       </div>
@@ -261,13 +274,12 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 ">
+        <div class="col-lg-3 col-md-4 col-sm-12">
           <div class="row">
-            <div class="col-12 mb-2 radios-5 bg-white p-4 ">
-              <div class="skills ">
+            <div class="col-12 mb-2 radios-5 bg-white p-4">
+              <div class="skills">
                 <h6>Project Card</h6>
                 <hr />
 
@@ -336,7 +348,7 @@
                     :title="projectValue.title"
                     :description="projectValue.desc"
                   >
-                    <a href="#" class="fa fa-facebook "></a>
+                    <a href="#" class="fa fa-facebook"></a>
                   </ShareNetwork>
                   <ShareNetwork
                     network="twitter"
@@ -344,7 +356,7 @@
                     :title="projectValue.title"
                     :description="projectValue.desc"
                   >
-                    <a href="#" class="fa fa-twitter "></a>
+                    <a href="#" class="fa fa-twitter"></a>
                   </ShareNetwork>
                   <ShareNetwork
                     network="whatsapp"
@@ -554,15 +566,22 @@ export default {
       projectValues: [],
       projectOffers: [],
       projectOffersAvg: null,
-      days:null,
-      coast:null,
-      profit:0,
-      bidDesc:""
+      days: null,
+      coast: null,
+      profit: 0,
+      desc: "",
+      timeline: null,
     };
   },
-    computed: {
+  computed: {
     LoggedInCheck() {
       return this.$store.getters.get_loggedIn;
+    },
+    retriveToken() {
+      return this.$store.getters.get_token;
+    },
+    user() {
+      return this.$store.getters.get_user;
     },
   },
   methods: {
@@ -579,7 +598,7 @@ export default {
           "https://vue-api-backend.herokuapp.com/api/project/project-show/" +
             this.projectId
         )
-        .then(response => {
+        .then((response) => {
           this.projectValues = response.data;
           //   console.log(response.data.data);
         });
@@ -587,14 +606,14 @@ export default {
     loadOffersData() {
       this.$Progress.start();
       let payload = {
-        pso: this.projectId
+        pso: this.projectId,
       };
       axios({
         url:
           "https://vue-api-backend.herokuapp.com/api/project/project-show-offers",
         method: "post",
-        data: payload
-      }).then(response => {
+        data: payload,
+      }).then((response) => {
         this.projectOffers = response.data;
         this.$Progress.finish();
 
@@ -614,49 +633,90 @@ export default {
       var websiteUrl = "website-url";
       this.projectFullPath = websiteUrl + path;
     },
-    gotToSignup: function() {
+    gotToSignup: function () {
       this.$router.push("/register");
     },
-        gotToLogin: function() {
+    gotToLogin: function () {
       this.$router.push("/login");
     },
+    addOffer() {
+      this.$Progress.start();
+      axios
+        .post(
+          "https://vue-api-backend.herokuapp.com/api/project/create-offer",
+          {
+            token: this.retriveToken,
+            timeline: this.timeline,
+            coast: this.coast,
+            profit: this.profit,
+            desc: this.desc,
+            project_id: this.projectId,
+            user_id: this.user.id,
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.sucessMessageOpen();
+          this.$Progress.finish();
+        })
+        .catch((err) => {
+          console.log(err);
+          this.errorMessageOpen();
+        });
+    },
+    errorMessageOpen() {
+      this.$toast.open({
+        message: " There was error during add offer process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
+    sucessMessageOpen() {
+      this.$toast.open({
+        message: "offer add success",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
   },
-  watch:{
-    coast:function(v){
+  watch: {
+    coast: function (v) {
       var myNumber = v;
-      if(v==0 || v == null){
+      if (v == 0 || v == null) {
         this.profit = 0;
-      }
-      else if(v>=1 && v<=500){
+      } else if (v >= 1 && v <= 500) {
         let percentToGet = 20;
         let percentInDecimal = percentToGet / 100;
         let percent = percentInDecimal * myNumber;
 
-        let result= v - percent;
+        let result = v - percent;
         this.profit = Math.round(result);
-      }else if(v>500 && v<=5000){
+      } else if (v > 500 && v <= 5000) {
         let percentToGet = 15;
         let percentInDecimal = percentToGet / 100;
         let percent = percentInDecimal * myNumber;
 
-        let result= v - percent;
+        let result = v - percent;
         this.profit = Math.round(result);
-      }else if(v>5000){
+      } else if (v > 5000) {
         let percentToGet = 7;
         let percentInDecimal = percentToGet / 100;
         let percent = percentInDecimal * myNumber;
 
-        let result= v - percent;
+        let result = v - percent;
         this.profit = Math.round(result);
       }
-
-    }
+    },
   },
   mounted() {
     this.fetchProjectId();
     this.loadProjectData();
     this.loadOffersData();
     this.fetchFullPath();
-  }
+  },
 };
 </script>
