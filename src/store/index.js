@@ -10,10 +10,7 @@ export default new Vuex.Store({
     loggedIn: false,
     user: null,
     token: null,
-    skillPressed:null,
     userSkills:null,
-    userImage:null,
-    myProject: false,
 
   },
   plugins: [new VuexPersistence().plugin],
@@ -27,17 +24,8 @@ export default new Vuex.Store({
     SET_loggedIn(state, payload) {
       state.loggedIn = payload;
     },
-    SET_skillPressed(state,payload) {
-      state.skillPressed =payload;
-    },
     SET_userSkills(state,payload) {
       state.userSkills =payload;
-    },
-    SET_userImage(state,payload) {
-      state.userImage =payload;
-    },
-    SET_myProject(state, payload) {
-      state.myProject = payload;
     },
   },
   actions: {
@@ -140,17 +128,8 @@ export default new Vuex.Store({
     get_token(state) {
       return state.token;
     },
-    get_skillPressed(state) {
-      return state.skillPressed;
-    },
     get_userSkills(state) {
       return state.userSkills;
-    },
-    get_userImage(state) {
-      return state.userImage;
-    },
-    get_myProject(state) {
-      return state.myProject;
     },
   },
 });

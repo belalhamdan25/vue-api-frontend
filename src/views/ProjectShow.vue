@@ -54,7 +54,7 @@
             <div
               class="col-lg-2 col-md-3 col-sm-12 p-4 d-flex justify-content-center align-items-center justify-content-md-end"
             >
-              <div v-if="myProject == false">
+              <div v-if="myProjectvar == false">
                 <a href="#addOffers" class="btn btn-hire">
                   <i class="fas fa-briefcase"></i> Bid Now
                 </a>
@@ -122,7 +122,7 @@
               </div>
             </div>
             <div v-if="LoggedInCheck">
-              <div v-if="myProject == false">
+              <div v-if="myProjectvar == false">
                 <div class="col-12 mb-2 radios-5 p-4 bg-white" id="addOffers">
                   <div class="port-det">
                     <h6>Add Offer</h6>
@@ -323,7 +323,7 @@
                       ></star-rating>
                     </div>
                   </div>
-                  <div v-if="myProject == true">
+                  <div v-if="myProjectvar == true">
                     <div class="d-flex justify-content-start align-items-start">
                       <h6 class="px-2 primary-color">
                         <i class="bx bx-dollar-circle"></i> Coast : $
@@ -338,7 +338,7 @@
 
                   <p class="px-2">{{ projectOffer.desc }}</p>
 
-                  <div v-if="myProject == true">
+                  <div v-if="myProjectvar == true">
                     <div class="d-flex justify-content-start align-items-start">
                       <router-link to="#" class="mr-4 btn btn-hire">
                         <i class="bx bxs-paper-plane"></i> Accept Offer
@@ -627,6 +627,7 @@ small {
 .label-tag:hover {
   background: #369a6e;
   transition: 0.3s;
+  cursor: pointer;
 }
 .radios-5 {
   border-radius: 5px;
@@ -639,7 +640,6 @@ small {
 .attach:hover{
   color: #41b883 !important;
     transition: 0.3s;
-
 }
 </style>
 
@@ -664,6 +664,7 @@ export default {
       profit: 0,
       desc: "",
       timeline: null,
+      myProjectvar:false
     };
   },
   computed: {
@@ -675,9 +676,6 @@ export default {
     },
     user() {
       return this.$store.getters.get_user;
-    },
-    myProject() {
-      return this.$store.getters.get_myProject;
     },
   },
   methods: {
@@ -697,7 +695,7 @@ export default {
         .then((response) => {
           this.projectValues = response.data;
           if (this.user.id == response.data.data.user_id) {
-            this.$store.commit("SET_myProject", true);
+            this.myProjectvar=true;
           }
         });
     },

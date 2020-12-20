@@ -5,25 +5,25 @@
         <div class="container">
           <div class="row padding-25 bg-white">
             <div
-              class="col-lg-10 col-md-9 col-sm-12 d-flex justify-content-start align-items-center "
+              class="col-lg-10 col-md-9 col-sm-12 d-flex justify-content-start align-items-center"
               v-for="portfolioValue in portfolioValues"
               :key="portfolioValue.id"
             >
               <div class="image-user mr-4">
                 <img
-                  v-if="portfolioValue.user_img  != null"
+                  v-if="portfolioValue.user_img != null"
                   :src="portfolioValue.user_img"
                   class="rounded-circle hw-70-c"
                 />
-                <div class=" rounded-circle hw-70-c letter-profile-img " v-else>
-                  <span style="color:white;font-size:25px">{{
+                <div class="rounded-circle hw-70-c letter-profile-img" v-else>
+                  <span style="color: white; font-size: 25px">{{
                     portfolioValue.user_first_name.charAt(0).toUpperCase()
                   }}</span>
                 </div>
               </div>
 
               <div
-                class="d-flex flex-column justify-content-center align-items-start "
+                class="d-flex flex-column justify-content-center align-items-start"
               >
                 <div class="portfolio-title">
                   <h5 class="heading-color">
@@ -33,7 +33,7 @@
                 <div class="portfolio-author">
                   <a href="#">
                     <small class="primary-color">
-                      <i class="fas fa-user "></i>
+                      <i class="fas fa-user"></i>
                       {{ portfolioValue.user_first_name }}
                       {{ portfolioValue.user_last_name }}
                     </small>
@@ -68,14 +68,14 @@
           :key="portfolioValue.id"
         >
           <div class="row mr-lg-2 mr-md-2">
-            <div class="col-12  mb-2  p-4 radios-5 bg-white ">
+            <div class="col-12 mb-2 p-4 radios-5 bg-white">
               <h6>Portfolio View</h6>
               <hr />
               <div
-                class="port-view d-flex flex-column justify-content-center align-items-center "
+                class="port-view d-flex flex-column justify-content-center align-items-center"
               >
                 <a
-                  class="mb-2 border-img "
+                  class="mb-2 border-img"
                   v-for="portfolioImage in portfolioImages"
                   :key="portfolioImage.id"
                   data-fancybox="gallery"
@@ -88,8 +88,8 @@
                 :key="portfolioImage.id"> -->
               </div>
             </div>
-            <div class="col-12 mb-4 radios-5  p-4 bg-white ">
-              <div class="port-det ">
+            <div class="col-12 mb-4 radios-5 p-4 bg-white">
+              <div class="port-det">
                 <h6>Portfolio Details</h6>
                 <hr />
                 <p>{{ portfolioValue.desc }}</p>
@@ -97,19 +97,18 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 ">
+        <div class="col-lg-3 col-md-4 col-sm-12">
           <div class="row">
-            <div class="col-12 mb-2 radios-5 bg-white p-4 ">
-              <div class="skills ">
+            <div class="col-12 mb-2 radios-5 bg-white p-4">
+              <div class="skills">
                 <h6>Skills</h6>
                 <hr />
                 <span
-                  
-                  @click="pushskill(portfolioValuesSkill.name)"
-                  class="label-tag "
+                  class="label-tag"
                   v-for="portfolioValuesSkill in portfolioValuesSkills"
                   :key="portfolioValuesSkill.id"
-                  ><i class="fas fa-tag"></i> {{ portfolioValuesSkill.name }}</span
+                  ><i class="fas fa-tag"></i>
+                  {{ portfolioValuesSkill.name }}</span
                 >
               </div>
             </div>
@@ -147,7 +146,7 @@
                     :title="portfolioValue.title"
                     :description="portfolioValue.desc"
                   >
-                    <a href="#" class="fa fa-facebook "></a>
+                    <a href="#" class="fa fa-facebook"></a>
                   </ShareNetwork>
                   <ShareNetwork
                     network="twitter"
@@ -155,7 +154,7 @@
                     :title="portfolioValue.title"
                     :description="portfolioValue.desc"
                   >
-                    <a href="#" class="fa fa-twitter "></a>
+                    <a href="#" class="fa fa-twitter"></a>
                   </ShareNetwork>
                   <ShareNetwork
                     network="whatsapp"
@@ -360,7 +359,7 @@ export default {
       portfolioValues: [],
       portfolioValuesSkills: [],
       portfolioImages: [],
-      projectFullPath:""
+      projectFullPath: "",
     };
   },
   methods: {
@@ -403,18 +402,12 @@ export default {
           // console.log(response.data);
         });
     },
-    pushskill(skillNamePressed) {
-      // console.log(skillNamePressed);
-      // let skillNamePressedvar=skillNamePressed;
-      this.$store.commit("SET_skillPressed", skillNamePressed);
-      this.$router.push({ path: "/portfolios" });
-      // this.$store.dispatch('SET_skillPressed', skillNamePressed)
-    },
-      fetchFullPath(){
+
+    fetchFullPath() {
       var path = this.$route.fullPath;
-      var websiteUrl="website-url";
-      this.projectFullPath = websiteUrl+path;
-    }
+      var websiteUrl = "website-url";
+      this.projectFullPath = websiteUrl + path;
+    },
   },
   mounted() {
     this.fetchPortfolioId();

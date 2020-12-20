@@ -411,9 +411,7 @@ export default {
     };
   },
   computed: {
-    skillPressed() {
-      return this.$store.getters.get_skillPressed;
-    },
+
   },
   methods: {
     loadPortfolios() {
@@ -568,43 +566,12 @@ export default {
           this.categoriesValues = response.data;
         });
     },
-    checkSkillPressed() {
-      this.value2 = this.skillPressed;
-      if (this.value2 != null) {
-        this.loadSkillPressed();
-      }
-      // else {
-      //   console.log("skillpressed == null  if error");
-      // }
-    },
-    loadSkillPressed() {
-      this.$Progress.start();
-      this.portfoliosLoading = true;
-      axios
-        .get(
-          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios/skill-filter?skq=" +
-            this.value2
-        )
-        .then((response) => {
-          this.searchPortfolios = response.data;
-          console.log(response.data);
-          this.$store.commit("SET_skillPressed", null);
-          this.value = [
-            {
-              name: this.value2,
-            },
-          ];
-          this.portfoliosLoading = false;
-          this.$Progress.finish();
-        });
-    },
   },
   mounted() {
     this.loadPortfolios();
     this.getResults();
     this.loadTagsNames();
     this.loadcategoriesValues();
-    this.checkSkillPressed();
   },
 };
 </script>

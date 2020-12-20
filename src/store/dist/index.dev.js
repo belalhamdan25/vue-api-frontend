@@ -22,10 +22,7 @@ var _default = new _vuex["default"].Store({
     loggedIn: false,
     user: null,
     token: null,
-    skillPressed: null,
-    userSkills: null,
-    userImage: null,
-    myProject: false
+    userSkills: null
   },
   plugins: [new _vuexPersist["default"]().plugin],
   mutations: {
@@ -38,17 +35,8 @@ var _default = new _vuex["default"].Store({
     SET_loggedIn: function SET_loggedIn(state, payload) {
       state.loggedIn = payload;
     },
-    SET_skillPressed: function SET_skillPressed(state, payload) {
-      state.skillPressed = payload;
-    },
     SET_userSkills: function SET_userSkills(state, payload) {
       state.userSkills = payload;
-    },
-    SET_userImage: function SET_userImage(state, payload) {
-      state.userImage = payload;
-    },
-    SET_myProject: function SET_myProject(state, payload) {
-      state.myProject = payload;
     }
   },
   actions: {
@@ -143,17 +131,8 @@ var _default = new _vuex["default"].Store({
     get_token: function get_token(state) {
       return state.token;
     },
-    get_skillPressed: function get_skillPressed(state) {
-      return state.skillPressed;
-    },
     get_userSkills: function get_userSkills(state) {
       return state.userSkills;
-    },
-    get_userImage: function get_userImage(state) {
-      return state.userImage;
-    },
-    get_myProject: function get_myProject(state) {
-      return state.myProject;
     }
   }
 });
