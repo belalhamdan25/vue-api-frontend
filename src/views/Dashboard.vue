@@ -27,7 +27,7 @@
           <div
             class="author-content bg-white author-content-settings d-flex flex-column p-4 mb-4 justify-content-center align-items-start radios-5"
           >
-            <router-link class="p-2 side-item active-side-nav" to="/dashboard"
+            <router-link class="deco-none p-2 side-item active-side-nav" to="/dashboard"
               ><i class="bx bx-home"></i> Dashboard</router-link
             >
             <router-link class="p-2 side-item" to="/account-profile"
@@ -83,7 +83,7 @@
                   </div>
                   <div class="hv"></div>
 
-                  <button @click="goToBalancePage">Show Balance</button>
+                  <button class="btn text-muted" @click="goToBalancePage">Show Balance</button>
                 </div>
               </div>
             </div>
@@ -458,6 +458,7 @@ export default {
 </script>
 
 <style>
+
 .radios-5 {
   border-radius: 5px;
 }
@@ -469,6 +470,8 @@ export default {
 .link-sec:hover {
   color: #41b883;
   transition: 0.3s;
+    text-decoration: none;
+
 }
 .circle2 {
   height: 70px;

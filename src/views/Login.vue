@@ -103,6 +103,9 @@
   margin-left: 0;
   width: 25%;
 }
+.login{
+  min-height: 60vh;
+}
 </style>
 
 <script>

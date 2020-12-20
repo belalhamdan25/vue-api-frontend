@@ -19,7 +19,7 @@
                   required
                 />
               </div>
-              <button type="submit" @click.prevent="forgotPassword" class="btn btn-primary">Submit</button>
+              <button type="submit" @click.prevent="forgotPassword" class="btn btn-hire">Submit</button>
             </form>
           </div>
         </div>
@@ -30,6 +30,14 @@
 <style scoped>
 .forgot-password {
   min-height: 80vh;
+}
+.btn-hire {
+  background: #41b883;
+  color: white;
+  /* font-size: 12px; */
+}
+.btn-hire:hover {
+  background: #369a6e;
 }
 </style>
 
