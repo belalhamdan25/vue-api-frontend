@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="image-skelton mt-2">Image</div>
+      <div class="image-skelton mt-2"></div>
     </div>
   </div>
 </template>

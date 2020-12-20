@@ -15,10 +15,9 @@
                 </h1>
 
 
-                  <div class="input-group search-input mt-5 animate__animated animate__fadeInUp">
+                  <!-- <div class="input-group search-input mt-5 animate__animated animate__fadeInUp">
                 <input type="text" class="form-control p-4" placeholder="Hire Freelancer" />
                 <div class="input-group-append">
-                  <!-- <button class="btn btn-success" type="submit">Go</button> -->
                   <vs-button
                   class="btn btn-success p-2 m-0 background-startsec1"
                   color="#41b883"
@@ -32,7 +31,7 @@
                     </template>
                   </vs-button>
                 </div>
-              </div>
+              </div> -->
               </div>
 
             </div>
