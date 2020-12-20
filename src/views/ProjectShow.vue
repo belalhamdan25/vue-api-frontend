@@ -31,12 +31,12 @@
                   </h5>
                 </div>
                 <div class="portfolio-author">
-                  <a href="#">
+                  <router-link :to="'/u/' + projectValue.id">
                     <small class="primary-color">
                       <i class="fas fa-user"></i>
                       {{ projectValue.user_name }}
                     </small>
-                  </a>
+                  </router-link>
                 </div>
                 <div class="portfolio-date">
                   <small class="text-secondary">
@@ -54,9 +54,12 @@
             <div
               class="col-lg-2 col-md-3 col-sm-12 p-4 d-flex justify-content-center align-items-center justify-content-md-end"
             >
-              <a href="#addOffers" class="btn btn-hire">
-                <i class="fas fa-briefcase"></i> Bid Now
-              </a>
+              <div v-if="myProject == false">
+                <a href="#addOffers" class="btn btn-hire">
+                  <i class="fas fa-briefcase"></i> Bid Now
+                </a>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -95,8 +98,12 @@
                     :href="projectA.link"
                     v-for="projectA in projectValue.attachments"
                     :key="projectA.id"
+                    class="attach"
                   >
+                  <small class="text-muted attach ">
+                  <i class='bx bxs-file' ></i> 
                     {{ projectA.name }}
+                  </small>
                   </a>
                 </div>
               </div>
@@ -107,7 +114,6 @@
                 <hr />
 
                 <a
-                  href="#"
                   class="label-tag"
                   v-for="projectS in projectValue.skills"
                   :key="projectS.id"
@@ -115,96 +121,110 @@
                 </a>
               </div>
             </div>
-            <div class="col-12 mb-2 radios-5 p-4 bg-white" id="addOffers">
-              <div v-if="LoggedInCheck" class="port-det">
-                <h6>Add Offer</h6>
-                <hr />
-                <div class="add-deal-form">
-                  <form>
-                    <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="timeLine">Time Line</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text"
-                              id="inputGroupPrepend2"
-                              >Days</span
+            <div v-if="LoggedInCheck">
+              <div v-if="myProject == false">
+                <div class="col-12 mb-2 radios-5 p-4 bg-white" id="addOffers">
+                  <div class="port-det">
+                    <h6>Add Offer</h6>
+                    <hr />
+                    <div class="add-deal-form">
+                      <form>
+                        <div class="form-row">
+                          <div class="col-md-4 mb-3">
+                            <label for="timeLine">Time Line</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span
+                                  class="input-group-text"
+                                  id="inputGroupPrepend2"
+                                  >Days</span
+                                >
+                              </div>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="timeLine"
+                                placeholder="Time Line"
+                                required
+                                min="1"
+                                v-model="timeline"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="coast">Coast</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span
+                                  class="input-group-text"
+                                  id="inputGroupPrepend2"
+                                  >$</span
+                                >
+                              </div>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="coast"
+                                placeholder="Coast"
+                                required
+                                min="25"
+                                v-model="coast"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="profit">Your Profit</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="profit"
+                                  >$</span
+                                >
+                              </div>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="profit"
+                                placeholder="profit after commission"
+                                aria-describedby="profit"
+                                readonly
+                                v-model="profit"
+                              />
+                            </div>
+                            <a href="#"
+                              ><small>After deducting the commission</small></a
                             >
                           </div>
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="timeLine"
-                            placeholder="Time Line"
-                            required
-                            min="1"
-                            v-model="timeline"
-                          />
                         </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="coast">Coast</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text"
-                              id="inputGroupPrepend2"
-                              >$</span
-                            >
-                          </div>
-                          <input
-                            type="number"
+                        <div class="form-group">
+                          <label for="description">Description</label>
+                          <textarea
+                            v-model="desc"
                             class="form-control"
-                            id="coast"
-                            placeholder="Coast"
-                            required
-                            min="25"
-                            v-model="coast"
-                          />
+                            id="description"
+                            rows="6"
+                          ></textarea>
                         </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="profit">Your Profit</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="profit">$</span>
-                          </div>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="profit"
-                            placeholder="profit after commission"
-                            aria-describedby="profit"
-                            readonly
-                            v-model="profit"
-                          />
-                        </div>
-                        <a href="#"
-                          ><small>After deducting the commission</small></a
+                        <button
+                          class="btn btn-hire"
+                          @click.prevent="addOffer"
+                          type="submit"
                         >
-                      </div>
+                          Add Offer
+                        </button>
+                      </form>
                     </div>
-                    <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea
-                        v-model="desc"
-                        class="form-control"
-                        id="description"
-                        rows="6"
-                      ></textarea>
-                    </div>
-                    <button
-                      class="btn btn-hire"
-                      @click.prevent="addOffer"
-                      type="submit"
-                    >
-                      Bid
-                    </button>
-                  </form>
+                  </div>
                 </div>
               </div>
-              <div v-else class="port-det">
+              <div v-else></div>
+            </div>
+
+            <div
+              v-else
+              class="col-12 mb-2 radios-5 p-4 bg-white"
+              id="addOffers"
+            >
+              <div class="port-det">
                 <h6>Add Offer</h6>
                 <hr />
                 <div class="add-offer-false text-center">
@@ -258,17 +278,76 @@
                     <div
                       class="d-flex flex-column justify-content-center align-items-start"
                     >
-                      <h6 class="primary-color">
+                      <router-link
+                        :to="'/u/' + projectOffer.user.id"
+                        class="primary-color"
+                      >
                         {{ projectOffer.user.first_name }}
                         {{ projectOffer.user.last_name }}
-                      </h6>
+                      </router-link>
                       <small class="text-secondary">
                         <i class="far fa-clock"></i>
                         {{ projectOffer.created_at | moment("from", "now") }}
                       </small>
+                      <star-rating
+                        class="mb-2"
+                        :rating="projectOffer.user.rate"
+                        :border-width="2"
+                        :read-only="true"
+                        inactive-color="#fff"
+                        border-color="#ffd055"
+                        :star-size="13"
+                        :show-rating="false"
+                        :star-points="[
+                          23,
+                          2,
+                          14,
+                          17,
+                          0,
+                          19,
+                          10,
+                          34,
+                          7,
+                          50,
+                          23,
+                          43,
+                          38,
+                          50,
+                          36,
+                          34,
+                          46,
+                          19,
+                          31,
+                          17,
+                        ]"
+                      ></star-rating>
                     </div>
                   </div>
+                  <div v-if="myProject == true">
+                    <div class="d-flex justify-content-start align-items-start">
+                      <h6 class="px-2 primary-color">
+                        <i class="bx bx-dollar-circle"></i> Coast : $
+                        {{ projectOffer.coast }}
+                      </h6>
+                      <h6 class="px-2 primary-color">
+                        <i class="bx bx-calendar"></i> Timeline :
+                        {{ projectOffer.timeline }} Days
+                      </h6>
+                    </div>
+                  </div>
+
                   <p class="px-2">{{ projectOffer.desc }}</p>
+
+                  <div v-if="myProject == true">
+                    <div class="d-flex justify-content-start align-items-start">
+                      <router-link to="#" class="mr-4 btn btn-hire">
+                        <i class="bx bxs-paper-plane"></i> Accept Offer
+                      </router-link>
+                      <router-link to="#" class="btn btn-hire-borderd primary-color">
+                        <i class="bx bxs-message-detail"></i> Send Message
+                      </router-link>
+                    </div>
+                  </div>
 
                   <div class="hr-offers mt-4 mb-4"></div>
                 </div>
@@ -552,12 +631,26 @@ small {
 .radios-5 {
   border-radius: 5px;
 }
+.attach{
+  text-decoration: none;
+    transition: 0.3s;
+
+}
+.attach:hover{
+  color: #41b883 !important;
+    transition: 0.3s;
+
+}
 </style>
 
 <script>
 import axios from "axios";
+import StarRating from "vue-star-rating";
 
 export default {
+  components: {
+    StarRating,
+  },
   data() {
     return {
       projectId: "",
@@ -583,6 +676,9 @@ export default {
     user() {
       return this.$store.getters.get_user;
     },
+    myProject() {
+      return this.$store.getters.get_myProject;
+    },
   },
   methods: {
     fetchProjectId() {
@@ -600,7 +696,9 @@ export default {
         )
         .then((response) => {
           this.projectValues = response.data;
-          //   console.log(response.data.data);
+          if (this.user.id == response.data.data.user_id) {
+            this.$store.commit("SET_myProject", true);
+          }
         });
     },
     loadOffersData() {
@@ -630,7 +728,7 @@ export default {
     },
     fetchFullPath() {
       var path = this.$route.fullPath;
-      var websiteUrl = "website-url";
+      var websiteUrl = "worker.netlify.app";
       this.projectFullPath = websiteUrl + path;
     },
     gotToSignup: function () {

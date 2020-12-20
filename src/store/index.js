@@ -13,6 +13,8 @@ export default new Vuex.Store({
     skillPressed:null,
     userSkills:null,
     userImage:null,
+    myProject: false,
+
   },
   plugins: [new VuexPersistence().plugin],
   mutations: {
@@ -33,6 +35,9 @@ export default new Vuex.Store({
     },
     SET_userImage(state,payload) {
       state.userImage =payload;
+    },
+    SET_myProject(state, payload) {
+      state.myProject = payload;
     },
   },
   actions: {
@@ -143,6 +148,9 @@ export default new Vuex.Store({
     },
     get_userImage(state) {
       return state.userImage;
+    },
+    get_myProject(state) {
+      return state.myProject;
     },
   },
 });

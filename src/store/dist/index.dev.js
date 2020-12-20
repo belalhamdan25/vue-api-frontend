@@ -24,7 +24,8 @@ var _default = new _vuex["default"].Store({
     token: null,
     skillPressed: null,
     userSkills: null,
-    userImage: null
+    userImage: null,
+    myProject: false
   },
   plugins: [new _vuexPersist["default"]().plugin],
   mutations: {
@@ -45,6 +46,9 @@ var _default = new _vuex["default"].Store({
     },
     SET_userImage: function SET_userImage(state, payload) {
       state.userImage = payload;
+    },
+    SET_myProject: function SET_myProject(state, payload) {
+      state.myProject = payload;
     }
   },
   actions: {
@@ -147,6 +151,9 @@ var _default = new _vuex["default"].Store({
     },
     get_userImage: function get_userImage(state) {
       return state.userImage;
+    },
+    get_myProject: function get_myProject(state) {
+      return state.myProject;
     }
   }
 });
