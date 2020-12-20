@@ -290,6 +290,7 @@
       <vs-button
         color="#fff"
         border
+        @click="signUp"
       >
         Get Started
       </vs-button>
@@ -375,5 +376,11 @@ import 'aos/dist/aos.css';
 AOS.init({
   once: true
 });
-export default {};
+export default {
+  methods:{
+    signUp(){
+            this.$router.push("/register");
+    }
+  }
+};
 </script>
