@@ -3,13 +3,22 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
-          <button
-            type="button"
-            class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
-            @click="gotToSignup()"
-          >
-            Create Your Portfolio
-          </button>
+          <div v-if="LoggedInCheck">
+            <router-link
+              to="/my-portfolios"
+              class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
+            >
+              Create Your Portfolio
+            </router-link>
+          </div>
+          <div v-else>
+            <button
+              class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
+              @click="gotToSignup()"
+            >
+              Create Your Portfolio
+            </button>
+          </div>
 
           <div class="input-group mb-4">
             <input
@@ -87,13 +96,13 @@
             <h6 ><b>Results</b> {{value2}} Skill :</h6>
             </div>
           </div> -->
-                <!-- <vcl-instagram primary="#dfdfdf"></vcl-instagram> -->
+          <!-- <vcl-instagram primary="#dfdfdf"></vcl-instagram> -->
 
-                    <div v-if="portfoliosLoading">
-                      <div class="row">
-                          <skelton-card v-for="index in 18" :key="index"></skelton-card>
-                      </div>
-                  </div>
+          <div v-if="portfoliosLoading">
+            <div class="row">
+              <skelton-card v-for="index in 18" :key="index"></skelton-card>
+            </div>
+          </div>
 
           <div v-else>
             <div v-if="searchPortfolios.length">
@@ -392,7 +401,7 @@ import Multiselect from "vue-multiselect";
 import SkeltonCard from "@/components/SkeltonCard";
 
 export default {
-  components: { Multiselect,SkeltonCard},
+  components: { Multiselect, SkeltonCard },
   data() {
     return {
       Portfolios: {},
@@ -411,7 +420,9 @@ export default {
     };
   },
   computed: {
-
+    LoggedInCheck() {
+      return this.$store.getters.get_loggedIn;
+    },
   },
   methods: {
     loadPortfolios() {

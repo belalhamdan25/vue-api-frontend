@@ -75,8 +75,8 @@
 
           <div class="text-left mb-4">
             <h6 class="iconC2">Rate</h6>
-
-            <star-rating
+              <div class="d-flex  justify-content-between align-items-center">
+                            <star-rating
               v-model="rating"
               :show-rating="false"
               :star-size="30"
@@ -106,7 +106,10 @@
             >
             </star-rating>
 
-            <a @click="RestRating()">Reset Rating</a>
+            <div class="mt-2" @click="RestRating()"><i class='bx bx-x reset-star'></i></div>
+              </div>
+
+
           </div>
         </div>
         <div class="col-md-9  col-sm-12">
@@ -477,6 +480,15 @@
 }
 .card-link {
   text-decoration: none;
+}
+.reset-star{
+  font-size: 40px;
+  color: #d8d8d8;
+}
+.reset-star:hover{
+cursor: pointer;
+  color: #9e9e9e;
+
 }
 </style>
 

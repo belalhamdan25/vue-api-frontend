@@ -405,7 +405,7 @@ export default {
 
     fetchFullPath() {
       var path = this.$route.fullPath;
-      var websiteUrl = "website-url";
+      var websiteUrl = "worker.netlify.app";
       this.projectFullPath = websiteUrl + path;
     },
   },

@@ -3,12 +3,22 @@
     <div class="container">
       <div class="row py-4">
         <div class="col-md-3 col-sm-12 w-100 text-left">
-          <button
-            class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
-            @click="gotToSignup()"
-          >
-            Add Projects Now
-          </button>
+          <div v-if="LoggedInCheck">
+            <router-link
+              to="/my-projects"
+              class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
+            >
+              Add Projects Now
+            </router-link>
+          </div>
+          <div v-else>
+            <button
+              class="btn btn-primary mb-4 form-control backButton py-md-4 py-lg-0 d-flex justify-content-center align-items-center"
+              @click="gotToSignup()"
+            >
+              Add Projects Now
+            </button>
+          </div>
 
           <div class="input-group mb-4">
             <input
@@ -192,7 +202,7 @@
                           </p>
                         </div>
                       </router-link>
-                      <div
+                      <!-- <div
                         class="d-flex justify-content-start align-items-center"
                       >
                         <span
@@ -202,7 +212,7 @@
                           :key="projectS.id"
                           ><i class="fas fa-tag"></i> {{ projectS.name }}
                         </span>
-                      </div>
+                      </div> -->
                       <hr />
                     </div>
                   </div>
@@ -271,7 +281,7 @@
                           </p>
                         </div>
                       </router-link>
-                      <div
+                      <!-- <div
                         class="d-flex justify-content-start align-items-center"
                       >
                         <span
@@ -281,7 +291,7 @@
                           :key="projectS.id"
                           ><i class="fas fa-tag"></i> {{ projectS.name }}
                         </span>
-                      </div>
+                      </div> -->
                       <hr />
                     </div>
 
@@ -506,7 +516,11 @@ export default {
     VclInstagram,
     VclBulletList,
   },
-
+  computed: {
+    LoggedInCheck() {
+      return this.$store.getters.get_loggedIn;
+    },
+  },
   data() {
     return {
       projects: {},
