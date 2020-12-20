@@ -377,8 +377,12 @@
 
               <div class="form-group mt-20">
                 <!-- <label for="role_name">Category</label> -->
-                <select class="form-control" id="category" v-model="category_id">
-                  <option value=""  disabled selected>Category</option>
+                <select
+                  class="form-control"
+                  id="category"
+                  v-model="category_id"
+                >
+                  <option value="" disabled selected>Category</option>
 
                   <option
                     v-for="categoriesValue in categoriesValues"
@@ -450,6 +454,20 @@
 </template>
 
 <style scoped>
+select{
+     -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("./../../src/assets/icons/down-arrow.png") right  / 10px
+    no-repeat #fff;
+     background-position: 97% 50%; 
+  /* padding-right: 20px !important; */
+}
+.form-control {
+
+  color: #adafc9 !important;
+  font-size: 0.9rem !important;
+}
 .border-rad {
   border-radius: 12px;
 }
@@ -469,17 +487,17 @@
 select#location {
   border: 0px;
   outline: 0px;
-  border-radius:12px;
+  border-radius: 12px;
 }
 select#category {
   border: 0px;
   outline: 0px;
-  border-radius:12px;
+  border-radius: 12px;
 }
 select#role_name {
   border: 0px;
   outline: 0px;
-  border-radius:12px;
+  border-radius: 12px;
 }
 </style>
 
