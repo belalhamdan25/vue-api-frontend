@@ -56,7 +56,7 @@
               <div class="personal-data">
                 <div class="d-flex justify-content-between align-items-center">
                   <h6>My Balance</h6>
-                  <button @click="ChargeBalanceBtn">Charge</button>
+                  <button class="btn btn-hire" @click="ChargeBalanceBtn">Charge</button>
                 </div>
                 <hr />
 
@@ -87,17 +87,17 @@
                 <div v-for="transaction in transactions" :key="transaction.id">
                   <div class="text-left mb-4">
                     <div
-                      class="d-flex justify-content-around align-items-start"
+                      class="d-flex  justify-content-between align-items-start"
                     >
-                      <!-- <small>{{ transaction.desc }} : </small> -->
 
-                      <h6>$ {{ transaction.amount }}</h6>
+                      <h6 class="text-muted">$ {{ transaction.amount }}</h6>
                       <h6>
-                        <i class="fas fa-clock" style="font-size: 10px"></i>
-                        <small>
+                        <i class=" text-muted fas fa-clock" style="font-size: 10px"></i>
+                        <small class="text-muted">
                           {{ transaction.created_at | moment("from", "now") }}
                         </small>
                       </h6>
+                      
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,17 @@
     </div>
   </div>
 </template>
-<style scoped>
+<style>
+.btn-hire {
+  background: #41b883;
+  color: white;
+  /* font-size: 12px; */
+}
+.btn-hire:hover {
+  background: #369a6e;
+    color: white;
+
+}
 </style>
 <script>
 import axios from "axios";

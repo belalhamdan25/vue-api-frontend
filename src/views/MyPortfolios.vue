@@ -58,7 +58,7 @@
               <div class="portfolios">
                 <div class="d-flex justify-content-between align-items-center">
                   <h6>My Portfolios</h6>
-                  <router-link class="" to="/portfolio-create">
+                  <router-link class="btn btn-hire" to="/portfolio-create">
                     Add New</router-link
                   >
                 </div>

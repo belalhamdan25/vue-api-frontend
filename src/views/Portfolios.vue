@@ -91,12 +91,6 @@
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
-          <!-- <div v-show="value2" class="row">
-            <div class="col-12">
-            <h6 ><b>Results</b> {{value2}} Skill :</h6>
-            </div>
-          </div> -->
-          <!-- <vcl-instagram primary="#dfdfdf"></vcl-instagram> -->
 
           <div v-if="portfoliosLoading">
             <div class="row">
@@ -329,18 +323,12 @@
 .portfolio-card {
   background-color: white;
   transition: 0.3s;
-  /* box-shadow: 0 4px 8px 0 rgba(230, 230, 230, 0.2), 0 6px 20px 0 rgba(219, 219, 219, 0.19); */
   color: #41b883;
-
-  /* border-radius: 10px; */
 }
 .portfolio-card:hover {
   color: #369a6e;
-  /* cursor: pointer; */
   transition: 0.3s;
   background-color: rgba(255, 255, 255, 0.548);
-
-  /* border-radius: 10px; */
 }
 .h-fit {
   height: fit-content;
