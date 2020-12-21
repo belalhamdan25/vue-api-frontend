@@ -599,7 +599,7 @@
                             v-model="user.about"
                             class="form-control"
                             id="exampleFormControlTextarea1"
-                            rows="3"
+                            rows="7"
                           ></textarea>
                         </div>
 

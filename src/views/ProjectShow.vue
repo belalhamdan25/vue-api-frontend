@@ -59,7 +59,6 @@
                   <i class="fas fa-briefcase"></i> Bid Now
                 </a>
               </div>
-              
             </div>
           </div>
         </div>
@@ -100,10 +99,10 @@
                     :key="projectA.id"
                     class="attach"
                   >
-                  <small class="text-muted attach ">
-                  <i class='bx bxs-file' ></i> 
-                    {{ projectA.name }}
-                  </small>
+                    <small class="text-muted attach">
+                      <i class="bx bxs-file"></i>
+                      {{ projectA.name }}
+                    </small>
                   </a>
                 </div>
               </div>
@@ -190,7 +189,9 @@
                                 v-model="profit"
                               />
                             </div>
-                            <a href="#"
+                            <a
+                              style="text-decoration: none; color: #41b883"
+                              href="#"
                               ><small>After deducting the commission</small></a
                             >
                           </div>
@@ -343,7 +344,10 @@
                       <router-link to="#" class="mr-4 btn btn-hire">
                         <i class="bx bxs-paper-plane"></i> Accept Offer
                       </router-link>
-                      <router-link to="#" class="btn btn-hire-borderd primary-color">
+                      <router-link
+                        to="#"
+                        class="btn btn-hire-borderd primary-color"
+                      >
                         <i class="bx bxs-message-detail"></i> Send Message
                       </router-link>
                     </div>
@@ -632,14 +636,13 @@ small {
 .radios-5 {
   border-radius: 5px;
 }
-.attach{
+.attach {
   text-decoration: none;
-    transition: 0.3s;
-
+  transition: 0.3s;
 }
-.attach:hover{
+.attach:hover {
   color: #41b883 !important;
-    transition: 0.3s;
+  transition: 0.3s;
 }
 </style>
 
@@ -664,7 +667,7 @@ export default {
       profit: 0,
       desc: "",
       timeline: null,
-      myProjectvar:false
+      myProjectvar: false,
     };
   },
   computed: {
@@ -695,7 +698,7 @@ export default {
         .then((response) => {
           this.projectValues = response.data;
           if (this.user.id == response.data.data.user_id) {
-            this.myProjectvar=true;
+            this.myProjectvar = true;
           }
         });
     },

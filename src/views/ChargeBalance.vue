@@ -140,7 +140,7 @@
                   <button
                     @click.prevent="chargeBtn"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-hire"
                   >
                     Charge
                   </button>
