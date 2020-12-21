@@ -32,7 +32,7 @@
             <router-link class="p-2 side-item" to="/account-profile"
               ><i class="bx bx-user"></i> My Account</router-link
             >
-            <router-link class="p-2 side-item " to="/balance"
+            <router-link class="p-2 side-item" to="/balance"
               ><i class="bx bx-credit-card-front"></i> Account
               Balance</router-link
             >
@@ -42,99 +42,97 @@
             <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
-                                   <router-link class="p-2 side-item" to="/my-offers"
-              ><i class='bx bx-dollar-circle'></i> My Offers</router-link
+            <router-link class="p-2 side-item" to="/my-offers"
+              ><i class="bx bx-dollar-circle"></i> My Offers</router-link
             >
             <button class="p-2 side-item" @click.prevent="performLogout">
               <i class="bx bx-log-out"></i> Log out
             </button>
           </div>
         </div>
-                <div class="col-md-9 col-sm-12">
+        <div class="col-md-9 col-sm-12">
           <div class="row">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="projects">
-                <div class="d-flex  justify-content-between align-items-center">
-                <h6>My Projects</h6>
-                                  <router-link class="btn btn-hire" to="/project-create">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6>My Projects</h6>
+                  <router-link class="btn btn-hire" to="/project-create">
                     Add New</router-link
                   >
                 </div>
-              <hr />
+                <hr />
 
-                                  <div
-                      v-for="userValuesproject in userValuesprojects.projects"
-                      :key="userValuesproject.id"
+                <div v-if="loading">
+                  <vcl-bullet-list :rows="10"></vcl-bullet-list>
+                </div>
+
+                <div
+                  v-else
+                  v-for="userValuesproject in userValuesprojects.projects"
+                  :key="userValuesproject.id"
+                >
+                  <router-link
+                    :to="'project/' + userValuesproject.id"
+                    class="d-flex justify-content-start align-items-center p-2 project-item"
+                  >
+                    <div
+                      class="d-flex flex-column justify-content-center align-items-center"
                     >
-                      <router-link
-                        :to="'project/' + userValuesproject.id"
-                        class="d-flex justify-content-start align-items-center p-2 project-item"
+                      <img
+                        v-if="user.user_img != null"
+                        class="hw-60-c mr-4 rounded-circle"
+                        :src="user.user_img"
+                        alt="user image"
+                      />
+                      <div
+                        class="hw-60-c letter-profile-img rounded-circle mr-4"
+                        v-else
                       >
-                        <div
-                          class="d-flex flex-column justify-content-center align-items-center"
-                        >
-                          <img
-                            v-if="user.user_img != null"
-                            class=" hw-60-c  mr-4 rounded-circle"
-                            :src="user.user_img"
-                            alt="user image"
-                          />
-                          <div
-                            class="hw-60-c letter-profile-img rounded-circle mr-4"
-                            v-else
-                          >
-                            <span style="color:white;font-size:20px">{{
-                              user.first_name.charAt(0).toUpperCase()
-                            }}</span>
-                          </div>
-                        </div>
-                        <div
-                          class="d-flex flex-column justify-content-center align-items-start"
-                        >
-                          <h6 class="mb-0">{{ userValuesproject.title }}</h6>
-                          <div
-                            class="d-flex justify-content-start align-items-center "
-                          >
-                            <div class="auth mr-2 text-muted">
-                              <i class="fas fa-user" style="font-size:10px"></i>
-                              <small> {{ user.first_name }} {{ user.last_name }}</small>
-                            </div>
-                            <div class="time mr-2 text-muted">
-                              <i
-                                class="fas fa-clock"
-                                style="font-size:10px"
-                              ></i>
-                              <small>
-                                {{
-                                  userValuesproject.created_at
-                                    | moment("from", "now")
-                                }}
-                              </small>
-                            </div>
-                            <div class="offers mr-2 text-muted">
-                              <i
-                                class="fas fa-user-tie"
-                                style="font-size:10px"
-                              ></i>
-        
-                            </div>
-                                                          <small class="mb-0 status-project">{{
-                                userValuesproject.status
-                              }}</small>
-                          </div>
-                          <p class="text-muted" style="font-size:14px">
-                            {{ userValuesproject.desc.substring(0, 150) + ".." }}
-                          </p>
-
-
-                        </div>
-                      </router-link>
-      
-                      <hr />
+                        <span style="color: white; font-size: 20px">{{
+                          user.first_name.charAt(0).toUpperCase()
+                        }}</span>
+                      </div>
                     </div>
+                    <div
+                      class="d-flex flex-column justify-content-center align-items-start"
+                    >
+                      <h6 class="mb-0">{{ userValuesproject.title }}</h6>
+                      <div
+                        class="d-flex justify-content-start align-items-center"
+                      >
+                        <div class="auth mr-2 text-muted">
+                          <i class="fas fa-user" style="font-size: 10px"></i>
+                          <small>
+                            {{ user.first_name }} {{ user.last_name }}</small
+                          >
+                        </div>
+                        <div class="time mr-2 text-muted">
+                          <i class="fas fa-clock" style="font-size: 10px"></i>
+                          <small>
+                            {{
+                              userValuesproject.created_at
+                                | moment("from", "now")
+                            }}
+                          </small>
+                        </div>
+                        <div class="offers mr-2 text-muted">
+                          <i
+                            class="fas fa-user-tie"
+                            style="font-size: 10px"
+                          ></i>
+                        </div>
+                        <small class="mb-0 status-project">{{
+                          userValuesproject.status
+                        }}</small>
+                      </div>
+                      <p class="text-muted" style="font-size: 14px">
+                        {{ userValuesproject.desc.substring(0, 150) + ".." }}
+                      </p>
+                    </div>
+                  </router-link>
 
-                
-
+                  <hr />
+                </div>
               </div>
             </div>
           </div>
@@ -149,15 +147,21 @@
 
 <script>
 import axios from "axios";
+import {  VclBulletList } from "vue-content-loading";
 
 export default {
+    components: {
+    VclBulletList,
+  },
   data() {
     return {
       userValuesprojects: [],
+      loading: false,
     };
   },
   methods: {
     userprojectsLoad() {
+      this.loading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/user/my-projects/" +
@@ -165,6 +169,7 @@ export default {
         )
         .then((response) => {
           this.userValuesprojects = response.data.data;
+          this.loading = false;
         });
     },
     performLogout() {

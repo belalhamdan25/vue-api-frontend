@@ -56,7 +56,10 @@
               <div class="offers">
                 <h6>My Offers</h6>
                 <hr />
-                <div class="row">
+                <div v-if="loading">
+                  <vcl-bullet-list :rows="10"></vcl-bullet-list>
+                </div>
+                <div v-else class="row">
                   <div class="col-12">
                       <div v-for="userValue in userValues" :key="userValue.id">
                           <router-link
@@ -113,23 +116,30 @@
 
 <script>
 import axios from "axios";
+import {  VclBulletList } from "vue-content-loading";
 
 export default {
+      components: {
+    VclBulletList,
+  },
   data() {
     return {
       userValuesDashboard: [],
       userValues: [],
+      loading:false
     };
   },
   methods: {
 
     loadUserData() {
+      this.loading=true
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/user/user/" + this.user.id
         )
         .then((response) => {
           this.userValues = response.data;
+          this.loading=false
         });
     },
         performLogout() {

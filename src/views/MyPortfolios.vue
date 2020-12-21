@@ -44,8 +44,8 @@
               to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
-                                   <router-link class="p-2 side-item" to="/my-offers"
-              ><i class='bx bx-dollar-circle'></i> My Offers</router-link
+            <router-link class="p-2 side-item" to="/my-offers"
+              ><i class="bx bx-dollar-circle"></i> My Offers</router-link
             >
             <button class="p-2 side-item" @click.prevent="performLogout">
               <i class="bx bx-log-out"></i> Log out
@@ -64,7 +64,16 @@
                 </div>
                 <hr />
 
-                <div class="row">
+                <div v-if="loading">
+                  <div class="row">
+                    <skelton-card
+                      v-for="index in 9"
+                      :key="index"
+                    ></skelton-card>
+                  </div>
+                </div>
+
+                <div v-else class="row">
                   <div
                     class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex justify-content-center align-content-center pr-2 pl-2"
                     v-for="userValuesportfolio in userValuesportfolios.portfolios"
@@ -133,15 +142,20 @@
 
 <script>
 import axios from "axios";
+import SkeltonCard from "@/components/SkeltonCard";
 
 export default {
+    components: {  SkeltonCard },
+
   data() {
     return {
       userValuesportfolios: [],
+      loading: false,
     };
   },
   methods: {
     userprojectsLoad() {
+      this.loading = true;
       axios
         .get(
           "https://vue-api-backend.herokuapp.com/api/user/my-portfolios/" +
@@ -149,6 +163,7 @@ export default {
         )
         .then((response) => {
           this.userValuesportfolios = response.data.data;
+          this.loading = false;
         });
     },
     performLogout() {

@@ -560,7 +560,7 @@
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label class="">Categories</label>
-                            <select v-model="user.category_id">
+                            <select class="form-control" v-model="user.category_id">
                               <option
                                 v-for="categoriesValue in categoriesValues"
                                 :key="categoriesValue.name"
