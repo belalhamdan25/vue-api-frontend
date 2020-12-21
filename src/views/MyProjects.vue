@@ -5,7 +5,7 @@
         <div class="col-md-3 col-sm-12 w-100 text-left">
           <router-link
             :to="'/u/' + user.id"
-            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
+            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4  user-head radios-5"
           >
             <img
               v-if="user.user_img != null"

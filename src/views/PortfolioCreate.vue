@@ -101,7 +101,7 @@
                 </div>
               </div>
 
-              <button @click.prevent="CreatePortfolio"  class="btn btn-primary">
+              <button @click.prevent="CreatePortfolio"  class="btn btn-hire">
                 Add Portfolio
               </button>
             </form>

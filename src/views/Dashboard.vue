@@ -5,7 +5,7 @@
         <div class="col-md-3 col-sm-12 w-100 text-left">
           <router-link
             :to="'/u/' + user.id"
-            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 radios-5"
+            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 user-head  radios-5"
           >
             <img
               v-if="user.user_img != null"
@@ -113,7 +113,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusAwaitingApprovalCount*100"
                       :max="100"
                     ></progress-bar>
@@ -125,7 +125,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusAwaitingApprovalCount*100"
                       :max="userValuesDashboard.offerStatusCount *100"
                     ></progress-bar>
@@ -137,7 +137,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusFinishedCount*100"
                         :max="100"
                     ></progress-bar>
@@ -149,7 +149,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusFinishedCount*100"
                         :max="userValuesDashboard.offerStatusCount *100"
                     ></progress-bar>
@@ -161,7 +161,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusInProccessCount*100"
                       :max="100"
                     ></progress-bar>
@@ -173,7 +173,7 @@
                     <progress-bar
                       style="width:300px"
                       bar-color="#41b883"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.offerStatusInProccessCount*100"
                       :max="userValuesDashboard.offerStatusCount *100"
                     ></progress-bar>
@@ -208,7 +208,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusOpenCount*100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusOpenCount }}
@@ -220,7 +220,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="userValuesDashboard.projectStatusCount*100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusOpenCount*100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusOpenCount }}
@@ -232,7 +232,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusClosedCount*100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusClosedCount }}
@@ -244,7 +244,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="userValuesDashboard.projectStatusCount*100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusClosedCount*100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusClosedCount }}
@@ -256,7 +256,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusProccessCount *100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusProccessCount }}
@@ -268,7 +268,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="userValuesDashboard.projectStatusCount *100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusProccessCount *100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusProccessCount }}
@@ -281,7 +281,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusFinishedCount *100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusFinishedCount }}
@@ -293,7 +293,7 @@
                       style="width:300px"
                       bar-color="#41b883"
                       :max="userValuesDashboard.projectStatusCount *100"
-                      size="small"
+                      size="medium"
                       :val="userValuesDashboard.projectStatusFinishedCount *100"
                     ></progress-bar>
                     {{ userValuesDashboard.projectStatusFinishedCount }}
@@ -387,6 +387,14 @@
     </div>
   </div>
 </template>
+<style>
+.vue-simple-progress-bar{
+  border-radius: 20px;
+}
+.vue-simple-progress{
+    border-radius: 20px;
+}
+</style>
 
 <script>
 import ProgressBar from "vue-simple-progress";
@@ -458,20 +466,18 @@ export default {
 </script>
 
 <style>
-
-.radios-5 {
-  border-radius: 5px;
+.user-head{
+    text-decoration: none !important;
 }
 .link-sec {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #575757;
   transition: 0.3s;
 }
 .link-sec:hover {
   color: #41b883;
   transition: 0.3s;
-    text-decoration: none;
-
+    text-decoration: none !important;
 }
 .circle2 {
   height: 70px;
@@ -483,7 +489,7 @@ export default {
 }
 .project-item {
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
   color: #41b883;
   transition: 0.3s;
 }
@@ -515,7 +521,7 @@ export default {
   background-color: #41b883;
 }
 .side-item {
-  text-decoration: none;
+  text-decoration: none  !important;
   color: #575757;
   width: 100%;
   font-size: 16px;

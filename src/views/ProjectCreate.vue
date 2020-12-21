@@ -96,7 +96,7 @@
                 </div>
               </div>
 
-              <button  @click.prevent="CreateProject" class="btn btn-primary">Save</button>
+              <button  @click.prevent="CreateProject" class="btn btn-hire">Create</button>
             </form>
           </div>
         </div>
