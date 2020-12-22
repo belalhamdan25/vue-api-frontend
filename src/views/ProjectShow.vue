@@ -466,6 +466,15 @@
   </div>
 </template>
 
+<style >
+.btn-hire-borderd {
+  background: none;
+  /* color: black; */
+  border: 1px solid #41b883;
+  /* font-size: 12px; */
+}
+</style>
+
 <style scoped>
 .shareicon {
   display: flex;

@@ -605,7 +605,7 @@
 
                         <button
                           type="submit"
-                          class="btn btn-primary"
+                          class="btn btn-hire"
                           @click.prevent="updateUserInfo"
                         >
                           Update

@@ -128,9 +128,14 @@
                       <p class="text-muted" style="font-size: 14px">
                         {{ userValuesproject.desc.substring(0, 150) + ".." }}
                       </p>
+
                     </div>
                   </router-link>
-
+                      <div class="d-flex  justify-content-start align-items-center">
+                      <button class="btn btn-hire mr-3">Edit</button>
+                      <button @click="deleteProject(userValuesproject.id)" class="btn btn-hire-borderd mr-3">Delete</button>
+                      <button @click="closeProject(userValuesproject.id)" class="btn btn-hire-borderd ">Close</button>
+                      </div>
                   <hr />
                 </div>
               </div>
@@ -171,6 +176,46 @@ export default {
           this.userValuesprojects = response.data.data;
           this.loading = false;
         });
+    },
+    deleteProject(id){
+      axios
+        .get(
+          "https://vue-api-backend.herokuapp.com/api/project/project-delete/" +
+            id
+        )
+        .then((response) => {
+          console.log(response)
+        this.sucessMessageOpenDeleted();
+        });
+    },
+        closeProject(id){
+      axios
+        .post(
+          "https://vue-api-backend.herokuapp.com/api/project/close-project/" +
+            id
+        )
+        .then((response) => {
+          console.log(response)
+        this.sucessMessageOpen();
+        });
+    },
+        sucessMessageOpenDeleted() {
+      this.$toast.open({
+        message: "Deleted",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
+            sucessMessageOpen() {
+      this.$toast.open({
+        message: "success",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
     },
     performLogout() {
       this.$store
