@@ -49,6 +49,8 @@ var _ProjectCreate = _interopRequireDefault(require("../views/ProjectCreate.vue"
 
 var _MyOffers = _interopRequireDefault(require("../views/MyOffers.vue"));
 
+var _EditProject = _interopRequireDefault(require("../views/EditProject.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -158,6 +160,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Create New Project'
+  }
+}, {
+  path: "/edit-project/:id",
+  name: "EditProject",
+  component: _EditProject["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Edit Project'
   }
 }, {
   path: "*",

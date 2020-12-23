@@ -20,256 +20,262 @@ import ForgotPassword from "../views/ForgotPassword.vue";
 import PortfolioCreate from "../views/PortfolioCreate.vue";
 import ProjectCreate from "../views/ProjectCreate.vue";
 import MyOffers from "../views/MyOffers.vue";
+import EditProject from "../views/EditProject.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
 
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-    meta: { guest: true  , title:'Worker | Hire the best freelancers for any job'} 
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login,
-    meta: { guest: true , title:'Worker | Login' },
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component: Register,
-    meta: { guest: true , title:'Worker | Register' }
+const routes = [{
+        path: "/",
+        name: "Home",
+        component: Home,
+        meta: { guest: true, title: 'Worker | Hire the best freelancers for any job' }
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: Login,
+        meta: { guest: true, title: 'Worker | Login' },
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
+        meta: { guest: true, title: 'Worker | Register' }
 
-  },
-  {
-    path: "/forgot-password",
-    name: "ForgotPassword",
-    component: ForgotPassword,
-    meta: { guest: true , title:'Worker | Forgot Password' }
+    },
+    {
+        path: "/forgot-password",
+        name: "ForgotPassword",
+        component: ForgotPassword,
+        meta: { guest: true, title: 'Worker | Forgot Password' }
 
-  },
-  
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
-    meta: { requiresAuth: true , title:'Worker | Dashboard' }
-  },
+    },
 
-  
-  {
-    path: "/account-profile",
-    name: "AccountProfile",
-    component: AccountProfile,
-    meta: { requiresAuth: true , title:'Worker | Edit Account Profile'}
+    {
+        path: "/dashboard",
+        name: "Dashboard",
+        component: Dashboard,
+        meta: { requiresAuth: true, title: 'Worker | Dashboard' }
+    },
 
-  },
-  {
-    path: "/balance",
-    name: "Balance",
-    component: Balance,
-    meta: { requiresAuth: true , title:'Worker | Balance' }
-  },
-  {
-    path: "/charge-balance",
-    name: "ChargeBalance",
-    component: ChargeBalance,
-    meta: { requiresAuth: true , title:'Worker | Charge Balance' }
-  },
-  {
-    path: "/my-projects",
-    name: "MyProjects",
-    component: MyProjects,
-    meta: { requiresAuth: true , title:'Worker | My Projects' }
-  },
-  {
-    path: "/my-portfolios",
-    name: "MyPortfolios",
-    component: MyPortfolios,
-    meta: { requiresAuth: true , title:'Worker | My Portfolios' }
-  },
-  {
-    path: "/my-offers",
-    name: "MyOffers",
-    component: MyOffers,
-    meta: { requiresAuth: true , title:'Worker | My Offers' }
-  },
-  {
-    path: "/portfolio-create",
-    name: "PortfolioCreate",
-    component: PortfolioCreate,
-    meta: { requiresAuth: true , title:'Worker | Create New Portfolio' }
-  },
-  {
-    path: "/project-create",
-    name: "ProjectCreate",
-    component: ProjectCreate,
-    meta: { requiresAuth: true , title:'Worker | Create New Project' }
-  },
-  {
-    path: "*",
-    name: "ErrorPage",
-    component: ErrorPage,
-  },
-  {
-    path: "/portfolios",
-    name: "Portfolios",
-    component: Portfolios,
-    meta: {  title:'Worker | Portfolios' }
 
-    // meta: { guest: true}
+    {
+        path: "/account-profile",
+        name: "AccountProfile",
+        component: AccountProfile,
+        meta: { requiresAuth: true, title: 'Worker | Edit Account Profile' }
 
-  },
-  {
-    path: "/portfolio/:id",
-    name: "PortfolioShow",
-    component: PortfolioShow,
-    // meta: {  title:'Worker | :title' }
-  },
-  {
-    path: "/projects",
-    name: "Projects",
-    component: Projects,
-    meta: {  title:'Worker | Projects' }
+    },
+    {
+        path: "/balance",
+        name: "Balance",
+        component: Balance,
+        meta: { requiresAuth: true, title: 'Worker | Balance' }
+    },
+    {
+        path: "/charge-balance",
+        name: "ChargeBalance",
+        component: ChargeBalance,
+        meta: { requiresAuth: true, title: 'Worker | Charge Balance' }
+    },
+    {
+        path: "/my-projects",
+        name: "MyProjects",
+        component: MyProjects,
+        meta: { requiresAuth: true, title: 'Worker | My Projects' }
+    },
+    {
+        path: "/my-portfolios",
+        name: "MyPortfolios",
+        component: MyPortfolios,
+        meta: { requiresAuth: true, title: 'Worker | My Portfolios' }
+    },
+    {
+        path: "/my-offers",
+        name: "MyOffers",
+        component: MyOffers,
+        meta: { requiresAuth: true, title: 'Worker | My Offers' }
+    },
+    {
+        path: "/portfolio-create",
+        name: "PortfolioCreate",
+        component: PortfolioCreate,
+        meta: { requiresAuth: true, title: 'Worker | Create New Portfolio' }
+    },
+    {
+        path: "/project-create",
+        name: "ProjectCreate",
+        component: ProjectCreate,
+        meta: { requiresAuth: true, title: 'Worker | Create New Project' }
+    },
+    {
+        path: "/edit-project/:id",
+        name: "EditProject",
+        component: EditProject,
+        meta: { requiresAuth: true, title: 'Worker | Edit Project' }
+    },
+    {
+        path: "*",
+        name: "ErrorPage",
+        component: ErrorPage,
+    },
+    {
+        path: "/portfolios",
+        name: "Portfolios",
+        component: Portfolios,
+        meta: { title: 'Worker | Portfolios' }
 
-    // meta: { guest: true}
+        // meta: { guest: true}
 
-  },
-  {
-    path: "/project/:id",
-    name: "ProjectShow",
-    component: ProjectShow,
-    // meta: { guest: true }
-  },
+    },
+    {
+        path: "/portfolio/:id",
+        name: "PortfolioShow",
+        component: PortfolioShow,
+        // meta: {  title:'Worker | :title' }
+    },
+    {
+        path: "/projects",
+        name: "Projects",
+        component: Projects,
+        meta: { title: 'Worker | Projects' }
 
-  {
-    path: "/freelancers",
-    name: "Freelancers",
-    component: Freelancers,
-    meta: {  title:'Worker | Freelancers' }
+        // meta: { guest: true}
 
-    // meta: { guest: true }
-  },
+    },
+    {
+        path: "/project/:id",
+        name: "ProjectShow",
+        component: ProjectShow,
+        // meta: { guest: true }
+    },
 
-  {
-    path: "/u/:id",
-    name: "UserProfileShow",
-    component: UserProfileShow,
-    // meta: { guest: true }
-  },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
+    {
+        path: "/freelancers",
+        name: "Freelancers",
+        component: Freelancers,
+        meta: { title: 'Worker | Freelancers' }
+
+        // meta: { guest: true }
+    },
+
+    {
+        path: "/u/:id",
+        name: "UserProfileShow",
+        component: UserProfileShow,
+        // meta: { guest: true }
+    },
+    // {
+    //   path: "/about",
+    //   name: "About",
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () =>
+    //     import(/* webpackChunkName: "about" */ "../views/About.vue")
+    // }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes
 });
 
 
 
 router.beforeEach((to, from, next) => {
 
-  document.title=to.meta.title
-  next() 
+    document.title = to.meta.title
+    next()
 
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (!store.state.loggedIn) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!store.state.loggedIn) {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
     } else {
-      next()
+        next() // make sure to always call next()!
     }
-  } else {
-    next() // make sure to always call next()!
-  }
 
-  ///////////////////////
+    ///////////////////////
 
-  if (to.matched.some(record => record.meta.guest)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (store.state.loggedIn) {
-      next({
-        path: '/dashboard',
-        query: { redirect: to.fullPath }
-      })
+    if (to.matched.some(record => record.meta.guest)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (store.state.loggedIn) {
+            next({
+                path: '/dashboard',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
     } else {
-      next()
+        next() // make sure to always call next()!
     }
-  } else {
-    next() // make sure to always call next()!
-  }
 
-  ///////////////////////
+    ///////////////////////
 
-  if (to.matched.some(record => record.meta.requiresFreelancer)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (store.state.user.role_name=="client") {
-      next({
-        path: '/error-page',
-        query: { redirect: to.fullPath }
-      })
+    if (to.matched.some(record => record.meta.requiresFreelancer)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (store.state.user.role_name == "client") {
+            next({
+                path: '/error-page',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
     } else {
-      next()
+        next() // make sure to always call next()!
     }
-  } else {
-    next() // make sure to always call next()!
-  }
 
-  ///////////////////////
+    ///////////////////////
 
-  if (to.matched.some(record => record.meta.requiresClient)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (store.state.user.role_name=="freelancer") {
-      next({
-        path: '/error-page',
-        query: { redirect: to.fullPath }
-      })
+    if (to.matched.some(record => record.meta.requiresClient)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (store.state.user.role_name == "freelancer") {
+            next({
+                path: '/error-page',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
     } else {
-      next()
+        next() // make sure to always call next()!
     }
-  } else {
-    next() // make sure to always call next()!
-  }
 
     ///////////////////////
 
     if (to.matched.some(record => record.meta.requiresFreelancerOrClient)) {
-      // this route requires auth, check if logged in
-      // if not, redirect to login page.
-      if (store.state.user.role_name!="client" || store.state.user.role_name!="freelancer") {
-        next({
-          path: '/error-page',
-          query: { redirect: to.fullPath }
-        })
-      } else {
-        next()
-      }
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (store.state.user.role_name != "client" || store.state.user.role_name != "freelancer") {
+            next({
+                path: '/error-page',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
     } else {
-      next() // make sure to always call next()!
+        next() // make sure to always call next()!
     }
-  
+
     ///////////////////////
-  
+
 
 
 })
