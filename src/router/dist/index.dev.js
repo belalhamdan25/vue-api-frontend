@@ -51,6 +51,8 @@ var _MyOffers = _interopRequireDefault(require("../views/MyOffers.vue"));
 
 var _EditProject = _interopRequireDefault(require("../views/EditProject.vue"));
 
+var _EditPortfolio = _interopRequireDefault(require("../views/EditPortfolio.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -168,6 +170,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     title: 'Worker | Edit Project'
+  }
+}, {
+  path: "/edit-portfolio/:id",
+  name: "EditPortfolio",
+  component: _EditPortfolio["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Edit EditPortfolio'
   }
 }, {
   path: "*",

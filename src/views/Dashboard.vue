@@ -41,7 +41,7 @@
             <router-link class="p-2 side-item" to="/my-projects"
               ><i class="bx bx-briefcase-alt"></i> My Projects</router-link
             >
-            <router-link class="p-2 side-item" to="/my-offers"
+            <router-link class="p-2 side-item" to="/my-portfolios"
               ><i class="bx bx-photo-album"></i> My portfolio</router-link
             >
             <router-link class="p-2 side-item" to="/my-offers"

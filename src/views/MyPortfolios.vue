@@ -5,7 +5,7 @@
         <div class="col-md-3 col-sm-12 w-100 text-left">
           <router-link
             :to="'/u/' + user.id"
-            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4  user-head radios-5"
+            class="author-content d-flex flex-column bg-white justify-content-center align-items-center mb-4 p-4 user-head radios-5"
           >
             <img
               v-if="user.user_img != null"
@@ -75,19 +75,16 @@
 
                 <div v-else class="row">
                   <div
-                    class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex justify-content-center align-content-center pr-2 pl-2"
+                    class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex flex-column justify-content-center align-content-center pr-2 pl-2"
                     v-for="userValuesportfolio in userValuesportfolios.portfolios"
                     :key="userValuesportfolio.id"
                   >
-                    <router-link
-                      class="card-link"
-                      :to="'portfolio/' + userValuesportfolio.id"
-                    >
-                      <div class="card portfolio-card border-0 p-2">
-                        <div
-                          class="d-flex justify-content-start align-items-center"
-                        >
-                          <div class="d-flex align-items-center px-1 w-img-100">
+                    <div class="card portfolio-card border-0 p-2">
+                      <div
+                        class="d-flex justify-content-start align-items-center"
+                      >
+                        <div class="d-flex align-items-center px-1 w-img-100">
+                          <router-link class="card-link" :to="'/u/' + user.id">
                             <img
                               v-if="user.user_img != null"
                               class="hw-35-c rounded-circle"
@@ -102,30 +99,63 @@
                                 user.first_name.charAt(0).toUpperCase()
                               }}</span>
                             </div>
-                          </div>
-                          <div class="pl-2">
-                            <div
-                              class="justify-content-center pr-1 align-content-end"
+                          </router-link>
+                        </div>
+                        <div class="pl-2">
+                          <div
+                            class="justify-content-start pr-1 align-content-start"
+                          >
+                            <router-link
+                              class="card-link"
+                              :to="'/u/' + user.id"
                             >
-                              <h6 class="card-name m-0 h-fit f-15">
+                              <h6
+                                class="card-name m-0 h-fit f-15 primary-color"
+                              >
                                 {{ user.first_name }}
                                 {{ user.last_name }}
                               </h6>
+                            </router-link>
 
+                            <router-link
+                              class="card-link ml-0"
+                              :to="'portfolio/' + userValuesportfolio.id"
+                            >
                               <small class="text-muted">{{
                                 userValuesportfolio.title.substring(0, 20) +
                                 ".."
                               }}</small>
-                            </div>
+                            </router-link>
                           </div>
                         </div>
+                      </div>
+                      <router-link
+                        class="card-link"
+                        :to="'portfolio/' + userValuesportfolio.id"
+                      >
                         <img
                           class="card-img-top img-raduis-bottom"
                           :src="userValuesportfolio.portfolio_images[0].name"
                           :alt="userValuesportfolio.desc"
                         />
-                      </div>
-                    </router-link>
+                      </router-link>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <router-link
+                        :to="'edit-portfolio/' + userValuesportfolio.id"
+                        class="btn btn-hire mr-3"
+                        >Edit</router-link
+                      >
+                      <button
+                        @click="deletePort(userValuesportfolio.id)"
+                        class="btn btn-hire-borderd "
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -138,6 +168,9 @@
 </template>
 
 <style scoped>
+.primary-color {
+  color: #41b883;
+}
 </style>
 
 <script>
@@ -145,7 +178,7 @@ import axios from "axios";
 import SkeltonCard from "@/components/SkeltonCard";
 
 export default {
-    components: {  SkeltonCard },
+  components: { SkeltonCard },
 
   data() {
     return {
@@ -154,6 +187,29 @@ export default {
     };
   },
   methods: {
+    deletePort(id) {
+      this.$Progress.start();
+
+      axios
+        .post(
+          "https://vue-api-backend.herokuapp.com/api/portfolio/portfolios-delete/" +
+            id
+        )
+        .then((response) => {
+          console.log(response);
+          this.sucessMessageOpenDeleted();
+          this.$Progress.finish();
+        });
+    },
+    sucessMessageOpenDeleted() {
+      this.$toast.open({
+        message: "Deleted",
+        type: "success",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
     userprojectsLoad() {
       this.loading = true;
       axios

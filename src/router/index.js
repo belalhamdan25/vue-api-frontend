@@ -21,6 +21,7 @@ import PortfolioCreate from "../views/PortfolioCreate.vue";
 import ProjectCreate from "../views/ProjectCreate.vue";
 import MyOffers from "../views/MyOffers.vue";
 import EditProject from "../views/EditProject.vue";
+import EditPortfolio from "../views/EditPortfolio.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -115,6 +116,12 @@ const routes = [{
         name: "EditProject",
         component: EditProject,
         meta: { requiresAuth: true, title: 'Worker | Edit Project' }
+    },
+    {
+        path: "/edit-portfolio/:id",
+        name: "EditPortfolio",
+        component: EditPortfolio,
+        meta: { requiresAuth: true, title: 'Worker | Edit EditPortfolio' }
     },
     {
         path: "*",
