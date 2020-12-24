@@ -91,12 +91,121 @@
             </div>
           </div>
 
-            
-
           <div class="row">
-            <div class="col-12 mb-4 bg-white radios-5 p-4">
+            <div class="col-6 mb-4 bg-white radios-5 p-4">
               <div
-                class="heading-color d-flex bg-white justify-content-around align-items-center"
+                class="heading-color d-flex flex-column bg-white justify-content-around align-items-center"
+              >
+                <div
+                  class="d-flex flex-column justify-content-center align-items-center"
+                >
+                  <h5 style="font-size: 35px; font-weight: 400">
+                    {{ userValuesDashboard.projectPurchase }}
+                  </h5>
+                  <span>Purchases</span>
+                </div>
+                <div class="my-3"></div>
+
+                <div
+                  class="d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div
+                    class="text-left"
+                    v-if="userValuesDashboard.projectPurchase * 100 == 0"
+                  >
+                    <span style="font-size: 15px">Closed</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="
+                        userValuesDashboard.projectPurchaseStatusClosedCount *
+                        100
+                      "
+                      :max="100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusClosedCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
+                    <span style="font-size: 15px">Closed</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="
+                        userValuesDashboard.projectPurchaseStatusClosedCount *
+                        100
+                      "
+                      :max="userValuesDashboard.projectPurchase * 100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusClosedCount }}
+                  </div>
+
+                  <div
+                    class="text-left"
+                    v-if="userValuesDashboard.projectPurchase * 100 == 0"
+                  >
+                    <span style="font-size: 15px">In Proccess</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="userValuesDashboard.projectPurchaseStatusProccessCount * 100"
+                      :max="100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusProccessCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
+                    <span style="font-size: 15px">In Proccess</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="userValuesDashboard.projectPurchaseStatusProccessCount * 100"
+                      :max="userValuesDashboard.projectPurchase * 100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusProccessCount }}
+                  </div>
+
+                  <div
+                    class="text-left"
+                    v-if="userValuesDashboard.projectPurchase * 100 == 0"
+                  >
+                    <span style="font-size: 15px">Finished</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="
+                        userValuesDashboard.projectPurchaseStatusFinishCount * 100
+                      "
+                      :max="100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusFinishCount }}
+                  </div>
+
+                  <div class="text-left" v-else>
+                    <span style="font-size: 15px">Finished</span>
+                    <progress-bar
+                      style="width: 300px"
+                      bar-color="#41b883"
+                      size="medium"
+                      :val="
+                        userValuesDashboard.projectPurchaseStatusFinishCount * 100
+                      "
+                      :max="userValuesDashboard.projectPurchase * 100"
+                    ></progress-bar>
+                    {{ userValuesDashboard.projectPurchaseStatusFinishCount }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 mb-4 bg-white radios-5 p-4">
+              <div
+                class="heading-color d-flex flex-column bg-white justify-content-around align-items-center"
               >
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"
@@ -106,7 +215,7 @@
                   </h5>
                   <span>My Offers</span>
                 </div>
-                <div class="hv"></div>
+                <div class=" my-3"></div>
 
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"

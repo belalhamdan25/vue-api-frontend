@@ -91,6 +91,7 @@
                     >
 
                       <h6 class="text-muted">$ {{ transaction.amount }}</h6>
+                      <h6 class="text-muted">{{ transaction.desc }}</h6>
                       <h6>
                         <i class=" text-muted fas fa-clock" style="font-size: 10px"></i>
                         <small class="text-muted">

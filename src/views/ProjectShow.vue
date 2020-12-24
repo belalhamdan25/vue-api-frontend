@@ -341,9 +341,62 @@
 
                   <div v-if="myProjectvar == true">
                     <div class="d-flex justify-content-start align-items-start">
-                      <router-link to="#" class="mr-4 btn btn-hire">
+                      <router-link
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        to="#"
+                        class="mr-4 btn btn-hire"
+                      >
                         <i class="bx bxs-paper-plane"></i> Accept Offer
                       </router-link>
+                      <!-- Modal -->
+                      <div
+                        class="modal fade"
+                        id="exampleModal"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h6 class="modal-title" id="exampleModalLabel">
+                                Are you sure to approve the offer?
+                              </h6>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <small>
+                               You will now approve the offer between you and the
+                              freelancer and always remember if you encounter any
+                              problem during your discussion of the deal with
+                              the freelancer that we are always available 24 hours a
+                              day 7 days a week to help you
+                              </small>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                              <button type="button" @click="acceptOffer(projectOffer)" class="btn btn-hire">
+                                Confirm
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <router-link
                         to="#"
                         class="btn btn-hire-borderd primary-color"
@@ -691,6 +744,23 @@ export default {
     },
   },
   methods: {
+    acceptOffer(projectOffer){
+        let payload = {
+        userBuyer: this.user.id,
+        userVendor: projectOffer.user_id,
+        coast: projectOffer.coast,
+        profit: projectOffer.profit,
+        project:this.projectId,
+      };
+      axios({
+        url:
+          "https://vue-api-backend.herokuapp.com/api/project/accept-offer",
+        method: "post",
+        data: payload,
+      }).then((response) => {
+        console.log(response.data);
+      });
+    },
     fetchProjectId() {
       this.projectPath = this.$route.path;
       var str = this.$route.path;
