@@ -22,6 +22,7 @@ import ProjectCreate from "../views/ProjectCreate.vue";
 import MyOffers from "../views/MyOffers.vue";
 import EditProject from "../views/EditProject.vue";
 import EditPortfolio from "../views/EditPortfolio.vue";
+import MyPurchases from "../views/MyPurchases.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -99,6 +100,13 @@ const routes = [{
         component: MyOffers,
         meta: { requiresAuth: true, title: 'Worker | My Offers' }
     },
+    {
+        path: "/my-purchases",
+        name: "MyPurchases",
+        component: MyPurchases,
+        meta: { requiresAuth: true, title: 'Worker | My Purchases' }
+    },
+
     {
         path: "/portfolio-create",
         name: "PortfolioCreate",
