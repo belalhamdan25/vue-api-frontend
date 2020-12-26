@@ -759,6 +759,8 @@ export default {
         data: payload,
       }).then((response) => {
         console.log(response.data);
+              // this.$router.push("/my-purchases");
+
       });
     },
     fetchProjectId() {
