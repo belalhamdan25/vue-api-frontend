@@ -33,7 +33,7 @@
                   <input
                     @change="onFileChange"
                     type="file"
-                    class="form-control-file"
+                    class="upload-btn-wrapper"
                     id="attachments"
                     multiple
                   />
@@ -85,6 +85,7 @@
                 <div class="form-group col-md-4">
                   <label for="category">Project Category</label>
                   <select class="form-control" v-model="category">
+                    <option selected disabled  value="" >Project Category</option>
                     <option
                       v-for="categoriesValue in categoriesValues"
                       :key="categoriesValue.name"
@@ -106,6 +107,7 @@
 </template>
 
 <style scoped>
+
 </style>
 
 <script>
@@ -214,6 +216,7 @@ export default {
           this.$Progress.finish();
           console.log(response.data);
           this.sucessMessageOpen()
+          this.$router.push("/my-projects");
         });
     },
   },

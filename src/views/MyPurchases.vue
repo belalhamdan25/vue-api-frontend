@@ -97,7 +97,7 @@
 
 <script>
 import { VclBulletList } from "vue-content-loading";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   components: {

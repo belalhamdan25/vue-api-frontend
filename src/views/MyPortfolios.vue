@@ -202,6 +202,8 @@ export default {
           console.log(response);
           this.sucessMessageOpenDeleted();
           this.$Progress.finish();
+                      window.location.reload()
+
         });
     },
     sucessMessageOpenDeleted() {

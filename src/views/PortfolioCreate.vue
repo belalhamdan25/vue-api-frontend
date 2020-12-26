@@ -222,6 +222,7 @@ export default {
           this.$Progress.finish();
           console.log(response.data);
           this.sucessMessageOpen()
+          this.$router.push("/my-portfolios");
         });
 
     },

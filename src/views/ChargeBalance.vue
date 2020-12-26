@@ -196,6 +196,8 @@ export default {
             console.log(res.data);
             this.sucessMessageOpen();
             this.$Progress.finish();
+                      this.$router.push("/balance");
+
 
         })
         .catch(err => {

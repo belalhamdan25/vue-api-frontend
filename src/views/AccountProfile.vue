@@ -674,8 +674,16 @@
   </div>
 </template>
 
-<style scoped>
-
+<style>
+.multiselect__tags {
+    min-height: 40px;
+    display: block;
+    padding: 5px 40px 0 8px;
+    border-radius: 5px;
+    border: 1px solid #CCCCCE;
+    background: #fff;
+    font-size: 14px;
+}
 </style>
 
 <script>

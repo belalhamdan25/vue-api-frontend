@@ -95,7 +95,7 @@
           </div>
 
           <div class="row">
-            <div class="col-6 mb-4 bg-white radios-5 p-4">
+            <!-- <div class="col-6 mb-4 bg-white radios-5 p-4">
               <div
                 class="heading-color d-flex flex-column bg-white justify-content-around align-items-center"
               >
@@ -204,11 +204,11 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             
-            <div class="col-6 mb-4 bg-white radios-5 p-4">
+            <div class="col-12 mb-4 bg-white radios-5 p-4">
               <div
-                class="heading-color d-flex flex-column bg-white justify-content-around align-items-center"
+                class="heading-color d-flex  bg-white justify-content-around align-items-center"
               >
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"
@@ -218,7 +218,7 @@
                   </h5>
                   <span>My Offers</span>
                 </div>
-                <div class=" my-3"></div>
+                <div class="hv"></div>
 
                 <div
                   class="d-flex flex-column justify-content-center align-items-center"
