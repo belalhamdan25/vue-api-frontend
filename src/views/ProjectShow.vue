@@ -759,6 +759,8 @@ export default {
         data: payload,
       }).then((response) => {
         console.log(response.data);
+                    window.location.reload()
+
               // this.$router.push("/my-purchases");
 
       });
@@ -838,6 +840,8 @@ export default {
           console.log(res.data);
           this.sucessMessageOpen();
           this.$Progress.finish();
+                      window.location.reload()
+
         })
         .catch((err) => {
           console.log(err);
