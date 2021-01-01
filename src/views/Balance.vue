@@ -45,9 +45,9 @@
                                    <router-link class="p-2 side-item" to="/my-offers"
               ><i class='bx bx-dollar-circle'></i> My Offers</router-link
             >
-                                    <router-link class="p-2 side-item" to="/my-purchases"
+                                    <!-- <router-link class="p-2 side-item" to="/my-purchases"
               ><i class='bx bx-cart-alt'></i> My Purchases</router-link
-            >
+            > -->
             <button class="p-2 side-item" @click.prevent="performLogout">
               <i class="bx bx-log-out"></i> Log out
             </button>
