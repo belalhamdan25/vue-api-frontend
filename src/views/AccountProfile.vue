@@ -663,7 +663,7 @@
                     </div>
                   </div>
 
-                  <button type="submit" @click.prevent="updatePassword" class="btn btn-primary">Save</button>
+                  <button type="submit" @click.prevent="updatePassword" class="btn btn-hire">Save</button>
                 </form>
               </div>
             </div>
