@@ -23,6 +23,8 @@ import MyOffers from "../views/MyOffers.vue";
 import EditProject from "../views/EditProject.vue";
 import EditPortfolio from "../views/EditPortfolio.vue";
 import MyPurchases from "../views/MyPurchases.vue";
+import Messages from "../views/Messages.vue";
+import MessagesShow from "../views/MessagesShow.vue";
 
 import store from "../store/index"
 Vue.use(VueRouter);
@@ -129,7 +131,19 @@ const routes = [{
         path: "/edit-portfolio/:id",
         name: "EditPortfolio",
         component: EditPortfolio,
-        meta: { requiresAuth: true, title: 'Worker | Edit EditPortfolio' }
+        meta: { requiresAuth: true, title: 'Worker | Edit Portfolio' }
+    },
+    {
+        path: "/messages",
+        name: "Messages",
+        component: Messages,
+        meta: { requiresAuth: true, title: 'Worker | Messages' }
+    },
+    {
+        path: "/messages/:id",
+        name: "MessagesShow",
+        component: MessagesShow,
+        meta: { requiresAuth: true }
     },
     {
         path: "*",

@@ -751,6 +751,9 @@ export default {
         coast: projectOffer.coast,
         profit: projectOffer.profit,
         project:this.projectId,
+        sender_id:projectOffer.user_id,
+        sent_to_id:this.user.id,
+        body:projectOffer.desc ,
       };
       axios({
         url:

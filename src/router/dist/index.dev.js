@@ -55,6 +55,10 @@ var _EditPortfolio = _interopRequireDefault(require("../views/EditPortfolio.vue"
 
 var _MyPurchases = _interopRequireDefault(require("../views/MyPurchases.vue"));
 
+var _Messages = _interopRequireDefault(require("../views/Messages.vue"));
+
+var _MessagesShow = _interopRequireDefault(require("../views/MessagesShow.vue"));
+
 var _index = _interopRequireDefault(require("../store/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -187,7 +191,22 @@ var routes = [{
   component: _EditPortfolio["default"],
   meta: {
     requiresAuth: true,
-    title: 'Worker | Edit EditPortfolio'
+    title: 'Worker | Edit Portfolio'
+  }
+}, {
+  path: "/messages",
+  name: "Messages",
+  component: _Messages["default"],
+  meta: {
+    requiresAuth: true,
+    title: 'Worker | Messages'
+  }
+}, {
+  path: "/messages/:id",
+  name: "MessagesShow",
+  component: _MessagesShow["default"],
+  meta: {
+    requiresAuth: true
   }
 }, {
   path: "*",

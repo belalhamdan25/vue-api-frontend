@@ -10,7 +10,7 @@
       <div class="d-block d-sm-none d-none d-sm-block d-md-block ml-auto d-lg-none">  
             <div class="navbar-nav ml-auto list-style-inline">
               <li class="nav-item center-nav" v-if="loggedIn">
-                <router-link class="nav-link" to="#"
+                <router-link class="nav-link" to="/messages"
                   ><i  class='bx bx-envelope'></i></router-link>
               </li>
 
@@ -111,7 +111,7 @@
           <div class="d-none d-md-none d-lg-none  d-lg-block d-xl-none  d-xl-block"> 
             <div class="navbar-nav ml-auto list-style-inline">
               <li class="nav-item center-nav" v-if="loggedIn">
-                <router-link class="nav-link" to="#"
+                <router-link class="nav-link" to="/messages"
                   ><i  class='bx bx-envelope'></i></router-link>
               </li>
 
