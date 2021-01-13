@@ -13,7 +13,7 @@
                 v-model="first_name"
                 type="text"
                 color="#41b883"
-                label-placeholder="First Name"
+                label="First Name"
               >
               </vs-input>
 
@@ -21,7 +21,7 @@
                 color="#41b883"
                 type="text"
                 v-model="last_name"
-                label-placeholder="Last Name"
+                label="Last Name"
               >
               </vs-input>
 
@@ -29,7 +29,7 @@
                 color="#41b883"
                 type="email"
                 v-model="email"
-                label-placeholder="Email"
+                label="Email"
               >
               </vs-input>
 
@@ -37,7 +37,8 @@
                 color="#41b883"
                 type="tel"
                 v-model="phone_number"
-                label-placeholder="Phone Number"
+                                 label="Phone"
+
               >
               </vs-input>
 
@@ -45,9 +46,10 @@
                 color="#41b883"
                 type="password"
                 v-model="password"
-                label-placeholder="Password"
+                 label="Password"
               >
               </vs-input>
+              
 
               <div class="form-group mt-4">
                 <!-- <label for="location">Country</label> -->
@@ -465,7 +467,7 @@ select{
 }
 .form-control {
 
-  color: #adafc9 !important;
+  color: rgb(73, 73, 73) !important;
   font-size: 0.9rem !important;
 }
 .border-rad {

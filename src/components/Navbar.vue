@@ -14,10 +14,10 @@
                   ><i  class='bx bx-envelope'></i></router-link>
               </li>
 
-              <li class="nav-item center-nav" v-if="loggedIn">
+              <!-- <li class="nav-item center-nav" v-if="loggedIn">
                 <router-link class="nav-link" to="#"
                   ><i class='bx bx-bell' ></i></router-link>
-              </li>
+              </li> -->
 
               <!-- <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
                                 <router-link  class="nav-link" to="#"
@@ -114,11 +114,11 @@
                 <router-link class="nav-link" to="/messages"
                   ><i  class='bx bx-envelope'></i></router-link>
               </li>
-
+<!-- 
               <li class="nav-item center-nav" v-if="loggedIn">
                 <router-link class="nav-link" to="#"
                   ><i class='bx bx-bell' ></i></router-link>
-              </li>
+              </li> -->
 
               <!-- <li class="dropdown nav-item dropdown center-drop-down" v-if="loggedIn" >
                                 <router-link  class="nav-link" to="#"
