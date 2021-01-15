@@ -137,7 +137,7 @@
                       <div class="d-flex  justify-content-start align-items-center">
                       <router-link :to="'edit-project/' + userValuesproject.id" class="btn btn-hire mr-3">Edit</router-link>
                       <button @click="deleteProject(userValuesproject.id)" class="btn btn-hire-borderd mr-3">Delete</button>
-                      <!-- <button @click="closeProject(userValuesproject.id)" class="btn btn-hire-borderd ">Close</button> -->
+                      <button @click="closeProject(userValuesproject.id)" class="btn btn-hire-borderd ">Close</button>
                       </div>
                   <hr />
                 </div>
@@ -202,6 +202,8 @@ export default {
         .then((response) => {
           console.log(response)
         this.sucessMessageOpen();
+                    window.location.reload()
+
         });
     },
         sucessMessageOpenDeleted() {

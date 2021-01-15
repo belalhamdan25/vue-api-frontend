@@ -57,24 +57,15 @@
           <div class="row">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="messages">
-                    <div
-                  class="d-flex justify-content-between align-items-start"
-                 
-                >
-                                <h6
-                  v-for="userconversationDat in userconversationData"
-                  :key="userconversationDat.id"
-                >
-                  {{ userconversationDat.user_name }}
-                </h6>
-                                            <button
-              class="btn btn-hire"
-              @click="finish()"
-            >
-              Finish
-            </button>
-                
-                 </div>
+                <div class="d-flex justify-content-between align-items-start">
+                  <h6
+                    v-for="userconversationDat in userconversationData"
+                    :key="userconversationDat.id"
+                  >
+                    {{ userconversationDat.user_name }}
+                  </h6>
+                  <!-- <button class="btn btn-hire" @click="finish()">Finish</button> -->
+                </div>
 
                 <hr />
 
@@ -104,9 +95,7 @@
                   <span class="backMessageSec">Message</span>
                 </div> -->
 
-                <form
-                  class="input-group mb-4"
-                >
+                <form class="input-group mb-4">
                   <input
                     type="text"
                     class="form-control"
@@ -116,14 +105,11 @@
                     v-model="body"
                   />
                   <div class="input-group-append">
-                    <div   @click="SendMessage()" class="btn btn-hire">
-                      <i class='bx bxs-send'></i>
-                      
+                    <div @click="SendMessage()" class="btn btn-hire">
+                      <i class="bx bxs-send"></i>
                     </div>
                   </div>
                 </form>
-
-
               </div>
             </div>
           </div>
@@ -166,8 +152,8 @@ export default {
       id: "",
       messages: "",
       userconversationData: "",
-      body:"",
-      messagesStatus:""
+      body: "",
+      messagesStatus: "",
     };
   },
   methods: {
@@ -192,7 +178,7 @@ export default {
       this.id = result;
     },
     loadMessages() {
-    //   this.loading = true;
+      //   this.loading = true;
       let payload = {
         sent_to_id: this.id,
         token: this.retriveToken,
@@ -213,10 +199,10 @@ export default {
           this.userconversationData = response.data;
         });
     },
-    SendMessage(){
+    SendMessage() {
       let payload = {
         sender_id: this.user.id,
-        sent_to_id:this.id,
+        sent_to_id: this.id,
         body: this.body,
       };
       axios({
@@ -224,14 +210,14 @@ export default {
         method: "POST",
         data: payload,
       }).then((response) => {
-        this.messagesStatus=response;
+        this.messagesStatus = response;
         this.loadMessages();
-        this.body="";
+        this.body = "";
       });
     },
-    finish(){
-      console.log("finish")
-    }
+    finish() {
+      console.log("finish");
+    },
   },
   computed: {
     user() {
@@ -245,9 +231,9 @@ export default {
     this.fetchId();
     this.loadMessages();
     this.loadUserData();
-      window.setInterval(() => {
-            this.loadMessages();
-  }, 1000)
+    window.setInterval(() => {
+      this.loadMessages();
+    }, 1000);
   },
 };
 </script>

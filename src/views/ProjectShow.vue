@@ -324,7 +324,7 @@
                       ></star-rating>
                     </div>
                   </div>
-                  <div v-if="myProjectvar == true">
+                  <div v-if="myProjectvar == true && projectValue.status == 'open' || myProjectvar == true && projectValue.status == 'closed'">
                     <div class="d-flex justify-content-start align-items-start">
                       <h6 class="px-2 primary-color">
                         <i class="bx bx-dollar-circle"></i> Coast : $
@@ -339,7 +339,7 @@
 
                   <p class="px-2">{{ projectOffer.desc }}</p>
 
-                  <div v-if="myProjectvar == true">
+                  <div v-if="myProjectvar == true && projectValue.status == 'open' || myProjectvar == true && projectValue.status == 'closed'" >
                     <div class="d-flex justify-content-start align-items-start">
                       <router-link
                         data-toggle="modal"
@@ -397,12 +397,6 @@
                           </div>
                         </div>
                       </div>
-                      <router-link
-                        to="#"
-                        class="btn btn-hire-borderd primary-color"
-                      >
-                        <i class="bx bxs-message-detail"></i> Send Message
-                      </router-link>
                     </div>
                   </div>
 
