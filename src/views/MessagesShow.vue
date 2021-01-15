@@ -57,12 +57,25 @@
           <div class="row">
             <div class="col-12 radios-5 bg-white p-4">
               <div class="messages">
-                <h6
+                    <div
+                  class="d-flex justify-content-between align-items-start"
+                 
+                >
+                                <h6
                   v-for="userconversationDat in userconversationData"
                   :key="userconversationDat.id"
                 >
                   {{ userconversationDat.user_name }}
                 </h6>
+                                            <button
+              class="btn btn-hire"
+              @click="finish()"
+            >
+              Finish
+            </button>
+                
+                 </div>
+
                 <hr />
 
                 <div v-if="loading">
@@ -109,6 +122,8 @@
                     </div>
                   </div>
                 </form>
+
+
               </div>
             </div>
           </div>
@@ -213,6 +228,9 @@ export default {
         this.loadMessages();
         this.body="";
       });
+    },
+    finish(){
+      console.log("finish")
     }
   },
   computed: {
@@ -227,6 +245,9 @@ export default {
     this.fetchId();
     this.loadMessages();
     this.loadUserData();
+      window.setInterval(() => {
+            this.loadMessages();
+  }, 1000)
   },
 };
 </script>
