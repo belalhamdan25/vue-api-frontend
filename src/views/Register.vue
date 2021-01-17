@@ -52,7 +52,7 @@
               
 
               <div class="form-group mt-4">
-                <!-- <label for="location">Country</label> -->
+                <label class="label-reg" for="location">Country</label>
                 <select
                   id="location"
                   name="location"
@@ -378,7 +378,7 @@
               </div>
 
               <div class="form-group mt-20">
-                <!-- <label for="role_name">Category</label> -->
+                <label class="label-reg" for="role_name">Category</label>
                 <select
                   class="form-control"
                   id="category"
@@ -397,7 +397,7 @@
               </div>
 
               <div class="form-group mt-20">
-                <!-- <label for="role_name">User Type</label> -->
+                <label class="label-reg" for="role_name">User Type</label>
                 <select
                   class="form-control"
                   name="role_name"
@@ -500,6 +500,10 @@ select#role_name {
   border: 0px;
   outline: 0px;
   border-radius: 12px;
+}
+.label-reg{
+  font-size: 12px;
+  margin-left:13px; 
 }
 </style>
 

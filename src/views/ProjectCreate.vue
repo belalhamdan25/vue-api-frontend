@@ -84,7 +84,7 @@
 
                 <div class="form-group col-md-4">
                   <label for="category">Project Category</label>
-                  <select class="form-control" v-model="category">
+                  <select  class="form-control" v-model="category">
                     <option selected disabled  value="" >Project Category</option>
                     <option
                       v-for="categoriesValue in categoriesValues"
@@ -134,7 +134,7 @@ export default {
   methods: {
     errorMessageOpen() {
       this.$toast.open({
-        message: " There was error during create process",
+        message: " There was error during create project process",
         type: "error",
         duration: 5000,
         dismissible: true,
@@ -217,6 +217,11 @@ export default {
           console.log(response.data);
           this.sucessMessageOpen()
           this.$router.push("/my-projects");
+        })
+                      .catch((err) => {
+          this.$Progress.fail();
+          this.errorMessageOpen();
+          console.log(err.message);
         });
     },
   },

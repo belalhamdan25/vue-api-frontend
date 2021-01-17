@@ -756,11 +756,15 @@ export default {
         data: payload,
       }).then((response) => {
         console.log(response.data);
-                    window.location.reload()
+              this.$router.push("/messages");
+                                    window.location.reload()
 
-              // this.$router.push("/my-purchases");
-
-      });
+      })
+              .catch((err) => {
+          this.$Progress.fail();
+          this.errorMessageOpenoffer();
+          console.log(err.message);
+        });
     },
     fetchProjectId() {
       this.projectPath = this.$route.path;
@@ -842,12 +846,22 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+            this.$Progress.fail();
           this.errorMessageOpen();
         });
     },
     errorMessageOpen() {
       this.$toast.open({
         message: " There was error during add offer process",
+        type: "error",
+        duration: 5000,
+        dismissible: true,
+        position: "top-right",
+      });
+    },
+        errorMessageOpenoffer() {
+      this.$toast.open({
+        message: " There was error during accept offer process",
         type: "error",
         duration: 5000,
         dismissible: true,

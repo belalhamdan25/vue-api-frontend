@@ -140,7 +140,7 @@ export default {
   methods: {
            errorMessageOpen() {
       this.$toast.open({
-        message: " There was error during create process",
+        message: " There was error during create portfolio process",
         type: "error",
         duration: 5000,
         dismissible: true,
@@ -223,6 +223,11 @@ export default {
           console.log(response.data);
           this.sucessMessageOpen()
           this.$router.push("/my-portfolios");
+        })
+          .catch((err) => {
+          this.$Progress.fail();
+          this.errorMessageOpen();
+          console.log(err.message);
         });
 
     },
